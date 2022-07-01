@@ -1,1 +1,34 @@
+Welcome to our projects style guide
 
+We are using Black as our Linter for this project 
+
+
+NO EDITING ON THE MAIN- Branch!
+-> Name of the branch should be the feature you are working on 
+
+
+Variables - snake_case 
+-> with meaningful names
+->to the point (this_is_a_variable)
+-> no single letters/numbers
+
+
+Classes - single descriptive word with a capital at the start (Function)
+
+
+File names - snake_case
+->limit the length to 5 or less (test_functions.py)
+-> Meaningful naming 
+
+
+Comments
+-> On a separate line above the code
+-> if code is not self explanatory, add a descriptive comment 
+
+
+Functions- snake_case (my_function)
+-> Make sure we are designing our functions with dependancy injection in mind 
+
+
+Redundant code 
+-> keep any redundant functions in the file section of our team just in case we need to refer to it at a later date 
