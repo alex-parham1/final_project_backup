@@ -1,0 +1,16 @@
+update coverage
+----------------
+python3 -m pytest --cov=. Project/src --cov-report xml:coverage.xml
+
+enter venv
+----------
+source .venv/bin/activate
+
+push branch
+------------
+git push
+
+use linter
+-----------
+python3 black
+
