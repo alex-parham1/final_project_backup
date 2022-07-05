@@ -1,6 +1,6 @@
 update coverage
 ----------------
-python3 -m pytest --cov=. Project/src --cov-report xml:coverage.xml
+python3 -m pytest --cov=. src --cov-report xml:coverage.xml
 
 enter venv
 ----------
@@ -13,4 +13,10 @@ git push
 use linter
 -----------
 python3 black
+
+create coverage file
+--------------------
+touch coverage.xml
+
+
 
