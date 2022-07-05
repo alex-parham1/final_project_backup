@@ -2,6 +2,10 @@ update coverage
 ----------------
 python3 -m pytest --cov=. src --cov-report xml:coverage.xml
 
+create venv
+-----------
+python3 -m venv .venv
+
 enter venv
 ----------
 source .venv/bin/activate
