@@ -1,6 +1,6 @@
 update coverage
 ----------------
-python3 -m pytest --cov=. src --cov-report xml:coverage.xml
+python3 -m pytest --cov=. --cov-report xml:coverage.xml
 
 push branch
 -----------
