@@ -13,8 +13,9 @@ connection = get_connection()
 @yaspin(text="Cleaning data...")
 def get_data_frame():
     df = pd.DataFrame()
-    for filename in os.listdir("../data"):
-        temp_df = pd.read_csv(f"../data/{filename}")
+    target = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+    for filename in os.listdir(f"{target}/data"):
+        temp_df = pd.read_csv(f"{target}/data/{filename}")
         df = pd.concat([df, temp_df], axis=0)
     df.columns = [
         "date",
