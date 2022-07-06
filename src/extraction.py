@@ -9,7 +9,8 @@ import time
 connection = get_connection()
 # This function forms the **E** from ETL - it extracts the data and puts it into a dataframe.
 
-@yaspin(text='Cleaning data...')
+
+@yaspin(text="Cleaning data...")
 def get_data_frame():
     df = pd.DataFrame()
     for filename in os.listdir("../data"):
@@ -53,7 +54,7 @@ into PRODUCTS:
 """
 
 
-@yaspin(text='Inserting names into DB...')
+@yaspin(text="Inserting names into DB...")
 def insert_names(connection):
     for name in df["customer_name"]:
         sql_query = f"""
@@ -62,9 +63,10 @@ def insert_names(connection):
         cursor = connection.cursor()
         cursor.execute(sql_query)
     connection.commit()
-    print('Names inserted OK')
+    print("Names inserted OK")
 
-@yaspin(text='Inserting cards into DB...')
+
+@yaspin(text="Inserting cards into DB...")
 def insert_cards(connection):
     for card_type in df["card_type"]:
         for card_number in df["card_number"]:
@@ -74,9 +76,10 @@ def insert_cards(connection):
         cursor = connection.cursor()
         cursor.execute(sql_query)
         connection.commit()
-        print('Cards inserted OK')
+        print("Cards inserted OK")
 
-@yaspin(text='Inserting stores into DB...')
+
+@yaspin(text="Inserting stores into DB...")
 def insert_store(connection):
     for store in df["location"]:
         sql_query = f"""
@@ -85,9 +88,12 @@ def insert_store(connection):
         cursor = connection.cursor()
         cursor.execute(sql_query)
         connection.commit()
-        print('Stores inserted OK')
+        print("Stores inserted OK")
+
 
 insert_names(connection)
 insert_cards(connection)
 insert_store(connection)
-print('Note to TEAM YOGURT = if you\'re putting data in while testing this file - dont forget to take it out again!')
+print(
+    "Note to TEAM YOGURT = if you're putting data in while testing this file - dont forget to take it out again!"
+)
