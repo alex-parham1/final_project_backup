@@ -2,7 +2,11 @@ from dotenv import load_dotenv
 import pymysql
 import os
 
-load_dotenv()
+target = os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
+
+
+
+load_dotenv(f'{target}/.env')
 host = os.environ.get("mysql_host")
 user = os.environ.get("mysql_user")
 password = os.environ.get("mysql_pass")
