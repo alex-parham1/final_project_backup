@@ -90,3 +90,4 @@ def insert_store(connection):
 insert_names(connection)
 insert_cards(connection)
 insert_store(connection)
+print('Note to TEAM YOGURT = if you\'re putting data in while testing this file - dont forget to take it out again!')
