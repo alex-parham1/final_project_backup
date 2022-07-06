@@ -1,0 +1,540 @@
+2021-02-23 09:00:48,Isle of Wight,Morgan Berka,"Large,Hot chocolate,2.9,Large,Chai latte,2.6,Large,Hot chocolate,2.9",CASH,8.40,None
+2021-02-23 09:01:45,Isle of Wight,William Perdomo,"Large,Latte,2.45",CARD,2.45,"discover,6011776257398866"
+2021-02-23 09:02:27,Isle of Wight,Amber Roberts,",Frappes - Coffee,2.75,,Cortado,2.05,,Glass of milk,0.7,,Speciality Tea - Camomile,1.3,,Speciality Tea - Camomile,1.3",CARD,8.10,"discover,6011893765428836"
+2021-02-23 09:03:02,Isle of Wight,Tisha Timmons,",Speciality Tea - Camomile,1.3,,Hot Chocolate,1.4",CASH,2.70,None
+2021-02-23 09:04:40,Isle of Wight,Johnnie Davis,",Flavoured iced latte - Hazelnut,2.75,Large,Espresso,1.8,,Glass of milk,0.7,,Smoothies - Berry Beautiful,2.0",CASH,7.25,None
+2021-02-23 09:05:18,Isle of Wight,Jason Martin,"Regular,Filter coffee,1.5,Large,Flavoured hot chocolate - Caramel,2.9,Large,Flavoured latte - Gingerbread,2.85",CARD,7.25,"americanexpress,347932748275944"
+2021-02-23 09:06:33,Isle of Wight,Jennifer Wade,",Hot Chocolate,1.4,,Speciality Tea - Camomile,1.3,,Speciality Tea - Green,1.3,Large,Americano,2.25,,Flavoured iced latte - Vanilla,2.75",CARD,9.00,"mastercard,52349866666956610"
+2021-02-23 09:07:55,Isle of Wight,James Jimenez,",Speciality Tea - Green,1.3,,Red Label tea,1.2",CARD,2.50,"americanexpress,355841231591387"
+2021-02-23 09:08:06,Isle of Wight,Esther Craig,"Large,Espresso,1.8,Regular,Flavoured hot chocolate - Vanilla,2.6,,Flavoured iced latte - Vanilla,2.75",CASH,7.15,None
+2021-02-23 09:09:55,Isle of Wight,James Tucker,",Speciality Tea - Green,1.3,,Flavoured iced latte - Vanilla,2.75,Regular,Americano,1.95",CARD,6.00,"discover,6011658851596584"
+2021-02-23 09:10:52,Isle of Wight,Joshua Trahan,",Hot Chocolate,1.4,Large,Cappuccino,2.45",CASH,3.85,None
+2021-02-23 09:11:26,Isle of Wight,Timothy Hope,",Cortado,2.05,Regular,Latte,2.15,Large,Flavoured latte - Vanilla,2.85,Large,Chai latte,2.6",CARD,9.65,"visa13,4891633226863"
+2021-02-23 09:12:18,Isle of Wight,Milton Mathews,",Frappes - Strawberries & Cream,2.75,,Frappes - Strawberries & Cream,2.75,,Flavoured iced latte - Vanilla,2.75",CARD,8.25,"visa16,4924515776335673"
+2021-02-23 09:13:44,Isle of Wight,Joseph Cheng,",Speciality Tea - English breakfast,1.3",CARD,1.30,"americanexpress,358366644963152"
+2021-02-23 09:14:07,Isle of Wight,Mary Howard,",Cortado,2.05",CASH,2.05,None
+2021-02-23 09:15:36,Isle of Wight,Suzanne Cookerly,",Hot Chocolate,1.4,Large,Filter coffee,1.8,,Speciality Tea - Camomile,1.3,,Speciality Tea - Peppermint,1.3,,Speciality Tea - Darjeeling,1.3",CASH,7.10,None
+2021-02-23 09:16:55,Isle of Wight,Jonathan Lewis,",Iced americano,2.15,,Babyccino,0.0,Large,Flavoured latte - Vanilla,2.85,,Flavoured iced latte - Hazelnut,2.75,,Frappes - Strawberries & Cream,2.75",CARD,10.50,"visa13,4289345283126"
+2021-02-23 09:17:52,Isle of Wight,Roger Walker,"Large,Flavoured latte - Caramel,2.85",CARD,2.85,"visa16,41283441555354710"
+2021-02-23 09:18:56,Isle of Wight,Angela Gunn,",Flavoured iced latte - Caramel,2.75",CARD,2.75,"visa16,4558177766236594"
+2021-02-23 09:19:27,Isle of Wight,Amanda Parkinson,"Large,Flavoured latte - Caramel,2.85,Large,Latte,2.45",CARD,5.30,"visa16,4668669235933261"
+2021-02-23 09:20:35,Isle of Wight,Walter Quivers,",Frappes - Strawberries & Cream,2.75,,Frappes - Strawberries & Cream,2.75,Large,Flavoured latte - Gingerbread,2.85,,Mocha,2.3,Large,Flavoured latte - Gingerbread,2.85",CARD,13.50,"americanexpress,343928666843634"
+2021-02-23 09:21:31,Isle of Wight,Sadie Salas,"Regular,Flavoured latte - Vanilla,2.55,Large,Luxury hot chocolate,2.7,,Speciality Tea - Green,1.3,,Red Label tea,1.2",CASH,7.75,None
+2021-02-23 09:22:36,Isle of Wight,Dolores Woodson,",Hot Chocolate,1.4,Regular,Americano,1.95",CASH,3.35,None
+2021-02-23 09:23:57,Isle of Wight,Veronica Walls,"Large,Latte,2.45",CASH,2.45,None
+2021-02-23 09:24:48,Isle of Wight,Angela Ferrari,"Large,Filter coffee,1.8,Large,Flavoured hot chocolate - Caramel,2.9,Regular,Flavoured hot chocolate - Vanilla,2.6,,Speciality Tea - Camomile,1.3",CASH,8.60,None
+2021-02-23 09:25:27,Isle of Wight,Rhonda Obermiller,"Large,Chai latte,2.6,,Speciality Tea - Fruit,1.3",CARD,3.90,"mastercard,5346599764578442"
+2021-02-23 09:26:45,Isle of Wight,Henry Hutzler,"Large,Americano,2.25,Large,Flavoured hot chocolate - Caramel,2.9",CASH,5.15,None
+2021-02-23 09:27:47,Isle of Wight,Darnell Hayes,",Red Label tea,1.2",CARD,1.20,"discover,6011695463887795"
+2021-02-23 09:28:07,Isle of Wight,Adam Connors,"Large,Latte,2.45,Large,Flavoured latte - Hazelnut,2.85,,Frappes - Strawberries & Cream,2.75",CARD,8.05,"americanexpress,3543154237252610"
+2021-02-23 09:29:06,Isle of Wight,Bridget Oneil,",Frappes - Coffee,2.75,,Flavoured iced latte - Vanilla,2.75,Large,Flavoured latte - Vanilla,2.85,,Speciality Tea - Earl Grey,1.3",CARD,9.65,"visa16,4283633598174934"
+2021-02-23 09:30:15,Isle of Wight,Robert Hairston,"Large,Hot chocolate,2.9",CASH,2.90,None
+2021-02-23 09:31:33,Isle of Wight,Janice Long,",Flat white,2.15,,Frappes - Chocolate Cookie,2.75,,Speciality Tea - Green,1.3",CARD,6.20,"visa13,4813252884145"
+2021-02-23 09:32:53,Isle of Wight,Amy Lanzilotta,"Regular,Flavoured latte - Gingerbread,2.55,,Glass of milk,0.7,Large,Chai latte,2.6",CASH,5.85,None
+2021-02-23 09:33:03,Isle of Wight,Jordan Clouse,",Speciality Tea - Earl Grey,1.3,,Speciality Tea - Earl Grey,1.3,,Red Label tea,1.2",CASH,3.80,None
+2021-02-23 09:34:29,Isle of Wight,Athena Winston,",Speciality Tea - Fruit,1.3",CARD,1.30,"americanexpress,351491457579585"
+2021-02-23 09:35:29,Isle of Wight,Amy Paider,",Babyccino,0.0,,Flavoured iced latte - Vanilla,2.75,Regular,Flavoured latte - Gingerbread,2.55",CARD,5.30,"americanexpress,379585264787717"
+2021-02-23 09:36:55,Isle of Wight,Maria Eichhorn,"Regular,Flavoured latte - Vanilla,2.55",CARD,2.55,"americanexpress,347291749782188"
+2021-02-23 09:37:00,Isle of Wight,Rosemarie Harper,"Regular,Flavoured hot chocolate - Caramel,2.6",CARD,2.60,"visa16,4638636143558339"
+2021-02-23 09:38:44,Isle of Wight,Scott Shaw,",Flat white,2.15",CARD,2.15,"visa13,4892839154321"
+2021-02-23 09:39:55,Isle of Wight,Wayne Solomon,"Regular,Filter coffee,1.5",CARD,1.50,"visa13,4191994254855"
+2021-02-23 09:40:21,Isle of Wight,Bettye Whelan,",Iced latte,2.35,,Smoothies - Berry Beautiful,2.0,Large,Latte,2.45",CASH,6.80,None
+2021-02-23 09:41:04,Isle of Wight,Ramiro Razo,",Flavoured iced latte - Vanilla,2.75,,Speciality Tea - Earl Grey,1.3,,Frappes - Chocolate Cookie,2.75,,Flavoured iced latte - Hazelnut,2.75",CASH,9.55,None
+2021-02-23 09:42:04,Isle of Wight,Maryam Brown,",Flavoured iced latte - Vanilla,2.75",CARD,2.75,"mastercard,5444712485417631"
+2021-02-23 09:43:15,Isle of Wight,Leslie Hamilton,",Frappes - Strawberries & Cream,2.75,,Red Label tea,1.2,,Mocha,2.3,Regular,Latte,2.15",CASH,8.40,None
+2021-02-23 09:44:11,Isle of Wight,Bobby Phillips,",Flavoured iced latte - Caramel,2.75,,Mocha,2.3,,Hot Chocolate,1.4,Large,Filter coffee,1.8",CASH,8.25,None
+2021-02-23 09:45:30,Isle of Wight,Armando Myers,",Speciality Tea - English breakfast,1.3,,Flavoured iced latte - Vanilla,2.75",CASH,4.05,None
+2021-02-23 09:46:59,Isle of Wight,Royce Cook,",Speciality Tea - Earl Grey,1.3,Large,Chai latte,2.6,,Flavoured iced latte - Caramel,2.75,Large,Flavoured latte - Caramel,2.85,,Speciality Tea - Peppermint,1.3",CASH,10.80,None
+2021-02-23 09:47:14,Isle of Wight,Kathleen Ledoux,",Red Label tea,1.2",CARD,1.20,"americanexpress,3561549999613410"
+2021-02-23 09:48:51,Isle of Wight,Gregory Arcangel,",Iced latte,2.35,,Babyccino,0.0,Regular,Flavoured hot chocolate - Vanilla,2.6",CASH,4.95,None
+2021-02-23 09:49:44,Isle of Wight,Maria Eley,"Regular,Hot chocolate,2.2,,Frappes - Coffee,2.75",CASH,4.95,None
+2021-02-23 09:50:36,Isle of Wight,Willie Hundley,"Regular,Flavoured hot chocolate - Vanilla,2.6,,Cortado,2.05,,Smoothies - Glowing Greens,2.0,,Glass of milk,0.7,Large,Flavoured latte - Hazelnut,2.85",CASH,10.20,None
+2021-02-23 09:51:27,Isle of Wight,Dolores Oliver,",Babyccino,0.0,,Glass of milk,0.7,,Smoothies - Berry Beautiful,2.0,Large,Americano,2.25,Large,Flavoured latte - Caramel,2.85",CARD,7.80,"visa16,4137727758195362"
+2021-02-23 09:52:35,Isle of Wight,Sheila Strahl,",Speciality Tea - Earl Grey,1.3,,Speciality Tea - English breakfast,1.3",CASH,2.60,None
+2021-02-23 09:53:59,Isle of Wight,Debra Mclaughlin,"Regular,Cappuccino,2.15",CASH,2.15,None
+2021-02-23 09:54:58,Isle of Wight,Stan Hughes,"Large,Latte,2.45,Large,Espresso,1.8",CASH,4.25,None
+2021-02-23 09:55:10,Isle of Wight,Carlton Hale,",Red Label tea,1.2,Regular,Flavoured latte - Hazelnut,2.55",CASH,3.75,None
+2021-02-23 09:56:57,Isle of Wight,Sarah Roman,",Glass of milk,0.7,,Iced latte,2.35,Regular,Hot chocolate,2.2,Large,Latte,2.45",CASH,7.70,None
+2021-02-23 09:57:14,Isle of Wight,Teresa Rubio,",Speciality Tea - Earl Grey,1.3,Large,Filter coffee,1.8,,Frappes - Coffee,2.75",CARD,5.85,"visa16,4653688726421229"
+2021-02-23 09:58:00,Isle of Wight,Daniel Branch,"Large,Flavoured hot chocolate - Hazelnut,2.9,Large,Cappuccino,2.45,,Speciality Tea - Green,1.3,Regular,Flavoured hot chocolate - Caramel,2.6",CARD,9.25,"visa16,4235514362176413"
+2021-02-23 09:59:28,Isle of Wight,Mary Sutton,",Speciality Tea - Fruit,1.3,Large,Flavoured hot chocolate - Caramel,2.9,,Frappes - Strawberries & Cream,2.75,,Mocha,2.3",CASH,9.25,None
+2021-02-23 10:00:55,Isle of Wight,Nettie Keyser,"Regular,Americano,1.95,Regular,Chai latte,2.3,,Flavoured iced latte - Caramel,2.75",CASH,7.00,None
+2021-02-23 10:01:02,Isle of Wight,Thomas Schmidt,"Regular,Latte,2.15,Large,Latte,2.45,,Hot Chocolate,1.4,Large,Espresso,1.8",CARD,7.80,"visa16,4129616393671251"
+2021-02-23 10:02:41,Isle of Wight,Jennifer Willis,",Flavoured iced latte - Caramel,2.75,,Red Label tea,1.2",CARD,3.95,"discover,6011173127334844"
+2021-02-23 10:03:44,Isle of Wight,George Larve,"Large,Flavoured latte - Gingerbread,2.85,Regular,Latte,2.15,,Speciality Tea - Green,1.3,Large,Chai latte,2.6,,Smoothies - Berry Beautiful,2.0",CARD,10.90,"visa13,47299416416810"
+2021-02-23 10:04:12,Isle of Wight,Carol Davis,",Speciality Tea - English breakfast,1.3,Large,Flavoured latte - Gingerbread,2.85,,Speciality Tea - Peppermint,1.3",CASH,5.45,None
+2021-02-23 10:05:32,Isle of Wight,Anthony Rogers,",Flavoured iced latte - Vanilla,2.75,,Red Label tea,1.2,Large,Luxury hot chocolate,2.7",CASH,6.65,None
+2021-02-23 10:06:34,Isle of Wight,William Hegyi,",Frappes - Chocolate Cookie,2.75",CARD,2.75,"americanexpress,352647949325379"
+2021-02-23 10:07:33,Isle of Wight,Teresa Austin,"Regular,Flavoured latte - Gingerbread,2.55,Large,Americano,2.25,Large,Luxury hot chocolate,2.7",CARD,7.50,"discover,60111644914715110"
+2021-02-23 10:08:42,Isle of Wight,Scarlett Mcmath,"Regular,Flavoured hot chocolate - Vanilla,2.6",CASH,2.60,None
+2021-02-23 10:09:50,Isle of Wight,Barbara Swenson,",Speciality Tea - Camomile,1.3,,Iced latte,2.35",CARD,3.65,"mastercard,5398267911687873"
+2021-02-23 10:10:35,Isle of Wight,Gerry Smith,",Speciality Tea - Fruit,1.3",CARD,1.30,"visa13,4885482894276"
+2021-02-23 10:11:53,Isle of Wight,Jackie Cassidy,",Speciality Tea - Fruit,1.3,,Flat white,2.15",CARD,3.45,"mastercard,5168886328891196"
+2021-02-23 10:12:40,Isle of Wight,Pearl Ray,"Regular,Americano,1.95,,Babyccino,0.0",CASH,1.95,None
+2021-02-23 10:13:26,Isle of Wight,Lorraine Duncan,",Speciality Tea - Earl Grey,1.3,,Smoothies - Berry Beautiful,2.0",CARD,3.30,"americanexpress,365496845634459"
+2021-02-23 10:14:45,Isle of Wight,Paul Stinnett,"Large,Flavoured latte - Hazelnut,2.85,,Speciality Tea - English breakfast,1.3,Large,Flavoured hot chocolate - Vanilla,2.9,,Mocha,2.3,Large,Flavoured hot chocolate - Hazelnut,2.9",CARD,12.25,"visa13,4993857627774"
+2021-02-23 10:15:17,Isle of Wight,Tammy Packard,",Speciality Tea - Darjeeling,1.3",CARD,1.30,"visa13,4947739456646"
+2021-02-23 10:16:25,Isle of Wight,Emma Lussier,",Iced americano,2.15,Large,Flavoured latte - Caramel,2.85,,Speciality Tea - English breakfast,1.3,,Cortado,2.05,,Flavoured iced latte - Vanilla,2.75",CASH,11.10,None
+2021-02-23 10:17:33,Isle of Wight,Kimberli Nichols,",Frappes - Coffee,2.75,,Smoothies - Carrot Kick,2.0,,Smoothies - Berry Beautiful,2.0,Regular,Hot chocolate,2.2",CASH,8.95,None
+2021-02-23 10:18:11,Isle of Wight,Shirley Sumners,"Large,Americano,2.25,,Flat white,2.15,Regular,Cappuccino,2.15,,Flavoured iced latte - Vanilla,2.75,,Flavoured iced latte - Vanilla,2.75",CARD,12.05,"mastercard,53265543958938710"
+2021-02-23 10:19:56,Isle of Wight,Clara Cruz,"Large,Flavoured hot chocolate - Hazelnut,2.9",CARD,2.90,"visa16,4862184424779826"
+2021-02-23 10:20:36,Isle of Wight,James Donohoe,",Speciality Tea - Camomile,1.3,,Speciality Tea - Peppermint,1.3,Large,Flavoured hot chocolate - Hazelnut,2.9,,Speciality Tea - English breakfast,1.3,Large,Filter coffee,1.8",CASH,8.60,None
+2021-02-23 10:21:34,Isle of Wight,Tiffany Nguyen,",Babyccino,0.0",CASH,0.00,None
+2021-02-23 10:22:21,Isle of Wight,Catherine Wilkins,",Speciality Tea - Darjeeling,1.3,Large,Espresso,1.8,,Frappes - Chocolate Cookie,2.75,Large,Filter coffee,1.8,,Flavoured iced latte - Vanilla,2.75",CASH,10.40,None
+2021-02-23 10:23:25,Isle of Wight,Julius Brice,"Large,Flavoured latte - Gingerbread,2.85,,Flavoured iced latte - Hazelnut,2.75,,Glass of milk,0.7,Regular,Flavoured hot chocolate - Vanilla,2.6",CASH,8.90,None
+2021-02-23 10:24:39,Isle of Wight,Laura Rankin,",Flat white,2.15",CARD,2.15,"americanexpress,374145771876936"
+2021-02-23 10:25:11,Isle of Wight,Richard Timberlake,",Flavoured iced latte - Hazelnut,2.75,Large,Cappuccino,2.45",CARD,5.20,"visa16,4341674899789368"
+2021-02-23 10:26:01,Isle of Wight,Robert Torres,"Large,Flavoured hot chocolate - Vanilla,2.9,,Hot Chocolate,1.4,Large,Filter coffee,1.8,,Frappes - Strawberries & Cream,2.75",CASH,8.85,None
+2021-02-23 10:27:11,Isle of Wight,Jude Webb,"Large,Hot chocolate,2.9",CARD,2.90,"visa16,4242722354335522"
+2021-02-23 10:28:40,Isle of Wight,Paulette Haynes,",Speciality Tea - Fruit,1.3",CARD,1.30,"visa13,4841698434324"
+2021-02-23 10:29:46,Isle of Wight,Christopher Morales,",Red Label tea,1.2,,Babyccino,0.0,,Frappes - Chocolate Cookie,2.75,,Red Label tea,1.2,,Glass of milk,0.7",CASH,5.85,None
+2021-02-23 10:30:53,Isle of Wight,James Robertson,",Speciality Tea - Camomile,1.3,,Cortado,2.05,,Frappes - Strawberries & Cream,2.75,,Flavoured iced latte - Hazelnut,2.75",CASH,8.85,None
+2021-02-23 10:31:10,Isle of Wight,Mary Cannon,"Large,Filter coffee,1.8,Large,Americano,2.25,,Speciality Tea - Darjeeling,1.3",CASH,5.35,None
+2021-02-23 10:32:27,Isle of Wight,Lorraine Preston,",Babyccino,0.0,Large,Americano,2.25,Regular,Filter coffee,1.5,Regular,Chai latte,2.3",CARD,6.05,"visa16,4341441564547913"
+2021-02-23 10:33:57,Isle of Wight,Jo Quirin,"Large,Flavoured latte - Vanilla,2.85,,Smoothies - Carrot Kick,2.0,Large,Latte,2.45",CARD,7.30,"mastercard,5342597877888777"
+2021-02-23 10:34:09,Isle of Wight,John Jones,",Speciality Tea - Peppermint,1.3,,Red Label tea,1.2",CASH,2.50,None
+2021-02-23 10:35:22,Isle of Wight,Lindsey Newman,"Large,Hot chocolate,2.9,,Hot Chocolate,1.4,Large,Espresso,1.8",CARD,6.10,"mastercard,5314689575845763"
+2021-02-23 10:36:42,Isle of Wight,Carolyn Knepp,",Speciality Tea - Green,1.3,Large,Flavoured latte - Vanilla,2.85,Large,Flavoured hot chocolate - Caramel,2.9,Large,Flavoured hot chocolate - Vanilla,2.9",CARD,9.95,"visa16,4791289724977974"
+2021-02-23 10:37:56,Isle of Wight,Kelly Jaegers,"Large,Americano,2.25",CASH,2.25,None
+2021-02-23 10:38:50,Isle of Wight,Thea Guthrie,",Smoothies - Berry Beautiful,2.0",CARD,2.00,"americanexpress,367927662397224"
+2021-02-23 10:39:11,Isle of Wight,Richard Batchelder,",Frappes - Chocolate Cookie,2.75,,Flat white,2.15",CASH,4.90,None
+2021-02-23 10:40:17,Isle of Wight,Doris Mccray,",Frappes - Coffee,2.75,Regular,Flavoured latte - Vanilla,2.55",CASH,5.30,None
+2021-02-23 10:41:28,Isle of Wight,Robert Mountain,"Large,Latte,2.45,Large,Americano,2.25,Large,Americano,2.25,,Flavoured iced latte - Hazelnut,2.75,Large,Flavoured latte - Caramel,2.85",CARD,12.55,"visa16,4892386464931126"
+2021-02-23 10:42:45,Isle of Wight,Laura Richardson,",Speciality Tea - English breakfast,1.3,,Flavoured iced latte - Hazelnut,2.75,Regular,Flavoured hot chocolate - Caramel,2.6,,Smoothies - Carrot Kick,2.0,,Mocha,2.3",CARD,10.95,"visa13,4713947251595"
+2021-02-23 10:43:27,Isle of Wight,Ramon Krapp,",Speciality Tea - Earl Grey,1.3,,Flat white,2.15,Regular,Espresso,1.5,,Frappes - Coffee,2.75,,Flavoured iced latte - Hazelnut,2.75",CASH,10.45,None
+2021-02-23 10:44:47,Isle of Wight,Renee Monday,",Mocha,2.3,,Speciality Tea - Earl Grey,1.3,,Smoothies - Berry Beautiful,2.0",CASH,5.60,None
+2021-02-23 10:45:42,Isle of Wight,Frances Rogal,"Regular,Cappuccino,2.15,,Flavoured iced latte - Vanilla,2.75",CARD,4.90,"mastercard,5142495534796289"
+2021-02-23 10:46:49,Isle of Wight,Penny Lim,"Regular,Americano,1.95",CASH,1.95,None
+2021-02-23 10:47:15,Isle of Wight,Jeffrey Williams,",Speciality Tea - Fruit,1.3",CASH,1.30,None
+2021-02-23 10:48:21,Isle of Wight,Brett Fowler,",Glass of milk,0.7,,Speciality Tea - English breakfast,1.3",CARD,2.00,"visa13,4618377739185"
+2021-02-23 10:49:47,Isle of Wight,Claire Garcia,"Large,Flavoured hot chocolate - Vanilla,2.9",CARD,2.90,"visa16,4211746936727945"
+2021-02-23 10:50:42,Isle of Wight,Lakisha Thomas,",Frappes - Chocolate Cookie,2.75",CARD,2.75,"visa16,4573845593564856"
+2021-02-23 10:51:20,Isle of Wight,Tiffany Littlejohn,",Speciality Tea - Camomile,1.3,Large,Flavoured hot chocolate - Caramel,2.9,,Speciality Tea - English breakfast,1.3,Large,Flavoured hot chocolate - Caramel,2.9",CARD,8.40,"americanexpress,3654811818279910"
+2021-02-23 10:52:58,Isle of Wight,Lillian Fratus,"Large,Flavoured latte - Gingerbread,2.85,Large,Chai latte,2.6,,Speciality Tea - Fruit,1.3",CASH,6.75,None
+2021-02-23 10:53:37,Isle of Wight,Monica Breitenbach,",Frappes - Strawberries & Cream,2.75,,Frappes - Coffee,2.75",CARD,5.50,"americanexpress,372826346611385"
+2021-02-23 10:54:41,Isle of Wight,Lawrence Hodge,",Flavoured iced latte - Caramel,2.75,Large,Flavoured latte - Hazelnut,2.85,,Babyccino,0.0,Large,Espresso,1.8,Regular,Flavoured hot chocolate - Caramel,2.6",CARD,10.00,"visa16,4263126462453835"
+2021-02-23 10:55:17,Isle of Wight,William Colbert,"Regular,Flavoured latte - Hazelnut,2.55,Large,Flavoured latte - Gingerbread,2.85",CARD,5.40,"discover,6011156856112598"
+2021-02-23 10:56:14,Isle of Wight,Patrina Silkwood,",Frappes - Strawberries & Cream,2.75",CASH,2.75,None
+2021-02-23 10:57:42,Isle of Wight,Amy Oller,"Regular,Filter coffee,1.5,Large,Chai latte,2.6,,Frappes - Strawberries & Cream,2.75,,Flavoured iced latte - Hazelnut,2.75,,Speciality Tea - Camomile,1.3",CASH,10.90,None
+2021-02-23 10:58:40,Isle of Wight,Jennifer Hollingsworth,"Regular,Latte,2.15,Large,Americano,2.25,,Frappes - Strawberries & Cream,2.75",CARD,7.15,"visa16,4751478654921874"
+2021-02-23 10:59:24,Isle of Wight,Melvin Thomas,",Speciality Tea - Darjeeling,1.3,,Frappes - Strawberries & Cream,2.75,Large,Filter coffee,1.8",CASH,5.85,None
+2021-02-23 11:00:01,Isle of Wight,Mary Dermody,",Frappes - Chocolate Cookie,2.75,Large,Filter coffee,1.8,Regular,Latte,2.15,,Flavoured iced latte - Hazelnut,2.75,Regular,Latte,2.15",CARD,11.60,"mastercard,5344844655229958"
+2021-02-23 11:01:31,Isle of Wight,Phillip Dyer,"Large,Latte,2.45,,Flavoured iced latte - Hazelnut,2.75,Large,Flavoured hot chocolate - Hazelnut,2.9,,Smoothies - Carrot Kick,2.0,Large,Americano,2.25",CARD,12.35,"mastercard,5567129329857693"
+2021-02-23 11:02:11,Isle of Wight,Michael Kelly,",Speciality Tea - Green,1.3,,Iced americano,2.15,,Flat white,2.15,,Iced latte,2.35,,Speciality Tea - Peppermint,1.3",CASH,9.25,None
+2021-02-23 11:03:14,Isle of Wight,Faye Hernandez,"Regular,Filter coffee,1.5,Large,Americano,2.25,Regular,Flavoured latte - Caramel,2.55",CASH,6.30,None
+2021-02-23 11:04:21,Isle of Wight,Mary Soto,",Speciality Tea - Green,1.3,,Speciality Tea - Darjeeling,1.3,Large,Flavoured latte - Gingerbread,2.85",CASH,5.45,None
+2021-02-23 11:05:18,Isle of Wight,Clinton Cornelius,",Flat white,2.15,,Frappes - Coffee,2.75",CASH,4.90,None
+2021-02-23 11:06:32,Isle of Wight,Rosie Espinosa,",Mocha,2.3,,Speciality Tea - English breakfast,1.3,,Glass of milk,0.7,,Cortado,2.05,,Speciality Tea - Camomile,1.3",CARD,7.65,"visa16,4896238882159143"
+2021-02-23 11:07:33,Isle of Wight,Amanda Cichowski,"Large,Latte,2.45,,Mocha,2.3,,Red Label tea,1.2",CARD,5.95,"discover,6011474358775378"
+2021-02-23 11:08:02,Isle of Wight,Stuart Poux,",Iced americano,2.15,Regular,Americano,1.95,Large,Flavoured latte - Gingerbread,2.85",CARD,6.95,"visa16,4523997511565555"
+2021-02-23 11:09:29,Isle of Wight,Judith Kohl,"Large,Americano,2.25,,Glass of milk,0.7,,Speciality Tea - Fruit,1.3,,Flavoured iced latte - Caramel,2.75",CASH,7.00,None
+2021-02-23 11:10:01,Isle of Wight,Robert Monzon,"Regular,Flavoured latte - Caramel,2.55,,Flavoured iced latte - Caramel,2.75,Large,Flavoured latte - Gingerbread,2.85,,Speciality Tea - English breakfast,1.3,,Babyccino,0.0",CARD,9.45,"discover,6011795395926412"
+2021-02-23 11:11:53,Isle of Wight,Thomas Butler,"Large,Flavoured latte - Hazelnut,2.85,Regular,Hot chocolate,2.2,,Smoothies - Carrot Kick,2.0",CARD,7.05,"visa13,45867532128310"
+2021-02-23 11:12:52,Isle of Wight,Anita Rencher,"Regular,Hot chocolate,2.2,,Frappes - Chocolate Cookie,2.75,,Speciality Tea - English breakfast,1.3,Large,Americano,2.25",CARD,8.50,"americanexpress,358589515184968"
+2021-02-23 11:13:21,Isle of Wight,Charles Jacobsen,",Speciality Tea - Camomile,1.3,Large,Latte,2.45,,Hot Chocolate,1.4,Large,Flavoured latte - Gingerbread,2.85,Large,Americano,2.25",CARD,10.25,"visa13,4831757469451"
+2021-02-23 11:14:48,Isle of Wight,Tony Scott,",Smoothies - Carrot Kick,2.0,,Flavoured iced latte - Caramel,2.75,Regular,Flavoured latte - Gingerbread,2.55",CASH,7.30,None
+2021-02-23 11:15:27,Isle of Wight,John Monachino,",Speciality Tea - Fruit,1.3,,Speciality Tea - Earl Grey,1.3",CASH,2.60,None
+2021-02-23 11:16:16,Isle of Wight,Sharon Goad,"Large,Flavoured latte - Vanilla,2.85,,Speciality Tea - Peppermint,1.3,,Smoothies - Berry Beautiful,2.0,,Frappes - Coffee,2.75,,Flat white,2.15",CASH,11.05,None
+2021-02-23 11:17:59,Isle of Wight,Linda Young,",Speciality Tea - Fruit,1.3,,Smoothies - Carrot Kick,2.0,,Speciality Tea - Green,1.3",CASH,4.60,None
+2021-02-23 11:18:25,Isle of Wight,Genia Wright,"Regular,Latte,2.15,,Mocha,2.3,Large,Hot chocolate,2.9,Regular,Flavoured hot chocolate - Hazelnut,2.6",CARD,9.95,"mastercard,5421721488833295"
+2021-02-23 11:19:45,Isle of Wight,Toby Dickie,",Mocha,2.3",CARD,2.30,"visa16,47983467482136710"
+2021-02-23 11:20:19,Isle of Wight,Suzanne Miller,",Iced americano,2.15,,Cortado,2.05,,Speciality Tea - Peppermint,1.3,,Flavoured iced latte - Vanilla,2.75,Large,Chai latte,2.6",CARD,10.85,"visa13,49768554964910"
+2021-02-23 11:21:34,Isle of Wight,Autumn Wilson,",Iced americano,2.15,Large,Latte,2.45",CARD,4.60,"visa16,4946361213982668"
+2021-02-23 11:22:10,Isle of Wight,Talia Polly,"Regular,Flavoured latte - Hazelnut,2.55",CASH,2.55,None
+2021-02-23 11:23:33,Isle of Wight,Solomon Mcdonald,"Large,Cappuccino,2.45,Large,Americano,2.25",CARD,4.70,"visa13,4381637394933"
+2021-02-23 11:24:29,Isle of Wight,Anthony Timmerman,",Smoothies - Berry Beautiful,2.0,,Frappes - Chocolate Cookie,2.75",CASH,4.75,None
+2021-02-23 11:25:11,Isle of Wight,Esther Pope,",Red Label tea,1.2,,Flat white,2.15,,Speciality Tea - English breakfast,1.3",CARD,4.65,"mastercard,5338938816181781"
+2021-02-23 11:26:47,Isle of Wight,Ressie Miller,",Smoothies - Carrot Kick,2.0",CASH,2.00,None
+2021-02-23 11:27:55,Isle of Wight,John Wilson,"Regular,Latte,2.15",CARD,2.15,"discover,6011312582663566"
+2021-02-23 11:28:22,Isle of Wight,Joanne Kimmerle,"Large,Americano,2.25",CASH,2.25,None
+2021-02-23 11:29:45,Isle of Wight,Sherry Rung,",Speciality Tea - Camomile,1.3",CARD,1.30,"americanexpress,347562164165459"
+2021-02-23 11:30:21,Isle of Wight,Jimmy Stancil,"Large,Americano,2.25,Regular,Chai latte,2.3,,Mocha,2.3",CASH,6.85,None
+2021-02-23 11:31:36,Isle of Wight,Chris Morris,",Speciality Tea - Earl Grey,1.3,Large,Americano,2.25,,Smoothies - Glowing Greens,2.0,Regular,Latte,2.15,,Iced latte,2.35",CARD,10.05,"americanexpress,366953186434286"
+2021-02-23 11:32:34,Isle of Wight,Timothy Tarver,"Large,Flavoured latte - Hazelnut,2.85,Large,Latte,2.45,,Babyccino,0.0,,Speciality Tea - Green,1.3",CARD,6.60,"mastercard,5155365951162832"
+2021-02-23 11:33:34,Isle of Wight,Georgia Vanwassenhove,",Speciality Tea - Earl Grey,1.3",CASH,1.30,None
+2021-02-23 11:34:14,Isle of Wight,Lola Hernandez,"Large,Flavoured hot chocolate - Hazelnut,2.9",CARD,2.90,"visa13,4295873435681"
+2021-02-23 11:35:29,Isle of Wight,Jacqueline Respress,",Babyccino,0.0,,Smoothies - Carrot Kick,2.0,,Flavoured iced latte - Caramel,2.75,Regular,Filter coffee,1.5",CARD,6.25,"visa16,4194967676388828"
+2021-02-23 11:36:24,Isle of Wight,Sarah Cronk,",Speciality Tea - Camomile,1.3,Large,Flavoured hot chocolate - Caramel,2.9,Regular,Cappuccino,2.15",CARD,6.35,"visa16,4645324861175336"
+2021-02-23 11:37:27,Isle of Wight,Cheryl Goicoechea,"Large,Chai latte,2.6,,Glass of milk,0.7",CASH,3.30,None
+2021-02-23 11:38:55,Isle of Wight,Kenneth Stanphill,",Smoothies - Carrot Kick,2.0,,Speciality Tea - English breakfast,1.3",CARD,3.30,"visa16,44359269429186510"
+2021-02-23 11:39:00,Isle of Wight,Kimberly Ramirez,"Large,Flavoured hot chocolate - Caramel,2.9",CASH,2.90,None
+2021-02-23 11:40:25,Isle of Wight,Joshua Young,",Speciality Tea - Green,1.3,,Flavoured iced latte - Hazelnut,2.75,Large,Cappuccino,2.45",CASH,6.50,None
+2021-02-23 11:41:26,Isle of Wight,Patricia Stembridge,"Regular,Latte,2.15,Large,Cappuccino,2.45",CASH,4.60,None
+2021-02-23 11:42:11,Isle of Wight,Timothy Martinez,",Speciality Tea - Darjeeling,1.3",CARD,1.30,"americanexpress,372745151161783"
+2021-02-23 11:43:36,Isle of Wight,John Wilson,",Iced latte,2.35,,Speciality Tea - Green,1.3,,Flavoured iced latte - Vanilla,2.75",CARD,6.40,"americanexpress,365932739286394"
+2021-02-23 11:44:26,Isle of Wight,James Franco,"Large,Americano,2.25",CASH,2.25,None
+2021-02-23 11:45:32,Isle of Wight,Anne House,"Large,Latte,2.45,,Flavoured iced latte - Hazelnut,2.75",CASH,5.20,None
+2021-02-23 11:46:41,Isle of Wight,Michael Mathis,",Speciality Tea - Darjeeling,1.3,Large,Cappuccino,2.45,,Speciality Tea - Darjeeling,1.3",CASH,5.05,None
+2021-02-23 11:47:54,Isle of Wight,Roy Sales,",Speciality Tea - Camomile,1.3,,Speciality Tea - English breakfast,1.3,,Smoothies - Glowing Greens,2.0",CASH,4.60,None
+2021-02-23 11:48:57,Isle of Wight,Maria Viviani,",Flavoured iced latte - Vanilla,2.75,,Smoothies - Glowing Greens,2.0,,Smoothies - Glowing Greens,2.0,Large,Flavoured latte - Caramel,2.85,Large,Flavoured latte - Hazelnut,2.85",CASH,12.45,None
+2021-02-23 11:49:23,Isle of Wight,Shirley Humphrey,",Flat white,2.15,Large,Latte,2.45,,Speciality Tea - Green,1.3",CARD,5.90,"visa16,4297474136358687"
+2021-02-23 11:50:15,Isle of Wight,Robert Downes,",Speciality Tea - Camomile,1.3,Regular,Cappuccino,2.15",CASH,3.45,None
+2021-02-23 11:51:29,Isle of Wight,Eva Riggs,",Cortado,2.05,,Red Label tea,1.2,,Cortado,2.05,Large,Flavoured latte - Gingerbread,2.85,,Red Label tea,1.2",CASH,9.35,None
+2021-02-23 11:52:12,Isle of Wight,Paul Uutela,"Regular,Flavoured latte - Vanilla,2.55,Regular,Flavoured latte - Vanilla,2.55,Large,Flavoured hot chocolate - Hazelnut,2.9,,Speciality Tea - English breakfast,1.3",CASH,9.30,None
+2021-02-23 11:53:30,Isle of Wight,Anthony Gould,"Regular,Filter coffee,1.5,,Cortado,2.05,,Frappes - Chocolate Cookie,2.75",CASH,6.30,None
+2021-02-23 11:54:08,Isle of Wight,Joan Golden,"Large,Americano,2.25",CARD,2.25,"visa16,4637491223974993"
+2021-02-23 11:55:23,Isle of Wight,Jennifer Sutton,"Regular,Flavoured latte - Gingerbread,2.55,,Smoothies - Berry Beautiful,2.0,,Iced latte,2.35",CARD,6.90,"visa16,44121498476183110"
+2021-02-23 11:56:26,Isle of Wight,Donald Beck,"Regular,Cappuccino,2.15,,Speciality Tea - English breakfast,1.3,Large,Flavoured hot chocolate - Vanilla,2.9,,Smoothies - Berry Beautiful,2.0,,Glass of milk,0.7",CASH,9.05,None
+2021-02-23 11:57:53,Isle of Wight,Graig Lane,",Iced americano,2.15,,Frappes - Strawberries & Cream,2.75,,Speciality Tea - English breakfast,1.3,Large,Filter coffee,1.8,Large,Espresso,1.8",CARD,9.80,"discover,6011564713578861"
+2021-02-23 11:58:14,Isle of Wight,Helen Frascone,",Babyccino,0.0,Large,Americano,2.25,,Babyccino,0.0,Large,Flavoured latte - Vanilla,2.85",CASH,5.10,None
+2021-02-23 11:59:52,Isle of Wight,Lola Keyser,",Frappes - Coffee,2.75,Large,Americano,2.25,,Hot Chocolate,1.4,,Flavoured iced latte - Hazelnut,2.75,,Speciality Tea - Earl Grey,1.3",CASH,10.45,None
+2021-02-23 12:00:58,Isle of Wight,Kasey Elwood,"Large,Cappuccino,2.45",CARD,2.45,"discover,6011585819325279"
+2021-02-23 12:01:32,Isle of Wight,Travis Fernandez,"Large,Flavoured latte - Gingerbread,2.85,,Speciality Tea - Peppermint,1.3,,Speciality Tea - Camomile,1.3,,Speciality Tea - Camomile,1.3",CARD,6.75,"mastercard,5312342549153615"
+2021-02-23 12:02:01,Isle of Wight,Adrian Martin,",Flavoured iced latte - Hazelnut,2.75,,Iced americano,2.15",CARD,4.90,"americanexpress,366564263513841"
+2021-02-23 12:03:17,Isle of Wight,William Brown,"Large,Filter coffee,1.8",CASH,1.80,None
+2021-02-23 12:04:28,Isle of Wight,Mario Key,"Large,Americano,2.25",CARD,2.25,"americanexpress,355461876596946"
+2021-02-23 12:05:17,Isle of Wight,Craig Mccarty,",Speciality Tea - Darjeeling,1.3,,Smoothies - Berry Beautiful,2.0,,Glass of milk,0.7,,Flavoured iced latte - Hazelnut,2.75,,Mocha,2.3",CARD,9.05,"visa13,4583818643331"
+2021-02-23 12:06:33,Isle of Wight,Alma Dunn,",Glass of milk,0.7,,Speciality Tea - Green,1.3",CARD,2.00,"mastercard,55274271527163110"
+2021-02-23 12:07:06,Isle of Wight,Gene Marshall,",Speciality Tea - Peppermint,1.3,,Red Label tea,1.2,,Hot Chocolate,1.4",CASH,3.90,None
+2021-02-23 12:08:28,Isle of Wight,Howard Day,",Frappes - Coffee,2.75,Large,Latte,2.45,,Speciality Tea - Green,1.3,,Flat white,2.15",CASH,8.65,None
+2021-02-23 12:09:19,Isle of Wight,Rex Klein,"Large,Flavoured hot chocolate - Caramel,2.9",CARD,2.90,"discover,6011362792873448"
+2021-02-23 12:10:54,Isle of Wight,Mary Prattis,"Regular,Luxury hot chocolate,2.4,Large,Flavoured latte - Vanilla,2.85,Regular,Flavoured latte - Hazelnut,2.55",CASH,7.80,None
+2021-02-23 12:11:58,Isle of Wight,Ethel Macdonald,"Regular,Luxury hot chocolate,2.4,,Hot Chocolate,1.4,,Smoothies - Berry Beautiful,2.0",CARD,5.80,"discover,6011264797851488"
+2021-02-23 12:12:06,Isle of Wight,Yukiko Small,",Speciality Tea - English breakfast,1.3,,Flavoured iced latte - Vanilla,2.75,Regular,Hot chocolate,2.2",CARD,6.25,"mastercard,5219195854252776"
+2021-02-23 12:13:07,Isle of Wight,Bill Anderson,"Large,Cappuccino,2.45,,Iced latte,2.35,,Frappes - Coffee,2.75",CASH,7.55,None
+2021-02-23 12:14:29,Isle of Wight,Brett Smith,"Large,Espresso,1.8,,Frappes - Chocolate Cookie,2.75",CASH,4.55,None
+2021-02-23 12:15:39,Isle of Wight,Amy Hartrick,",Hot Chocolate,1.4",CARD,1.40,"americanexpress,369979826796575"
+2021-02-23 12:16:27,Isle of Wight,Wm Powe,",Speciality Tea - Darjeeling,1.3",CASH,1.30,None
+2021-02-23 12:17:34,Isle of Wight,Otelia Warren,"Regular,Flavoured hot chocolate - Hazelnut,2.6,,Speciality Tea - Earl Grey,1.3",CASH,3.90,None
+2021-02-23 12:18:33,Isle of Wight,Michael Bates,",Frappes - Chocolate Cookie,2.75",CARD,2.75,"visa13,4967897591471"
+2021-02-23 12:19:28,Isle of Wight,Malissa Ali,",Speciality Tea - Green,1.3,,Flavoured iced latte - Caramel,2.75",CASH,4.05,None
+2021-02-23 12:20:55,Isle of Wight,Rita Boatright,",Flavoured iced latte - Hazelnut,2.75,,Speciality Tea - Darjeeling,1.3,,Red Label tea,1.2",CASH,5.25,None
+2021-02-23 12:21:28,Isle of Wight,Von Peets,",Hot Chocolate,1.4",CASH,1.40,None
+2021-02-23 12:22:33,Isle of Wight,Joshua Hughes,",Flavoured iced latte - Hazelnut,2.75,Large,Flavoured hot chocolate - Hazelnut,2.9,,Mocha,2.3",CASH,7.95,None
+2021-02-23 12:23:36,Isle of Wight,Genevieve Alejos,",Hot Chocolate,1.4,Large,Flavoured hot chocolate - Caramel,2.9,,Red Label tea,1.2,,Frappes - Chocolate Cookie,2.75",CASH,8.25,None
+2021-02-23 12:24:31,Isle of Wight,Crystal Kiser,",Flavoured iced latte - Hazelnut,2.75,,Speciality Tea - Earl Grey,1.3",CARD,4.05,"discover,6011832995836871"
+2021-02-23 12:25:49,Isle of Wight,Maxine Porter,"Large,Chai latte,2.6,,Smoothies - Carrot Kick,2.0,Large,Flavoured latte - Vanilla,2.85",CASH,7.45,None
+2021-02-23 12:26:51,Isle of Wight,Joyce Oskins,",Flavoured iced latte - Caramel,2.75,,Iced americano,2.15,,Speciality Tea - English breakfast,1.3,Regular,Americano,1.95",CASH,8.15,None
+2021-02-23 12:27:13,Isle of Wight,James Kolinski,",Frappes - Chocolate Cookie,2.75,,Smoothies - Carrot Kick,2.0,Regular,Espresso,1.5,Large,Flavoured latte - Hazelnut,2.85",CASH,9.10,None
+2021-02-23 12:28:46,Isle of Wight,Karen Lawrence,"Large,Flavoured latte - Caramel,2.85",CASH,2.85,None
+2021-02-23 12:29:37,Isle of Wight,James Babb,"Large,Flavoured latte - Caramel,2.85,Regular,Americano,1.95,Regular,Flavoured hot chocolate - Hazelnut,2.6",CARD,7.40,"americanexpress,374341556793731"
+2021-02-23 12:30:00,Isle of Wight,Kathryn Hernandez,"Large,Luxury hot chocolate,2.7",CASH,2.70,None
+2021-02-23 12:31:00,Isle of Wight,Ralph Bowman,"Regular,Flavoured latte - Vanilla,2.55",CARD,2.55,"visa16,49922848745615510"
+2021-02-23 12:32:51,Isle of Wight,Maria Berlinger,",Smoothies - Glowing Greens,2.0,Large,Flavoured latte - Vanilla,2.85,,Red Label tea,1.2",CASH,6.05,None
+2021-02-23 12:33:04,Isle of Wight,Todd Ross,"Large,Filter coffee,1.8",CASH,1.80,None
+2021-02-23 12:34:12,Isle of Wight,Marcia Adams,"Large,Flavoured latte - Caramel,2.85",CASH,2.85,None
+2021-02-23 12:35:40,Isle of Wight,Thurman Jordon,",Iced americano,2.15,Large,Flavoured latte - Vanilla,2.85,Large,Flavoured latte - Vanilla,2.85,,Mocha,2.3",CARD,10.15,"americanexpress,347354123183744"
+2021-02-23 12:36:17,Isle of Wight,Heather Bradwell,"Regular,Latte,2.15,,Frappes - Strawberries & Cream,2.75,,Speciality Tea - Earl Grey,1.3",CARD,6.20,"visa16,4482379124937845"
+2021-02-23 12:37:02,Isle of Wight,Ruby Hall,"Large,Latte,2.45,Large,Americano,2.25,,Hot Chocolate,1.4",CARD,6.10,"mastercard,5138126693842442"
+2021-02-23 12:38:55,Isle of Wight,Pete Craig,",Cortado,2.05,,Flavoured iced latte - Caramel,2.75,,Speciality Tea - Peppermint,1.3,,Smoothies - Berry Beautiful,2.0",CASH,8.10,None
+2021-02-23 12:39:40,Isle of Wight,Robert Winsor,"Large,Flavoured hot chocolate - Caramel,2.9",CASH,2.90,None
+2021-02-23 12:40:02,Isle of Wight,Walter Blackwelder,",Frappes - Coffee,2.75,Large,Hot chocolate,2.9,,Flavoured iced latte - Hazelnut,2.75",CARD,8.40,"visa16,4863186981211571"
+2021-02-23 12:41:07,Isle of Wight,Carmen Jensen,"Large,Espresso,1.8,Large,Filter coffee,1.8,,Iced latte,2.35,Regular,Flavoured hot chocolate - Caramel,2.6",CASH,8.55,None
+2021-02-23 12:42:33,Isle of Wight,Terry Connell,",Iced americano,2.15",CARD,2.15,"visa13,4414192664141"
+2021-02-23 12:43:47,Isle of Wight,Raymond Shalash,",Iced americano,2.15,,Smoothies - Berry Beautiful,2.0,Large,Chai latte,2.6,,Speciality Tea - Green,1.3,,Cortado,2.05",CASH,10.10,None
+2021-02-23 12:44:37,Isle of Wight,Dolores Clute,",Smoothies - Berry Beautiful,2.0,Regular,Americano,1.95",CASH,3.95,None
+2021-02-23 12:45:06,Isle of Wight,Steve Auckerman,"Large,Flavoured hot chocolate - Caramel,2.9,Regular,Latte,2.15,,Mocha,2.3",CASH,7.35,None
+2021-02-23 12:46:51,Isle of Wight,William Birks,",Cortado,2.05,,Cortado,2.05,Large,Filter coffee,1.8,Regular,Flavoured latte - Hazelnut,2.55",CASH,8.45,None
+2021-02-23 12:47:47,Isle of Wight,Wanda Gammon,"Large,Americano,2.25",CARD,2.25,"americanexpress,353412137287645"
+2021-02-23 12:48:38,Isle of Wight,Sonia Winfrey,",Speciality Tea - Fruit,1.3,Large,Filter coffee,1.8",CARD,3.10,"americanexpress,354744325363153"
+2021-02-23 12:49:23,Isle of Wight,Charlott Germain,",Babyccino,0.0,,Flat white,2.15,,Mocha,2.3,,Smoothies - Berry Beautiful,2.0",CASH,6.45,None
+2021-02-23 12:50:52,Isle of Wight,Carl Tichenor,",Flat white,2.15,,Flavoured iced latte - Caramel,2.75,,Flavoured iced latte - Vanilla,2.75",CASH,7.65,None
+2021-02-23 12:51:20,Isle of Wight,Bill Lebarron,",Flavoured iced latte - Vanilla,2.75,Regular,Flavoured latte - Caramel,2.55,,Speciality Tea - Peppermint,1.3,Large,Hot chocolate,2.9",CARD,9.50,"visa16,4742137451679729"
+2021-02-23 12:52:45,Isle of Wight,Tanya Lasalle,",Flat white,2.15,,Frappes - Coffee,2.75,Regular,Flavoured latte - Hazelnut,2.55",CARD,7.45,"discover,6011865574512273"
+2021-02-23 12:53:26,Isle of Wight,Amy Clark,"Large,Espresso,1.8,Large,Flavoured latte - Gingerbread,2.85,,Flavoured iced latte - Caramel,2.75,,Frappes - Chocolate Cookie,2.75,,Speciality Tea - Peppermint,1.3",CASH,11.45,None
+2021-02-23 12:54:07,Isle of Wight,Darla Stokley,",Hot Chocolate,1.4,,Speciality Tea - Peppermint,1.3",CASH,2.70,None
+2021-02-23 12:55:00,Isle of Wight,Wesley Nair,"Regular,Flavoured hot chocolate - Caramel,2.6,,Flat white,2.15,,Speciality Tea - Fruit,1.3,Regular,Chai latte,2.3,,Babyccino,0.0",CARD,8.35,"visa13,4579363243485"
+2021-02-23 12:56:18,Isle of Wight,Katherine Morter,",Smoothies - Carrot Kick,2.0",CARD,2.00,"discover,6011514283545188"
+2021-02-23 12:57:07,Isle of Wight,Raymond Stribley,",Hot Chocolate,1.4,,Frappes - Strawberries & Cream,2.75",CASH,4.15,None
+2021-02-23 12:58:43,Isle of Wight,Maxine Otis,"Large,Americano,2.25",CARD,2.25,"americanexpress,346117167916662"
+2021-02-23 12:59:50,Isle of Wight,Larry White,",Flavoured iced latte - Hazelnut,2.75,,Speciality Tea - Darjeeling,1.3,,Glass of milk,0.7,,Iced latte,2.35",CARD,7.10,"visa13,4993923837944"
+2021-02-23 13:00:11,Isle of Wight,Doris Roper,",Frappes - Chocolate Cookie,2.75,,Speciality Tea - Green,1.3",CARD,4.05,"visa16,4547311293318229"
+2021-02-23 13:01:20,Isle of Wight,Dorothy Morales,"Regular,Filter coffee,1.5,Large,Flavoured latte - Caramel,2.85,,Babyccino,0.0,Regular,Flavoured hot chocolate - Hazelnut,2.6,,Speciality Tea - Darjeeling,1.3",CARD,8.25,"mastercard,5424923425362845"
+2021-02-23 13:02:38,Isle of Wight,Terrence Gallant,",Speciality Tea - Darjeeling,1.3,,Flat white,2.15,,Cortado,2.05,,Babyccino,0.0",CARD,5.50,"americanexpress,344195483398999"
+2021-02-23 13:03:19,Isle of Wight,Joseph Martin,",Frappes - Coffee,2.75,Large,Latte,2.45,Large,Luxury hot chocolate,2.7,,Flavoured iced latte - Caramel,2.75,Regular,Hot chocolate,2.2",CARD,12.85,"visa16,4846424446237945"
+2021-02-23 13:04:13,Isle of Wight,Anne Daily,",Red Label tea,1.2",CASH,1.20,None
+2021-02-23 13:05:33,Isle of Wight,Amy Adams,"Regular,Filter coffee,1.5",CASH,1.50,None
+2021-02-23 13:06:45,Isle of Wight,Melissa Taylor,"Large,Americano,2.25,,Red Label tea,1.2",CARD,3.45,"americanexpress,353323345356991"
+2021-02-23 13:07:09,Isle of Wight,Thomas Johnson,"Regular,Flavoured hot chocolate - Vanilla,2.6,Regular,Latte,2.15,,Speciality Tea - Peppermint,1.3",CARD,6.05,"discover,6011971477879296"
+2021-02-23 13:08:21,Isle of Wight,Allen Wade,",Flavoured iced latte - Hazelnut,2.75,Regular,Espresso,1.5,Large,Flavoured hot chocolate - Vanilla,2.9,Large,Americano,2.25,,Flavoured iced latte - Vanilla,2.75",CARD,12.15,"visa13,4538956274828"
+2021-02-23 13:09:39,Isle of Wight,Michael Hartley,"Regular,Flavoured latte - Vanilla,2.55,,Iced latte,2.35,Large,Luxury hot chocolate,2.7,Regular,Hot chocolate,2.2,Large,Latte,2.45",CASH,12.25,None
+2021-02-23 13:10:12,Isle of Wight,Bettye Watkins,",Speciality Tea - Green,1.3,,Speciality Tea - Green,1.3",CASH,2.60,None
+2021-02-23 13:11:34,Isle of Wight,Audra Herrera,"Regular,Chai latte,2.3",CASH,2.30,None
+2021-02-23 13:12:07,Isle of Wight,Elizabeth Sorum,",Flavoured iced latte - Caramel,2.75,,Flavoured iced latte - Hazelnut,2.75,Regular,Flavoured latte - Hazelnut,2.55",CARD,8.05,"visa16,47947846873141710"
+2021-02-23 13:13:43,Isle of Wight,Mary Stroope,"Large,Chai latte,2.6,,Frappes - Chocolate Cookie,2.75,,Speciality Tea - Earl Grey,1.3,Large,Flavoured latte - Caramel,2.85",CASH,9.50,None
+2021-02-23 13:14:51,Isle of Wight,Cole Taylor,"Large,Flavoured latte - Caramel,2.85,Large,Flavoured latte - Vanilla,2.85",CASH,5.70,None
+2021-02-23 13:15:20,Isle of Wight,Norman Elliott,",Speciality Tea - English breakfast,1.3,,Red Label tea,1.2,Large,Latte,2.45,,Mocha,2.3",CASH,7.25,None
+2021-02-23 13:16:59,Isle of Wight,Michael Gish,"Large,Americano,2.25,,Iced latte,2.35",CASH,4.60,None
+2021-02-23 13:17:24,Isle of Wight,Sandra Lorenzana,"Regular,Espresso,1.5,,Flavoured iced latte - Caramel,2.75",CARD,4.25,"visa16,4893684128533943"
+2021-02-23 13:18:00,Isle of Wight,Michael Johnson,",Frappes - Coffee,2.75",CARD,2.75,"discover,6011538724265833"
+2021-02-23 13:19:21,Isle of Wight,Christy Grassi,"Large,Flavoured hot chocolate - Vanilla,2.9",CARD,2.90,"discover,60117148537798910"
+2021-02-23 13:20:56,Isle of Wight,Melissa Elliott,"Large,Hot chocolate,2.9,Large,Americano,2.25,,Flavoured iced latte - Hazelnut,2.75,,Speciality Tea - Peppermint,1.3,,Flavoured iced latte - Vanilla,2.75",CARD,11.95,"mastercard,5138867848357543"
+2021-02-23 13:21:06,Isle of Wight,Marian Stark,",Speciality Tea - Earl Grey,1.3,Large,Espresso,1.8,,Flavoured iced latte - Caramel,2.75,,Cortado,2.05,,Smoothies - Carrot Kick,2.0",CASH,9.90,None
+2021-02-23 13:22:33,Isle of Wight,Jason Garrison,",Mocha,2.3,Large,Flavoured latte - Gingerbread,2.85,,Flat white,2.15",CARD,7.30,"americanexpress,366129548311922"
+2021-02-23 13:23:29,Isle of Wight,Dorothy Moore,",Speciality Tea - Camomile,1.3,,Glass of milk,0.7",CASH,2.00,None
+2021-02-23 13:24:11,Isle of Wight,Dorothy Thomas,",Speciality Tea - Fruit,1.3,,Speciality Tea - Earl Grey,1.3,,Frappes - Chocolate Cookie,2.75,,Speciality Tea - Earl Grey,1.3,,Mocha,2.3",CASH,8.95,None
+2021-02-23 13:25:33,Isle of Wight,Wayne Thurman,",Speciality Tea - Darjeeling,1.3,Large,Flavoured hot chocolate - Caramel,2.9,Regular,Flavoured hot chocolate - Vanilla,2.6,Large,Cappuccino,2.45",CASH,9.25,None
+2021-02-23 13:26:16,Isle of Wight,David Viverette,"Large,Chai latte,2.6,Large,Chai latte,2.6,,Flavoured iced latte - Caramel,2.75,,Speciality Tea - Earl Grey,1.3",CARD,9.25,"visa16,4189785437276257"
+2021-02-23 13:27:36,Isle of Wight,Sheryl Ballard,",Glass of milk,0.7",CASH,0.70,None
+2021-02-23 13:28:36,Isle of Wight,Rosie Vincent,"Large,Flavoured latte - Vanilla,2.85,,Mocha,2.3",CASH,5.15,None
+2021-02-23 13:29:31,Isle of Wight,Cindy Ramirez,",Smoothies - Berry Beautiful,2.0,,Frappes - Strawberries & Cream,2.75",CARD,4.75,"visa16,43727722514552310"
+2021-02-23 13:30:06,Isle of Wight,Betty Frautschi,"Large,Filter coffee,1.8,,Flavoured iced latte - Vanilla,2.75,,Smoothies - Glowing Greens,2.0,Regular,Chai latte,2.3",CASH,8.85,None
+2021-02-23 13:31:48,Isle of Wight,Timothy Perla,"Large,Espresso,1.8,,Flavoured iced latte - Hazelnut,2.75,,Flavoured iced latte - Vanilla,2.75,,Flavoured iced latte - Vanilla,2.75",CASH,10.05,None
+2021-02-23 13:32:04,Isle of Wight,John Dillingham,",Speciality Tea - Green,1.3,,Smoothies - Berry Beautiful,2.0,,Smoothies - Carrot Kick,2.0,,Frappes - Coffee,2.75",CASH,8.05,None
+2021-02-23 13:33:32,Isle of Wight,Theresa Reyna,"Regular,Flavoured latte - Hazelnut,2.55,Regular,Americano,1.95,,Frappes - Coffee,2.75,,Mocha,2.3,,Flavoured iced latte - Hazelnut,2.75",CASH,12.30,None
+2021-02-23 13:34:38,Isle of Wight,Jennifer Fernandez,"Large,Flavoured hot chocolate - Hazelnut,2.9,,Speciality Tea - Darjeeling,1.3,Regular,Flavoured hot chocolate - Vanilla,2.6,Large,Flavoured latte - Vanilla,2.85",CARD,9.65,"mastercard,5425968286844612"
+2021-02-23 13:35:48,Isle of Wight,Michael Craig,",Speciality Tea - Green,1.3,Large,Flavoured hot chocolate - Vanilla,2.9,Regular,Chai latte,2.3,,Smoothies - Glowing Greens,2.0",CASH,8.50,None
+2021-02-23 13:36:57,Isle of Wight,Raymond Acker,",Smoothies - Glowing Greens,2.0,Regular,Luxury hot chocolate,2.4,,Iced latte,2.35,,Frappes - Strawberries & Cream,2.75,Regular,Filter coffee,1.5",CARD,11.00,"discover,6011187388449976"
+2021-02-23 13:37:05,Isle of Wight,Bernice Clark,"Large,Americano,2.25",CASH,2.25,None
+2021-02-23 13:38:42,Isle of Wight,James Hyatt,",Babyccino,0.0,Large,Latte,2.45,Large,Flavoured latte - Hazelnut,2.85",CASH,5.30,None
+2021-02-23 13:39:18,Isle of Wight,Jason Hazel,",Speciality Tea - Green,1.3",CASH,1.30,None
+2021-02-23 13:40:40,Isle of Wight,Maya Doleman,",Smoothies - Glowing Greens,2.0,,Hot Chocolate,1.4,Regular,Flavoured hot chocolate - Vanilla,2.6",CARD,6.00,"americanexpress,368837722299683"
+2021-02-23 13:41:59,Isle of Wight,Susie Ford,"Large,Flavoured latte - Caramel,2.85",CARD,2.85,"visa16,4877849726764626"
+2021-02-23 13:42:36,Isle of Wight,Juanita Holden,",Speciality Tea - Earl Grey,1.3,Large,Chai latte,2.6,,Speciality Tea - Peppermint,1.3,,Smoothies - Berry Beautiful,2.0,Large,Flavoured hot chocolate - Hazelnut,2.9",CASH,10.10,None
+2021-02-23 13:43:36,Isle of Wight,Raymond Arvelo,",Frappes - Coffee,2.75,Large,Cappuccino,2.45,Large,Flavoured hot chocolate - Caramel,2.9,Large,Flavoured latte - Hazelnut,2.85",CASH,10.95,None
+2021-02-23 13:44:28,Isle of Wight,Kevin Bridges,",Flat white,2.15",CARD,2.15,"visa13,49153141746610"
+2021-02-23 13:45:42,Isle of Wight,Grace Mcgown,",Speciality Tea - Peppermint,1.3,,Smoothies - Carrot Kick,2.0",CARD,3.30,"visa16,4777665989686517"
+2021-02-23 13:46:52,Isle of Wight,Jo Smith,",Flavoured iced latte - Vanilla,2.75,Large,Hot chocolate,2.9,,Speciality Tea - Green,1.3,,Iced americano,2.15",CASH,9.10,None
+2021-02-23 13:47:55,Isle of Wight,Isabelle Ellis,",Frappes - Chocolate Cookie,2.75",CARD,2.75,"visa16,4163342512341935"
+2021-02-23 13:48:52,Isle of Wight,Curtis Moldenhauer,"Large,Filter coffee,1.8,,Hot Chocolate,1.4,,Flavoured iced latte - Vanilla,2.75,Large,Cappuccino,2.45",CARD,8.40,"discover,6011894471537696"
+2021-02-23 13:49:50,Isle of Wight,Jonathan Brown,",Flavoured iced latte - Caramel,2.75",CARD,2.75,"visa13,4975299262856"
+2021-02-23 13:50:38,Isle of Wight,James Williams,",Speciality Tea - Peppermint,1.3,Large,Cappuccino,2.45",CASH,3.75,None
+2021-02-23 13:51:49,Isle of Wight,Jeffrey Williams,",Flavoured iced latte - Vanilla,2.75",CARD,2.75,"mastercard,5418657667459426"
+2021-02-23 13:52:23,Isle of Wight,Diane Enriquez,",Frappes - Coffee,2.75,,Iced latte,2.35,Regular,Hot chocolate,2.2,Large,Hot chocolate,2.9,Large,Hot chocolate,2.9",CARD,13.10,"mastercard,5471413988316125"
+2021-02-23 13:53:52,Isle of Wight,Richard Ruiz,"Large,Filter coffee,1.8,Large,Flavoured latte - Gingerbread,2.85,Regular,Filter coffee,1.5,Regular,Latte,2.15,,Smoothies - Carrot Kick,2.0",CARD,10.30,"visa13,4478589562952"
+2021-02-23 13:54:21,Isle of Wight,William Fernandes,",Speciality Tea - Peppermint,1.3,Large,Filter coffee,1.8,,Speciality Tea - Fruit,1.3,Large,Flavoured latte - Hazelnut,2.85",CARD,7.25,"visa16,4181939964876868"
+2021-02-23 13:55:40,Isle of Wight,Lucille Combes,",Smoothies - Carrot Kick,2.0,,Red Label tea,1.2,,Speciality Tea - Earl Grey,1.3,,Cortado,2.05,,Speciality Tea - Fruit,1.3",CARD,7.85,"mastercard,5386528199458236"
+2021-02-23 13:56:10,Isle of Wight,Evan Kaleta,",Cortado,2.05,,Flat white,2.15,,Flavoured iced latte - Hazelnut,2.75,,Speciality Tea - Darjeeling,1.3,,Flavoured iced latte - Vanilla,2.75",CASH,11.00,None
+2021-02-23 13:57:44,Isle of Wight,Susanne Miller,"Regular,Americano,1.95,Large,Flavoured hot chocolate - Vanilla,2.9,,Hot Chocolate,1.4,,Cortado,2.05,,Speciality Tea - Green,1.3",CASH,9.60,None
+2021-02-23 13:58:32,Isle of Wight,Lauri Manteca,"Large,Flavoured hot chocolate - Hazelnut,2.9,,Smoothies - Berry Beautiful,2.0,,Frappes - Strawberries & Cream,2.75,,Frappes - Strawberries & Cream,2.75,Regular,Latte,2.15",CASH,12.55,None
+2021-02-23 13:59:03,Isle of Wight,Thomas Pittman,"Large,Latte,2.45,,Mocha,2.3,,Frappes - Chocolate Cookie,2.75",CASH,7.50,None
+2021-02-23 14:00:19,Isle of Wight,Ronald Dixon,"Regular,Latte,2.15,Regular,Flavoured latte - Vanilla,2.55,Large,Flavoured hot chocolate - Vanilla,2.9,Large,Latte,2.45,,Iced americano,2.15",CARD,12.20,"visa16,4328364886928214"
+2021-02-23 14:01:15,Isle of Wight,Constance Hutson,",Speciality Tea - Peppermint,1.3",CARD,1.30,"visa13,4232648859994"
+2021-02-23 14:02:36,Isle of Wight,Gary Demarais,"Large,Filter coffee,1.8",CASH,1.80,None
+2021-02-23 14:03:01,Isle of Wight,Debra Trotter,",Speciality Tea - Camomile,1.3,,Smoothies - Glowing Greens,2.0",CASH,3.30,None
+2021-02-23 14:04:38,Isle of Wight,Michael Jessica,"Large,Americano,2.25,Large,Flavoured latte - Caramel,2.85,,Smoothies - Carrot Kick,2.0",CARD,7.10,"mastercard,5539646885443472"
+2021-02-23 14:05:53,Isle of Wight,Sherilyn Naegeli,",Flavoured iced latte - Hazelnut,2.75",CARD,2.75,"mastercard,5567892733384741"
+2021-02-23 14:06:55,Isle of Wight,Barbara Gilstad,"Large,Filter coffee,1.8,Large,Americano,2.25,,Smoothies - Glowing Greens,2.0,,Iced americano,2.15,,Speciality Tea - Fruit,1.3",CARD,9.50,"americanexpress,375139326512178"
+2021-02-23 14:07:52,Isle of Wight,Sharon Swensen,",Flat white,2.15",CARD,2.15,"visa13,4843328445423"
+2021-02-23 14:08:32,Isle of Wight,Pauline Marlatt,",Hot Chocolate,1.4",CASH,1.40,None
+2021-02-23 14:09:18,Isle of Wight,Glenda Patterson,"Regular,Americano,1.95",CARD,1.95,"visa16,4289299184775692"
+2021-02-23 14:10:22,Isle of Wight,Osvaldo Gamble,",Speciality Tea - English breakfast,1.3,Large,Latte,2.45,Large,Flavoured latte - Vanilla,2.85,Large,Flavoured latte - Caramel,2.85",CASH,9.45,None
+2021-02-23 14:11:51,Isle of Wight,Michael Mazzone,"Large,Flavoured latte - Caramel,2.85,,Flavoured iced latte - Vanilla,2.75,,Iced americano,2.15,,Smoothies - Glowing Greens,2.0",CASH,9.75,None
+2021-02-23 14:12:38,Isle of Wight,Donald Jensen,",Glass of milk,0.7",CARD,0.70,"visa16,4362283864421546"
+2021-02-23 14:13:19,Isle of Wight,Edward Eldredge,"Large,Flavoured hot chocolate - Caramel,2.9,,Frappes - Strawberries & Cream,2.75",CASH,5.65,None
+2021-02-23 14:14:47,Isle of Wight,Kyle Smith,",Iced americano,2.15",CARD,2.15,"mastercard,5372928413254161"
+2021-02-23 14:15:46,Isle of Wight,Paul Brann,"Regular,Flavoured latte - Gingerbread,2.55",CASH,2.55,None
+2021-02-23 14:16:46,Isle of Wight,Juanita Tindol,"Large,Flavoured hot chocolate - Caramel,2.9,,Speciality Tea - English breakfast,1.3",CARD,4.20,"discover,6011666597235375"
+2021-02-23 14:17:51,Isle of Wight,Tamra Zacarias,",Smoothies - Carrot Kick,2.0,,Speciality Tea - Green,1.3,Large,Latte,2.45",CARD,5.75,"discover,6011933853546352"
+2021-02-23 14:18:40,Isle of Wight,Sherry Silva,",Flavoured iced latte - Caramel,2.75,,Smoothies - Berry Beautiful,2.0",CARD,4.75,"visa16,47715689299596210"
+2021-02-23 14:19:12,Isle of Wight,Betty Manser,"Large,Latte,2.45,,Smoothies - Berry Beautiful,2.0",CASH,4.45,None
+2021-02-23 14:20:52,Isle of Wight,Jim Laduke,",Flavoured iced latte - Vanilla,2.75,Large,Flavoured hot chocolate - Hazelnut,2.9,,Smoothies - Carrot Kick,2.0,Large,Cappuccino,2.45,,Flat white,2.15",CARD,12.25,"visa13,4217727955235"
+2021-02-23 14:21:40,Isle of Wight,Miki Davidson,",Glass of milk,0.7,,Frappes - Chocolate Cookie,2.75",CARD,3.45,"discover,6011757695381565"
+2021-02-23 14:22:40,Isle of Wight,Timothy Barile,",Flavoured iced latte - Caramel,2.75,Regular,Americano,1.95",CARD,4.70,"visa13,4727854321837"
+2021-02-23 14:23:37,Isle of Wight,Kelly Yates,",Smoothies - Glowing Greens,2.0",CASH,2.00,None
+2021-02-23 14:24:35,Isle of Wight,Dawna Cato,"Large,Flavoured hot chocolate - Vanilla,2.9,,Smoothies - Glowing Greens,2.0",CASH,4.90,None
+2021-02-23 14:25:59,Isle of Wight,Derrick Gentry,"Large,Chai latte,2.6,Regular,Chai latte,2.3,Regular,Flavoured hot chocolate - Hazelnut,2.6,,Iced latte,2.35",CASH,9.85,None
+2021-02-23 14:26:22,Isle of Wight,Sue Salinas,",Red Label tea,1.2,,Glass of milk,0.7,,Speciality Tea - Darjeeling,1.3,,Frappes - Chocolate Cookie,2.75",CASH,5.95,None
+2021-02-23 14:27:18,Isle of Wight,Grace Rose,",Speciality Tea - Fruit,1.3,,Smoothies - Carrot Kick,2.0,,Speciality Tea - Green,1.3,,Babyccino,0.0",CASH,4.60,None
+2021-02-23 14:28:30,Isle of Wight,Tyler Hopkins,",Smoothies - Glowing Greens,2.0,,Cortado,2.05,Large,Latte,2.45,,Smoothies - Carrot Kick,2.0",CASH,8.50,None
+2021-02-23 14:29:24,Isle of Wight,Traci Pierce,"Regular,Americano,1.95,Regular,Chai latte,2.3,,Speciality Tea - Earl Grey,1.3,Large,Flavoured latte - Gingerbread,2.85,,Flavoured iced latte - Hazelnut,2.75",CARD,11.15,"discover,6011843962588429"
+2021-02-23 14:30:05,Isle of Wight,Sharon Waggoner,",Flat white,2.15,Large,Espresso,1.8,,Hot Chocolate,1.4",CARD,5.35,"mastercard,5398153882571868"
+2021-02-23 14:31:48,Isle of Wight,Judith Gonzales,",Speciality Tea - Green,1.3,,Flavoured iced latte - Hazelnut,2.75,,Smoothies - Glowing Greens,2.0",CASH,6.05,None
+2021-02-23 14:32:36,Isle of Wight,Louise Hottel,",Speciality Tea - Green,1.3,,Mocha,2.3",CARD,3.60,"visa16,4179795583886892"
+2021-02-23 14:33:46,Isle of Wight,Danielle Kerr,"Large,Espresso,1.8",CARD,1.80,"visa13,4335675353292"
+2021-02-23 14:34:48,Isle of Wight,Michael Lozano,"Large,Hot chocolate,2.9,,Speciality Tea - Peppermint,1.3",CASH,4.20,None
+2021-02-23 14:35:52,Isle of Wight,Laura Momphard,"Large,Cappuccino,2.45,Large,Americano,2.25",CASH,4.70,None
+2021-02-23 14:36:03,Isle of Wight,Mario Krumins,"Large,Chai latte,2.6,,Hot Chocolate,1.4",CASH,4.00,None
+2021-02-23 14:37:31,Isle of Wight,Edgar Mccarty,",Speciality Tea - Camomile,1.3,,Frappes - Chocolate Cookie,2.75",CASH,4.05,None
+2021-02-23 14:38:27,Isle of Wight,Alice Stevenson,",Flavoured iced latte - Caramel,2.75,,Speciality Tea - Peppermint,1.3",CARD,4.05,"discover,6011372372335924"
+2021-02-23 14:39:17,Isle of Wight,Jan Gallaher,",Mocha,2.3,Large,Americano,2.25,Large,Latte,2.45,Regular,Chai latte,2.3",CARD,9.30,"mastercard,5157556392192812"
+2021-02-23 14:40:53,Isle of Wight,Shane Guyer,",Speciality Tea - Peppermint,1.3,,Speciality Tea - Green,1.3,,Smoothies - Berry Beautiful,2.0,,Speciality Tea - English breakfast,1.3,Large,Espresso,1.8",CASH,7.70,None
+2021-02-23 14:41:26,Isle of Wight,Mary Mohan,",Flavoured iced latte - Caramel,2.75,Large,Flavoured hot chocolate - Vanilla,2.9,,Mocha,2.3,Large,Flavoured latte - Vanilla,2.85,Large,Chai latte,2.6",CASH,13.40,None
+2021-02-23 14:42:06,Isle of Wight,Mildred Tarin,"Large,Luxury hot chocolate,2.7,,Smoothies - Berry Beautiful,2.0,,Frappes - Chocolate Cookie,2.75,,Speciality Tea - Darjeeling,1.3,,Flavoured iced latte - Vanilla,2.75",CARD,11.50,"mastercard,5437474982565391"
+2021-02-23 14:43:05,Isle of Wight,William Turner,"Large,Latte,2.45",CARD,2.45,"discover,6011582411544456"
+2021-02-23 14:44:02,Isle of Wight,Arlene Roman,"Regular,Hot chocolate,2.2,Regular,Espresso,1.5",CASH,3.70,None
+2021-02-23 14:45:45,Isle of Wight,James Brauer,",Flat white,2.15,,Frappes - Strawberries & Cream,2.75,,Speciality Tea - Earl Grey,1.3,Large,Flavoured latte - Hazelnut,2.85,,Iced latte,2.35",CARD,11.40,"americanexpress,344749366219787"
+2021-02-23 14:46:45,Isle of Wight,Bertha Scales,",Babyccino,0.0,,Flavoured iced latte - Vanilla,2.75,Large,Latte,2.45,Large,Luxury hot chocolate,2.7,,Smoothies - Berry Beautiful,2.0",CARD,9.90,"americanexpress,344573353669253"
+2021-02-23 14:47:21,Isle of Wight,Janice Merritt,",Glass of milk,0.7",CASH,0.70,None
+2021-02-23 14:48:01,Isle of Wight,Alonzo Fish,"Large,Americano,2.25",CARD,2.25,"visa16,4192385378652593"
+2021-02-23 14:49:15,Isle of Wight,Geneva Witt,",Speciality Tea - Earl Grey,1.3,,Hot Chocolate,1.4,Large,Americano,2.25",CARD,4.95,"mastercard,5466773362395459"
+2021-02-23 14:50:35,Isle of Wight,Lisa Massey,",Glass of milk,0.7,,Smoothies - Carrot Kick,2.0,,Smoothies - Glowing Greens,2.0,,Glass of milk,0.7,Regular,Luxury hot chocolate,2.4",CASH,7.80,None
+2021-02-23 14:51:20,Isle of Wight,April Crate,",Flavoured iced latte - Caramel,2.75,,Mocha,2.3",CASH,5.05,None
+2021-02-23 14:52:20,Isle of Wight,Stacey Santiago,"Large,Americano,2.25,,Flavoured iced latte - Caramel,2.75",CARD,5.00,"visa13,4466217535482"
+2021-02-23 14:53:04,Isle of Wight,Phyllis Chapman,",Speciality Tea - Peppermint,1.3,,Smoothies - Berry Beautiful,2.0,,Speciality Tea - Green,1.3,Regular,Americano,1.95,,Mocha,2.3",CASH,8.85,None
+2021-02-23 14:54:52,Isle of Wight,Howard Ciriaco,",Smoothies - Glowing Greens,2.0,Large,Flavoured hot chocolate - Hazelnut,2.9,,Speciality Tea - Camomile,1.3,Regular,Hot chocolate,2.2",CASH,8.40,None
+2021-02-23 14:55:23,Isle of Wight,Jacqueline Lopez,",Flavoured iced latte - Hazelnut,2.75",CASH,2.75,None
+2021-02-23 14:56:04,Isle of Wight,Ethel Brisco,",Speciality Tea - Green,1.3",CASH,1.30,None
+2021-02-23 14:57:39,Isle of Wight,James Oneill,",Speciality Tea - English breakfast,1.3,Large,Latte,2.45,,Speciality Tea - Green,1.3,Large,Flavoured latte - Caramel,2.85",CARD,7.90,"americanexpress,359168732174497"
+2021-02-23 14:58:29,Isle of Wight,Deborah Aguilar,"Regular,Flavoured latte - Hazelnut,2.55,,Hot Chocolate,1.4,,Frappes - Chocolate Cookie,2.75",CARD,6.70,"visa13,4185857157981"
+2021-02-23 14:59:04,Isle of Wight,Lisa Rosato,"Large,Flavoured hot chocolate - Vanilla,2.9,,Glass of milk,0.7,,Flavoured iced latte - Hazelnut,2.75,Regular,Flavoured latte - Gingerbread,2.55,,Flavoured iced latte - Caramel,2.75",CARD,11.65,"mastercard,5123335758963327"
+2021-02-23 15:00:07,Isle of Wight,June Pierce,"Regular,Luxury hot chocolate,2.4",CASH,2.40,None
+2021-02-23 15:01:57,Isle of Wight,Mary Hemphill,",Mocha,2.3",CASH,2.30,None
+2021-02-23 15:02:59,Isle of Wight,David Justen,"Large,Flavoured hot chocolate - Vanilla,2.9,,Flavoured iced latte - Caramel,2.75,,Speciality Tea - Earl Grey,1.3,Large,Flavoured hot chocolate - Vanilla,2.9",CASH,9.85,None
+2021-02-23 15:03:46,Isle of Wight,Amalia Phillips,",Mocha,2.3,Large,Flavoured latte - Vanilla,2.85",CASH,5.15,None
+2021-02-23 15:04:36,Isle of Wight,Gregory Craig,"Large,Flavoured hot chocolate - Vanilla,2.9",CARD,2.90,"visa13,4689282779251"
+2021-02-23 15:05:27,Isle of Wight,Donald Peeden,"Regular,Flavoured hot chocolate - Hazelnut,2.6",CARD,2.60,"visa13,4566989941824"
+2021-02-23 15:06:37,Isle of Wight,Omar Blackner,",Glass of milk,0.7,,Hot Chocolate,1.4,,Frappes - Chocolate Cookie,2.75,,Speciality Tea - Fruit,1.3,,Iced latte,2.35",CARD,8.50,"visa16,4439646578512975"
+2021-02-23 15:07:23,Isle of Wight,Ruthie Lerman,",Babyccino,0.0",CASH,0.00,None
+2021-02-23 15:08:04,Isle of Wight,Laura Weston,",Speciality Tea - Darjeeling,1.3,,Frappes - Chocolate Cookie,2.75",CASH,4.05,None
+2021-02-23 15:09:06,Isle of Wight,Anthony Sheehy,"Regular,Flavoured latte - Hazelnut,2.55,,Frappes - Coffee,2.75,Large,Flavoured latte - Hazelnut,2.85,,Glass of milk,0.7,,Flavoured iced latte - Hazelnut,2.75",CARD,11.60,"americanexpress,341151389524116"
+2021-02-23 15:10:15,Isle of Wight,John Hoban,",Red Label tea,1.2,,Speciality Tea - Earl Grey,1.3,Large,Americano,2.25,Regular,Flavoured latte - Gingerbread,2.55,Large,Latte,2.45",CASH,9.75,None
+2021-02-23 15:11:57,Isle of Wight,Rita Pera,",Babyccino,0.0,Large,Luxury hot chocolate,2.7,,Red Label tea,1.2,Large,Luxury hot chocolate,2.7",CASH,6.60,None
+2021-02-23 15:12:13,Isle of Wight,William Hertler,",Speciality Tea - English breakfast,1.3,Large,Hot chocolate,2.9,,Cortado,2.05,Large,Flavoured latte - Caramel,2.85,Large,Cappuccino,2.45",CASH,11.55,None
+2021-02-23 15:13:37,Isle of Wight,Brendan Cabral,"Large,Latte,2.45",CASH,2.45,None
+2021-02-23 15:14:23,Isle of Wight,Mary Aquino,"Large,Cappuccino,2.45,,Glass of milk,0.7,,Flavoured iced latte - Caramel,2.75",CASH,5.90,None
+2021-02-23 15:15:21,Isle of Wight,Mary Wood,"Large,Hot chocolate,2.9,Large,Cappuccino,2.45,,Cortado,2.05",CASH,7.40,None
+2021-02-23 15:16:19,Isle of Wight,Truman Wilson,",Iced americano,2.15",CASH,2.15,None
+2021-02-23 15:17:55,Isle of Wight,Carol Chase,",Babyccino,0.0,,Speciality Tea - Camomile,1.3,Regular,Cappuccino,2.15,Regular,Americano,1.95,Regular,Flavoured latte - Hazelnut,2.55",CARD,7.95,"visa13,4773413285915"
+2021-02-23 15:18:44,Isle of Wight,Anna Marks,",Cortado,2.05,,Speciality Tea - Camomile,1.3",CARD,3.35,"mastercard,5131349862449644"
+2021-02-23 15:19:49,Isle of Wight,James Pham,",Frappes - Strawberries & Cream,2.75",CARD,2.75,"visa16,4744256228183613"
+2021-02-23 15:20:22,Isle of Wight,Jose Cuozzo,"Large,Flavoured latte - Gingerbread,2.85",CASH,2.85,None
+2021-02-23 15:21:11,Isle of Wight,Matthew Garrett,",Flat white,2.15,,Iced latte,2.35,,Hot Chocolate,1.4",CARD,5.90,"discover,6011577234678119"
+2021-02-23 15:22:34,Isle of Wight,Brad Flory,",Glass of milk,0.7,Large,Latte,2.45,,Speciality Tea - Earl Grey,1.3,,Speciality Tea - Green,1.3,Large,Luxury hot chocolate,2.7",CASH,8.45,None
+2021-02-23 15:23:36,Isle of Wight,Sharon Lonon,",Frappes - Chocolate Cookie,2.75,Regular,Cappuccino,2.15",CASH,4.90,None
+2021-02-23 15:24:04,Isle of Wight,Steven Johnson,",Flat white,2.15,Regular,Americano,1.95,,Cortado,2.05,,Mocha,2.3",CASH,8.45,None
+2021-02-23 15:25:09,Isle of Wight,Patricia Stewart,"Regular,Flavoured hot chocolate - Caramel,2.6,,Flat white,2.15",CASH,4.75,None
+2021-02-23 15:26:55,Isle of Wight,Ronald Kelly,"Regular,Flavoured latte - Hazelnut,2.55",CASH,2.55,None
+2021-02-23 15:27:09,Isle of Wight,Helen White,"Large,Americano,2.25,Regular,Luxury hot chocolate,2.4",CARD,4.65,"discover,6011978699988219"
+2021-02-23 15:28:16,Isle of Wight,Virginia Caro,"Large,Flavoured hot chocolate - Hazelnut,2.9,,Red Label tea,1.2,,Speciality Tea - Peppermint,1.3,Large,Filter coffee,1.8",CARD,7.20,"americanexpress,345636861793466"
+2021-02-23 15:29:13,Isle of Wight,Trudy Powell,"Large,Americano,2.25,,Flavoured iced latte - Hazelnut,2.75",CARD,5.00,"visa13,4499556738482"
+2021-02-23 15:30:05,Isle of Wight,Tammy Myer,"Large,Americano,2.25,Regular,Latte,2.15,Large,Flavoured latte - Caramel,2.85,,Hot Chocolate,1.4",CARD,8.65,"americanexpress,3497472441389510"
+2021-02-23 15:31:01,Isle of Wight,Sara Curran,",Flavoured iced latte - Vanilla,2.75,,Smoothies - Carrot Kick,2.0,,Flavoured iced latte - Caramel,2.75,Large,Latte,2.45,Large,Americano,2.25",CASH,12.20,None
+2021-02-23 15:32:17,Isle of Wight,Jeffrey Goldman,",Speciality Tea - Darjeeling,1.3,Large,Espresso,1.8,,Smoothies - Glowing Greens,2.0",CARD,5.10,"visa16,4665188213338446"
+2021-02-23 15:33:47,Isle of Wight,Leonard Turner,"Large,Flavoured hot chocolate - Caramel,2.9,,Speciality Tea - Darjeeling,1.3",CASH,4.20,None
+2021-02-23 15:34:12,Isle of Wight,Anna Newbury,"Regular,Cappuccino,2.15",CASH,2.15,None
+2021-02-23 15:35:59,Isle of Wight,Mark Mohler,"Large,Luxury hot chocolate,2.7,Large,Flavoured latte - Hazelnut,2.85,,Frappes - Coffee,2.75,,Iced latte,2.35",CASH,10.65,None
+2021-02-23 15:36:08,Isle of Wight,Evelyn Gilbertson,",Mocha,2.3,,Frappes - Coffee,2.75,Large,Cappuccino,2.45",CARD,7.50,"discover,6011769128264144"
+2021-02-23 15:37:53,Isle of Wight,Ernestine Delgado,"Regular,Chai latte,2.3,,Cortado,2.05,,Speciality Tea - Fruit,1.3,Large,Americano,2.25,,Flavoured iced latte - Hazelnut,2.75",CASH,10.65,None
+2021-02-23 15:38:54,Isle of Wight,Helen Wolfert,",Mocha,2.3,Large,Flavoured hot chocolate - Caramel,2.9,Large,Latte,2.45,Large,Hot chocolate,2.9,,Frappes - Chocolate Cookie,2.75",CARD,13.30,"mastercard,5373369515349238"
+2021-02-23 15:39:50,Isle of Wight,Peter Iniguez,",Flat white,2.15,,Red Label tea,1.2,,Speciality Tea - Green,1.3,Large,Espresso,1.8",CASH,6.45,None
+2021-02-23 15:40:40,Isle of Wight,Kathy Ashley,",Smoothies - Carrot Kick,2.0,,Hot Chocolate,1.4,Regular,Flavoured latte - Hazelnut,2.55,,Hot Chocolate,1.4",CASH,7.35,None
+2021-02-23 15:41:58,Isle of Wight,Elizabeth Trimble,",Smoothies - Berry Beautiful,2.0,,Flavoured iced latte - Caramel,2.75",CARD,4.75,"visa16,4583235541469739"
+2021-02-23 15:42:23,Isle of Wight,Ken Salerno,"Large,Luxury hot chocolate,2.7,,Glass of milk,0.7,,Flavoured iced latte - Caramel,2.75,,Smoothies - Glowing Greens,2.0",CARD,8.15,"americanexpress,342883723896615"
+2021-02-23 15:43:04,Isle of Wight,Ross Boudreaux,",Speciality Tea - Fruit,1.3,Large,Flavoured latte - Vanilla,2.85,,Speciality Tea - English breakfast,1.3",CASH,5.45,None
+2021-02-23 15:44:15,Isle of Wight,Roberta Jones,"Large,Cappuccino,2.45,,Frappes - Coffee,2.75,,Babyccino,0.0",CARD,5.20,"mastercard,5372712444962673"
+2021-02-23 15:45:54,Isle of Wight,Anthony Beavers,",Smoothies - Carrot Kick,2.0,,Speciality Tea - Fruit,1.3",CARD,3.30,"mastercard,5167544444361633"
+2021-02-23 15:46:49,Isle of Wight,Margaret Coleman,",Smoothies - Carrot Kick,2.0,,Iced americano,2.15,Large,Flavoured latte - Gingerbread,2.85,,Mocha,2.3",CARD,9.30,"americanexpress,348749292665455"
+2021-02-23 15:47:16,Isle of Wight,Paul Torres,",Frappes - Coffee,2.75",CARD,2.75,"discover,6011161443526961"
+2021-02-23 15:48:20,Isle of Wight,Stephanie Mccaughey,",Frappes - Chocolate Cookie,2.75,,Mocha,2.3,,Cortado,2.05,Regular,Espresso,1.5,,Hot Chocolate,1.4",CARD,10.00,"mastercard,5114682381464954"
+2021-02-23 15:49:23,Isle of Wight,Natalie Brocato,",Flat white,2.15,,Speciality Tea - Fruit,1.3",CARD,3.45,"americanexpress,343484487827232"
+2021-02-23 15:50:33,Isle of Wight,Ernest Bahner,",Speciality Tea - Camomile,1.3,,Flavoured iced latte - Caramel,2.75,,Hot Chocolate,1.4",CARD,5.45,"visa13,4684419777559"
+2021-02-23 15:51:47,Isle of Wight,Darlene Nicholson,"Large,Flavoured latte - Vanilla,2.85,,Speciality Tea - English breakfast,1.3,,Smoothies - Carrot Kick,2.0",CARD,6.15,"americanexpress,356258262557394"
+2021-02-23 15:52:57,Isle of Wight,Jane Holmes,"Large,Latte,2.45,,Mocha,2.3,Regular,Flavoured latte - Vanilla,2.55",CASH,7.30,None
+2021-02-23 15:53:16,Isle of Wight,Robert Ness,"Large,Flavoured hot chocolate - Hazelnut,2.9,,Smoothies - Berry Beautiful,2.0,,Speciality Tea - Darjeeling,1.3",CASH,6.20,None
+2021-02-23 15:54:53,Isle of Wight,Jonathan Ouzts,",Babyccino,0.0,,Speciality Tea - Peppermint,1.3,Large,Latte,2.45,Large,Latte,2.45",CARD,6.20,"visa13,4732845647142"
+2021-02-23 15:55:29,Isle of Wight,Laura Ramos,",Speciality Tea - Camomile,1.3,,Smoothies - Carrot Kick,2.0,Large,Flavoured latte - Vanilla,2.85",CARD,6.15,"americanexpress,361212366413791"
+2021-02-23 15:56:24,Isle of Wight,Lisa Reynolds,",Glass of milk,0.7,Large,Flavoured latte - Gingerbread,2.85,Large,Latte,2.45",CARD,6.00,"visa13,4386267359783"
+2021-02-23 15:57:09,Isle of Wight,Ralph Mike,",Speciality Tea - Fruit,1.3,,Smoothies - Carrot Kick,2.0,,Frappes - Coffee,2.75",CASH,6.05,None
+2021-02-23 15:58:22,Isle of Wight,Deborah Sharpe,"Large,Latte,2.45,Large,Latte,2.45",CARD,4.90,"mastercard,5417225437411126"
+2021-02-23 15:59:45,Isle of Wight,Ted Williams,",Flavoured iced latte - Vanilla,2.75",CASH,2.75,None
+2021-02-23 16:00:00,Isle of Wight,Donald Rybak,",Cortado,2.05,Large,Luxury hot chocolate,2.7,,Flavoured iced latte - Hazelnut,2.75,,Mocha,2.3,Large,Luxury hot chocolate,2.7",CASH,12.50,None
+2021-02-23 16:01:39,Isle of Wight,Christine Turnage,",Speciality Tea - Fruit,1.3,Regular,Flavoured latte - Hazelnut,2.55,,Speciality Tea - Fruit,1.3,,Iced latte,2.35",CARD,7.50,"visa16,4696185296844442"
+2021-02-23 16:02:25,Isle of Wight,Helen Williams,",Speciality Tea - Earl Grey,1.3,,Speciality Tea - Fruit,1.3,,Frappes - Strawberries & Cream,2.75,,Smoothies - Glowing Greens,2.0",CARD,7.35,"visa16,4522566522551259"
+2021-02-23 16:03:42,Isle of Wight,Mary Martin,",Red Label tea,1.2",CASH,1.20,None
+2021-02-23 16:04:45,Isle of Wight,Truman Patton,",Speciality Tea - Darjeeling,1.3",CARD,1.30,"mastercard,5247235975477286"
+2021-02-23 16:05:10,Isle of Wight,Brian Smith,"Large,Americano,2.25,Large,Flavoured latte - Hazelnut,2.85,,Glass of milk,0.7,,Cortado,2.05",CASH,7.85,None
+2021-02-23 16:06:36,Isle of Wight,Williams Schmidt,"Regular,Chai latte,2.3,Large,Americano,2.25",CARD,4.55,"visa13,4115549862243"
+2021-02-23 16:07:55,Isle of Wight,Mary Patterson,",Iced latte,2.35,,Iced latte,2.35,,Red Label tea,1.2,,Cortado,2.05",CASH,7.95,None
+2021-02-23 16:08:58,Isle of Wight,Tiffany Noyes,"Large,Espresso,1.8,,Flavoured iced latte - Vanilla,2.75,Regular,Flavoured hot chocolate - Vanilla,2.6,Large,Latte,2.45",CASH,9.60,None
+2021-02-23 16:09:23,Isle of Wight,Clora Perez,"Large,Latte,2.45,Large,Filter coffee,1.8",CARD,4.25,"mastercard,54296412629331810"
+2021-02-23 16:10:43,Isle of Wight,Shirley Hall,"Regular,Hot chocolate,2.2,,Hot Chocolate,1.4",CASH,3.60,None
+2021-02-23 16:11:02,Isle of Wight,Joleen Castro,"Large,Latte,2.45,,Flavoured iced latte - Hazelnut,2.75,,Speciality Tea - Earl Grey,1.3,,Speciality Tea - Peppermint,1.3",CASH,7.80,None
+2021-02-23 16:12:18,Isle of Wight,Clifford Bania,"Regular,Flavoured latte - Gingerbread,2.55,,Iced latte,2.35",CASH,4.90,None
+2021-02-23 16:13:01,Isle of Wight,Raven Morales,",Frappes - Coffee,2.75,,Babyccino,0.0,Regular,Filter coffee,1.5,,Speciality Tea - Darjeeling,1.3,,Speciality Tea - Peppermint,1.3",CARD,6.85,"visa16,4371381168713276"
+2021-02-23 16:14:14,Isle of Wight,Ricky Rivera,"Large,Latte,2.45,Large,Filter coffee,1.8,Regular,Filter coffee,1.5,,Smoothies - Carrot Kick,2.0,,Iced americano,2.15",CASH,9.90,None
+2021-02-23 16:15:08,Isle of Wight,Billy Cisneros,"Large,Luxury hot chocolate,2.7",CARD,2.70,"americanexpress,361739856143496"
+2021-02-23 16:16:38,Isle of Wight,Sherry Bean,",Red Label tea,1.2,,Speciality Tea - Green,1.3,,Iced latte,2.35,,Flat white,2.15",CARD,7.00,"mastercard,5576211841364967"
+2021-02-23 16:17:30,Isle of Wight,Alicia Jobst,"Regular,Americano,1.95,,Speciality Tea - Green,1.3,,Glass of milk,0.7,Large,Latte,2.45",CASH,6.40,None
+2021-02-23 16:18:48,Isle of Wight,Merle Bohne,"Large,Cappuccino,2.45",CARD,2.45,"discover,6011419385148263"
+2021-02-23 16:19:48,Isle of Wight,Joshua Lawson,"Large,Flavoured latte - Gingerbread,2.85,,Iced latte,2.35",CASH,5.20,None
+2021-02-23 16:20:34,Isle of Wight,Mina Jackson,",Frappes - Strawberries & Cream,2.75,Large,Hot chocolate,2.9,,Speciality Tea - Camomile,1.3,,Speciality Tea - Darjeeling,1.3",CASH,8.25,None
+2021-02-23 16:21:41,Isle of Wight,John Odonnell,",Glass of milk,0.7,Large,Hot chocolate,2.9,Regular,Flavoured hot chocolate - Caramel,2.6,,Frappes - Coffee,2.75,,Iced latte,2.35",CARD,11.30,"visa16,41955527546864810"
+2021-02-23 16:22:58,Isle of Wight,Jack Devoe,",Speciality Tea - Peppermint,1.3,,Speciality Tea - English breakfast,1.3,,Frappes - Coffee,2.75",CASH,5.35,None
+2021-02-23 16:23:28,Isle of Wight,William Lloyd,",Cortado,2.05,Large,Americano,2.25,Regular,Flavoured latte - Hazelnut,2.55,,Speciality Tea - Darjeeling,1.3,Regular,Hot chocolate,2.2",CARD,10.35,"discover,60111953528847310"
+2021-02-23 16:24:54,Isle of Wight,Ashley Brady,"Regular,Americano,1.95,,Speciality Tea - English breakfast,1.3,,Smoothies - Glowing Greens,2.0,Large,Filter coffee,1.8",CARD,7.05,"mastercard,5243171988697236"
+2021-02-23 16:25:14,Isle of Wight,David Crowley,"Large,Chai latte,2.6,,Speciality Tea - English breakfast,1.3,,Frappes - Chocolate Cookie,2.75",CASH,6.65,None
+2021-02-23 16:26:02,Isle of Wight,Jaime Hart,",Red Label tea,1.2,Large,Luxury hot chocolate,2.7",CASH,3.90,None
+2021-02-23 16:27:38,Isle of Wight,Kathy Brown,"Large,Flavoured latte - Caramel,2.85,,Frappes - Coffee,2.75,,Hot Chocolate,1.4,Large,Americano,2.25",CASH,9.25,None
+2021-02-23 16:28:14,Isle of Wight,Mike Johnson,"Regular,Flavoured latte - Hazelnut,2.55",CARD,2.55,"americanexpress,345792445818673"
+2021-02-23 16:29:06,Isle of Wight,Ruth Sawyer,"Regular,Flavoured hot chocolate - Caramel,2.6,Regular,Flavoured hot chocolate - Caramel,2.6,,Mocha,2.3,,Smoothies - Glowing Greens,2.0,Large,Flavoured hot chocolate - Hazelnut,2.9",CARD,12.40,"visa16,4292188853499228"
+2021-02-23 16:30:17,Isle of Wight,James Vincent,",Speciality Tea - Peppermint,1.3",CARD,1.30,"visa16,4122144376553542"
+2021-02-23 16:31:11,Isle of Wight,Jami Rodriguez,",Smoothies - Carrot Kick,2.0,Regular,Americano,1.95,,Frappes - Chocolate Cookie,2.75",CARD,6.70,"mastercard,5411867978657157"
+2021-02-23 16:32:49,Isle of Wight,Kurt Schreiner,",Frappes - Chocolate Cookie,2.75,,Smoothies - Carrot Kick,2.0,Regular,Chai latte,2.3",CARD,7.05,"visa16,4675985395443383"
+2021-02-23 16:33:44,Isle of Wight,Gladys Jurgens,",Smoothies - Berry Beautiful,2.0,,Frappes - Coffee,2.75,,Hot Chocolate,1.4,Large,Americano,2.25",CARD,8.40,"discover,6011979725216773"
+2021-02-23 16:34:21,Isle of Wight,Deborah Szabo,",Flavoured iced latte - Caramel,2.75,,Flavoured iced latte - Caramel,2.75,Regular,Chai latte,2.3,,Glass of milk,0.7",CASH,8.50,None
+2021-02-23 16:35:25,Isle of Wight,Angelo Morse,",Cortado,2.05",CASH,2.05,None
+2021-02-23 16:36:00,Isle of Wight,Dorothy Wood,",Flavoured iced latte - Hazelnut,2.75,,Mocha,2.3,,Flavoured iced latte - Hazelnut,2.75,,Iced americano,2.15,Large,Flavoured hot chocolate - Hazelnut,2.9",CASH,12.85,None
+2021-02-23 16:37:34,Isle of Wight,Bobby Oppenheim,"Regular,Espresso,1.5,Large,Chai latte,2.6",CARD,4.10,"americanexpress,343623446696127"
+2021-02-23 16:38:06,Isle of Wight,Diane Crist,",Flavoured iced latte - Caramel,2.75,,Frappes - Coffee,2.75",CARD,5.50,"americanexpress,371656549779668"
+2021-02-23 16:39:35,Isle of Wight,Loyd Dabney,",Frappes - Chocolate Cookie,2.75,Large,Filter coffee,1.8",CASH,4.55,None
+2021-02-23 16:40:46,Isle of Wight,Kenneth Stone,"Large,Flavoured latte - Hazelnut,2.85,Large,Cappuccino,2.45,,Speciality Tea - Fruit,1.3,,Iced americano,2.15",CASH,8.75,None
+2021-02-23 16:41:14,Isle of Wight,Justin Mchaney,",Hot Chocolate,1.4,,Frappes - Coffee,2.75,,Hot Chocolate,1.4",CARD,5.55,"visa16,44966713246713710"
+2021-02-23 16:42:37,Isle of Wight,Anthony Hernandez,",Flavoured iced latte - Caramel,2.75,,Speciality Tea - Green,1.3,Large,Luxury hot chocolate,2.7,,Cortado,2.05,Large,Flavoured hot chocolate - Hazelnut,2.9",CASH,11.70,None
+2021-02-23 16:43:59,Isle of Wight,Irving Kenyon,"Regular,Americano,1.95,,Smoothies - Glowing Greens,2.0,Regular,Flavoured latte - Caramel,2.55",CARD,6.50,"visa13,4742841361127"
+2021-02-23 16:44:31,Isle of Wight,Drew Atkins,",Frappes - Chocolate Cookie,2.75",CARD,2.75,"visa16,4461716734649838"
+2021-02-23 16:45:08,Isle of Wight,Alton Hilyard,"Large,Americano,2.25",CASH,2.25,None
+2021-02-23 16:46:25,Isle of Wight,Milan Ala,"Large,Flavoured latte - Caramel,2.85,,Speciality Tea - English breakfast,1.3,Large,Flavoured latte - Gingerbread,2.85",CARD,7.00,"mastercard,5261295975146985"
+2021-02-23 16:47:43,Isle of Wight,Timothy Barksdale,",Red Label tea,1.2",CASH,1.20,None
+2021-02-23 16:48:36,Isle of Wight,Michael Quarry,",Flavoured iced latte - Hazelnut,2.75,Large,Espresso,1.8,Regular,Americano,1.95,,Frappes - Coffee,2.75,,Smoothies - Glowing Greens,2.0",CARD,11.25,"visa16,4382558777882868"
+2021-02-23 16:49:55,Isle of Wight,Brandy Deyoung,"Regular,Flavoured hot chocolate - Vanilla,2.6,Large,Americano,2.25",CARD,4.85,"visa16,4896563259924872"
+2021-02-23 16:50:19,Isle of Wight,Debra Tarango,",Speciality Tea - Peppermint,1.3,,Flavoured iced latte - Caramel,2.75,,Cortado,2.05,,Iced americano,2.15",CASH,8.25,None
+2021-02-23 16:51:28,Isle of Wight,James Hicks,",Speciality Tea - Earl Grey,1.3",CARD,1.30,"discover,6011876748451249"
+2021-02-23 16:52:15,Isle of Wight,Margaret Sawyer,",Red Label tea,1.2,Large,Filter coffee,1.8,Large,Americano,2.25,,Smoothies - Carrot Kick,2.0,,Flavoured iced latte - Hazelnut,2.75",CARD,10.00,"visa16,4829645781972511"
+2021-02-23 16:53:55,Isle of Wight,Jacob Carter,",Frappes - Strawberries & Cream,2.75,,Mocha,2.3",CARD,5.05,"visa16,4729884811897692"
+2021-02-23 16:54:53,Isle of Wight,Dustin Peng,",Frappes - Chocolate Cookie,2.75,Regular,Luxury hot chocolate,2.4,Regular,Filter coffee,1.5,Large,Flavoured hot chocolate - Hazelnut,2.9,,Flavoured iced latte - Hazelnut,2.75",CASH,12.30,None
+2021-02-23 16:55:16,Isle of Wight,Ruth Craig,",Mocha,2.3",CARD,2.30,"americanexpress,3562494621962410"
+2021-02-23 16:56:00,Isle of Wight,Kenneth Dunham,",Speciality Tea - Fruit,1.3,,Speciality Tea - English breakfast,1.3",CARD,2.60,"discover,6011875315666833"
+2021-02-23 16:57:49,Isle of Wight,Paul Kelly,",Hot Chocolate,1.4",CASH,1.40,None
+2021-02-23 16:58:32,Isle of Wight,Angela Adams,"Large,Flavoured latte - Vanilla,2.85",CARD,2.85,"discover,6011693992614723"
+2021-02-23 16:59:23,Isle of Wight,Martha Rucker,"Regular,Espresso,1.5,,Glass of milk,0.7,,Speciality Tea - Camomile,1.3",CASH,3.50,None
+2021-02-23 17:00:37,Isle of Wight,Edwin Thomas,",Flavoured iced latte - Hazelnut,2.75,Large,Flavoured hot chocolate - Caramel,2.9",CARD,5.65,"visa16,4411413756888376"
+2021-02-23 17:01:52,Isle of Wight,Dee Wilson,",Flat white,2.15,Large,Flavoured latte - Caramel,2.85",CASH,5.00,None
+2021-02-23 17:02:57,Isle of Wight,Sherman Congdon,"Large,Latte,2.45,,Frappes - Strawberries & Cream,2.75,,Speciality Tea - Camomile,1.3,,Speciality Tea - Earl Grey,1.3",CASH,7.80,None
+2021-02-23 17:03:28,Isle of Wight,Malcolm Manley,",Hot Chocolate,1.4,,Red Label tea,1.2,,Smoothies - Carrot Kick,2.0,,Mocha,2.3",CASH,6.90,None
+2021-02-23 17:04:34,Isle of Wight,Carolyn Coulter,",Babyccino,0.0,,Smoothies - Glowing Greens,2.0,Regular,Chai latte,2.3,,Speciality Tea - Green,1.3,,Speciality Tea - Fruit,1.3",CARD,6.90,"mastercard,5464631274988989"
+2021-02-23 17:05:06,Isle of Wight,Isabel Goh,",Speciality Tea - Fruit,1.3,,Red Label tea,1.2,Large,Luxury hot chocolate,2.7",CASH,5.20,None
+2021-02-23 17:06:07,Isle of Wight,Maria Locke,",Flavoured iced latte - Hazelnut,2.75",CARD,2.75,"visa16,4847542595119934"
+2021-02-23 17:07:00,Isle of Wight,Brad Oconnor,",Smoothies - Berry Beautiful,2.0",CARD,2.00,"visa13,4137272256716"
+2021-02-23 17:08:46,Isle of Wight,Timothy Cartagena,"Regular,Flavoured latte - Vanilla,2.55,,Speciality Tea - English breakfast,1.3",CASH,3.85,None
+2021-02-23 17:09:10,Isle of Wight,Kyle Yaple,",Iced americano,2.15,Large,Flavoured hot chocolate - Vanilla,2.9",CASH,5.05,None
+2021-02-23 17:10:51,Isle of Wight,Hillary Morales,",Flat white,2.15",CARD,2.15,"americanexpress,373956795687286"
+2021-02-23 17:11:18,Isle of Wight,Richard Amodeo,"Large,Espresso,1.8,,Glass of milk,0.7,Large,Americano,2.25,,Frappes - Chocolate Cookie,2.75,,Frappes - Coffee,2.75",CASH,10.25,None
+2021-02-23 17:12:23,Isle of Wight,Rose Howell,",Babyccino,0.0,Regular,Flavoured hot chocolate - Hazelnut,2.6,Large,Espresso,1.8",CASH,4.40,None
+2021-02-23 17:13:02,Isle of Wight,Michael Burke,",Smoothies - Berry Beautiful,2.0",CARD,2.00,"discover,6011337863893863"
+2021-02-23 17:14:13,Isle of Wight,Andre Mclain,",Frappes - Coffee,2.75,,Iced latte,2.35,Regular,Chai latte,2.3,,Speciality Tea - Fruit,1.3,,Flavoured iced latte - Caramel,2.75",CARD,11.45,"americanexpress,3561858325783710"
+2021-02-23 17:15:24,Isle of Wight,Roy Jackson,",Flat white,2.15",CARD,2.15,"americanexpress,378555651437466"
+2021-02-23 17:16:57,Isle of Wight,William Rudzik,",Flavoured iced latte - Vanilla,2.75,Regular,Filter coffee,1.5,Large,Americano,2.25,Large,Americano,2.25",CASH,8.75,None
+2021-02-23 17:17:32,Isle of Wight,Stan Boyer,",Speciality Tea - Fruit,1.3,,Cortado,2.05",CASH,3.35,None
+2021-02-23 17:18:45,Isle of Wight,Jeffrey Robinson,"Regular,Flavoured latte - Gingerbread,2.55",CARD,2.55,"americanexpress,379928153695833"
+2021-02-23 17:19:12,Isle of Wight,Justin Beaudreault,",Iced americano,2.15,Large,Latte,2.45,,Iced americano,2.15,,Frappes - Strawberries & Cream,2.75",CARD,9.50,"americanexpress,378653129736997"
+2021-02-23 17:20:24,Isle of Wight,Michael Arcizo,"Regular,Americano,1.95,Regular,Flavoured hot chocolate - Caramel,2.6,,Hot Chocolate,1.4,Regular,Flavoured latte - Caramel,2.55",CASH,8.50,None
+2021-02-23 17:21:48,Isle of Wight,Isabel Ward,",Speciality Tea - Peppermint,1.3,,Mocha,2.3,,Iced latte,2.35,,Frappes - Chocolate Cookie,2.75",CASH,8.70,None
+2021-02-23 17:22:58,Isle of Wight,Robin Occhuizzo,"Large,Luxury hot chocolate,2.7,,Smoothies - Carrot Kick,2.0,,Smoothies - Glowing Greens,2.0,,Frappes - Coffee,2.75",CASH,9.45,None
+2021-02-23 17:23:37,Isle of Wight,Karen Brown,",Glass of milk,0.7,,Hot Chocolate,1.4,,Red Label tea,1.2,Large,Flavoured latte - Hazelnut,2.85",CARD,6.15,"visa13,4727546127576"
+2021-02-23 17:24:45,Isle of Wight,Edward Rumph,",Smoothies - Berry Beautiful,2.0,,Flat white,2.15",CASH,4.15,None
+2021-02-23 17:25:10,Isle of Wight,Anthony Coburn,",Flavoured iced latte - Caramel,2.75,,Iced latte,2.35,Large,Flavoured latte - Gingerbread,2.85",CASH,7.95,None
+2021-02-23 17:26:03,Isle of Wight,Glen Soles,"Large,Espresso,1.8,Regular,Latte,2.15,,Frappes - Chocolate Cookie,2.75",CASH,6.70,None
+2021-02-23 17:27:10,Isle of Wight,Susan Parker,"Regular,Flavoured hot chocolate - Hazelnut,2.6,,Speciality Tea - Earl Grey,1.3,Large,Cappuccino,2.45,,Speciality Tea - Fruit,1.3,,Speciality Tea - Earl Grey,1.3",CASH,8.95,None
+2021-02-23 17:28:17,Isle of Wight,Suzanne Stewart,",Smoothies - Berry Beautiful,2.0,,Smoothies - Glowing Greens,2.0,Regular,Flavoured latte - Vanilla,2.55,,Speciality Tea - Camomile,1.3,,Flavoured iced latte - Vanilla,2.75",CASH,10.60,None
+2021-02-23 17:29:36,Isle of Wight,William Lowe,"Large,Americano,2.25,,Speciality Tea - Green,1.3",CASH,3.55,None
+2021-02-23 17:30:44,Isle of Wight,Gloria Members,",Hot Chocolate,1.4,,Flavoured iced latte - Hazelnut,2.75,,Speciality Tea - Camomile,1.3",CASH,5.45,None
+2021-02-23 17:31:18,Isle of Wight,Cleo Daniels,"Large,Cappuccino,2.45,,Smoothies - Carrot Kick,2.0,Regular,Filter coffee,1.5",CASH,5.95,None
+2021-02-23 17:32:28,Isle of Wight,Robert Morris,",Flat white,2.15,Large,Americano,2.25,,Iced americano,2.15,,Hot Chocolate,1.4",CARD,7.95,"discover,6011338592232316"
+2021-02-23 17:33:37,Isle of Wight,Donna Bui,",Speciality Tea - Earl Grey,1.3,,Speciality Tea - Fruit,1.3",CASH,2.60,None
+2021-02-23 17:34:42,Isle of Wight,Michael Riggs,"Regular,Flavoured latte - Hazelnut,2.55,Large,Flavoured latte - Vanilla,2.85,,Glass of milk,0.7,Large,Flavoured latte - Hazelnut,2.85,,Speciality Tea - Green,1.3",CARD,10.25,"americanexpress,362865514992773"
+2021-02-23 17:35:46,Isle of Wight,Marcy Baker,",Hot Chocolate,1.4",CASH,1.40,None
+2021-02-23 17:36:28,Isle of Wight,Patrick Harmon,"Regular,Filter coffee,1.5,Large,Americano,2.25,,Smoothies - Berry Beautiful,2.0,,Speciality Tea - Camomile,1.3",CARD,7.05,"visa16,4378628235324336"
+2021-02-23 17:37:40,Isle of Wight,Danny Stevens,",Flavoured iced latte - Caramel,2.75,Large,Espresso,1.8,Regular,Flavoured latte - Vanilla,2.55",CASH,7.10,None
+2021-02-23 17:38:20,Isle of Wight,William Ireland,",Frappes - Chocolate Cookie,2.75,Large,Chai latte,2.6",CARD,5.35,"visa16,4646857116336541"
+2021-02-23 17:39:18,Isle of Wight,Rebecca Adomaitis,",Speciality Tea - English breakfast,1.3,,Frappes - Strawberries & Cream,2.75,,Speciality Tea - Earl Grey,1.3,Large,Latte,2.45,Large,Latte,2.45",CASH,10.25,None
+2021-02-23 17:40:47,Isle of Wight,Helen Phillips,"Large,Americano,2.25,Regular,Americano,1.95,,Flavoured iced latte - Hazelnut,2.75",CASH,6.95,None
+2021-02-23 17:41:34,Isle of Wight,Jessica Andrade,",Smoothies - Glowing Greens,2.0,,Iced latte,2.35",CASH,4.35,None
+2021-02-23 17:42:18,Isle of Wight,Rosie Foley,",Red Label tea,1.2",CARD,1.20,"americanexpress,347838538219424"
+2021-02-23 17:43:47,Isle of Wight,Fred Correa,",Red Label tea,1.2",CASH,1.20,None
+2021-02-23 17:44:17,Isle of Wight,Steven Mcbee,",Smoothies - Carrot Kick,2.0,Large,Americano,2.25,Large,Chai latte,2.6",CARD,6.85,"visa16,4684231667211854"
+2021-02-23 17:45:41,Isle of Wight,Joni Sparks,",Smoothies - Carrot Kick,2.0,,Flavoured iced latte - Caramel,2.75,,Flavoured iced latte - Caramel,2.75,Large,Flavoured latte - Gingerbread,2.85",CARD,10.35,"discover,6011638228126141"
+2021-02-23 17:46:17,Isle of Wight,Louise Odegard,"Large,Flavoured latte - Vanilla,2.85,Large,Luxury hot chocolate,2.7,,Flavoured iced latte - Vanilla,2.75,Large,Luxury hot chocolate,2.7,,Red Label tea,1.2",CARD,12.20,"mastercard,5159715189995526"
+2021-02-23 17:47:19,Isle of Wight,Erin Ferguson,"Large,Flavoured latte - Caramel,2.85,,Red Label tea,1.2,,Smoothies - Carrot Kick,2.0",CASH,6.05,None
+2021-02-23 17:48:27,Isle of Wight,Joyce Harne,"Large,Cappuccino,2.45,,Speciality Tea - Fruit,1.3,,Speciality Tea - Darjeeling,1.3,,Iced latte,2.35,Large,Hot chocolate,2.9",CARD,10.30,"mastercard,5264451946735169"
+2021-02-23 17:49:04,Isle of Wight,Chase Fryer,"Large,Cappuccino,2.45,Regular,Chai latte,2.3",CASH,4.75,None
+2021-02-23 17:50:06,Isle of Wight,Porter Kasten,"Large,Americano,2.25,,Speciality Tea - Green,1.3,,Babyccino,0.0,Regular,Chai latte,2.3",CASH,5.85,None
+2021-02-23 17:51:15,Isle of Wight,Don Harrell,"Large,Latte,2.45,,Flavoured iced latte - Caramel,2.75,,Speciality Tea - Earl Grey,1.3,Large,Filter coffee,1.8",CASH,8.30,None
+2021-02-23 17:52:14,Isle of Wight,Selma Valverde,",Frappes - Chocolate Cookie,2.75,Large,Espresso,1.8,,Frappes - Chocolate Cookie,2.75,,Speciality Tea - Peppermint,1.3",CARD,8.60,"americanexpress,343579474833612"
+2021-02-23 17:53:20,Isle of Wight,Palmira Peterson,"Large,Americano,2.25,,Flavoured iced latte - Hazelnut,2.75",CASH,5.00,None
+2021-02-23 17:54:49,Isle of Wight,Robert Doctor,",Speciality Tea - Darjeeling,1.3,Large,Flavoured hot chocolate - Caramel,2.9,,Smoothies - Carrot Kick,2.0,,Frappes - Coffee,2.75",CARD,8.95,"discover,6011446267942513"
+2021-02-23 17:55:39,Isle of Wight,Audrey Hansen,",Iced americano,2.15,,Glass of milk,0.7,,Mocha,2.3,,Smoothies - Berry Beautiful,2.0,,Babyccino,0.0",CASH,7.15,None
+2021-02-23 17:56:04,Isle of Wight,Natasha Yates,"Large,Chai latte,2.6,Large,Flavoured latte - Caramel,2.85,Large,Hot chocolate,2.9",CASH,8.35,None
+2021-02-23 17:57:28,Isle of Wight,Harriette Blackman,"Regular,Hot chocolate,2.2",CASH,2.20,None
+2021-02-23 17:58:17,Isle of Wight,Ramon Salters,"Regular,Americano,1.95,,Flat white,2.15,,Flavoured iced latte - Caramel,2.75",CASH,6.85,None
+2021-02-23 17:59:04,Isle of Wight,Stanley Cordano,",Frappes - Coffee,2.75,,Speciality Tea - Darjeeling,1.3,,Smoothies - Berry Beautiful,2.0,Large,Latte,2.45",CASH,8.50,None
