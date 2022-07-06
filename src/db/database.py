@@ -20,7 +20,9 @@ def get_connection():
     return connection
 
 
-def close_connection (connection):
+def close_connection (connection, cursor=None):
+    if cursor is not None:
+        cursor.close()
     connection.close()
 
 
