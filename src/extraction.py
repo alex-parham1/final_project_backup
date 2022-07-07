@@ -63,9 +63,9 @@ def get_df_transaction(df):
     transaction_df = df[["date", "payment_type", "total"]]
     return transaction_df
 
+
 # -------------------------------------------------------------------------
 # function that creates all of the individual dataframes (calls the above functions)
-
 @yaspin(text="Creating dataframes...")
 def get_table_df(df):
     time.sleep(1)
@@ -144,12 +144,13 @@ def insert_store(connection, location_df):
         cursor.execute(sql_query)
     print("Stores inserted OK")
 
+
 @yaspin(text="Inserting products into DB...")
 def insert_products(connection, products_df: pd.DataFrame):
     for product in products_df.values.tolist():
-        sql_query = f'''
+        sql_query = f"""
         INSERT INTO products (size, name, price)
-            VALUES ('{product[0]}', '{product[1]}', {product[2]})'''
+            VALUES ('{product[0]}', '{product[1]}', {product[2]})"""
         cursor = connection.cursor()
         cursor.execute(sql_query)
     print("Products inserted OK")
