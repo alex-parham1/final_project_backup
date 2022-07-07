@@ -64,6 +64,8 @@ def get_df_transaction(df):
     return transaction_df
 
 
+# -------------------------------------------------------------------------
+# function that creates all of the individual dataframes (calls the above functions)
 @yaspin(text="Creating dataframes...")
 def get_table_df(df):
     time.sleep(1)
