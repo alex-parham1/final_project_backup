@@ -65,7 +65,8 @@ def get_df_transaction(df):
     transaction_df = df[["date", "payment_type", "total"]]
     return transaction_df
 
-@yaspin(text='Creating dataframes...')
+
+@yaspin(text="Creating dataframes...")
 def get_table_df(df):
     time.sleep(1)
     customer_df = get_df_customers(df)
@@ -135,28 +136,31 @@ def insert_cards(connection):
 
 
 @yaspin(text="Inserting stores into DB...")
-def insert_store(connection):
-    for store in df["location"]:
+def insert_store(connection, location_df):
+    for store in location_df.values.tolist():
         sql_query = f"""
-        INSERT INTO store (name)
-        VALUES ('{store}') """
+        INSERT into store (name)
+            VALUES ('{store[0]}')"""
         cursor = connection.cursor()
         cursor.execute(sql_query)
     print("Stores inserted OK")
 
+
 @yaspin(text="Inserting products into DB...")
-def insert_products(connection, products_df:pd.DataFrame):
+def insert_products(connection, products_df: pd.DataFrame):
     print(products_df)
     for product in products_df.values.tolist():
-        sql_query = f'''
+        sql_query = f"""
         INSERT INTO products (size, name, price)
-            VALUES ('{product[0]}', '{product[1]}', {product[2]})'''
+            VALUES ('{product[0]}', '{product[1]}', {product[2]})"""
         cursor = connection.cursor()
         cursor.execute(sql_query)
-            
+    print("Products inserted OK")
+
 
 df = get_data_frame()
 customer_df, location_df, cards_df, products_df, transaction_df = get_table_df(df)
 products_df = clean_products(products_df)
-insert_products(connection, products_df)
-connection.commit()
+insert_store(connection, location_df)
+# insert_products(connection, products_df)
+# connection.commit()
