@@ -49,7 +49,8 @@ def get_df_location(df):
 
 def get_df_cards(df):
     cards_df = df[["card_number", "card_type"]]
-    cards_df = cards_df.drop_duplicates()
+    # cards_df = cards_df.drop_duplicates()
+    # commented out temporarily while transaction table not yet made
     return cards_df
 
 
