@@ -63,8 +63,9 @@ def get_df_transaction(df):
     transaction_df = df[["date", "payment_type", "total"]]
     return transaction_df
 
-
+@yaspin(text='Creating dataframes...')
 def get_table_df(df):
+    time.sleep(1)
     customer_df = get_df_customers(df)
     location_df = get_df_location(df)
     cards_df = get_df_cards(df)
@@ -72,7 +73,8 @@ def get_table_df(df):
     transaction_df = get_df_transaction(df)
     return customer_df, location_df, cards_df, products_df, transaction_df
 
-@yaspin(text='Cleaning Products...')
+
+@yaspin(text="Cleaning Products...")
 def clean_products(products_df):
     time.sleep(1)
     products = []
@@ -93,6 +95,7 @@ def clean_products(products_df):
     clean_products_df = clean_products_df.sort_values("NAME")
     return clean_products_df
 
+
 def seperate_products(products_df):
     rule = [1, 2, 3]
     products = []
@@ -105,6 +108,7 @@ def seperate_products(products_df):
         products.append(buffer)
     return products
 
+
 @yaspin(text="Inserting names into DB...")
 def insert_names(connection):
     for name in df["customer_name"]:
@@ -115,6 +119,7 @@ def insert_names(connection):
         cursor.execute(sql_query)
     connection.commit()
     print("Names inserted OK")
+
 
 @yaspin(text="Inserting cards into DB...")
 def insert_cards(connection):
@@ -128,6 +133,7 @@ def insert_cards(connection):
     connection.commit()
     print("Cards inserted OK")
 
+
 @yaspin(text="Inserting stores into DB...")
 def insert_store(connection):
     for store in df["location"]:
@@ -138,6 +144,7 @@ def insert_store(connection):
         cursor.execute(sql_query)
     connection.commit()
     print("Stores inserted OK")
+
 
 df = get_data_frame()
 customer_df, location_df, cards_df, products_df, transaction_df = get_table_df(df)
