@@ -13,7 +13,7 @@ connection = get_connection()
 
 @yaspin(text="Cleaning data...")
 def get_data_frame():
-    time.sleep(3)
+    time.sleep(1)
     df = pd.DataFrame()
     target = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
     for filename in os.listdir(f"{target}/data"):
@@ -42,6 +42,7 @@ def get_df_customers(df):
 
 def get_df_location(df):
     location_df = df[["location"]]
+    location_df = location_df.drop_duplicates()
     return location_df
 
 
@@ -74,7 +75,7 @@ def get_table_df(df):
     return customer_df, location_df, cards_df, products_df, transaction_df
 
 
-@yaspin(text="Cleaning Products...")
+@yaspin(text="Cleaning products...")
 def clean_products(products_df):
     time.sleep(1)
     products = []
@@ -117,7 +118,6 @@ def insert_names(connection):
             VALUES ('{name}')"""
         cursor = connection.cursor()
         cursor.execute(sql_query)
-    connection.commit()
     print("Names inserted OK")
 
 
@@ -130,7 +130,6 @@ def insert_cards(connection):
                 VALUES ('{card_number}', '{card_type}')"""
         cursor = connection.cursor()
         cursor.execute(sql_query)
-    connection.commit()
     print("Cards inserted OK")
 
 
@@ -142,10 +141,21 @@ def insert_store(connection):
         VALUES ('{store}') """
         cursor = connection.cursor()
         cursor.execute(sql_query)
-    connection.commit()
     print("Stores inserted OK")
 
+@yaspin(text="Inserting products into DB...")
+def insert_products(connection, products_df:pd.DataFrame):
+    print(products_df)
+    for product in products_df.values.tolist():
+        sql_query = f'''
+        INSERT INTO products (size, name, price)
+            VALUES ('{product[0]}', '{product[1]}', {product[2]})'''
+        cursor = connection.cursor()
+        cursor.execute(sql_query)
+            
 
 df = get_data_frame()
 customer_df, location_df, cards_df, products_df, transaction_df = get_table_df(df)
-clean_products(products_df)
+products_df = clean_products(products_df)
+insert_products(connection, products_df)
+connection.commit()
