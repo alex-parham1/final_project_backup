@@ -2,7 +2,7 @@ from dotenv import load_dotenv
 import pymysql
 import os
 
-target = os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
+target = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 
 
 

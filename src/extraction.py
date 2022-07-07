@@ -77,7 +77,7 @@ def insert_cards(connection):
         cursor = connection.cursor()
         cursor.execute(sql_query)
         connection.commit()
-        print("Cards inserted OK")
+    print("Cards inserted OK")
 
 
 @yaspin(text="Inserting stores into DB...")
@@ -89,7 +89,7 @@ def insert_store(connection):
         cursor = connection.cursor()
         cursor.execute(sql_query)
         connection.commit()
-        print("Stores inserted OK")
+    print("Stores inserted OK")
 
 
 insert_names(connection)
