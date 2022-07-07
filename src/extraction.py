@@ -13,6 +13,7 @@ connection = get_connection()
 
 @yaspin(text="Cleaning data...")
 def get_data_frame():
+    time.sleep(3)
     df = pd.DataFrame()
     target = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
     for filename in os.listdir(f"{target}/data"):
@@ -53,9 +54,10 @@ def get_df_products(df):
     products_df = df[["products"]]
     return products_df
 
-def insert_products(connection, products_df):
-    for product in products_df:
-        
+
+# def insert_products(connection, products_df):
+#     for product in products_df:
+
 
 def get_df_transaction(df):
     transaction_df = df[["date", "payment_type", "total"]]
@@ -70,10 +72,9 @@ def get_table_df(df):
     transaction_df = get_df_transaction(df)
     return customer_df, location_df, cards_df, products_df, transaction_df
 
-
-
-
+@yaspin(text='Cleaning Products...')
 def clean_products(products_df):
+    time.sleep(1)
     products = []
     for order in products_df["products"]:
         order_split = order.split(",")
@@ -84,9 +85,13 @@ def clean_products(products_df):
             elif item[0] == "":
                 order_split[order_split.index(item)][0] = "Small"
         products.append(order_split)
+    clean_products_df = pd.DataFrame(columns=["SIZE", "NAME", "PRICE"])
     for product in products:
-        print(product)
-
+        temp_df = pd.DataFrame(product, columns=["SIZE", "NAME", "PRICE"])
+        clean_products_df = pd.concat([clean_products_df, temp_df])
+    clean_products_df = clean_products_df.drop_duplicates(ignore_index=True)
+    clean_products_df = clean_products_df.sort_values("NAME")
+    return clean_products_df
 
 def seperate_products(products_df):
     rule = [1, 2, 3]
@@ -100,25 +105,6 @@ def seperate_products(products_df):
         products.append(buffer)
     return products
 
-    #     # span = 3
-    #     # ",".join(order[i:i+span])
-    #     # for i in range(0, len(order), span):
-    #     for i in range(0, len(order_split) - 1, 3) :
-    #         if i < len(order_split) - 1:
-    #             products.append(",".join([order_split[i], order_split[i+1]]))
-    #         else:
-    #             products.append(order_split[i])
-    # for product in products:
-    #     print(product)
-
-
-# Gets the data frame to check the code is working
-df = get_data_frame()
-
-products_df = get_df_products(df)
-clean_products(products_df)
-
-
 @yaspin(text="Inserting names into DB...")
 def insert_names(connection):
     for name in df["customer_name"]:
@@ -129,7 +115,6 @@ def insert_names(connection):
         cursor.execute(sql_query)
     connection.commit()
     print("Names inserted OK")
-
 
 @yaspin(text="Inserting cards into DB...")
 def insert_cards(connection):
@@ -143,7 +128,6 @@ def insert_cards(connection):
     connection.commit()
     print("Cards inserted OK")
 
-
 @yaspin(text="Inserting stores into DB...")
 def insert_store(connection):
     for store in df["location"]:
@@ -155,14 +139,6 @@ def insert_store(connection):
     connection.commit()
     print("Stores inserted OK")
 
-
-
-
-    # insert_names(connection)
-    # insert_cards(connection)
-    # insert_store(connection)
-    # print(
-    "Note to TEAM YOGURT = if you're putting data in while testing this file - dont forget to take it out again!"
-
-
-# )
+df = get_data_frame()
+customer_df, location_df, cards_df, products_df, transaction_df = get_table_df(df)
+clean_products(products_df)
