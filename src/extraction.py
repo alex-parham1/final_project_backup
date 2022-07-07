@@ -37,6 +37,7 @@ def get_data_frame():
 
 def get_df_customers(df):
     customer_df = df[["customer_name"]]
+    customer_df = customer_df.drop_duplicates()
     return customer_df
 
 
@@ -111,10 +112,10 @@ def seperate_products(products_df):
 
 
 @yaspin(text="Inserting names into DB...")
-def insert_names(connection):
-    for name in df["customer_name"]:
+def insert_names(connection, customer_df:pd.DataFrame):
+    for name in customer_df.values.tolist:
         sql_query = f"""
-        INSERT into customers (name)
+        INSERT INTO customers (name)
             VALUES ('{name}')"""
         cursor = connection.cursor()
         cursor.execute(sql_query)
