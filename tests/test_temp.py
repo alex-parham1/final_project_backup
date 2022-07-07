@@ -1,4 +1,7 @@
 from src.scripts import temp
+from src.scripts import notebook_utils
+
+
 
 
 def test_temp():
