@@ -48,17 +48,14 @@ def get_df_location(df):
 
 
 def get_df_cards(df):
-    cards_df = df[["card_type", "card_number"]]
+    cards_df = df[["card_number", "card_type"]]
+    cards_df = cards_df.drop_duplicates()
     return cards_df
 
 
 def get_df_products(df):
     products_df = df[["products"]]
     return products_df
-
-
-# def insert_products(connection, products_df):
-#     for product in products_df:
 
 
 def get_df_transaction(df):
@@ -113,23 +110,22 @@ def seperate_products(products_df):
 
 
 @yaspin(text="Inserting names into DB...")
-def insert_names(connection, customer_df:pd.DataFrame):
-    for name in customer_df.values.tolist:
+def insert_names(connection, customer_df: pd.DataFrame):
+    for name in customer_df.values.tolist():
         sql_query = f"""
         INSERT INTO customers (name)
-            VALUES ('{name}')"""
+            VALUES ('{name[0]}')"""
         cursor = connection.cursor()
         cursor.execute(sql_query)
     print("Names inserted OK")
 
 
 @yaspin(text="Inserting cards into DB...")
-def insert_cards(connection):
-    for card_type in df["card_type"]:
-        for card_number in df["card_number"]:
-            sql_query = f"""
-            INSERT INTO cards (card_number, card_type)
-                VALUES ('{card_number}', '{card_type}')"""
+def insert_cards(connection, cards_df: pd.DataFrame):
+    for cards in cards_df.values.tolist():
+        sql_query = f"""
+        INSERT into cards (card_number, card_type)
+            VALUES ('{cards[0]}', '{cards[1]}')"""
         cursor = connection.cursor()
         cursor.execute(sql_query)
     print("Cards inserted OK")
@@ -148,7 +144,6 @@ def insert_store(connection, location_df):
 
 @yaspin(text="Inserting products into DB...")
 def insert_products(connection, products_df: pd.DataFrame):
-    print(products_df)
     for product in products_df.values.tolist():
         sql_query = f"""
         INSERT INTO products (size, name, price)
@@ -158,9 +153,15 @@ def insert_products(connection, products_df: pd.DataFrame):
     print("Products inserted OK")
 
 
-df = get_data_frame()
-customer_df, location_df, cards_df, products_df, transaction_df = get_table_df(df)
-products_df = clean_products(products_df)
-insert_store(connection, location_df)
-# insert_products(connection, products_df)
-# connection.commit()
+def etl():
+    df = get_data_frame()
+    customer_df, location_df, cards_df, products_df, transaction_df = get_table_df(df)
+    products_df = clean_products(products_df)
+    insert_names(connection, customer_df)
+    insert_cards(connection, cards_df)
+    insert_store(connection, location_df)
+    insert_products(connection, products_df)
+    connection.commit()
+
+
+etl()
