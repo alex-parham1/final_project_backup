@@ -2,7 +2,7 @@ import pandas as pd
 
 # import pandas_profiling
 import os
-from database import get_connection, close_connection, commit_connection
+from src.database import get_connection, close_connection, commit_connection
 from dotenv import load_dotenv
 from yaspin import yaspin
 import time
@@ -15,7 +15,7 @@ def get_data_frame():
     time.sleep(1)
     df = pd.DataFrame()
     # target path relative to this file (where to find the csv)
-    target = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+    target = os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
     for filename in os.listdir(f"{target}/data"):
         # for each file, put all the data into a dataframe and concat it into our main dataframe
         temp_df = pd.read_csv(f"{target}/data/{filename}")
