@@ -191,11 +191,12 @@ def etl():
     insert_store(connection, location_df)
     insert_products(connection, products_df)
 
-    connection.commit()
+    # connection.commit()
     connection.close()
 
+#---------------------------------------------------
+#--------------functions end here-------------------
+#this file just runs this one command
+if __name__ == '__main__':
+    etl()
 
-# ---------------------------------------------------
-# --------------functions end here-------------------
-# this file just runs this one command
-etl()
