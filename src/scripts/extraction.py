@@ -15,7 +15,9 @@ def get_data_frame():
     time.sleep(1)
     df = pd.DataFrame()
     # target path relative to this file (where to find the csv)
-    target = os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
+    target = os.path.dirname(
+        os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+    )
     for filename in os.listdir(f"{target}/data"):
         # for each file, put all the data into a dataframe and concat it into our main dataframe
         temp_df = pd.read_csv(f"{target}/data/{filename}")
@@ -194,9 +196,9 @@ def etl():
     # connection.commit()
     connection.close()
 
-#---------------------------------------------------
-#--------------functions end here-------------------
-#this file just runs this one command
-if __name__ == '__main__':
-    etl()
 
+# ---------------------------------------------------
+# --------------functions end here-------------------
+# this file just runs this one command
+if __name__ == "__main__":
+    etl()
