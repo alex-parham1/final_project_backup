@@ -36,12 +36,12 @@ def get_data_frame():
         "products",
         "payment_type",
         "total",
-        "card",
+        "card_number",
     ]
     df.reset_index()
     # This part of the function begins to work on the transform
     # separates card type and number into different columns
-    df[["card_type", "card_number"]] = df["card"].str.split(",", expand=True)
+    # df[["card_type", "card_number"]] = df["card"].str.split(",", expand=True)
     df.dropna()
     return df
 
@@ -61,7 +61,7 @@ def get_df_location(df):
 
 
 def get_df_cards(df):
-    cards_df = df[["card_number", "card_type"]]
+    cards_df = df[["card_number"]]
     # cards_df = cards_df.drop_duplicates()
     # commented out temporarily while transaction table not yet made
     return cards_df
@@ -152,8 +152,8 @@ def insert_names(connection, customer_df: pd.DataFrame):
 def insert_cards(connection, cards_df: pd.DataFrame):
     for cards in cards_df.values.tolist():
         sql_query = f"""
-        INSERT into cards (card_number, card_type)
-            VALUES ('{cards[0]}', '{cards[1]}')"""
+        INSERT into cards (card_number)
+            VALUES ('{cards[0]}')"""
         cursor = connection.cursor()
         cursor.execute(sql_query)
     print("Cards inserted OK")
