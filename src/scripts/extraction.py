@@ -196,9 +196,9 @@ def etl():
     connection = get_connection()
 
     # each of these executes a series of sql commands to insert the data into our database
-    #insert_names(connection, customer_df)
-    #insert_cards(connection, cards_df)
-    #insert_store(connection, location_df)
+    insert_names(connection, customer_df)
+    insert_cards(connection, cards_df)
+    insert_store(connection, location_df)
     insert_products(connection, products_df)
 
     connection.commit()
