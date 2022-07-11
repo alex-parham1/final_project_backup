@@ -131,3 +131,4 @@ dmypy.json
 #when we add more files for DB connection add in 
 *.html
 test_code.py
+.DS_Store
