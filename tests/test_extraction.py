@@ -24,12 +24,12 @@ def test_get_df_customers_empty():
         expected_data.reset_index(drop=True)
     )
 
+
 def test_get_df_customers_unhappy_path():
     with pytest.raises(Exception):
         list = [1, 4, 5]
-        data = pd.DataFrame(list, columns=['CUSTOMER_NAME'])
+        data = pd.DataFrame(list, columns=["CUSTOMER_NAME"])
         result_dataframe = ex.get_df_customers(data)
-
 
 
 def test_get_df_location():
