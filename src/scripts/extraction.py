@@ -1,11 +1,18 @@
 import pandas as pd
 
 # import pandas_profiling
-import os
-from src.database import get_connection, close_connection, commit_connection
+import sys
 from dotenv import load_dotenv
 from yaspin import yaspin
 import time
+import os
+
+main_dir = os.path.dirname(
+        os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+    )
+sys.path.append(f'{main_dir}')
+
+from src.database import get_connection, close_connection, commit_connection
 
 # This function forms the **E** from ETL - it extracts the data and puts it into a dataframe.
 
