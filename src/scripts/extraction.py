@@ -192,6 +192,7 @@ def insert_products(connection, products_df: pd.DataFrame):
 
 # -----------------------------------------------------
 
+
 def etl(
     get_data_frame=get_data_frame,
     get_table_df=get_table_df,
@@ -226,4 +227,3 @@ def etl(
 # this file just runs this one command
 if __name__ == "__main__":
     etl()
-
