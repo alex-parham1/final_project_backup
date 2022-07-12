@@ -8,4 +8,3 @@ def get_labels_and_values(data: tuple):
         values.append(entry[1])
 
     return labels, values
-

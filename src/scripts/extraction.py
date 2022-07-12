@@ -78,7 +78,14 @@ def get_df_transaction(df):
 # -------------------------------------------------------------------------
 # function that creates all of the individual dataframes (calls the above functions)
 @yaspin(text="Creating dataframes...")
-def get_table_df(df):
+def get_table_df(
+    df,
+    get_df_customers=get_df_customers,
+    get_df_location=get_df_location,
+    get_df_cards=get_df_cards,
+    get_df_products=get_df_products,
+    get_df_transaction=get_df_transaction,
+):
     time.sleep(1)
     customer_df = get_df_customers(df)
     location_df = get_df_location(df)
@@ -86,33 +93,6 @@ def get_table_df(df):
     products_df = get_df_products(df)
     transaction_df = get_df_transaction(df)
     return customer_df, location_df, cards_df, products_df, transaction_df
-
-
-# cleaning our product data
-@yaspin(text="Cleaning products...")
-def clean_products(products_df):
-    time.sleep(1)
-    products = []
-    
-    for order in products_df["products"]:
-        order_split = list(order.split(","))
-        # split each row of products into a list, separated by commas
-        order_split = seperate_products(order_split)
-        products.append(order_split)
-    # make a dataframe to house our products and provide the column names
-    clean_products_df = pd.DataFrame(columns=["SIZE", "NAME", "FLAVOUR", "PRICE"])
-    for product in products:
-        # itterate through and add each product to the new dataframe
-        temp_df = pd.DataFrame(product, columns=["SIZE", "NAME", "FLAVOUR", "PRICE"])
-        clean_products_df = pd.concat([clean_products_df, temp_df])
-    # drop any duplicates and sort by name, so it is easier to read
-    clean_products_df = clean_products_df.drop_duplicates(ignore_index=True)
-    clean_products_df = clean_products_df.sort_values("NAME")
-
-    return clean_products_df
-
-
-
 
 
 # each product consists of three values: size, name and price
@@ -129,12 +109,40 @@ def seperate_products(products_df):
             new_split[index].insert(1, "None")
 
     new_split_df = pd.DataFrame(new_split, columns=["product", "flavour", "price"])
-    new_split_df[["size", "name"]] = new_split_df["product"].str.split(" ", n=1, expand=True)
+    new_split_df[["size", "name"]] = new_split_df["product"].str.split(
+        " ", n=1, expand=True
+    )
 
     new_split_df = new_split_df.drop(columns=["product"])
     new_split_df = new_split_df[["size", "name", "flavour", "price"]]
 
     return new_split_df.values.tolist()
+
+
+# cleaning our product data
+@yaspin(
+    text="Cleaning products...",
+)
+def clean_products(products_df, seperate_products=seperate_products):
+    time.sleep(1)
+    products = []
+
+    for order in products_df["products"]:
+        order_split = list(order.split(","))
+        # split each row of products into a list, separated by commas
+        order_split = seperate_products(order_split)
+        products.append(order_split)
+    # make a dataframe to house our products and provide the column names
+    clean_products_df = pd.DataFrame(columns=["SIZE", "NAME", "FLAVOUR", "PRICE"])
+    for product in products:
+        # itterate through and add each product to the new dataframe
+        temp_df = pd.DataFrame(product, columns=["SIZE", "NAME", "FLAVOUR", "PRICE"])
+        clean_products_df = pd.concat([clean_products_df, temp_df])
+    # drop any duplicates and sort by name, so it is easier to read
+    clean_products_df = clean_products_df.drop_duplicates(ignore_index=True)
+    clean_products_df = clean_products_df.sort_values("NAME")
+
+    return clean_products_df
 
 
 # individual functions to isert into all the different tables
@@ -185,7 +193,16 @@ def insert_products(connection, products_df: pd.DataFrame):
 # -----------------------------------------------------
 
 
-def etl():
+def etl(
+    get_data_frame=get_data_frame,
+    get_table_df=get_table_df,
+    clean_products=clean_products,
+    get_connection=get_connection,
+    insert_names=insert_names,
+    insert_cards=insert_cards,
+    insert_store=insert_store,
+    insert_products=insert_products,
+):
     # generate our dataframes
     df = get_data_frame()
     customer_df, location_df, cards_df, products_df, transaction_df = get_table_df(df)
