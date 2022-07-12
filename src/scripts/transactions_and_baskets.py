@@ -46,6 +46,8 @@ def insert_transactions():
         cursor = con.cursor()
         cursor.execute(insert_transaction_sql)
 
+        insert_cards_customers
+
     con.commit()
     print("Transactions inserted OK")
 
