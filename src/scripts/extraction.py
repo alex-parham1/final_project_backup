@@ -97,7 +97,7 @@ def get_table_df(
 
 # each product consists of three values: size, name and price
 # this function separates each product from an transaction and makes it into a list, to be stored in another list
-def seperate_products(products_df):
+def separate_products(products_df):
     new_split = []
     for prod in products_df:
         prod = prod.strip()
@@ -123,14 +123,14 @@ def seperate_products(products_df):
 @yaspin(
     text="Cleaning products...",
 )
-def clean_products(products_df, seperate_products=seperate_products):
+def clean_products(products_df, separate_products=separate_products):
     time.sleep(1)
     products = []
 
     for order in products_df["products"]:
         order_split = list(order.split(","))
         # split each row of products into a list, separated by commas
-        order_split = seperate_products(order_split)
+        order_split = separate_products(order_split)
         products.append(order_split)
     # make a dataframe to house our products and provide the column names
     clean_products_df = pd.DataFrame(columns=["SIZE", "NAME", "FLAVOUR", "PRICE"])
