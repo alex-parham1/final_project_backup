@@ -8,13 +8,3 @@ def get_labels_and_values(data: tuple):
         values.append(entry[1])
 
     return labels, values
-
-
-def get_card_vs_cash(
-    cards: tuple, cash: tuple, labels_and_values=get_labels_and_values
-):
-    combined = (cash[0]), (cards[0])
-    labels, values = labels_and_values(combined)
-    labels = ["cash", "card"]
-
-    return labels, values

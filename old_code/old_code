@@ -1,0 +1,7 @@
+# #no longer needed as data changed to no longer have card types 
+# def get_card_vs_cash(cards: tuple, cash: tuple):
+#     combined = (cash[0]), (cards[0])
+#     labels, values = get_labels_and_values(combined)
+#     labels = ["cash", "card"]
+
+#     return labels, values
