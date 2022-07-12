@@ -226,4 +226,4 @@ def etl(
 # this file just runs this one command
 if __name__ == "__main__":
     etl()
-insert_transactions()
+
