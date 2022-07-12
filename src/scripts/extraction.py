@@ -34,12 +34,12 @@ def get_data_frame():
         "products",
         "payment_type",
         "total",
-        "card",
+        "card_number",
     ]
     df.reset_index()
     # This part of the function begins to work on the transform
     # separates card type and number into different columns
-    df[["card_type", "card_number"]] = df["card"].str.split(",", expand=True)
+    # df[["card_type", "card_number"]] = df["card"].str.split(",", expand=True)
     df.dropna()
     return df
 
@@ -59,7 +59,7 @@ def get_df_location(df):
 
 
 def get_df_cards(df):
-    cards_df = df[["card_number", "card_type"]]
+    cards_df = df[["card_number"]]
     # cards_df = cards_df.drop_duplicates()
     # commented out temporarily while transaction table not yet made
     return cards_df
@@ -93,45 +93,48 @@ def get_table_df(df):
 def clean_products(products_df):
     time.sleep(1)
     products = []
+    
     for order in products_df["products"]:
-        order_split = order.split(",")
+        order_split = list(order.split(","))
         # split each row of products into a list, separated by commas
         order_split = seperate_products(order_split)
-        for item in order_split:
-            if item[0] == "Regular," or item[0] == "Large,":
-                continue
-            # some entries have no size, we prodided some data so that it fits the schema. can be changed if needed
-            elif item[0] == "":
-                order_split[order_split.index(item)][0] = "Small"
-        # add this row of producs to the main products list
         products.append(order_split)
     # make a dataframe to house our products and provide the column names
-    clean_products_df = pd.DataFrame(columns=["SIZE", "NAME", "PRICE"])
+    clean_products_df = pd.DataFrame(columns=["SIZE", "NAME", "FLAVOUR", "PRICE"])
     for product in products:
         # itterate through and add each product to the new dataframe
-        temp_df = pd.DataFrame(product, columns=["SIZE", "NAME", "PRICE"])
+        temp_df = pd.DataFrame(product, columns=["SIZE", "NAME", "FLAVOUR", "PRICE"])
         clean_products_df = pd.concat([clean_products_df, temp_df])
     # drop any duplicates and sort by name, so it is easier to read
     clean_products_df = clean_products_df.drop_duplicates(ignore_index=True)
     clean_products_df = clean_products_df.sort_values("NAME")
+
     return clean_products_df
+
+
+
 
 
 # each product consists of three values: size, name and price
 # this function separates each product from an transaction and makes it into a list, to be stored in another list
 def seperate_products(products_df):
-    rule = [1, 2, 3]
-    products = []
-    total = int(len(products_df) / 3)
-    for value in range(total):
-        buffer = []
-        for num in rule:
-            # add the first three entries to the buffer, popping each after they are used (three items each time)
-            buffer.append(products_df[0])
-            products_df.pop(0)
-        # append to prodcuts list, rinse an repeat until all productsin transaction are stored
-        products.append(buffer)
-    return products
+    new_split = []
+    for prod in products_df:
+        prod = prod.strip()
+        new_split.append(prod.split(" - "))
+
+    for prod in new_split:
+        if len(prod) == 2:
+            index = new_split.index(prod)
+            new_split[index].insert(1, "None")
+
+    new_split_df = pd.DataFrame(new_split, columns=["product", "flavour", "price"])
+    new_split_df[["size", "name"]] = new_split_df["product"].str.split(" ", n=1, expand=True)
+
+    new_split_df = new_split_df.drop(columns=["product"])
+    new_split_df = new_split_df[["size", "name", "flavour", "price"]]
+
+    return new_split_df.values.tolist()
 
 
 # individual functions to isert into all the different tables
@@ -150,8 +153,8 @@ def insert_names(connection, customer_df: pd.DataFrame):
 def insert_cards(connection, cards_df: pd.DataFrame):
     for cards in cards_df.values.tolist():
         sql_query = f"""
-        INSERT into cards (card_number, card_type)
-            VALUES ('{cards[0]}', '{cards[1]}')"""
+        INSERT into cards (card_number)
+            VALUES ('{cards[0]}')"""
         cursor = connection.cursor()
         cursor.execute(sql_query)
     print("Cards inserted OK")
@@ -172,8 +175,8 @@ def insert_store(connection, location_df):
 def insert_products(connection, products_df: pd.DataFrame):
     for product in products_df.values.tolist():
         sql_query = f"""
-        INSERT INTO products (size, name, price)
-            VALUES ('{product[0]}', '{product[1]}', {product[2]})"""
+        INSERT INTO products (size, name, flavour, price)
+            VALUES ('{product[0]}', '{product[1]}', '{product[2]}', {product[3]})"""
         cursor = connection.cursor()
         cursor.execute(sql_query)
     print("Products inserted OK")
@@ -198,7 +201,7 @@ def etl():
     insert_store(connection, location_df)
     insert_products(connection, products_df)
 
-    # connection.commit()
+    connection.commit()
     connection.close()
 
 
