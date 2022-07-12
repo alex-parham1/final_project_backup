@@ -46,5 +46,14 @@ CREATE table IF NOT EXISTS transactions (
 		REFERENCES store (store_id)
 );
 	
-	
+CREATE table IF NOT EXISTS basket (
+	basket_id INT AUTO_INCREMENT PRIMARY KEY,
+	transaction_id INT NOT NULL,
+	product_id INT NOT NULL,
+
+	FOREIGN KEY (transaction_id)
+		REFERENCES transactions (transaction_id)
+	FOREIGN KEY (product_id)
+		REFERENCES products (product_id)
+);
 		
