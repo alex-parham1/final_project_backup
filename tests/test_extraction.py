@@ -1,6 +1,7 @@
 from src.scripts import extraction as ex
 import pandas as pd
 import pytest
+from unittest.mock import Mock
 
 
 def test_get_df_customers_happy_path_drops_duplicates():
@@ -140,9 +141,49 @@ def test_get_df_products_unhappy_path():
         result_dataframe = ex.get_df_products(data)
 
 
-def test_seperate_products_happy_path():
+def test_separate_products_happy_path():
     data =  ["Regular Mocha - 2.30", "Large tea - Caramel - 3.25"]
     expected = [['Regular', 'Mocha', 'None', '2.30'], ['Large','tea', 'Caramel','3.25']]
-    result = ex.seperate_products(data)
+    result = ex.separate_products(data)
     print(result)
     assert result == expected
+
+def test_separate_products_happy_path2():
+    data =  ["Regular Mocha - 2.30", " Large tea - Caramel - 3.25"]
+    expected = [['Regular', 'Mocha', 'None', '2.30'], ['Large','tea', 'Caramel','3.25']]
+    result = ex.separate_products(data)
+    print(result)
+    assert result == expected
+
+def test_separate_products_unhappy_path():
+    data =  ["Regular Mocha : 2.30", "Large tea : Caramel : 3.25"]
+    with pytest.raises(Exception):
+        result = ex.separate_products(data)
+
+def test_separate_products_unhappy_path_empty():
+    data =  []
+    with pytest.raises(Exception):
+        result = ex.separate_products(data)
+
+def test_get_table_df():
+    list = ["test", "test"]
+    df = pd.DataFrame(list, columns=["PRODUCTS"])
+
+    mock_customers = Mock(side_effect=[1])
+    mock_location = Mock(side_effect=[2])
+    mock_cards = Mock(side_effect=[3])
+    mock_products = Mock(side_effect=[4])
+    mock_transaction = Mock(side_effect=[5])
+    
+    result = ex.get_table_df(
+        df,
+        get_df_customers=mock_customers,
+        get_df_location=mock_location,
+        get_df_cards=mock_cards,
+        get_df_products=mock_products,
+        get_df_transaction=mock_transaction
+        )
+
+    expected  = (1,2,3,4,5)
+
+    assert expected == result
