@@ -7,10 +7,8 @@ from yaspin import yaspin
 import time
 import os
 
-main_dir = os.path.dirname(
-        os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-    )
-sys.path.append(f'{main_dir}')
+main_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
+sys.path.append(f"{main_dir}")
 
 from src.database import get_connection, close_connection, commit_connection
 
