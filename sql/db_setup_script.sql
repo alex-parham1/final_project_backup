@@ -56,4 +56,3 @@ CREATE table IF NOT EXISTS basket (
 	FOREIGN KEY (product_id)
 		REFERENCES products (product_id)
 );
-		
