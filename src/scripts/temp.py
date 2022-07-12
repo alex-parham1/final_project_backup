@@ -67,6 +67,7 @@ def test_func():
 # ]
 # print(seperate_products_new(test_list))
 
+
 def seperate_products(products_df):
     new_split = []
     for prod in products_df:
@@ -81,12 +82,21 @@ def seperate_products(products_df):
             new_split[index].insert(1, "None")
 
     new_split_df = pd.DataFrame(new_split, columns=["product", "flavour", "price"])
-    new_split_df[["size", "name"]] = new_split_df["product"].str.split(" ", n=1, expand=True)
+    new_split_df[["size", "name"]] = new_split_df["product"].str.split(
+        " ", n=1, expand=True
+    )
 
     new_split_df = new_split_df.drop(columns=["product"])
     new_split_df = new_split_df[["size", "name", "flavour", "price"]]
 
     return new_split_df.values.tolist()
 
-my_list = ['Regular Mocha - 2.30', ' Regular Flavoured iced latte - Caramel - 2.75', ' Regular Cortado - 2.05', ' Large Flavoured iced latte - Caramel - 3.25', ' Large Flavoured iced latte - Caramel - 3.25']
+
+my_list = [
+    "Regular Mocha - 2.30",
+    " Regular Flavoured iced latte - Caramel - 2.75",
+    " Regular Cortado - 2.05",
+    " Large Flavoured iced latte - Caramel - 3.25",
+    " Large Flavoured iced latte - Caramel - 3.25",
+]
 print(seperate_products(my_list))
