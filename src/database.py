@@ -26,5 +26,21 @@ def close_connection(connection, cursor=None):
     connection.close()
 
 
+def get_cursor(connection):
+    return connection.cursor()
+
+
 def commit_connection(connection):
     connection.commit()
+
+
+def execute_cursor(cursor, sql: str):
+    if sql == "" or sql == None:
+        return
+    else:
+        cursor.execute(sql)
+
+
+def commit_and_close(connection, cursor=None):
+    commit_connection(connection)
+    close_connection(connection, cursor=cursor)
