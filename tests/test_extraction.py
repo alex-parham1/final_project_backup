@@ -83,25 +83,25 @@ def test_get_df_location_unhappy_path():
         result_dataframe = ex.get_df_location(data)
 
 
-# def test_get_df_cards():
-#     list = ["1212", "12333", "123432"]
-#     data = pd.DataFrame(list, columns=["card_number"])
-#     expected_list = ["1212", "12333", "123432"]
-#     expected_data = pd.DataFrame(expected_list, columns=["card_number"])
-#     result_dataframe = ex.get_df_cards(data)
-#     assert result_dataframe.reset_index(drop=True).equals(
-#         expected_data.reset_index(drop=True)
-#     )
+def test_get_df_cards():
+    list = ["1212", "12333", "123432"]
+    data = pd.DataFrame(list, columns=["card_number"])
+    expected_list = ["1212", "12333", "123432"]
+    expected_data = pd.DataFrame(expected_list, columns=["card_number"])
+    result_dataframe = ex.get_df_cards(data)
+    assert result_dataframe.reset_index(drop=True).equals(
+        expected_data.reset_index(drop=True)
+    )
 
-# def test_get_df_cards_empty():
-#     list = []
-#     data = pd.DataFrame(list, columns=["card_number"])
-#     expected_list = []
-#     expected_data = pd.DataFrame(expected_list, columns=["card_number"])
-#     result_dataframe = ex.get_df_cards(data)
-#     assert result_dataframe.reset_index(drop=True).equals(
-#         expected_data.reset_index(drop=True)
-#     )
+def test_get_df_cards_empty():
+    list = []
+    data = pd.DataFrame(list, columns=["card_number"])
+    expected_list = []
+    expected_data = pd.DataFrame(expected_list, columns=["card_number"])
+    result_dataframe = ex.get_df_cards(data)
+    assert result_dataframe.reset_index(drop=True).equals(
+        expected_data.reset_index(drop=True)
+    )
 
 
 def test_get_df_cards_unhappy_path():
@@ -138,3 +138,11 @@ def test_get_df_products_unhappy_path():
         list = ["test", "test"]
         data = pd.DataFrame(list, columns=["PRODUCTS"])
         result_dataframe = ex.get_df_products(data)
+
+
+def test_seperate_products_happy_path():
+    data =  ["Regular Mocha - 2.30", "Large tea - Caramel - 3.25"]
+    expected = [['Regular', 'Mocha', 'None', '2.30'], ['Large','tea', 'Caramel','3.25']]
+    result = ex.seperate_products(data)
+    print(result)
+    assert result == expected
