@@ -10,7 +10,7 @@ import os
 main_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 sys.path.append(f"{main_dir}")
 
-from src.database import get_connection, close_connection, commit_connection
+from src.database import get_connection, commit_and_close, execute_cursor, get_cursor
 
 # This function forms the **E** from ETL - it extracts the data and puts it into a dataframe.
 
@@ -147,46 +147,66 @@ def clean_products(products_df, separate_products=separate_products):
 
 # individual functions to isert into all the different tables
 @yaspin(text="Inserting names into DB...")
-def insert_names(connection, customer_df: pd.DataFrame):
+def insert_names(
+    connection,
+    customer_df: pd.DataFrame,
+    get_cursor=get_cursor,
+    execute_cursor=execute_cursor,
+):
+    cursor = get_cursor(connection)
     for name in customer_df.values.tolist():
         sql_query = f"""
         INSERT INTO customers (name)
             VALUES ('{name[0]}')"""
-        cursor = connection.cursor()
-        cursor.execute(sql_query)
+        execute_cursor(cursor, sql_query)
     print("Names inserted OK")
 
 
 @yaspin(text="Inserting cards into DB...")
-def insert_cards(connection, cards_df: pd.DataFrame):
+def insert_cards(
+    connection,
+    cards_df: pd.DataFrame,
+    get_cursor=get_cursor,
+    execute_cursor=execute_cursor,
+):
+    cursor = get_cursor(connection)
     for cards in cards_df.values.tolist():
         sql_query = f"""
         INSERT into cards (card_number)
             VALUES ('{cards[0]}')"""
-        cursor = connection.cursor()
-        cursor.execute(sql_query)
+        execute_cursor(cursor, sql_query)
     print("Cards inserted OK")
 
 
 @yaspin(text="Inserting stores into DB...")
-def insert_store(connection, location_df):
+def insert_store(
+    connection,
+    location_df: pd.DataFrame,
+    get_cursor=get_cursor,
+    execute_cursor=execute_cursor,
+):
+    cursor = get_cursor(connection)
     for store in location_df.values.tolist():
         sql_query = f"""
         INSERT into store (name)
             VALUES ('{store[0]}')"""
-        cursor = connection.cursor()
-        cursor.execute(sql_query)
+        execute_cursor(cursor, sql_query)
     print("Stores inserted OK")
 
 
 @yaspin(text="Inserting products into DB...")
-def insert_products(connection, products_df: pd.DataFrame):
+def insert_products(
+    connection,
+    products_df: pd.DataFrame,
+    get_cursor=get_cursor,
+    execute_cursor=execute_cursor,
+):
+    cursor = get_cursor(connection)
     for product in products_df.values.tolist():
         sql_query = f"""
         INSERT INTO products (size, name, flavour, price)
             VALUES ('{product[0]}', '{product[1]}', '{product[2]}', {product[3]})"""
-        cursor = connection.cursor()
-        cursor.execute(sql_query)
+        execute_cursor(cursor, sql_query)
     print("Products inserted OK")
 
 
@@ -201,6 +221,7 @@ def etl(
     insert_cards=insert_cards,
     insert_store=insert_store,
     insert_products=insert_products,
+    commit_and_close=commit_and_close,
 ):
     # generate our dataframes
     df = get_data_frame()
@@ -217,8 +238,7 @@ def etl(
     # insert_store(connection, location_df)
     insert_products(connection, products_df)
 
-    connection.commit()
-    connection.close()
+    commit_and_close(connection)
 
 
 # ---------------------------------------------------

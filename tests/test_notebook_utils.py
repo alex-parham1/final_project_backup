@@ -20,4 +20,3 @@ def test_get_labels_and_values_unhappy_list():
     expected = ValueError
     result = nu.get_labels_and_values(data)
     assert expected == result
-
