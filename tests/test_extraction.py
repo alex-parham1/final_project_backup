@@ -313,6 +313,7 @@ def test_insert_names(mock_print: Mock):
     get_cursor.assert_called_once_with(connection)
     execute_cursor.assert_has_calls(calls)
 
+
 @patch("builtins.print")
 def test_insert_names_big_data(mock_print: Mock):
     get_cursor = Mock(side_effect=["cursor"])
@@ -332,8 +333,8 @@ def test_insert_names_big_data(mock_print: Mock):
             VALUES ('test')""",
         ),
     ]
-    list = [["test",'testing'], ["test",'testing']]
-    df = pd.DataFrame(list, columns=["PRODUCTS",'name'])
+    list = [["test", "testing"], ["test", "testing"]]
+    df = pd.DataFrame(list, columns=["PRODUCTS", "name"])
 
     ex.insert_names(
         connection, df, get_cursor=get_cursor, execute_cursor=execute_cursor
@@ -376,6 +377,7 @@ def test_insert_cards(mock_print: Mock):
     get_cursor.assert_called_once_with(connection)
     execute_cursor.assert_has_calls(calls)
 
+
 @patch("builtins.print")
 def test_insert_cards_big_data(mock_print: Mock):
     get_cursor = Mock(side_effect=["cursor"])
@@ -396,8 +398,8 @@ def test_insert_cards_big_data(mock_print: Mock):
         ),
     ]
 
-    list = [["test",'testing'], ["test",'testing']]
-    df = pd.DataFrame(list, columns=["PRODUCTS",'name'])
+    list = [["test", "testing"], ["test", "testing"]]
+    df = pd.DataFrame(list, columns=["PRODUCTS", "name"])
 
     ex.insert_cards(
         connection, df, get_cursor=get_cursor, execute_cursor=execute_cursor
@@ -440,6 +442,7 @@ def test_insert_store(mock_print: Mock):
     get_cursor.assert_called_once_with(connection)
     execute_cursor.assert_has_calls(calls)
 
+
 @patch("builtins.print")
 def test_insert_store_big_data(mock_print: Mock):
     get_cursor = Mock(side_effect=["cursor"])
@@ -460,8 +463,8 @@ def test_insert_store_big_data(mock_print: Mock):
         ),
     ]
 
-    list = [["test",'testing'], ["test",'testing']]
-    df = pd.DataFrame(list, columns=["PRODUCTS",'name'])
+    list = [["test", "testing"], ["test", "testing"]]
+    df = pd.DataFrame(list, columns=["PRODUCTS", "name"])
 
     ex.insert_store(
         connection, df, get_cursor=get_cursor, execute_cursor=execute_cursor
@@ -470,6 +473,7 @@ def test_insert_store_big_data(mock_print: Mock):
     mock_print.assert_called_once_with("Stores inserted OK")
     get_cursor.assert_called_once_with(connection)
     execute_cursor.assert_has_calls(calls)
+
 
 # -------------insert products-----------------
 @patch("builtins.print")
@@ -493,6 +497,7 @@ def test_insert_products(mock_print: Mock):
     get_cursor.assert_called_once_with(connection)
     execute_cursor.assert_has_calls(calls)
 
+
 def test_insert_products_bad_data():
     get_cursor = Mock(side_effect=["cursor"])
     execute_cursor = Mock()
@@ -506,12 +511,36 @@ def test_insert_products_bad_data():
             connection, df, get_cursor=get_cursor, execute_cursor=execute_cursor
         )
 
-#----------get_data_frame------------
+
+# ----------get_data_frame------------
 
 # def test_get_data_frame():
 #     pass
 
-#----------clean_products-------------
+# ----------clean_products-------------
+
 
 def test_clean_products():
-    pass
+    value = [
+        "Regular Hot chocolate - 2.20, Large Speciality Tea - Camomile - 1.60, Large Mocha - 2.70, Regular Cortado - 2.05",
+        " Large Hot chocolate - 2.90, Large Flavoured iced latte - Caramel - 3.25",
+    ]
+    df = pd.DataFrame(value, columns=["products"])
+
+    ex_list = [
+        ["Regular","Hot chocolate","None",'2.20'],
+        ["Large","Speciality Tea","Camomile",'1.60'],
+        ["Large","Mocha","None",'2.70'],
+        ["Regular","Cortado","None",'2.05'],
+        ["Large","Hot chocolate","None",'2.90'],
+        ["Large","Flavoured iced latte","Caramel",'3.25']
+    ]  
+    expected = pd.DataFrame(ex_list, columns=["SIZE", "NAME", "FLAVOUR", "PRICE"])
+    
+    expected = expected.sort_values("NAME")
+    expected = expected.reset_index(drop=True)
+
+    result = ex.clean_products(df)
+    result = result.reset_index(drop=True)
+
+    assert result.equals(expected)
