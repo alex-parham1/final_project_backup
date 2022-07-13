@@ -132,3 +132,4 @@ dmypy.json
 *.html
 test_code.py
 .DS_Store
+test.ipynb
