@@ -212,6 +212,7 @@ def insert_products(
 
 # -----------------------------------------------------
 
+
 def etl(
     get_data_frame=get_data_frame,
     get_table_df=get_table_df,
@@ -233,9 +234,9 @@ def etl(
     connection = get_connection()
 
     # each of these executes a series of sql commands to insert the data into our database
-    # insert_names(connection, customer_df)
-    # insert_cards(connection, cards_df)
-    # insert_store(connection, location_df)
+    insert_names(connection, customer_df)
+    insert_cards(connection, cards_df)
+    insert_store(connection, location_df)
     insert_products(connection, products_df)
 
     commit_and_close(connection)
@@ -246,4 +247,3 @@ def etl(
 # this file just runs this one command
 if __name__ == "__main__":
     etl()
-

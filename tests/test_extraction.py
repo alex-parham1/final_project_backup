@@ -190,10 +190,7 @@ def test_separate_products_unhappy_path_empty():
     with pytest.raises(Exception):
         result = ex.separate_products(data)
 
-
 # --------get_table_df---------------------
-
-
 def test_get_table_df():
     list = ["test", "test"]
     df = pd.DataFrame(list, columns=["PRODUCTS"])
