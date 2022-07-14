@@ -38,49 +38,86 @@ def get_data_frame():
     ]
     return df
 
+
 def separate_products(prod):
     prod = prod.strip()
     prod = prod.split(", ")
     return prod
 
+
 def extract_size(prod):
     prod_list = prod.split(" ")
     return prod_list[0]
+
 
 def extract_price(prod):
     prod_list = prod.split(" - ")
     return prod_list[-1]
 
+
 def extract_flavour(prod):
-    prod_list = prod.split(' - ')
+    prod_list = prod.split(" - ")
     if len(prod_list) == 2:
-        add = prod_list.insert(1, "NaN")
+        add = prod_list.insert(1, "None")
     if len(prod_list) == 3:
         add = prod_list[1]
     return add
 
+
 def extract_name(prod):
-    prod_list = prod.split(' - ')
+    prod_list = prod.split(" - ")
     if len(prod_list) == 3:
         prod_list.pop(-1)
     prod_list.pop(-1)
-    prod_list = prod_list[0].split(' ')
+    prod_list = prod_list[0].split(" ")
     prod_list.pop(0)
     name = " ".join(prod_list)
-    return name 
+    return name
 
-if __name__ == "__main__":
+
+def clean_the_data():
     df = get_data_frame()
-    df['separate_products'] = df['products'].apply(separate_products)
-    df_exploded = df.explode('separate_products')
-    df_exploded['size'] = df_exploded['separate_products'].apply(extract_size)
-    df_exploded['price'] = df_exploded['separate_products'].apply(extract_price)
-    df_exploded['flavour'] = df_exploded['separate_products'].apply(extract_flavour)
-    df_exploded['product_name'] = df_exploded['separate_products'].apply(extract_name)
+    df["separate_products"] = df["products"].apply(separate_products)
+    df_exploded = df.explode("separate_products")
+
+    df_exploded["size"] = df_exploded["separate_products"].apply(extract_size)
+
+    df_exploded["price"] = df_exploded["separate_products"].apply(extract_price)
+
+    df_exploded["flavour"] = df_exploded["separate_products"].apply(extract_flavour)
+
+    df_exploded["product_name"] = df_exploded["separate_products"].apply(extract_name)
+
     df_exploded.drop("products", axis=1, inplace=True)
-    df_exploded.drop("separate_products", axis=1, inplace=True)
-    df_exploded = df_exploded[["date", "location", "customer_name", "product_name", "flavour", "size", "price", "total", "payment_type", "card_number"]]
-    df = df_exploded
+
+    # df_exploded = df_exploded.drop("separate_products", axis=1, inplace=True)
+    df_exploded = df_exploded[
+        [
+            "date",
+            "location",
+            "customer_name",
+            "product_name",
+            "flavour",
+            "size",
+            "price",
+            "total",
+            "payment_type",
+            "card_number",
+        ]
+    ]
+    df_exploded.columns = [
+            "date",
+            "location",
+            "customer_name",
+            "product_name",
+            "flavour",
+            "size",
+            "price",
+            "total",
+            "payment_type",
+            "card_number",
+        ]
+    return df_exploded
 
 
 # gets a series of dataframes, one for each table in our database
@@ -88,29 +125,37 @@ if __name__ == "__main__":
 def get_df_customers(df):
     customer_df = df[["customer_name"]]
     customer_df = customer_df.drop_duplicates()
+    print("Customers DF OK")
     return customer_df
 
 
 def get_df_location(df):
     location_df = df[["location"]]
     location_df = location_df.drop_duplicates()
+    print("Location DF OK")
     return location_df
 
 
 def get_df_cards(df):
     cards_df = df[["card_number"]]
-    # cards_df = cards_df.drop_duplicates()
+    cards_df = cards_df.drop_duplicates()
     # commented out temporarily while transaction table not yet made
+    print("Cards DF OK")
     return cards_df
 
 
 def get_df_products(df):
+    print(df.head())
     products_df = df[["product_name", "flavour", "size", "price"]]
+    products_df = products_df.drop_duplicates(ignore_index=True)
+    products_df = products_df.sort_values("product_name")
+    print('Products DF OK')
     return products_df
 
 
 def get_df_transaction(df):
     transaction_df = df[["date", "payment_type", "total"]]
+    print("Transaction DF OK")
     return transaction_df
 
 
@@ -129,11 +174,9 @@ def get_table_df(
     customer_df = get_df_customers(df)
     location_df = get_df_location(df)
     cards_df = get_df_cards(df)
-    products_df = get_df_products(df)
+    products_df = get_df_products(df_exploded)
     transaction_df = get_df_transaction(df)
     return customer_df, location_df, cards_df, products_df, transaction_df
-
-
 
 
 # cleaning our product data
@@ -171,6 +214,14 @@ def insert_names(
     execute_cursor=execute_cursor,
 ):
     cursor = get_cursor(connection)
+    sql_check_customers_query = """
+    SELECT name FROM customers"""
+    cursor.execute(sql_check_customers_query)
+    names = cursor.fetchall()
+    for name in names:
+        customer_df = customer_df.drop(customer_df.index[customer_df["customer_name"] == name[0]])
+    cursor.close()
+    cursor = connection.cursor()
     for name in customer_df.values.tolist():
         sql_query = f"""
         INSERT INTO customers (name)
@@ -187,6 +238,14 @@ def insert_cards(
     execute_cursor=execute_cursor,
 ):
     cursor = get_cursor(connection)
+    sql_check_cards_query = """
+    SELECT card_number FROM cards"""
+    cursor.execute(sql_check_cards_query)
+    card_nums = cursor.fetchall()
+    for card in card_nums:
+        cards_df = cards_df.drop(cards_df.index[cards_df["card_number"] == card[0]])
+    cursor.close()
+    cursor = connection.cursor()
     for cards in cards_df.values.tolist():
         sql_query = f"""
         INSERT into cards (card_number)
@@ -203,6 +262,16 @@ def insert_store(
     execute_cursor=execute_cursor,
 ):
     cursor = get_cursor(connection)
+    sql_check_stores_query = """
+    SELECT name FROM store"""
+    cursor.execute(sql_check_stores_query)
+    locations = cursor.fetchall()
+
+    for location in locations:
+        location_df = location_df.drop(location_df.index[location_df["location"] == location[0]])
+
+    cursor.close()
+    cursor = connection.cursor()
     for store in location_df.values.tolist():
         sql_query = f"""
         INSERT into store (name)
@@ -218,21 +287,33 @@ def insert_products(
     get_cursor=get_cursor,
     execute_cursor=execute_cursor,
 ):
-    cursor = get_cursor(connection)
+    cursor = connection.cursor()
     for product in products_df.values.tolist():
-        sql_query = f"""
-        INSERT INTO products (size, product_name, flavour, price)
-            VALUES ('{product[0]}', '{product[1]}', '{product[2]}', {product[3]})"""
-        execute_cursor(cursor, sql_query)
+        cursor = get_cursor(connection)
+        sql_check_prods_query = """
+        SELECT name, flavour, size, price FROM products"""
+        cursor.execute(sql_check_prods_query)
+        products = cursor.fetchall()
+        for prod in products:
+            if prod[0] == product[0] and prod[1] == product[1] and prod[2] == product[2]:
+                print('Duplicate product found, skipping')
+            else:
+                print('Unique product found, entering into DB')
+                sql_query = f"""
+                INSERT INTO products (size, name, flavour, price)
+                    VALUES ('{product[0]}', '{product[1]}', '{product[2]}', {product[3]})"""
+                execute_cursor(cursor, sql_query)
     print("Products inserted OK")
 
 
 # -----------------------------------------------------
 
+
 def etl(
+    df,
     get_data_frame=get_data_frame,
     get_table_df=get_table_df,
-    clean_products=clean_products,
+    # clean_products=clean_products,
     get_connection=get_connection,
     insert_names=insert_names,
     insert_cards=insert_cards,
@@ -245,14 +326,12 @@ def etl(
     customer_df, location_df, cards_df, products_df, transaction_df = get_table_df(df)
 
     # clean our product data
-    products_df = clean_products(products_df)
-
     connection = get_connection()
 
     # each of these executes a series of sql commands to insert the data into our database
-    # insert_names(connection, customer_df)
-    # insert_cards(connection, cards_df)
-    # insert_store(connection, location_df)
+    insert_names(connection, customer_df)
+    insert_cards(connection, cards_df)
+    insert_store(connection, location_df)
     insert_products(connection, products_df)
 
     commit_and_close(connection)
@@ -261,6 +340,6 @@ def etl(
 # ---------------------------------------------------
 # --------------functions end here-------------------
 # this file just runs this one command
-# if __name__ == "__main__":
-#     etl()
-
+if __name__ == "__main__":
+    df_exploded = clean_the_data()
+    etl(df_exploded)
