@@ -163,12 +163,13 @@ def get_df_transaction(df):
 # function that creates all of the individual dataframes (calls the above functions)
 @yaspin(text="Creating dataframes...")
 def get_table_df(
-    df,
+    df,df_exploded,
     get_df_customers=get_df_customers,
     get_df_location=get_df_location,
     get_df_cards=get_df_cards,
     get_df_products=get_df_products,
     get_df_transaction=get_df_transaction,
+    
 ):
     time.sleep(1)
     customer_df = get_df_customers(df)
@@ -290,19 +291,24 @@ def insert_products(
     cursor = connection.cursor()
     for product in products_df.values.tolist():
         cursor = get_cursor(connection)
-        sql_check_prods_query = """
-        SELECT name, flavour, size, price FROM products"""
+        
+        sql_check_prods_query = f"""
+        SELECT product_id FROM products
+            WHERE name = '{product[0]}' AND flavour = '{product[1]}' AND size = '{product[2]}'"""
+        
         cursor.execute(sql_check_prods_query)
         products = cursor.fetchall()
-        for prod in products:
-            if prod[0] == product[0] and prod[1] == product[1] and prod[2] == product[2]:
-                print('Duplicate product found, skipping')
-            else:
-                print('Unique product found, entering into DB')
-                sql_query = f"""
-                INSERT INTO products (size, name, flavour, price)
-                    VALUES ('{product[0]}', '{product[1]}', '{product[2]}', {product[3]})"""
-                execute_cursor(cursor, sql_query)
+        print(products)
+        if products == ():
+            print('Unique product found, entering into DB')
+            sql_query = f"""
+            INSERT INTO products (name, flavour, size, price)
+                VALUES ('{product[0]}', '{product[1]}', '{product[2]}', '{product[3]}')"""
+            execute_cursor(cursor, sql_query)
+        
+        else:
+            continue   
+           
     print("Products inserted OK")
 
 
@@ -310,7 +316,7 @@ def insert_products(
 
 
 def etl(
-    df,
+    df_exploded,
     get_data_frame=get_data_frame,
     get_table_df=get_table_df,
     # clean_products=clean_products,
@@ -323,7 +329,7 @@ def etl(
 ):
     # generate our dataframes
     df = get_data_frame()
-    customer_df, location_df, cards_df, products_df, transaction_df = get_table_df(df)
+    customer_df, location_df, cards_df, products_df, transaction_df = get_table_df(df,df_exploded)
 
     # clean our product data
     connection = get_connection()
