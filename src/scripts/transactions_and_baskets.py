@@ -85,4 +85,3 @@ def insert_transactions():
         con.commit()
 
     print("Transactions and Baskets inserted OK")
-
