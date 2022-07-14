@@ -18,30 +18,69 @@ from src.database import get_connection, commit_and_close, execute_cursor, get_c
 @yaspin(text="Cleaning data...")
 def get_data_frame():
     time.sleep(1)
-    df = pd.DataFrame()
-    # target path relative to this file (where to find the csv)
     target = os.path.dirname(
         os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
     )
+    df = pd.DataFrame()
     for filename in os.listdir(f"{target}/data"):
         # for each file, put all the data into a dataframe and concat it into our main dataframe
         temp_df = pd.read_csv(f"{target}/data/{filename}")
         df = pd.concat([df, temp_df], axis=0)
+    # df = pd.read_csv(f"{target}/data/*.csv")
     df.columns = [
         "date",
         "location",
         "customer_name",
         "products",
-        "payment_type",
         "total",
+        "payment_type",
         "card_number",
     ]
-    df.reset_index()
-    # This part of the function begins to work on the transform
-    # separates card type and number into different columns
-    # df[["card_type", "card_number"]] = df["card"].str.split(",", expand=True)
-    df.dropna()
     return df
+
+def separate_products(prod):
+    prod = prod.strip()
+    prod = prod.split(", ")
+    return prod
+
+def extract_size(prod):
+    prod_list = prod.split(" ")
+    return prod_list[0]
+
+def extract_price(prod):
+    prod_list = prod.split(" - ")
+    return prod_list[-1]
+
+def extract_flavour(prod):
+    prod_list = prod.split(' - ')
+    if len(prod_list) == 2:
+        add = prod_list.insert(1, "NaN")
+    if len(prod_list) == 3:
+        add = prod_list[1]
+    return add
+
+def extract_name(prod):
+    prod_list = prod.split(' - ')
+    if len(prod_list) == 3:
+        prod_list.pop(-1)
+    prod_list.pop(-1)
+    prod_list = prod_list[0].split(' ')
+    prod_list.pop(0)
+    name = " ".join(prod_list)
+    return name 
+
+if __name__ == "__main__":
+    df = get_data_frame()
+    df['separate_products'] = df['products'].apply(separate_products)
+    df_exploded = df.explode('separate_products')
+    df_exploded['size'] = df_exploded['separate_products'].apply(extract_size)
+    df_exploded['price'] = df_exploded['separate_products'].apply(extract_price)
+    df_exploded['flavour'] = df_exploded['separate_products'].apply(extract_flavour)
+    df_exploded['product_name'] = df_exploded['separate_products'].apply(extract_name)
+    df_exploded.drop("products", axis=1, inplace=True)
+    df_exploded.drop("separate_products", axis=1, inplace=True)
+    df_exploded = df_exploded[["date", "location", "customer_name", "product_name", "flavour", "size", "price", "total", "payment_type", "card_number"]]
+    df = df_exploded
 
 
 # gets a series of dataframes, one for each table in our database
@@ -66,7 +105,7 @@ def get_df_cards(df):
 
 
 def get_df_products(df):
-    products_df = df[["products"]]
+    products_df = df[["product_name", "flavour", "size", "price"]]
     return products_df
 
 
@@ -95,28 +134,6 @@ def get_table_df(
     return customer_df, location_df, cards_df, products_df, transaction_df
 
 
-# each product consists of three values: size, name and price
-# this function separates each product from an transaction and makes it into a list, to be stored in another list
-def separate_products(products_df):
-    new_split = []
-    for prod in products_df:
-        prod = prod.strip()
-        new_split.append(prod.split(" - "))
-
-    for prod in new_split:
-        if len(prod) == 2:
-            index = new_split.index(prod)
-            new_split[index].insert(1, "None")
-
-    new_split_df = pd.DataFrame(new_split, columns=["product", "flavour", "price"])
-    new_split_df[["size", "name"]] = new_split_df["product"].str.split(
-        " ", n=1, expand=True
-    )
-
-    new_split_df = new_split_df.drop(columns=["product"])
-    new_split_df = new_split_df[["size", "name", "flavour", "price"]]
-
-    return new_split_df.values.tolist()
 
 
 # cleaning our product data
@@ -204,7 +221,7 @@ def insert_products(
     cursor = get_cursor(connection)
     for product in products_df.values.tolist():
         sql_query = f"""
-        INSERT INTO products (size, name, flavour, price)
+        INSERT INTO products (size, product_name, flavour, price)
             VALUES ('{product[0]}', '{product[1]}', '{product[2]}', {product[3]})"""
         execute_cursor(cursor, sql_query)
     print("Products inserted OK")
@@ -244,6 +261,6 @@ def etl(
 # ---------------------------------------------------
 # --------------functions end here-------------------
 # this file just runs this one command
-if __name__ == "__main__":
-    etl()
+# if __name__ == "__main__":
+#     etl()
 
