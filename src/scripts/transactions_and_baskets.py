@@ -1,4 +1,4 @@
-from extraction import get_data_frame, clean_products, etl
+from extraction import get_data_frame, clean_products, etl, clean_the_data
 
 import pandas as pd
 from yaspin import yaspin
@@ -17,7 +17,7 @@ con = get_connection()
 
 @yaspin(text="Inserting order to DB...")
 def insert_transactions():
-    trans_df = get_data_frame()
+    trans_df = clean_the_data()
     for order in trans_df.values.tolist():
         sql_get_customer_id = f"""
         SELECT customer_id FROM customers
@@ -39,31 +39,34 @@ def insert_transactions():
 
         customer_id = customer_id_t[0]
         store_id = store_id_t[0]
-        insert_transaction_sql = f"""
-        INSERT INTO transactions (date_time, customer_id, store_id, total, payment_method)
-            VALUES ('{order[0]}', {customer_id}, {store_id}, {order[4]}, '{order[5]}')"""
 
+        check_existing_trans_sql = f"""
+        SELECT transaction_id FROM transactions 
+            WHERE customer_id = {customer_id} AND store_id = {store_id} AND date_time = '{order[0]}'"""
         cursor = con.cursor()
-        cursor.execute(insert_transaction_sql)
-        cursor.close()
-        con.commit()
+        cursor.execute(check_existing_trans_sql)
+        is_exists = cursor.fetchone()
 
-        prods_order_list = []
-        prods_order_list.append(order[3])
-        prod_df = pd.DataFrame(prods_order_list, columns=["products"])
-        clean_prods = clean_products(prod_df)
-        clean_prods = clean_prods.values.tolist()
-        
+        if is_exists == None:
+            insert_transaction_sql = f"""
+            INSERT INTO transactions (date_time, customer_id, store_id, total, payment_method)
+                VALUES ('{order[0]}', {customer_id}, {store_id}, {order[7]}, '{order[8]}')"""
+    
+            cursor = con.cursor()
+            cursor.execute(insert_transaction_sql)
+            cursor.close()
+            con.commit()
+        else:
+            pass
         
         product_ids = []
         cursor = con.cursor()
-        for item in clean_prods:
-            sql_get_product_id = f"""
-            SELECT product_id FROM products 
-                WHERE name = '{item[1]}' AND size = '{item[0]}' AND flavour = '{item[2]}' AND price = {item[3]}"""
-            cursor.execute(sql_get_product_id)
-            prod_id_t = cursor.fetchone()
-            product_ids.append(prod_id_t[0])
+        sql_get_product_id = f"""
+        SELECT product_id FROM products 
+            WHERE name = '{order[3]}' AND flavour = '{order[4]}' AND size = '{order[5]}' AND price = {order[6]}"""
+        cursor.execute(sql_get_product_id)
+        prod_id_t = cursor.fetchone()
+        product_ids.append(prod_id_t[0])
         cursor.close()
         
         cursor = con.cursor()
@@ -75,13 +78,26 @@ def insert_transactions():
             cursor.execute(sql_get_trans_id)
             trans_id_t = cursor.fetchone()
             transaction_id = trans_id_t[0]
+            
+            sql_check_basket_exists = f"""
+            SELECT transaction_id FROM basket
+                WHERE product_id = {ID} AND transaction_id = {transaction_id}"""
+            cursor.execute(sql_check_basket_exists)
+            is_exists = cursor.fetchone()
 
-            sql_insert_into_basket = f"""
-            INSERT into basket (transaction_id, product_id)
-                VALUES ({transaction_id}, {ID})"""
-
-            cursor.execute(sql_insert_into_basket)
+            if is_exists == None:
+                print("Inserted basket")
+                sql_insert_into_basket = f"""
+                INSERT into basket (transaction_id, product_id)
+                    VALUES ({transaction_id}, {ID})"""
+    
+                cursor.execute(sql_insert_into_basket)
+            else:
+                pass
         cursor.close()
         con.commit()
 
     print("Transactions and Baskets inserted OK")
+
+if __name__ == "__main__":
+    insert_transactions()
