@@ -9,11 +9,9 @@ import os
 
 main_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 sys.path.append(f"{main_dir}")
-
 from src.database import get_connection, commit_and_close, execute_cursor, get_cursor
 
 # This function forms the **E** from ETL - it extracts the data and puts it into a dataframe.
-
 # lets the user know what is happening when the code is just 'doing stuff'
 @yaspin(text="Cleaning data...")
 def get_data_frame():
@@ -79,17 +77,11 @@ def clean_the_data():
     df = get_data_frame()
     df["separate_products"] = df["products"].apply(separate_products)
     df_exploded = df.explode("separate_products")
-
     df_exploded["size"] = df_exploded["separate_products"].apply(extract_size)
-
     df_exploded["price"] = df_exploded["separate_products"].apply(extract_price)
-
     df_exploded["flavour"] = df_exploded["separate_products"].apply(extract_flavour)
-
     df_exploded["product_name"] = df_exploded["separate_products"].apply(extract_name)
-
     df_exploded.drop("products", axis=1, inplace=True)
-
     # df_exploded = df_exploded.drop("separate_products", axis=1, inplace=True)
     df_exploded = df_exploded[
         [
@@ -106,17 +98,17 @@ def clean_the_data():
         ]
     ]
     df_exploded.columns = [
-            "date",
-            "location",
-            "customer_name",
-            "product_name",
-            "flavour",
-            "size",
-            "price",
-            "total",
-            "payment_type",
-            "card_number",
-        ]
+        "date",
+        "location",
+        "customer_name",
+        "product_name",
+        "flavour",
+        "size",
+        "price",
+        "total",
+        "payment_type",
+        "card_number",
+    ]
     return df_exploded
 
 
@@ -149,7 +141,7 @@ def get_df_products(df):
     products_df = df[["product_name", "flavour", "size", "price"]]
     products_df = products_df.drop_duplicates(ignore_index=True)
     products_df = products_df.sort_values("product_name")
-    print('Products DF OK')
+    print("Products DF OK")
     return products_df
 
 
@@ -164,6 +156,7 @@ def get_df_transaction(df):
 @yaspin(text="Creating dataframes...")
 def get_table_df(
     df,
+    df_exploded,
     get_df_customers=get_df_customers,
     get_df_location=get_df_location,
     get_df_cards=get_df_cards,
@@ -186,7 +179,6 @@ def get_table_df(
 def clean_products(products_df, separate_products=separate_products):
     time.sleep(1)
     products = []
-
     for order in products_df["products"]:
         order_split = list(order.split(","))
         # split each row of products into a list, separated by commas
@@ -201,7 +193,6 @@ def clean_products(products_df, separate_products=separate_products):
     # drop any duplicates and sort by name, so it is easier to read
     clean_products_df = clean_products_df.drop_duplicates(ignore_index=True)
     clean_products_df = clean_products_df.sort_values("NAME")
-
     return clean_products_df
 
 
@@ -219,7 +210,9 @@ def insert_names(
     cursor.execute(sql_check_customers_query)
     names = cursor.fetchall()
     for name in names:
-        customer_df = customer_df.drop(customer_df.index[customer_df["customer_name"] == name[0]])
+        customer_df = customer_df.drop(
+            customer_df.index[customer_df["customer_name"] == name[0]]
+        )
     cursor.close()
     cursor = connection.cursor()
     for name in customer_df.values.tolist():
@@ -266,10 +259,10 @@ def insert_store(
     SELECT name FROM store"""
     cursor.execute(sql_check_stores_query)
     locations = cursor.fetchall()
-
     for location in locations:
-        location_df = location_df.drop(location_df.index[location_df["location"] == location[0]])
-
+        location_df = location_df.drop(
+            location_df.index[location_df["location"] == location[0]]
+        )
     cursor.close()
     cursor = connection.cursor()
     for store in location_df.values.tolist():
@@ -290,19 +283,24 @@ def insert_products(
     cursor = connection.cursor()
     for product in products_df.values.tolist():
         cursor = get_cursor(connection)
-        sql_check_prods_query = """
-        SELECT name, flavour, size, price FROM products"""
+
+        sql_check_prods_query = f"""
+        SELECT product_id FROM products
+            WHERE name = '{product[0]}' AND flavour = '{product[1]}' AND size = '{product[2]}'"""
+
         cursor.execute(sql_check_prods_query)
         products = cursor.fetchall()
-        for prod in products:
-            if prod[0] == product[0] and prod[1] == product[1] and prod[2] == product[2]:
-                print('Duplicate product found, skipping')
-            else:
-                print('Unique product found, entering into DB')
-                sql_query = f"""
-                INSERT INTO products (size, name, flavour, price)
-                    VALUES ('{product[0]}', '{product[1]}', '{product[2]}', {product[3]})"""
-                execute_cursor(cursor, sql_query)
+        print(products)
+        if products == ():
+            print("Unique product found, entering into DB")
+            sql_query = f"""
+            INSERT INTO products (name, flavour, size, price)
+                VALUES ('{product[0]}', '{product[1]}', '{product[2]}', '{product[3]}')"""
+            execute_cursor(cursor, sql_query)
+
+        else:
+            continue
+
     print("Products inserted OK")
 
 
@@ -310,7 +308,7 @@ def insert_products(
 
 
 def etl(
-    df,
+    df_exploded,
     get_data_frame=get_data_frame,
     get_table_df=get_table_df,
     # clean_products=clean_products,
@@ -323,17 +321,17 @@ def etl(
 ):
     # generate our dataframes
     df = get_data_frame()
-    customer_df, location_df, cards_df, products_df, transaction_df = get_table_df(df)
+    customer_df, location_df, cards_df, products_df, transaction_df = get_table_df(
+        df, df_exploded
+    )
 
     # clean our product data
     connection = get_connection()
-
     # each of these executes a series of sql commands to insert the data into our database
     insert_names(connection, customer_df)
     insert_cards(connection, cards_df)
     insert_store(connection, location_df)
     insert_products(connection, products_df)
-
     commit_and_close(connection)
 
 
@@ -343,4 +341,3 @@ def etl(
 if __name__ == "__main__":
     df_exploded = clean_the_data()
     etl(df_exploded)
-

@@ -4,4 +4,3 @@ import extraction as ex
 df = ex.clean_the_data()
 ex.etl(df)
 tb.insert_transactions()
-
