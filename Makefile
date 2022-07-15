@@ -2,7 +2,7 @@ install:
 	python3 -m venv .venv
 	make venv
 	pip3 install --upgrade pip && \
-	pip3 install -r docs/requirements.txt
+	pip3 install -r requirements.txt
 
 testing:
 	python3 -m pytest --cov=. --cov-report xml:coverage.xml
