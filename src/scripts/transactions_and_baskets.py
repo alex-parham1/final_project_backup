@@ -51,14 +51,14 @@ def insert_transactions():
             insert_transaction_sql = f"""
             INSERT INTO transactions (date_time, customer_id, store_id, total, payment_method)
                 VALUES ('{order[0]}', {customer_id}, {store_id}, {order[7]}, '{order[8]}')"""
-    
+
             cursor = con.cursor()
             cursor.execute(insert_transaction_sql)
             cursor.close()
             con.commit()
         else:
             pass
-        
+
         product_ids = []
         cursor = con.cursor()
         sql_get_product_id = f"""
@@ -68,17 +68,17 @@ def insert_transactions():
         prod_id_t = cursor.fetchone()
         product_ids.append(prod_id_t[0])
         cursor.close()
-        
+
         cursor = con.cursor()
         for ID in product_ids:
             sql_get_trans_id = f"""
             SELECT transaction_id from transactions
                 WHERE customer_id = {customer_id} AND store_id = {store_id} AND date_time = '{order[0]}'"""
-            
+
             cursor.execute(sql_get_trans_id)
             trans_id_t = cursor.fetchone()
             transaction_id = trans_id_t[0]
-            
+
             sql_check_basket_exists = f"""
             SELECT transaction_id FROM basket
                 WHERE product_id = {ID} AND transaction_id = {transaction_id}"""
@@ -90,7 +90,7 @@ def insert_transactions():
                 sql_insert_into_basket = f"""
                 INSERT into basket (transaction_id, product_id)
                     VALUES ({transaction_id}, {ID})"""
-    
+
                 cursor.execute(sql_insert_into_basket)
             else:
                 pass
@@ -98,6 +98,7 @@ def insert_transactions():
         con.commit()
 
     print("Transactions and Baskets inserted OK")
+
 
 if __name__ == "__main__":
     insert_transactions()

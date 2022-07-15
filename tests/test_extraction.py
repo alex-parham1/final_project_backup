@@ -190,6 +190,7 @@ def test_separate_products_unhappy_path_empty():
     with pytest.raises(Exception):
         result = ex.separate_products(data)
 
+
 # --------get_table_df---------------------
 def test_get_table_df():
     list = ["test", "test"]
@@ -525,15 +526,15 @@ def test_clean_products():
     df = pd.DataFrame(value, columns=["products"])
 
     ex_list = [
-        ["Regular","Hot chocolate","None",'2.20'],
-        ["Large","Speciality Tea","Camomile",'1.60'],
-        ["Large","Mocha","None",'2.70'],
-        ["Regular","Cortado","None",'2.05'],
-        ["Large","Hot chocolate","None",'2.90'],
-        ["Large","Flavoured iced latte","Caramel",'3.25']
-    ]  
+        ["Regular", "Hot chocolate", "None", "2.20"],
+        ["Large", "Speciality Tea", "Camomile", "1.60"],
+        ["Large", "Mocha", "None", "2.70"],
+        ["Regular", "Cortado", "None", "2.05"],
+        ["Large", "Hot chocolate", "None", "2.90"],
+        ["Large", "Flavoured iced latte", "Caramel", "3.25"],
+    ]
     expected = pd.DataFrame(ex_list, columns=["SIZE", "NAME", "FLAVOUR", "PRICE"])
-    
+
     expected = expected.sort_values("NAME")
     expected = expected.reset_index(drop=True)
 
