@@ -1,17 +1,21 @@
+.ONESHELL:
 install:
 	python3 -m venv .venv
-	make venv
+	source .venv/bin/activate	
 	pip3 install --upgrade pip && \
 	pip3 install -r requirements.txt
 
+run:
+	source .venv/bin/activate; \
+	python3 ./src/scripts/main.py
+
+
 testing:
+	source .venv/bin/activate; \
 	python3 -m pytest --cov=. --cov-report xml:coverage.xml
 
 format:
 	python3 -m black $$(git ls-files '*.py')
-
-venv:
-	source team_repo_3/.venv/bin/activate
 
 relog:
 	aws-azure-login --profile bootcamp-sandbox --mode=gui
