@@ -1,0 +1,255 @@
+date,location,customer_name,products,payment_type,total,card_number
+06/07/2022 09:00,Birmingham,Barbara Thomas,Regular - Red Label tea - None - 1.20,1.2,CASH,nan
+06/07/2022 09:03,Birmingham,Nicholas Mcgarry,"Regular - Chai latte - None - 2.30, Large - Red Label tea - None - 1.80, Large - Flavoured hot chocolate - Caramel - 2.90, Large - Flavoured hot chocolate - Caramel - 2.90, Large - Red Label tea - None - 1.80, Regular - Chai latte - None - 2.30",14.0,CARD,3821
+06/07/2022 09:06,Birmingham,Robert Lopez,Regular - Speciality Tea - Camomile - 1.30,1.3,CARD,0234
+06/07/2022 09:09,Birmingham,Andrew Nichols,"Large - Chai latte - None - 2.60, Large - Flavoured hot chocolate - Caramel - 2.90, Large - Cortado - None - 2.35, Regular - Chai latte - None - 2.30",10.15,CASH,nan
+06/07/2022 09:12,Birmingham,Leslie Wilson,"Large - Speciality Tea - English breakfast - 1.60, Large - Chai latte - None - 2.60",4.2,CASH,nan
+06/07/2022 09:15,Birmingham,Latarsha Sutherland,"Large - Flavoured hot chocolate - Caramel - 2.90, Regular - Cortado - None - 2.05",4.95,CARD,6692
+06/07/2022 09:18,Birmingham,Esther Cantrell,"Regular - Speciality Tea - Camomile - 1.30, Large - Red Label tea - None - 1.80, Large - Speciality Tea - Camomile - 1.60",4.7,CARD,0326
+06/07/2022 09:22,Birmingham,Nicholas Pitsch,"Large - Red Label tea - None - 1.80, Regular - Chai latte - None - 2.30",4.1,CARD,8122
+06/07/2022 09:25,Birmingham,Phillip White,"Regular - Chai latte - None - 2.30, Large - Flavoured hot chocolate - Caramel - 2.90, Regular - Speciality Tea - English breakfast - 1.30, Regular - Speciality Tea - English breakfast - 1.30, Regular - Speciality Tea - Camomile - 1.30",9.1,CARD,1628
+06/07/2022 09:28,Birmingham,Gregory Grady,Large - Flavoured hot chocolate - Caramel - 2.90,2.9,CARD,3768
+06/07/2022 09:31,Birmingham,Nicole Nattiah,"Large - Flavoured hot chocolate - Caramel - 2.90, Regular - Cortado - None - 2.05, Large - Flavoured hot chocolate - Caramel - 2.90, Large - Chai latte - None - 2.60",10.45,CASH,nan
+06/07/2022 09:34,Birmingham,Aaron Martinez,"Large - Speciality Tea - Camomile - 1.60, Regular - Flavoured hot chocolate - Caramel - 2.60, Large - Speciality Tea - Camomile - 1.60",5.8,CARD,0439
+06/07/2022 09:37,Birmingham,Terri Schuller,"Regular - Cortado - None - 2.05, Regular - Speciality Tea - English breakfast - 1.30",3.35,CASH,nan
+06/07/2022 09:40,Birmingham,Leroy Torgerson,"Regular - Red Label tea - None - 1.20, Large - Speciality Tea - English breakfast - 1.60, Large - Speciality Tea - Camomile - 1.60, Large - Flavoured hot chocolate - Caramel - 2.90, Regular - Speciality Tea - English breakfast - 1.30, Regular - Cortado - None - 2.05",10.65,CARD,1214
+06/07/2022 09:44,Birmingham,William Jackson,"Regular - Flavoured hot chocolate - Caramel - 2.60, Large - Flavoured hot chocolate - Caramel - 2.90",5.5,CARD,7694
+06/07/2022 09:47,Birmingham,Annette Logan,"Large - Speciality Tea - Camomile - 1.60, Regular - Cortado - None - 2.05, Large - Cortado - None - 2.35",6.0,CARD,2103
+06/07/2022 09:50,Birmingham,Derek Morgan,"Regular - Red Label tea - None - 1.20, Large - Flavoured hot chocolate - Caramel - 2.90, Regular - Cortado - None - 2.05",6.15,CARD,7971
+06/07/2022 09:53,Birmingham,Mitchell Hazelton,Regular - Cortado - None - 2.05,2.05,CARD,1059
+06/07/2022 09:56,Birmingham,Russell Williams,"Regular - Chai latte - None - 2.30, Large - Speciality Tea - English breakfast - 1.60, Large - Speciality Tea - English breakfast - 1.60, Regular - Chai latte - None - 2.30, Large - Red Label tea - None - 1.80",9.6,CARD,3369
+06/07/2022 09:59,Birmingham,Zoe Kohl,Regular - Flavoured hot chocolate - Caramel - 2.60,2.6,CARD,8933
+06/07/2022 10:03,Birmingham,Juan Rhodes,"Large - Speciality Tea - Camomile - 1.60, Large - Cortado - None - 2.35",3.95,CARD,6882
+06/07/2022 10:04,Birmingham,Jill Williams,"Regular - Red Label tea - None - 1.20, Large - Red Label tea - None - 1.80",3.0,CARD,9293
+06/07/2022 10:06,Birmingham,David Douglas,Regular - Chai latte - None - 2.30,2.3,CARD,6472
+06/07/2022 10:07,Birmingham,Gary Gonzales,"Large - Speciality Tea - Camomile - 1.60, Regular - Speciality Tea - English breakfast - 1.30, Large - Chai latte - None - 2.60, Regular - Speciality Tea - English breakfast - 1.30",6.8,CARD,4185
+06/07/2022 10:09,Birmingham,Henry Sharon,"Regular - Speciality Tea - English breakfast - 1.30, Large - Cortado - None - 2.35",3.65,CARD,7048
+06/07/2022 10:10,Birmingham,Virginia Hill,"Large - Speciality Tea - Camomile - 1.60, Large - Speciality Tea - English breakfast - 1.60, Large - Red Label tea - None - 1.80, Large - Chai latte - None - 2.60, Regular - Red Label tea - None - 1.20",8.8,CASH,nan
+06/07/2022 10:12,Birmingham,Virginia Park,"Regular - Speciality Tea - English breakfast - 1.30, Large - Red Label tea - None - 1.80, Large - Red Label tea - None - 1.80, Large - Red Label tea - None - 1.80, Regular - Cortado - None - 2.05, Regular - Chai latte - None - 2.30",11.05,CARD,8776
+06/07/2022 10:13,Birmingham,Richard Quisenberry,"Large - Speciality Tea - Camomile - 1.60, Regular - Speciality Tea - English breakfast - 1.30, Large - Speciality Tea - English breakfast - 1.60",4.5,CARD,7078
+06/07/2022 10:15,Birmingham,Yi Davis,Large - Speciality Tea - English breakfast - 1.60,1.6,CARD,2684
+06/07/2022 10:16,Birmingham,Percy Noya,"Regular - Cortado - None - 2.05, Regular - Chai latte - None - 2.30, Regular - Cortado - None - 2.05, Regular - Speciality Tea - Camomile - 1.30, Large - Chai latte - None - 2.60",10.3,CARD,1915
+06/07/2022 10:18,Birmingham,Linda Steiner,"Regular - Speciality Tea - Camomile - 1.30, Regular - Speciality Tea - Camomile - 1.30",2.6,CARD,9421
+06/07/2022 10:19,Birmingham,David Flowers,"Regular - Flavoured hot chocolate - Caramel - 2.60, Regular - Red Label tea - None - 1.20",3.8,CARD,2646
+06/07/2022 10:21,Birmingham,James Hemingway,"Large - Red Label tea - None - 1.80, Large - Red Label tea - None - 1.80, Regular - Speciality Tea - English breakfast - 1.30",4.9,CARD,6116
+06/07/2022 10:22,Birmingham,Jay Carrion,"Large - Speciality Tea - Camomile - 1.60, Large - Red Label tea - None - 1.80, Large - Chai latte - None - 2.60",6.0,CARD,2881
+06/07/2022 10:24,Birmingham,Donna Anthony,"Large - Speciality Tea - English breakfast - 1.60, Regular - Speciality Tea - English breakfast - 1.30, Regular - Cortado - None - 2.05",4.95,CASH,nan
+06/07/2022 10:26,Birmingham,David Rye,Regular - Flavoured hot chocolate - Caramel - 2.60,2.6,CARD,0215
+06/07/2022 10:27,Birmingham,Karen Worth,"Regular - Red Label tea - None - 1.20, Large - Flavoured hot chocolate - Caramel - 2.90, Large - Flavoured hot chocolate - Caramel - 2.90, Large - Speciality Tea - Camomile - 1.60, Regular - Chai latte - None - 2.30",10.9,CARD,4696
+06/07/2022 10:29,Birmingham,William Arredondo,Regular - Cortado - None - 2.05,2.05,CASH,nan
+06/07/2022 10:30,Birmingham,Christopher Lopez,"Regular - Speciality Tea - Camomile - 1.30, Large - Cortado - None - 2.35, Regular - Flavoured hot chocolate - Caramel - 2.60, Regular - Speciality Tea - English breakfast - 1.30",7.55,CASH,nan
+06/07/2022 10:32,Birmingham,Milton Bonanno,"Large - Speciality Tea - Camomile - 1.60, Regular - Cortado - None - 2.05",3.65,CARD,7141
+06/07/2022 10:33,Birmingham,Alvin Christman,"Large - Speciality Tea - Camomile - 1.60, Regular - Speciality Tea - English breakfast - 1.30, Large - Flavoured hot chocolate - Caramel - 2.90",5.8,CARD,3042
+06/07/2022 10:35,Birmingham,Jestine Eisentrout,"Regular - Red Label tea - None - 1.20, Large - Speciality Tea - English breakfast - 1.60",2.8,CARD,4561
+06/07/2022 10:36,Birmingham,Ricky Lowe,"Regular - Flavoured hot chocolate - Caramel - 2.60, Regular - Speciality Tea - Camomile - 1.30, Regular - Cortado - None - 2.05",5.95,CARD,8934
+06/07/2022 10:38,Birmingham,Joyce Dennison,"Regular - Cortado - None - 2.05, Large - Flavoured hot chocolate - Caramel - 2.90",4.95,CARD,5143
+06/07/2022 10:39,Birmingham,Dorothy Wilmot,"Large - Cortado - None - 2.35, Regular - Flavoured hot chocolate - Caramel - 2.60, Regular - Cortado - None - 2.05, Regular - Speciality Tea - Camomile - 1.30",8.3,CASH,nan
+06/07/2022 10:41,Birmingham,Robert Boland,"Regular - Speciality Tea - English breakfast - 1.30, Large - Chai latte - None - 2.60, Large - Speciality Tea - Camomile - 1.60",5.5,CARD,6905
+06/07/2022 10:42,Birmingham,Scott Marshall,"Large - Chai latte - None - 2.60, Regular - Speciality Tea - Camomile - 1.30, Large - Red Label tea - None - 1.80, Regular - Speciality Tea - Camomile - 1.30",7.0,CASH,nan
+06/07/2022 10:44,Birmingham,Felicita Mann,"Large - Speciality Tea - Camomile - 1.60, Large - Red Label tea - None - 1.80, Large - Chai latte - None - 2.60, Large - Cortado - None - 2.35",8.35,CASH,nan
+06/07/2022 10:45,Birmingham,Philip Crilly,"Regular - Red Label tea - None - 1.20, Regular - Chai latte - None - 2.30, Regular - Cortado - None - 2.05",5.55,CASH,nan
+06/07/2022 10:47,Birmingham,Ginger Churchill,"Regular - Cortado - None - 2.05, Large - Chai latte - None - 2.60, Regular - Flavoured hot chocolate - Caramel - 2.60, Large - Cortado - None - 2.35, Large - Speciality Tea - English breakfast - 1.60",11.2,CARD,3413
+06/07/2022 10:49,Birmingham,Elizabeth Dow,"Large - Flavoured hot chocolate - Caramel - 2.90, Regular - Speciality Tea - English breakfast - 1.30, Regular - Chai latte - None - 2.30",6.5,CARD,5841
+06/07/2022 10:50,Birmingham,Helen Kearns,"Large - Speciality Tea - English breakfast - 1.60, Regular - Speciality Tea - English breakfast - 1.30, Large - Flavoured hot chocolate - Caramel - 2.90",5.8,CASH,nan
+06/07/2022 10:52,Birmingham,Stephanie Viernes,"Regular - Red Label tea - None - 1.20, Regular - Speciality Tea - English breakfast - 1.30, Large - Red Label tea - None - 1.80, Large - Cortado - None - 2.35",6.65,CARD,4712
+06/07/2022 10:53,Birmingham,Era Coffey,"Regular - Speciality Tea - English breakfast - 1.30, Regular - Flavoured hot chocolate - Caramel - 2.60, Large - Red Label tea - None - 1.80",5.7,CARD,2995
+06/07/2022 10:55,Birmingham,Susan Whitman,"Regular - Speciality Tea - Camomile - 1.30, Regular - Speciality Tea - Camomile - 1.30, Regular - Chai latte - None - 2.30",4.9,CARD,7816
+06/07/2022 10:56,Birmingham,Terry Bryant,"Regular - Red Label tea - None - 1.20, Regular - Flavoured hot chocolate - Caramel - 2.60, Large - Red Label tea - None - 1.80",5.6,CASH,nan
+06/07/2022 10:58,Birmingham,Virginia Vazquez,"Large - Cortado - None - 2.35, Regular - Cortado - None - 2.05, Regular - Red Label tea - None - 1.20",5.6,CARD,3682
+06/07/2022 10:59,Birmingham,Jennifer Jochim,"Regular - Cortado - None - 2.05, Large - Cortado - None - 2.35, Large - Speciality Tea - Camomile - 1.60, Regular - Cortado - None - 2.05",8.05,CARD,7555
+06/07/2022 11:01,Birmingham,Donna Reynolds,"Large - Chai latte - None - 2.60, Regular - Speciality Tea - Camomile - 1.30, Regular - Cortado - None - 2.05",5.95,CASH,nan
+06/07/2022 11:16,Birmingham,Mildred Beesley,Large - Chai latte - None - 2.60,2.6,CASH,nan
+06/07/2022 11:31,Birmingham,Kelvin Skinner,"Large - Red Label tea - None - 1.80, Regular - Chai latte - None - 2.30, Regular - Cortado - None - 2.05",6.15,CASH,nan
+06/07/2022 11:46,Birmingham,Diego Davis,"Large - Chai latte - None - 2.60, Large - Speciality Tea - Camomile - 1.60, Large - Speciality Tea - English breakfast - 1.60",5.8,CARD,9856
+06/07/2022 12:01,Birmingham,Glenda Mitchell,"Regular - Speciality Tea - Camomile - 1.30, Regular - Red Label tea - None - 1.20, Regular - Cortado - None - 2.05, Large - Speciality Tea - English breakfast - 1.60",6.15,CASH,nan
+06/07/2022 12:04,Birmingham,Hope Sanots,"Large - Cortado - None - 2.35, Regular - Flavoured hot chocolate - Caramel - 2.60, Regular - Speciality Tea - English breakfast - 1.30",6.25,CARD,8018
+06/07/2022 12:06,Birmingham,Emily Terrell,"Large - Chai latte - None - 2.60, Large - Speciality Tea - English breakfast - 1.60",4.2,CARD,6565
+06/07/2022 12:09,Birmingham,Lesha Trowell,"Regular - Cortado - None - 2.05, Regular - Chai latte - None - 2.30, Large - Speciality Tea - English breakfast - 1.60, Large - Red Label tea - None - 1.80, Large - Speciality Tea - Camomile - 1.60",9.35,CASH,nan
+06/07/2022 12:12,Birmingham,Cassie Kelley,"Regular - Speciality Tea - Camomile - 1.30, Large - Speciality Tea - Camomile - 1.60, Large - Speciality Tea - English breakfast - 1.60",4.5,CARD,3817
+06/07/2022 12:15,Birmingham,Cherry Johnson,"Large - Red Label tea - None - 1.80, Regular - Speciality Tea - English breakfast - 1.30, Regular - Flavoured hot chocolate - Caramel - 2.60, Large - Speciality Tea - English breakfast - 1.60",7.3,CASH,nan
+06/07/2022 12:18,Birmingham,Mable Weipert,"Large - Flavoured hot chocolate - Caramel - 2.90, Large - Speciality Tea - Camomile - 1.60, Large - Red Label tea - None - 1.80, Large - Speciality Tea - English breakfast - 1.60",7.9,CASH,nan
+06/07/2022 12:21,Birmingham,Aaron Sorensen,"Large - Cortado - None - 2.35, Large - Chai latte - None - 2.60, Regular - Speciality Tea - English breakfast - 1.30, Regular - Cortado - None - 2.05, Large - Cortado - None - 2.35",10.65,CASH,nan
+06/07/2022 12:24,Birmingham,Michael Eyre,"Large - Chai latte - None - 2.60, Large - Speciality Tea - English breakfast - 1.60, Regular - Speciality Tea - Camomile - 1.30, Regular - Red Label tea - None - 1.20",6.7,CARD,5076
+06/07/2022 12:26,Birmingham,Kaye Griffen,Large - Speciality Tea - Camomile - 1.60,1.6,CARD,8388
+06/07/2022 12:29,Birmingham,Ana Jackson,"Large - Cortado - None - 2.35, Large - Red Label tea - None - 1.80, Regular - Flavoured hot chocolate - Caramel - 2.60, Regular - Speciality Tea - English breakfast - 1.30, Large - Chai latte - None - 2.60",10.65,CARD,6774
+06/07/2022 12:32,Birmingham,Mary Henderson,"Large - Speciality Tea - Camomile - 1.60, Regular - Flavoured hot chocolate - Caramel - 2.60, Large - Flavoured hot chocolate - Caramel - 2.90",7.1,CARD,4548
+06/07/2022 12:35,Birmingham,Wendy Allen,Large - Speciality Tea - English breakfast - 1.60,1.6,CARD,7774
+06/07/2022 12:38,Birmingham,Patrick Anderson,"Large - Speciality Tea - Camomile - 1.60, Regular - Cortado - None - 2.05, Large - Flavoured hot chocolate - Caramel - 2.90, Large - Chai latte - None - 2.60",9.15,CASH,nan
+06/07/2022 12:41,Birmingham,Christopher Mckim,Large - Cortado - None - 2.35,2.35,CASH,nan
+06/07/2022 12:44,Birmingham,Susanna Allscheid,Large - Speciality Tea - English breakfast - 1.60,1.6,CARD,5589
+06/07/2022 12:46,Birmingham,Elizabeth Nester,"Regular - Chai latte - None - 2.30, Regular - Cortado - None - 2.05",4.35,CARD,6119
+06/07/2022 12:49,Birmingham,Mary Wooden,"Large - Red Label tea - None - 1.80, Large - Cortado - None - 2.35",4.15,CARD,6892
+06/07/2022 12:52,Birmingham,Dominick Jenkins,"Regular - Red Label tea - None - 1.20, Large - Chai latte - None - 2.60, Large - Cortado - None - 2.35, Regular - Chai latte - None - 2.30, Regular - Speciality Tea - English breakfast - 1.30, Large - Chai latte - None - 2.60",12.35,CASH,nan
+06/07/2022 12:55,Birmingham,Marie Eden,"Large - Speciality Tea - Camomile - 1.60, Large - Speciality Tea - English breakfast - 1.60",3.2,CARD,1613
+06/07/2022 12:58,Birmingham,Thad Ballard,"Large - Speciality Tea - English breakfast - 1.60, Large - Cortado - None - 2.35, Large - Speciality Tea - Camomile - 1.60, Large - Flavoured hot chocolate - Caramel - 2.90, Large - Speciality Tea - Camomile - 1.60, Large - Chai latte - None - 2.60",12.65,CARD,7976
+06/07/2022 13:01,Birmingham,George Traylor,"Regular - Cortado - None - 2.05, Regular - Cortado - None - 2.05, Regular - Red Label tea - None - 1.20, Regular - Red Label tea - None - 1.20",6.5,CASH,nan
+06/07/2022 13:02,Birmingham,Jose Miller,"Regular - Flavoured hot chocolate - Caramel - 2.60, Regular - Speciality Tea - English breakfast - 1.30, Large - Chai latte - None - 2.60, Large - Speciality Tea - Camomile - 1.60, Regular - Cortado - None - 2.05",10.15,CARD,3309
+06/07/2022 13:03,Birmingham,Tami Krueger,"Regular - Cortado - None - 2.05, Large - Chai latte - None - 2.60",4.65,CASH,nan
+06/07/2022 13:04,Birmingham,Thomas Griffith,"Large - Flavoured hot chocolate - Caramel - 2.90, Large - Chai latte - None - 2.60, Regular - Speciality Tea - Camomile - 1.30",6.8,CASH,nan
+06/07/2022 13:05,Birmingham,William Cahal,"Regular - Chai latte - None - 2.30, Regular - Chai latte - None - 2.30, Regular - Cortado - None - 2.05",6.65,CARD,5903
+06/07/2022 13:06,Birmingham,Felicia Yung,"Regular - Cortado - None - 2.05, Large - Speciality Tea - Camomile - 1.60, Large - Red Label tea - None - 1.80",5.45,CARD,2296
+06/07/2022 13:07,Birmingham,Carl Dineen,"Large - Speciality Tea - Camomile - 1.60, Regular - Cortado - None - 2.05",3.65,CASH,nan
+06/07/2022 13:08,Birmingham,Linda Marshall,"Large - Red Label tea - None - 1.80, Large - Speciality Tea - English breakfast - 1.60, Regular - Flavoured hot chocolate - Caramel - 2.60",6.0,CARD,3186
+06/07/2022 13:09,Birmingham,Tomika Smith,"Large - Red Label tea - None - 1.80, Regular - Red Label tea - None - 1.20",3.0,CARD,4167
+06/07/2022 13:11,Birmingham,Curtis Allen,Large - Speciality Tea - English breakfast - 1.60,1.6,CASH,nan
+06/07/2022 13:12,Birmingham,Becky Garcia,"Regular - Speciality Tea - English breakfast - 1.30, Regular - Cortado - None - 2.05, Large - Speciality Tea - Camomile - 1.60",4.95,CARD,3428
+06/07/2022 13:13,Birmingham,Jennifer Townsend,"Regular - Speciality Tea - Camomile - 1.30, Large - Chai latte - None - 2.60, Regular - Flavoured hot chocolate - Caramel - 2.60, Large - Flavoured hot chocolate - Caramel - 2.90",9.4,CARD,1492
+06/07/2022 13:14,Birmingham,Dane Gist,"Large - Cortado - None - 2.35, Regular - Red Label tea - None - 1.20, Large - Flavoured hot chocolate - Caramel - 2.90, Large - Chai latte - None - 2.60",9.05,CASH,nan
+06/07/2022 13:15,Birmingham,Jeffrey Riccelli,"Large - Speciality Tea - English breakfast - 1.60, Large - Speciality Tea - English breakfast - 1.60",3.2,CARD,6169
+06/07/2022 13:16,Birmingham,Juan Montgomery,"Large - Chai latte - None - 2.60, Large - Speciality Tea - Camomile - 1.60, Regular - Red Label tea - None - 1.20, Large - Speciality Tea - English breakfast - 1.60, Regular - Chai latte - None - 2.30",9.3,CARD,6898
+06/07/2022 13:17,Birmingham,Allen Leeper,Regular - Chai latte - None - 2.30,2.3,CARD,2108
+06/07/2022 13:18,Birmingham,Donald Tallie,"Regular - Speciality Tea - English breakfast - 1.30, Large - Cortado - None - 2.35",3.65,CARD,2911
+06/07/2022 13:19,Birmingham,Courtney Parker,"Regular - Flavoured hot chocolate - Caramel - 2.60, Regular - Cortado - None - 2.05, Large - Flavoured hot chocolate - Caramel - 2.90",7.55,CARD,5754
+06/07/2022 13:20,Birmingham,Lucas Jones,"Regular - Chai latte - None - 2.30, Regular - Chai latte - None - 2.30, Large - Speciality Tea - Camomile - 1.60",6.2,CASH,nan
+06/07/2022 13:22,Birmingham,Kevin Jordan,"Regular - Speciality Tea - Camomile - 1.30, Large - Red Label tea - None - 1.80",3.1,CASH,nan
+06/07/2022 13:23,Birmingham,Maggie Gonzalez,Large - Chai latte - None - 2.60,2.6,CASH,nan
+06/07/2022 13:24,Birmingham,Lindsey Gajewski,Large - Chai latte - None - 2.60,2.6,CASH,nan
+06/07/2022 13:25,Birmingham,Brenda Edwards,"Regular - Chai latte - None - 2.30, Regular - Flavoured hot chocolate - Caramel - 2.60",4.9,CARD,5228
+06/07/2022 13:26,Birmingham,Ethel Cowan,"Regular - Red Label tea - None - 1.20, Large - Speciality Tea - English breakfast - 1.60, Large - Flavoured hot chocolate - Caramel - 2.90, Large - Cortado - None - 2.35",8.05,CASH,nan
+06/07/2022 13:27,Birmingham,Emma Romero,Large - Cortado - None - 2.35,2.35,CASH,nan
+06/07/2022 13:28,Birmingham,Deborah Guzman,"Regular - Chai latte - None - 2.30, Large - Speciality Tea - English breakfast - 1.60, Large - Cortado - None - 2.35",6.25,CARD,1798
+06/07/2022 13:29,Birmingham,Joyce Carbone,"Large - Chai latte - None - 2.60, Regular - Speciality Tea - English breakfast - 1.30, Regular - Chai latte - None - 2.30",6.2,CARD,9166
+06/07/2022 13:30,Birmingham,Brian White,"Regular - Flavoured hot chocolate - Caramel - 2.60, Regular - Speciality Tea - English breakfast - 1.30",3.9,CASH,nan
+06/07/2022 13:31,Birmingham,Evelyn Phan,"Regular - Speciality Tea - English breakfast - 1.30, Large - Chai latte - None - 2.60",3.9,CASH,nan
+06/07/2022 13:33,Birmingham,Herbert Elliam,"Regular - Speciality Tea - Camomile - 1.30, Regular - Chai latte - None - 2.30, Regular - Speciality Tea - English breakfast - 1.30, Large - Flavoured hot chocolate - Caramel - 2.90",7.8,CASH,nan
+06/07/2022 13:34,Birmingham,Jennifer Moore,"Regular - Cortado - None - 2.05, Large - Chai latte - None - 2.60",4.65,CARD,4456
+06/07/2022 13:35,Birmingham,Waldo Hedgepeth,"Regular - Chai latte - None - 2.30, Regular - Cortado - None - 2.05, Large - Red Label tea - None - 1.80",6.15,CARD,3048
+06/07/2022 13:36,Birmingham,Rosa Jones,Large - Chai latte - None - 2.60,2.6,CARD,9024
+06/07/2022 13:37,Birmingham,John Wooden,Large - Flavoured hot chocolate - Caramel - 2.90,2.9,CARD,9211
+06/07/2022 13:38,Birmingham,Kimberly Clingerman,"Large - Cortado - None - 2.35, Regular - Cortado - None - 2.05",4.4,CARD,4172
+06/07/2022 13:39,Birmingham,Barbara Smith,Large - Cortado - None - 2.35,2.35,CASH,nan
+06/07/2022 13:40,Birmingham,Leila Roberts,"Large - Cortado - None - 2.35, Large - Chai latte - None - 2.60, Large - Flavoured hot chocolate - Caramel - 2.90",7.85,CARD,6317
+06/07/2022 13:41,Birmingham,Claude Hanneman,Regular - Flavoured hot chocolate - Caramel - 2.60,2.6,CASH,nan
+06/07/2022 13:42,Birmingham,Alexander Welsh,"Large - Red Label tea - None - 1.80, Large - Speciality Tea - Camomile - 1.60, Large - Speciality Tea - Camomile - 1.60",5.0,CASH,nan
+06/07/2022 13:44,Birmingham,Wayne Bean,Large - Red Label tea - None - 1.80,1.8,CARD,2481
+06/07/2022 13:45,Birmingham,Eleanor Palmer,"Regular - Speciality Tea - Camomile - 1.30, Regular - Speciality Tea - English breakfast - 1.30, Large - Speciality Tea - English breakfast - 1.60, Regular - Speciality Tea - Camomile - 1.30",5.5,CARD,2515
+06/07/2022 13:46,Birmingham,Jamie Castro,"Regular - Cortado - None - 2.05, Regular - Chai latte - None - 2.30",4.35,CARD,4302
+06/07/2022 13:47,Birmingham,Janice Guerra,"Regular - Speciality Tea - Camomile - 1.30, Large - Red Label tea - None - 1.80, Regular - Chai latte - None - 2.30, Regular - Flavoured hot chocolate - Caramel - 2.60",8.0,CARD,6044
+06/07/2022 13:48,Birmingham,Annetta Feldt,"Regular - Speciality Tea - Camomile - 1.30, Regular - Flavoured hot chocolate - Caramel - 2.60",3.9,CARD,2728
+06/07/2022 13:49,Birmingham,David Ward,"Large - Chai latte - None - 2.60, Large - Speciality Tea - English breakfast - 1.60, Regular - Flavoured hot chocolate - Caramel - 2.60",6.8,CARD,2688
+06/07/2022 13:50,Birmingham,Tracy Beecher,Regular - Chai latte - None - 2.30,2.3,CARD,2899
+06/07/2022 13:51,Birmingham,Louis Fulmer,"Regular - Chai latte - None - 2.30, Regular - Speciality Tea - English breakfast - 1.30, Regular - Speciality Tea - Camomile - 1.30, Large - Speciality Tea - Camomile - 1.60",6.5,CARD,9732
+06/07/2022 13:52,Birmingham,Gerald Rivera,Large - Speciality Tea - Camomile - 1.60,1.6,CARD,6117
+06/07/2022 13:53,Birmingham,Brandon Williams,"Large - Red Label tea - None - 1.80, Large - Speciality Tea - Camomile - 1.60, Regular - Cortado - None - 2.05",5.45,CARD,8428
+06/07/2022 13:55,Birmingham,Amber Martin,Regular - Speciality Tea - Camomile - 1.30,1.3,CASH,nan
+06/07/2022 13:56,Birmingham,Ruth Gregory,"Regular - Flavoured hot chocolate - Caramel - 2.60, Large - Speciality Tea - Camomile - 1.60",4.2,CARD,8048
+06/07/2022 13:57,Birmingham,Lillian Rosario,"Regular - Flavoured hot chocolate - Caramel - 2.60, Regular - Flavoured hot chocolate - Caramel - 2.60, Large - Chai latte - None - 2.60",7.8,CARD,6153
+06/07/2022 13:58,Birmingham,Beverly Matson,"Regular - Cortado - None - 2.05, Regular - Chai latte - None - 2.30, Large - Speciality Tea - English breakfast - 1.60",5.95,CASH,nan
+06/07/2022 13:59,Birmingham,Naomi Eichenberger,"Large - Red Label tea - None - 1.80, Regular - Flavoured hot chocolate - Caramel - 2.60, Regular - Cortado - None - 2.05",6.45,CASH,nan
+06/07/2022 14:00,Birmingham,Patricia Brown,"Large - Flavoured hot chocolate - Caramel - 2.90, Large - Chai latte - None - 2.60, Regular - Chai latte - None - 2.30, Regular - Chai latte - None - 2.30",10.1,CARD,4379
+06/07/2022 14:01,Birmingham,Janet Maestas,"Regular - Cortado - None - 2.05, Large - Cortado - None - 2.35, Large - Chai latte - None - 2.60",7.0,CARD,1021
+06/07/2022 14:02,Birmingham,Norma Gardner,"Regular - Red Label tea - None - 1.20, Large - Flavoured hot chocolate - Caramel - 2.90, Regular - Speciality Tea - Camomile - 1.30",5.4,CASH,nan
+06/07/2022 14:03,Birmingham,Cody Sorensen,"Large - Speciality Tea - Camomile - 1.60, Large - Red Label tea - None - 1.80, Large - Speciality Tea - English breakfast - 1.60",5.0,CASH,nan
+06/07/2022 14:05,Birmingham,Mary Duncan,"Regular - Speciality Tea - English breakfast - 1.30, Regular - Flavoured hot chocolate - Caramel - 2.60",3.9,CASH,nan
+06/07/2022 14:06,Birmingham,Matthew Nolasco,"Regular - Flavoured hot chocolate - Caramel - 2.60, Large - Red Label tea - None - 1.80",4.4,CARD,6448
+06/07/2022 14:07,Birmingham,Donald Starns,"Regular - Speciality Tea - Camomile - 1.30, Regular - Flavoured hot chocolate - Caramel - 2.60",3.9,CASH,nan
+06/07/2022 14:08,Birmingham,Pierre Arnold,"Large - Cortado - None - 2.35, Large - Red Label tea - None - 1.80, Regular - Flavoured hot chocolate - Caramel - 2.60",6.75,CASH,nan
+06/07/2022 14:09,Birmingham,Dorothy Ferry,"Large - Cortado - None - 2.35, Regular - Red Label tea - None - 1.20, Large - Speciality Tea - English breakfast - 1.60, Regular - Speciality Tea - English breakfast - 1.30",6.45,CARD,9196
+06/07/2022 14:10,Birmingham,Terry Spaulding,"Regular - Red Label tea - None - 1.20, Large - Red Label tea - None - 1.80, Regular - Chai latte - None - 2.30",5.3,CASH,nan
+06/07/2022 14:12,Birmingham,Colin Johnson,"Large - Cortado - None - 2.35, Regular - Speciality Tea - English breakfast - 1.30, Regular - Speciality Tea - English breakfast - 1.30",4.95,CASH,nan
+06/07/2022 14:13,Birmingham,Truman Blackman,"Large - Flavoured hot chocolate - Caramel - 2.90, Regular - Cortado - None - 2.05",4.95,CASH,nan
+06/07/2022 14:14,Birmingham,Marisol Leppert,"Large - Cortado - None - 2.35, Large - Flavoured hot chocolate - Caramel - 2.90",5.25,CARD,3919
+06/07/2022 14:15,Birmingham,Daniel Shoults,"Regular - Chai latte - None - 2.30, Large - Chai latte - None - 2.60, Regular - Speciality Tea - English breakfast - 1.30, Large - Red Label tea - None - 1.80",8.0,CARD,3733
+06/07/2022 14:16,Birmingham,Theda Frede,Regular - Chai latte - None - 2.30,2.3,CARD,5038
+06/07/2022 14:17,Birmingham,Ronald James,Regular - Red Label tea - None - 1.20,1.2,CASH,nan
+06/07/2022 14:18,Birmingham,Rodrigo Grant,"Large - Speciality Tea - Camomile - 1.60, Large - Speciality Tea - Camomile - 1.60",3.2,CASH,nan
+06/07/2022 14:20,Birmingham,Thomas Brewer,"Large - Cortado - None - 2.35, Large - Speciality Tea - Camomile - 1.60",3.95,CARD,8727
+06/07/2022 14:21,Birmingham,Patricia Monk,"Regular - Speciality Tea - English breakfast - 1.30, Large - Red Label tea - None - 1.80, Regular - Cortado - None - 2.05",5.15,CARD,7029
+06/07/2022 14:22,Birmingham,Andy Barton,"Large - Chai latte - None - 2.60, Regular - Speciality Tea - English breakfast - 1.30, Large - Speciality Tea - English breakfast - 1.60, Regular - Speciality Tea - English breakfast - 1.30, Large - Speciality Tea - Camomile - 1.60",8.4,CASH,nan
+06/07/2022 14:23,Birmingham,Christopher Weathers,"Large - Speciality Tea - English breakfast - 1.60, Large - Cortado - None - 2.35, Large - Speciality Tea - Camomile - 1.60",5.55,CARD,5584
+06/07/2022 14:24,Birmingham,Jon Marano,Regular - Flavoured hot chocolate - Caramel - 2.60,2.6,CARD,7659
+06/07/2022 14:25,Birmingham,Sara Harris,"Regular - Speciality Tea - English breakfast - 1.30, Regular - Speciality Tea - Camomile - 1.30, Regular - Cortado - None - 2.05, Regular - Red Label tea - None - 1.20, Regular - Speciality Tea - English breakfast - 1.30",7.15,CASH,nan
+06/07/2022 14:26,Birmingham,Dominic Adams,"Large - Flavoured hot chocolate - Caramel - 2.90, Regular - Speciality Tea - Camomile - 1.30, Large - Flavoured hot chocolate - Caramel - 2.90",7.1,CARD,0628
+06/07/2022 14:28,Birmingham,Mary Sandoval,"Regular - Chai latte - None - 2.30, Regular - Chai latte - None - 2.30, Large - Red Label tea - None - 1.80, Regular - Speciality Tea - Camomile - 1.30, Regular - Speciality Tea - English breakfast - 1.30",9.0,CARD,6177
+06/07/2022 14:29,Birmingham,Elanor West,Large - Speciality Tea - Camomile - 1.60,1.6,CARD,2244
+06/07/2022 14:30,Birmingham,Jeff Robinson,"Regular - Speciality Tea - Camomile - 1.30, Regular - Speciality Tea - Camomile - 1.30, Regular - Speciality Tea - English breakfast - 1.30",3.9,CASH,nan
+06/07/2022 14:31,Birmingham,Heather Meador,Large - Red Label tea - None - 1.80,1.8,CASH,nan
+06/07/2022 14:32,Birmingham,Thomas Nappi,"Regular - Speciality Tea - Camomile - 1.30, Large - Cortado - None - 2.35, Regular - Cortado - None - 2.05, Regular - Chai latte - None - 2.30",8.0,CASH,nan
+06/07/2022 14:33,Birmingham,Sandra Ibanez,Large - Speciality Tea - Camomile - 1.60,1.6,CASH,nan
+06/07/2022 14:35,Birmingham,Ronald Grosser,Large - Chai latte - None - 2.60,2.6,CARD,1632
+06/07/2022 14:36,Birmingham,Roxanne Carothers,"Regular - Red Label tea - None - 1.20, Regular - Flavoured hot chocolate - Caramel - 2.60",3.8,CARD,6405
+06/07/2022 14:37,Birmingham,Robert Boren,Large - Chai latte - None - 2.60,2.6,CARD,3486
+06/07/2022 14:38,Birmingham,Leticia Byrge,"Large - Speciality Tea - Camomile - 1.60, Regular - Speciality Tea - English breakfast - 1.30, Regular - Flavoured hot chocolate - Caramel - 2.60",5.5,CARD,9134
+06/07/2022 14:39,Birmingham,Richard Carrothers,Regular - Red Label tea - None - 1.20,1.2,CASH,nan
+06/07/2022 14:40,Birmingham,Ann Williams,"Regular - Red Label tea - None - 1.20, Large - Red Label tea - None - 1.80, Regular - Speciality Tea - English breakfast - 1.30, Regular - Speciality Tea - English breakfast - 1.30, Large - Cortado - None - 2.35",7.95,CARD,9141
+06/07/2022 14:41,Birmingham,Patricia Johnson,"Large - Red Label tea - None - 1.80, Regular - Speciality Tea - Camomile - 1.30, Regular - Speciality Tea - Camomile - 1.30",4.4,CASH,nan
+06/07/2022 14:43,Birmingham,Michael Quillen,Regular - Cortado - None - 2.05,2.05,CASH,nan
+06/07/2022 14:44,Birmingham,Diane Brevig,"Regular - Flavoured hot chocolate - Caramel - 2.60, Regular - Speciality Tea - English breakfast - 1.30, Regular - Speciality Tea - Camomile - 1.30, Large - Chai latte - None - 2.60, Large - Speciality Tea - English breakfast - 1.60",9.4,CARD,2375
+06/07/2022 14:45,Birmingham,Barbara Mcgregor,"Large - Flavoured hot chocolate - Caramel - 2.90, Regular - Speciality Tea - Camomile - 1.30",4.2,CARD,5623
+06/07/2022 14:46,Birmingham,Dorothy Doran,"Large - Speciality Tea - English breakfast - 1.60, Large - Cortado - None - 2.35",3.95,CASH,nan
+06/07/2022 14:47,Birmingham,David Ward,"Regular - Speciality Tea - Camomile - 1.30, Regular - Red Label tea - None - 1.20, Regular - Speciality Tea - English breakfast - 1.30",3.8,CASH,nan
+06/07/2022 14:48,Birmingham,Raymond Henry,"Regular - Chai latte - None - 2.30, Regular - Cortado - None - 2.05",4.35,CARD,9877
+06/07/2022 14:49,Birmingham,Glynis Chamberlain,"Large - Red Label tea - None - 1.80, Regular - Red Label tea - None - 1.20, Regular - Cortado - None - 2.05, Large - Speciality Tea - English breakfast - 1.60, Regular - Cortado - None - 2.05",8.7,CARD,3216
+06/07/2022 14:51,Birmingham,Gary Lineberger,"Large - Cortado - None - 2.35, Regular - Speciality Tea - English breakfast - 1.30, Large - Speciality Tea - English breakfast - 1.60, Regular - Chai latte - None - 2.30, Large - Cortado - None - 2.35",9.9,CASH,nan
+06/07/2022 14:52,Birmingham,Margaret Miller,"Large - Speciality Tea - English breakfast - 1.60, Large - Red Label tea - None - 1.80, Regular - Red Label tea - None - 1.20",4.6,CARD,7706
+06/07/2022 14:53,Birmingham,Melinda Williams,"Regular - Chai latte - None - 2.30, Regular - Flavoured hot chocolate - Caramel - 2.60, Regular - Red Label tea - None - 1.20, Large - Cortado - None - 2.35, Large - Red Label tea - None - 1.80",10.25,CARD,7103
+06/07/2022 14:54,Birmingham,Elizabeth Washington,"Large - Chai latte - None - 2.60, Large - Flavoured hot chocolate - Caramel - 2.90, Regular - Speciality Tea - English breakfast - 1.30, Regular - Chai latte - None - 2.30, Large - Flavoured hot chocolate - Caramel - 2.90, Large - Chai latte - None - 2.60",14.6,CARD,1562
+06/07/2022 14:55,Birmingham,Kenneth Staley,Large - Red Label tea - None - 1.80,1.8,CASH,nan
+06/07/2022 14:56,Birmingham,Glen Wight,"Large - Cortado - None - 2.35, Large - Speciality Tea - English breakfast - 1.60, Large - Speciality Tea - English breakfast - 1.60",5.55,CASH,nan
+06/07/2022 14:58,Birmingham,Troy Sawyer,"Regular - Cortado - None - 2.05, Regular - Speciality Tea - English breakfast - 1.30, Regular - Flavoured hot chocolate - Caramel - 2.60, Regular - Speciality Tea - English breakfast - 1.30, Regular - Speciality Tea - Camomile - 1.30, Regular - Flavoured hot chocolate - Caramel - 2.60",11.15,CARD,0278
+06/07/2022 14:59,Birmingham,William Mcilwraith,Large - Speciality Tea - Camomile - 1.60,1.6,CARD,8427
+06/07/2022 15:00,Birmingham,Teresa Williams,"Regular - Speciality Tea - English breakfast - 1.30, Large - Cortado - None - 2.35, Large - Cortado - None - 2.35, Large - Cortado - None - 2.35",8.35,CARD,6328
+06/07/2022 15:01,Birmingham,Samantha Hoyt,"Regular - Red Label tea - None - 1.20, Large - Red Label tea - None - 1.80",3.0,CARD,1571
+06/07/2022 15:02,Birmingham,Bernard Heatly,"Regular - Flavoured hot chocolate - Caramel - 2.60, Regular - Cortado - None - 2.05, Regular - Speciality Tea - Camomile - 1.30",5.95,CARD,8896
+06/07/2022 15:04,Birmingham,Ursula Drake,"Regular - Speciality Tea - English breakfast - 1.30, Large - Speciality Tea - English breakfast - 1.60, Large - Chai latte - None - 2.60, Regular - Cortado - None - 2.05, Large - Chai latte - None - 2.60, Large - Flavoured hot chocolate - Caramel - 2.90",13.05,CASH,nan
+06/07/2022 15:05,Birmingham,Lyla Shannon,Large - Speciality Tea - Camomile - 1.60,1.6,CARD,1051
+06/07/2022 15:06,Birmingham,Shane Harris,"Regular - Cortado - None - 2.05, Regular - Speciality Tea - English breakfast - 1.30",3.35,CARD,0404
+06/07/2022 15:07,Birmingham,Nicholas Hill,"Large - Speciality Tea - Camomile - 1.60, Regular - Speciality Tea - Camomile - 1.30",2.9,CASH,nan
+06/07/2022 15:09,Birmingham,Chantel Park,"Large - Speciality Tea - Camomile - 1.60, Large - Flavoured hot chocolate - Caramel - 2.90",4.5,CARD,5511
+06/07/2022 15:10,Birmingham,Michael Bodey,"Regular - Cortado - None - 2.05, Large - Speciality Tea - Camomile - 1.60",3.65,CARD,1145
+06/07/2022 15:11,Birmingham,Carmen Clement,"Large - Speciality Tea - Camomile - 1.60, Regular - Flavoured hot chocolate - Caramel - 2.60, Regular - Cortado - None - 2.05, Regular - Flavoured hot chocolate - Caramel - 2.60",8.85,CASH,nan
+06/07/2022 15:12,Birmingham,Larry Brown,"Large - Chai latte - None - 2.60, Regular - Speciality Tea - Camomile - 1.30, Large - Cortado - None - 2.35",6.25,CARD,8424
+06/07/2022 15:14,Birmingham,Chad Jones,Large - Cortado - None - 2.35,2.35,CARD,6688
+06/07/2022 15:15,Birmingham,Thomas Ward,"Large - Chai latte - None - 2.60, Regular - Cortado - None - 2.05",4.65,CARD,0186
+06/07/2022 15:16,Birmingham,Alta Vasquez,"Regular - Chai latte - None - 2.30, Regular - Speciality Tea - English breakfast - 1.30, Regular - Speciality Tea - English breakfast - 1.30, Regular - Chai latte - None - 2.30",7.2,CARD,7067
+06/07/2022 15:18,Birmingham,Nicholas Patterson,"Large - Red Label tea - None - 1.80, Regular - Speciality Tea - English breakfast - 1.30, Regular - Red Label tea - None - 1.20",4.3,CASH,nan
+06/07/2022 15:19,Birmingham,Maurine Hughes,"Regular - Chai latte - None - 2.30, Large - Speciality Tea - English breakfast - 1.60, Large - Flavoured hot chocolate - Caramel - 2.90, Regular - Red Label tea - None - 1.20",8.0,CASH,nan
+06/07/2022 15:20,Birmingham,Dana Mahaffey,"Large - Flavoured hot chocolate - Caramel - 2.90, Regular - Speciality Tea - Camomile - 1.30, Regular - Speciality Tea - English breakfast - 1.30",5.5,CARD,2667
+06/07/2022 15:21,Birmingham,James Sharma,"Regular - Red Label tea - None - 1.20, Large - Speciality Tea - English breakfast - 1.60, Large - Speciality Tea - English breakfast - 1.60, Regular - Chai latte - None - 2.30",6.7,CASH,nan
+06/07/2022 15:23,Birmingham,Douglas Throckmorton,Regular - Chai latte - None - 2.30,2.3,CASH,nan
+06/07/2022 15:24,Birmingham,Seth Williams,"Regular - Red Label tea - None - 1.20, Regular - Speciality Tea - Camomile - 1.30, Large - Flavoured hot chocolate - Caramel - 2.90, Regular - Flavoured hot chocolate - Caramel - 2.60",8.0,CASH,nan
+06/07/2022 15:25,Birmingham,Charlotte Draudt,Large - Chai latte - None - 2.60,2.6,CASH,nan
+06/07/2022 15:26,Birmingham,Arthur Siano,"Large - Speciality Tea - English breakfast - 1.60, Large - Red Label tea - None - 1.80, Large - Red Label tea - None - 1.80, Regular - Cortado - None - 2.05",7.25,CARD,4861
+06/07/2022 15:28,Birmingham,Dante Hightower,"Large - Speciality Tea - English breakfast - 1.60, Regular - Cortado - None - 2.05, Large - Speciality Tea - English breakfast - 1.60",5.25,CASH,nan
+06/07/2022 15:29,Birmingham,Porsha Barthelemy,"Regular - Red Label tea - None - 1.20, Regular - Speciality Tea - English breakfast - 1.30, Regular - Cortado - None - 2.05",4.55,CARD,9822
+06/07/2022 15:30,Birmingham,Shirley Olds,"Large - Cortado - None - 2.35, Large - Red Label tea - None - 1.80",4.15,CARD,5776
+06/07/2022 15:31,Birmingham,Janet Capello,Regular - Chai latte - None - 2.30,2.3,CASH,nan
+06/07/2022 15:33,Birmingham,Salvatore Revak,"Regular - Chai latte - None - 2.30, Regular - Cortado - None - 2.05",4.35,CASH,nan
+06/07/2022 15:34,Birmingham,Tyra Mitchell,"Large - Speciality Tea - Camomile - 1.60, Regular - Flavoured hot chocolate - Caramel - 2.60, Large - Red Label tea - None - 1.80, Regular - Cortado - None - 2.05",8.05,CASH,nan
+06/07/2022 15:35,Birmingham,Betty Gilles,"Regular - Speciality Tea - Camomile - 1.30, Large - Speciality Tea - Camomile - 1.60, Regular - Speciality Tea - English breakfast - 1.30, Large - Red Label tea - None - 1.80",6.0,CASH,nan
+06/07/2022 15:37,Birmingham,Kellee Neidecker,"Large - Speciality Tea - Camomile - 1.60, Regular - Red Label tea - None - 1.20, Regular - Cortado - None - 2.05",4.85,CARD,1573
+06/07/2022 15:38,Birmingham,Anna Malkin,"Regular - Speciality Tea - Camomile - 1.30, Large - Speciality Tea - English breakfast - 1.60, Regular - Speciality Tea - Camomile - 1.30, Regular - Chai latte - None - 2.30, Regular - Cortado - None - 2.05, Regular - Red Label tea - None - 1.20",9.75,CARD,0935
+06/07/2022 15:39,Birmingham,Tammy Maze,"Regular - Flavoured hot chocolate - Caramel - 2.60, Regular - Flavoured hot chocolate - Caramel - 2.60, Large - Chai latte - None - 2.60",7.8,CARD,5289
+06/07/2022 15:40,Birmingham,Rose Doty,"Large - Cortado - None - 2.35, Regular - Speciality Tea - English breakfast - 1.30, Large - Speciality Tea - English breakfast - 1.60, Large - Speciality Tea - Camomile - 1.60, Regular - Speciality Tea - English breakfast - 1.30, Regular - Speciality Tea - Camomile - 1.30",9.45,CARD,7116
+06/07/2022 15:42,Birmingham,Mayra Wilcoxon,Large - Flavoured hot chocolate - Caramel - 2.90,2.9,CARD,4775
+06/07/2022 15:43,Birmingham,Louise Dixon,Large - Red Label tea - None - 1.80,1.8,CARD,2181
+06/07/2022 15:44,Birmingham,John Jefferis,"Large - Speciality Tea - English breakfast - 1.60, Large - Speciality Tea - Camomile - 1.60, Regular - Chai latte - None - 2.30",5.5,CARD,7855
+06/07/2022 15:45,Birmingham,John Benefiel,"Large - Speciality Tea - English breakfast - 1.60, Regular - Speciality Tea - Camomile - 1.30, Large - Red Label tea - None - 1.80, Large - Speciality Tea - English breakfast - 1.60",6.3,CARD,8436
+06/07/2022 15:47,Birmingham,Buck Kane,"Regular - Speciality Tea - Camomile - 1.30, Large - Cortado - None - 2.35, Regular - Flavoured hot chocolate - Caramel - 2.60, Large - Cortado - None - 2.35",8.6,CARD,9232
+06/07/2022 15:48,Birmingham,Illa Mitchell,"Large - Speciality Tea - English breakfast - 1.60, Large - Flavoured hot chocolate - Caramel - 2.90",4.5,CARD,3524
+06/07/2022 15:49,Birmingham,Mary Kriss,"Large - Speciality Tea - Camomile - 1.60, Large - Speciality Tea - Camomile - 1.60, Large - Speciality Tea - English breakfast - 1.60, Regular - Speciality Tea - Camomile - 1.30, Regular - Speciality Tea - English breakfast - 1.30",7.4,CARD,5645
+06/07/2022 15:50,Birmingham,Daniel Jackson,Large - Chai latte - None - 2.60,2.6,CASH,nan
+06/07/2022 15:52,Birmingham,Estella Vegas,Large - Speciality Tea - English breakfast - 1.60,1.6,CARD,0609
+06/07/2022 15:53,Birmingham,Denise Woodruff,"Large - Chai latte - None - 2.60, Regular - Chai latte - None - 2.30, Large - Speciality Tea - English breakfast - 1.60, Regular - Chai latte - None - 2.30",8.8,CASH,nan
+06/07/2022 15:54,Birmingham,Elizabeth Brown,Large - Red Label tea - None - 1.80,1.8,CARD,5392
+06/07/2022 15:56,Birmingham,Karin Rice,"Regular - Chai latte - None - 2.30, Large - Chai latte - None - 2.60, Regular - Cortado - None - 2.05, Large - Chai latte - None - 2.60, Regular - Chai latte - None - 2.30, Regular - Speciality Tea - English breakfast - 1.30",13.15,CARD,5048
+06/07/2022 15:57,Birmingham,Ann Anaya,"Regular - Speciality Tea - Camomile - 1.30, Large - Cortado - None - 2.35",3.65,CASH,nan
+06/07/2022 15:58,Birmingham,Charles Alexander,"Large - Chai latte - None - 2.60, Large - Cortado - None - 2.35",4.95,CARD,7403
+06/07/2022 15:59,Birmingham,Kristopher Schneider,"Large - Red Label tea - None - 1.80, Regular - Flavoured hot chocolate - Caramel - 2.60, Large - Speciality Tea - English breakfast - 1.60",6.0,CARD,7792
+06/07/2022 16:01,Birmingham,Della Briggs,"Large - Cortado - None - 2.35, Large - Speciality Tea - Camomile - 1.60",3.95,CASH,nan
+06/07/2022 16:04,Birmingham,Andrew Dones,"Large - Speciality Tea - English breakfast - 1.60, Regular - Speciality Tea - Camomile - 1.30, Regular - Chai latte - None - 2.30, Regular - Flavoured hot chocolate - Caramel - 2.60",7.8,CARD,5082
+06/07/2022 16:08,Birmingham,Damien Amado,"Large - Cortado - None - 2.35, Large - Speciality Tea - English breakfast - 1.60, Regular - Speciality Tea - Camomile - 1.30, Regular - Speciality Tea - English breakfast - 1.30",6.55,CASH,nan
+06/07/2022 16:11,Birmingham,Deborah Becnel,"Regular - Speciality Tea - English breakfast - 1.30, Large - Speciality Tea - Camomile - 1.60",2.9,CARD,6952
+06/07/2022 16:15,Birmingham,James Howard,"Regular - Speciality Tea - English breakfast - 1.30, Regular - Flavoured hot chocolate - Caramel - 2.60, Large - Cortado - None - 2.35, Regular - Flavoured hot chocolate - Caramel - 2.60",8.85,CASH,nan
+06/07/2022 16:18,Birmingham,Amber Byers,Regular - Chai latte - None - 2.30,2.3,CARD,7563
+06/07/2022 16:22,Birmingham,Heather Harris,"Regular - Red Label tea - None - 1.20, Regular - Speciality Tea - English breakfast - 1.30",2.5,CARD,6704
+06/07/2022 16:25,Birmingham,James Anthony,"Large - Chai latte - None - 2.60, Large - Flavoured hot chocolate - Caramel - 2.90, Large - Speciality Tea - Camomile - 1.60",7.1,CARD,0757
+06/07/2022 16:29,Birmingham,Amy Pulley,"Large - Red Label tea - None - 1.80, Regular - Speciality Tea - Camomile - 1.30, Large - Chai latte - None - 2.60, Regular - Cortado - None - 2.05",7.75,CARD,7085
+06/07/2022 16:32,Birmingham,Margaret Hadsall,"Large - Speciality Tea - Camomile - 1.60, Regular - Flavoured hot chocolate - Caramel - 2.60, Large - Chai latte - None - 2.60, Regular - Red Label tea - None - 1.20, Large - Speciality Tea - Camomile - 1.60",9.6,CARD,2001
+06/07/2022 16:36,Birmingham,Leslie Rose,"Regular - Speciality Tea - Camomile - 1.30, Regular - Speciality Tea - Camomile - 1.30, Regular - Speciality Tea - English breakfast - 1.30",3.9,CARD,8204
+06/07/2022 16:39,Birmingham,Patrice Roe,"Regular - Flavoured hot chocolate - Caramel - 2.60, Large - Red Label tea - None - 1.80, Large - Speciality Tea - Camomile - 1.60",6.0,CARD,7641
+06/07/2022 16:43,Birmingham,Jamie Bohnsack,"Regular - Red Label tea - None - 1.20, Large - Red Label tea - None - 1.80, Large - Speciality Tea - Camomile - 1.60, Large - Cortado - None - 2.35",6.95,CARD,4692
+06/07/2022 16:46,Birmingham,Myron Banta,Large - Cortado - None - 2.35,2.35,CASH,nan
+06/07/2022 16:50,Birmingham,Brenda Canfield,Large - Red Label tea - None - 1.80,1.8,CARD,2268
+06/07/2022 16:53,Birmingham,Christopher Savage,"Large - Chai latte - None - 2.60, Large - Chai latte - None - 2.60, Regular - Speciality Tea - Camomile - 1.30",6.5,CARD,5202
+06/07/2022 16:57,Birmingham,Ryan Harvey,"Regular - Red Label tea - None - 1.20, Regular - Chai latte - None - 2.30, Large - Chai latte - None - 2.60, Large - Speciality Tea - Camomile - 1.60",7.7,CARD,1551
