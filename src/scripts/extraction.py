@@ -55,22 +55,26 @@ def extract_price(prod):
 
 def extract_flavour(prod):
     prod_list = prod.split(" - ")
+    if len(prod_list) == 4:
+        add = prod_list[2]
+        return add
     if len(prod_list) == 2:
         add = prod_list.insert(1, "None")
     if len(prod_list) == 3:
         add = prod_list[1]
     return add
 
-
 def extract_name(prod):
     prod_list = prod.split(" - ")
-    if len(prod_list) == 3:
-        prod_list.pop(-1)
-    prod_list.pop(-1)
-    prod_list = prod_list[0].split(" ")
-    prod_list.pop(0)
-    name = " ".join(prod_list)
-    return name
+    
+    # if len(prod_list) == 3 or len(prod_list) == 4:
+    #     prod_list.pop(-1)
+    # print(prod_list)
+    # prod_list.pop(-1)
+    # prod_list = prod_list[0].split(" ")
+    # prod_list.pop(0)
+    # name = " ".join(prod_list)
+    return prod_list[1]
 
 
 def clean_the_data():
@@ -137,7 +141,6 @@ def get_df_cards(df):
 
 
 def get_df_products(df):
-    print(df.head())
     products_df = df[["product_name", "flavour", "size", "price"]]
     products_df = products_df.drop_duplicates(ignore_index=True)
     products_df = products_df.sort_values("product_name")
@@ -230,19 +233,22 @@ def insert_cards(
     get_cursor=get_cursor,
     execute_cursor=execute_cursor,
 ):
-    cursor = get_cursor(connection)
-    sql_check_cards_query = """
-    SELECT card_number FROM cards"""
-    cursor.execute(sql_check_cards_query)
-    card_nums = cursor.fetchall()
-    for card in card_nums:
-        cards_df = cards_df.drop(cards_df.index[cards_df["card_number"] == card[0]])
-    cursor.close()
+    # cursor = get_cursor(connection)
+    # sql_check_cards_query = """
+    # SELECT card_number FROM cards"""
+    # cursor.execute(sql_check_cards_query)
+    # card_nums = cursor.fetchall()
+    # for card in card_nums:
+    #     cards_df = cards_df.drop(cards_df.index[cards_df["card_number"] == card[0]])
+    # cursor.close()
     cursor = connection.cursor()
+    print('cursor get')
     for cards in cards_df.values.tolist():
+        cards[0]=str(cards[0]).strip('.0')
         sql_query = f"""
-        INSERT into cards (card_number)
+        INSERT IGNORE into cards (card_number)
             VALUES ('{cards[0]}')"""
+        print(sql_query)
         execute_cursor(cursor, sql_query)
     print("Cards inserted OK")
 
@@ -290,7 +296,6 @@ def insert_products(
 
         cursor.execute(sql_check_prods_query)
         products = cursor.fetchall()
-        print(products)
         if products == ():
             print("Unique product found, entering into DB")
             sql_query = f"""
