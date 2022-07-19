@@ -6,6 +6,14 @@ from dotenv import load_dotenv
 from yaspin import yaspin
 import time
 import os
+from sqlalchemy import create_engine
+from sqlalchemy.ext.compiler import compiles
+from sqlalchemy.sql.expression import Insert
+
+# adds the word IGNORE after INSERT in sqlalchemy
+@compiles(Insert)
+def _prefix_insert_with_ignore(insert, compiler, **kw):
+    return compiler.visit_insert(insert.prefix_with('IGNORE'), **kw)
 
 main_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 sys.path.append(f"{main_dir}")
@@ -76,6 +84,11 @@ def extract_name(prod):
     # name = " ".join(prod_list)
     return prod_list[1]
 
+def clean_cards(cards):
+    cards=str(cards).rstrip('.0')
+    return cards
+
+
 
 def clean_the_data():
     df = get_data_frame()
@@ -120,6 +133,7 @@ def clean_the_data():
 # ----------------------------------------------------------------
 def get_df_customers(df):
     customer_df = df[["customer_name"]]
+    customer_df.columns = ["name"]
     customer_df = customer_df.drop_duplicates()
     print("Customers DF OK")
     return customer_df
@@ -127,6 +141,7 @@ def get_df_customers(df):
 
 def get_df_location(df):
     location_df = df[["location"]]
+    location_df.columns = ["name"]
     location_df = location_df.drop_duplicates()
     print("Location DF OK")
     return location_df
@@ -142,8 +157,9 @@ def get_df_cards(df):
 
 def get_df_products(df):
     products_df = df[["product_name", "flavour", "size", "price"]]
+    products_df.columns = ["name", "flavour", "size", "price"]
     products_df = products_df.drop_duplicates(ignore_index=True)
-    products_df = products_df.sort_values("product_name")
+    products_df = products_df.sort_values("name")
     print("Products DF OK")
     return products_df
 
@@ -174,138 +190,48 @@ def get_table_df(
     transaction_df = get_df_transaction(df)
     return customer_df, location_df, cards_df, products_df, transaction_df
 
-
-# cleaning our product data
-@yaspin(
-    text="Cleaning products...",
-)
-def clean_products(products_df, separate_products=separate_products):
-    time.sleep(1)
-    products = []
-    for order in products_df["products"]:
-        order_split = list(order.split(","))
-        # split each row of products into a list, separated by commas
-        order_split = separate_products(order_split)
-        products.append(order_split)
-    # make a dataframe to house our products and provide the column names
-    clean_products_df = pd.DataFrame(columns=["SIZE", "NAME", "FLAVOUR", "PRICE"])
-    for product in products:
-        # itterate through and add each product to the new dataframe
-        temp_df = pd.DataFrame(product, columns=["SIZE", "NAME", "FLAVOUR", "PRICE"])
-        clean_products_df = pd.concat([clean_products_df, temp_df])
-    # drop any duplicates and sort by name, so it is easier to read
-    clean_products_df = clean_products_df.drop_duplicates(ignore_index=True)
-    clean_products_df = clean_products_df.sort_values("NAME")
-    return clean_products_df
-
+def df_to_sql(df, table_name):
+    user = os.environ.get("mysql_user")
+    password = os.environ.get("mysql_pass")
+    engine = create_engine(f"mysql+pymysql://{user}:{password}@localhost:3307/thirstee")
+    df.to_sql(con=engine, if_exists='append', name=table_name, index=False)
 
 # individual functions to isert into all the different tables
 @yaspin(text="Inserting names into DB...")
 def insert_names(
-    connection,
     customer_df: pd.DataFrame,
-    get_cursor=get_cursor,
-    execute_cursor=execute_cursor,
+    df_to_sql=df_to_sql
 ):
-    cursor = get_cursor(connection)
-    sql_check_customers_query = """
-    SELECT name FROM customers"""
-    cursor.execute(sql_check_customers_query)
-    names = cursor.fetchall()
-    for name in names:
-        customer_df = customer_df.drop(
-            customer_df.index[customer_df["customer_name"] == name[0]]
-        )
-    cursor.close()
-    cursor = connection.cursor()
-    for name in customer_df.values.tolist():
-        sql_query = f"""
-        INSERT INTO customers (name)
-            VALUES ('{name[0]}')"""
-        execute_cursor(cursor, sql_query)
+    df_to_sql(customer_df, "customers")
     print("Names inserted OK")
 
 
 @yaspin(text="Inserting cards into DB...")
 def insert_cards(
-    connection,
     cards_df: pd.DataFrame,
-    get_cursor=get_cursor,
-    execute_cursor=execute_cursor,
+    df_to_sql=df_to_sql,
+    clean_cards=clean_cards
 ):
-    # cursor = get_cursor(connection)
-    # sql_check_cards_query = """
-    # SELECT card_number FROM cards"""
-    # cursor.execute(sql_check_cards_query)
-    # card_nums = cursor.fetchall()
-    # for card in card_nums:
-    #     cards_df = cards_df.drop(cards_df.index[cards_df["card_number"] == card[0]])
-    # cursor.close()
-    cursor = connection.cursor()
-    print('cursor get')
-    for cards in cards_df.values.tolist():
-        cards[0]=str(cards[0]).strip('.0')
-        sql_query = f"""
-        INSERT IGNORE into cards (card_number)
-            VALUES ('{cards[0]}')"""
-        print(sql_query)
-        execute_cursor(cursor, sql_query)
+    cards_df["card_number"] =cards_df["card_number"].apply(clean_cards)
+    df_to_sql(cards_df, "cards")
     print("Cards inserted OK")
 
 
 @yaspin(text="Inserting stores into DB...")
 def insert_store(
-    connection,
     location_df: pd.DataFrame,
-    get_cursor=get_cursor,
-    execute_cursor=execute_cursor,
+    df_to_sql=df_to_sql,
 ):
-    cursor = get_cursor(connection)
-    sql_check_stores_query = """
-    SELECT name FROM store"""
-    cursor.execute(sql_check_stores_query)
-    locations = cursor.fetchall()
-    for location in locations:
-        location_df = location_df.drop(
-            location_df.index[location_df["location"] == location[0]]
-        )
-    cursor.close()
-    cursor = connection.cursor()
-    for store in location_df.values.tolist():
-        sql_query = f"""
-        INSERT into store (name)
-            VALUES ('{store[0]}')"""
-        execute_cursor(cursor, sql_query)
+    df_to_sql(location_df, "store")
     print("Stores inserted OK")
 
 
 @yaspin(text="Inserting products into DB...")
 def insert_products(
-    connection,
     products_df: pd.DataFrame,
-    get_cursor=get_cursor,
-    execute_cursor=execute_cursor,
+    df_to_sql=df_to_sql
 ):
-    cursor = connection.cursor()
-    for product in products_df.values.tolist():
-        cursor = get_cursor(connection)
-
-        sql_check_prods_query = f"""
-        SELECT product_id FROM products
-            WHERE name = '{product[0]}' AND flavour = '{product[1]}' AND size = '{product[2]}'"""
-
-        cursor.execute(sql_check_prods_query)
-        products = cursor.fetchall()
-        if products == ():
-            print("Unique product found, entering into DB")
-            sql_query = f"""
-            INSERT INTO products (name, flavour, size, price)
-                VALUES ('{product[0]}', '{product[1]}', '{product[2]}', '{product[3]}')"""
-            execute_cursor(cursor, sql_query)
-
-        else:
-            continue
-
+    df_to_sql(products_df, "products")
     print("Products inserted OK")
 
 
@@ -333,10 +259,10 @@ def etl(
     # clean our product data
     connection = get_connection()
     # each of these executes a series of sql commands to insert the data into our database
-    insert_names(connection, customer_df)
-    insert_cards(connection, cards_df)
-    insert_store(connection, location_df)
-    insert_products(connection, products_df)
+    insert_names(customer_df)
+    insert_cards(cards_df)
+    insert_store(location_df)
+    insert_products(products_df)
     commit_and_close(connection)
 
 

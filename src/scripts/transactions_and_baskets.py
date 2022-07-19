@@ -1,4 +1,4 @@
-from extraction import get_data_frame, clean_products, etl, clean_the_data
+from extraction import get_data_frame, etl, clean_the_data
 
 import pandas as pd
 from yaspin import yaspin
