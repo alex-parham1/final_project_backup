@@ -1,8 +1,6 @@
 import pandas as pd
 
 # import pandas_profiling
-import sys
-from dotenv import load_dotenv
 from yaspin import yaspin
 import os
 from sqlalchemy import create_engine
@@ -13,8 +11,6 @@ from sqlalchemy.sql.expression import Insert
 @compiles(Insert)
 def _prefix_insert_with_ignore(insert, compiler, **kw):
     return compiler.visit_insert(insert.prefix_with('IGNORE'), **kw)
-
-
 
 # This function forms the **E** from ETL - it extracts the data and puts it into a dataframe.
 # lets the user know what is happening when the code is just 'doing stuff'

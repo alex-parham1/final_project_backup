@@ -1,10 +1,5 @@
-from extraction import get_data_frame, etl, clean_the_data
-
 import pandas as pd
 from yaspin import yaspin
-import sys
-from dotenv import load_dotenv
-import time
 import os
 from sqlalchemy import create_engine
 from sqlalchemy.ext.compiler import compiles
