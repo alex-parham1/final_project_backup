@@ -20,7 +20,7 @@ def _prefix_insert_with_ignore(insert, compiler, **kw):
 main_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 sys.path.append(f"{main_dir}")
 
-from src.database import get_connection, close_connection, commit_connection
+from scripts.database import get_connection, close_connection, commit_connection
 
 con = get_connection()
 

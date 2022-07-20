@@ -16,7 +16,7 @@ def _prefix_insert_with_ignore(insert, compiler, **kw):
 
 main_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 sys.path.append(f"{main_dir}")
-from src.database import get_connection, commit_and_close, execute_cursor, get_cursor
+from scripts.database import get_connection, commit_and_close, execute_cursor, get_cursor
 
 # This function forms the **E** from ETL - it extracts the data and puts it into a dataframe.
 # lets the user know what is happening when the code is just 'doing stuff'
