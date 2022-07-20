@@ -5,3 +5,43 @@
 #     labels = ["cash", "card"]
 
 #     return labels, values
+
+
+#     #baskets begins here
+    #     product_ids = []
+    #     cursor = con.cursor()
+    #     sql_get_product_id = f"""
+    #     SELECT product_id FROM products 
+    #         WHERE name = '{order[3]}' AND flavour = '{order[4]}' AND size = '{order[5]}' AND price = {order[6]}"""
+    #     cursor.execute(sql_get_product_id)
+    #     prod_id_t = cursor.fetchone()
+    #     product_ids.append(prod_id_t[0])
+    #     cursor.close()
+
+    #     cursor = con.cursor()
+    #     for ID in product_ids:
+    #         sql_get_trans_id = f"""
+    #         SELECT transaction_id from transactions
+    #             WHERE customer_id = {customer_id} AND store_id = {store_id} AND date_time = '{order[0]}'"""
+
+    #         cursor.execute(sql_get_trans_id)
+    #         trans_id_t = cursor.fetchone()
+    #         transaction_id = trans_id_t[0]
+
+    #         sql_check_basket_exists = f"""
+    #         SELECT transaction_id FROM basket
+    #             WHERE product_id = {ID} AND transaction_id = {transaction_id}"""
+    #         cursor.execute(sql_check_basket_exists)
+    #         is_exists = cursor.fetchone()
+
+    #         if is_exists == None:
+    #             print("Inserted basket")
+    #             sql_insert_into_basket = f"""
+    #             INSERT into basket (transaction_id, product_id)
+    #                 VALUES ({transaction_id}, {ID})"""
+
+    #             cursor.execute(sql_insert_into_basket)
+    #         else:
+    #             pass
+    #     cursor.close()
+    #     con.commit()

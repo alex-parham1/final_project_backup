@@ -4,7 +4,6 @@ import pandas as pd
 import sys
 from dotenv import load_dotenv
 from yaspin import yaspin
-import time
 import os
 from sqlalchemy import create_engine
 from sqlalchemy.ext.compiler import compiles
@@ -23,7 +22,6 @@ from src.database import get_connection, commit_and_close, execute_cursor, get_c
 # lets the user know what is happening when the code is just 'doing stuff'
 @yaspin(text="Cleaning data...")
 def get_data_frame():
-    time.sleep(1)
     target = os.path.dirname(
         os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
     )
@@ -182,7 +180,6 @@ def get_table_df(
     get_df_products=get_df_products,
     get_df_transaction=get_df_transaction,
 ):
-    time.sleep(1)
     customer_df = get_df_customers(df)
     location_df = get_df_location(df)
     cards_df = get_df_cards(df)
