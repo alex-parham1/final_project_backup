@@ -5,17 +5,20 @@ CREATE table IF NOT EXISTS customers (
 
 CREATE table IF NOT EXISTS products (
 	product_id INT AUTO_INCREMENT PRIMARY KEY,
-	name VARCHAR(255) NOT NULL
+	name VARCHAR(255) NOT NULL,
+	flavour VARCHAR(255) NOT NULL,
+	size VARCHAR(255) NOT NULL,
+	price DECIMAL(4,2)
 );
 
 CREATE table IF NOT EXISTS store (
 	store_id INT AUTO_INCREMENT PRIMARY KEY,
-	name VARCHAR(255) NOT NULL
+	name VARCHAR(255) NOT NULL UNIQUE
 );
 
 CREATE table IF NOT EXISTS cards (
 	card_id INT AUTO_INCREMENT PRIMARY KEY,
-	card_number BIGINT NOT NULL,
+	card_number BIGINT NOT NULL UNIQUE,
 	card_type VARCHAR(255) NOT NULL
 );
 
@@ -32,7 +35,6 @@ CREATE table IF NOT EXISTS transactions (
 	transaction_id INT AUTO_INCREMENT PRIMARY KEY,
 	date_time DATETIME NOT NULL,
 	customer_id INT NOT NULL,
-	basket_id INT NOT NULL,
 	quantity INT NOT NULL,
 	store_id INT NOT NULL,
 	total DECIMAL(10,2) NOT NULL,
@@ -40,14 +42,11 @@ CREATE table IF NOT EXISTS transactions (
 	
 	FOREIGN KEY (customer_id)
 		REFERENCES customers (customer_id),
-	FOREIGN KEY (basket_id)
-		REFERENCES basket (basket_id),
 	FOREIGN KEY (store_id)
 		REFERENCES store (store_id)
 );
 	
 CREATE table IF NOT EXISTS basket (
-	basket_id INT AUTO_INCREMENT PRIMARY KEY,
 	transaction_id INT NOT NULL,
 	product_id INT NOT NULL,
 
