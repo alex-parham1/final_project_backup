@@ -122,31 +122,22 @@ def get_df_products(df):
     return products_df
 
 
-def get_df_transaction(df):
-    transaction_df = df[["date", "payment_type", "total"]]
-    print("Transaction DF OK")
-    return transaction_df
-
-
 # -------------------------------------------------------------------------
 # function that creates all of the individual dataframes (calls the above functions)
 @yaspin(text="Creating dataframes...")
 def get_table_df(
     df,
-    df_exploded,
     get_df_customers=get_df_customers,
     get_df_location=get_df_location,
     get_df_cards=get_df_cards,
     get_df_products=get_df_products,
-    get_df_transaction=get_df_transaction,
 ):
     time.sleep(1)
     customer_df = get_df_customers(df)
     location_df = get_df_location(df)
     cards_df = get_df_cards(df)
-    products_df = get_df_products(df_exploded)
-    transaction_df = get_df_transaction(df)
-    return customer_df, location_df, cards_df, products_df, transaction_df
+    products_df = get_df_products(df)
+    return customer_df, location_df, cards_df, products_df
 
 
 # cleaning our product data
@@ -286,7 +277,6 @@ def insert_products(
 
 def etl(
     df_exploded,
-    get_data_frame=get_data_frame,
     get_table_df=get_table_df,
     # clean_products=clean_products,
     get_connection=get_connection,
@@ -297,10 +287,7 @@ def etl(
     commit_and_close=commit_and_close,
 ):
     # generate our dataframes
-    df = get_data_frame()
-    customer_df, location_df, cards_df, products_df, transaction_df = get_table_df(
-        df, df_exploded
-    )
+    customer_df, location_df, cards_df, products_df = get_table_df(df_exploded)
 
     # clean our product data
     connection = get_connection()
