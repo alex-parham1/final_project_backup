@@ -106,7 +106,6 @@ def insert_transactions():
     baskets["transaction_id"]= trans_df.apply(get_transaction_id,args=(transactions,),axis=1)
     baskets["product_id"] = trans_df.apply(get_product_id,args=(products,),axis=1)
 
-
     print('uploading baskets')
     df_to_sql(baskets,'basket')
     print('baskets uploaded')    

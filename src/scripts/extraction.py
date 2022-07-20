@@ -254,13 +254,12 @@ def etl(
     )
 
     # clean our product data
-    connection = get_connection()
     # each of these executes a series of sql commands to insert the data into our database
+
     insert_names(customer_df)
     insert_cards(cards_df)
     insert_store(location_df)
     insert_products(products_df)
-    commit_and_close(connection)
 
 
 # ---------------------------------------------------
