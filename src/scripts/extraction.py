@@ -209,12 +209,10 @@ def etl(
     df_exploded,
     get_table_df=get_table_df,
     # clean_products=clean_products,
-    get_connection=get_connection,
     insert_names=insert_names,
     insert_cards=insert_cards,
     insert_store=insert_store,
     insert_products=insert_products,
-    commit_and_close=commit_and_close,
 ):
     # generate our dataframes
     customer_df, location_df, cards_df, products_df = get_table_df(df_exploded)
