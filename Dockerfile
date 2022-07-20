@@ -1,7 +1,7 @@
 FROM public.ecr.aws/lambda/python:3.8
 
 # copy requirements.txt to container
-COPY requirements.txt ./
+COPY requirements.txt ./ 
 
 # installing dependencies
 RUN pip3 install -r requirements.txt

@@ -27,20 +27,29 @@ con = get_connection()
 def df_to_sql(df:pd.DataFrame, table_name):
     user = os.environ.get("mysql_user")
     password = os.environ.get("mysql_pass")
-    engine = create_engine(f"mysql+pymysql://{user}:{password}@localhost:3307/thirstee")
+    host = os.environ.get("mysql_host")
+    port = os.environ.get("mysql_port")
+    db = os.environ.get("mysql_db")
+    engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}:{port}/{db}")
     db_engine = engine.execution_options(autocommit=True)
     df.to_sql(name=table_name, con=db_engine, if_exists='append', index=False, schema='thirstee') 
 
 def df_from_sql_table(table_name):
     user = os.environ.get("mysql_user")
     password = os.environ.get("mysql_pass")
-    engine = create_engine(f"mysql+pymysql://{user}:{password}@localhost:3307/thirstee")
+    host = os.environ.get("mysql_host")
+    port = os.environ.get("mysql_port")
+    db = os.environ.get("mysql_db")
+    engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}:{port}/{db}")
     return pd.read_sql_table(table_name,engine)
 
 def df_from_sql_query(table_name,start_time,end_time):
     user = os.environ.get("mysql_user")
     password = os.environ.get("mysql_pass")
-    engine = create_engine(f"mysql+pymysql://{user}:{password}@localhost:3307/thirstee")
+    host = os.environ.get("mysql_host")
+    port = os.environ.get("mysql_port")
+    db = os.environ.get("mysql_db")
+    engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}:{port}/{db}")
     sql = f"SELECT * from {table_name} WHERE date_time >= {start_time} and date_time =< {end_time}"
     print('executing')
     return pd.read_sql_query(sql,engine)

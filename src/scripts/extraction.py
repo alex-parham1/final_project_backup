@@ -159,7 +159,10 @@ def get_table_df(
 def df_to_sql(df, table_name):
     user = os.environ.get("mysql_user")
     password = os.environ.get("mysql_pass")
-    engine = create_engine(f"mysql+pymysql://{user}:{password}@localhost:3307/thirstee")
+    host = os.environ.get("mysql_host")
+    port = os.environ.get("mysql_port")
+    db = os.environ.get("mysql_db")
+    engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}:{port}/{db}")
     df.to_sql(con=engine, if_exists='append', name=table_name, index=False)
 
 # individual functions to isert into all the different tables
