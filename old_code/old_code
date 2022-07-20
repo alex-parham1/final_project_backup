@@ -5,3 +5,26 @@
 #     labels = ["cash", "card"]
 
 #     return labels, values
+
+# @yaspin(text="Cleaning data...")
+# def get_data_frame():
+#     time.sleep(1)
+#     target = os.path.dirname(
+#         os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+#     )
+#     df = pd.DataFrame()
+#     for filename in os.listdir(f"{target}/data"):
+#         # for each file, put all the data into a dataframe and concat it into our main dataframe
+#         temp_df = pd.read_csv(f"{target}/data/{filename}")
+#         df = pd.concat([df, temp_df], axis=0)
+#     # df = pd.read_csv(f"{target}/data/*.csv")
+#     df.columns = [
+#         "date",
+#         "location",
+#         "customer_name",
+#         "products",
+#         "total",
+#         "payment_type",
+#         "card_number",
+#     ]
+#     return df

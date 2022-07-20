@@ -13,28 +13,6 @@ from src.database import get_connection, commit_and_close, execute_cursor, get_c
 
 # This function forms the **E** from ETL - it extracts the data and puts it into a dataframe.
 # lets the user know what is happening when the code is just 'doing stuff'
-@yaspin(text="Cleaning data...")
-def get_data_frame():
-    time.sleep(1)
-    target = os.path.dirname(
-        os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-    )
-    df = pd.DataFrame()
-    for filename in os.listdir(f"{target}/data"):
-        # for each file, put all the data into a dataframe and concat it into our main dataframe
-        temp_df = pd.read_csv(f"{target}/data/{filename}")
-        df = pd.concat([df, temp_df], axis=0)
-    # df = pd.read_csv(f"{target}/data/*.csv")
-    df.columns = [
-        "date",
-        "location",
-        "customer_name",
-        "products",
-        "total",
-        "payment_type",
-        "card_number",
-    ]
-    return df
 
 
 def separate_products(prod):
@@ -73,8 +51,7 @@ def extract_name(prod):
     return name
 
 
-def clean_the_data():
-    df = get_data_frame()
+def clean_the_data(df):
     df["separate_products"] = df["products"].apply(separate_products)
     df_exploded = df.explode("separate_products")
     df_exploded["size"] = df_exploded["separate_products"].apply(extract_size)
