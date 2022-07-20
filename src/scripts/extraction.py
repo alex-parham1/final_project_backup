@@ -158,6 +158,7 @@ def df_to_sql(df, table_name):
     db = os.environ.get("mysql_db")
     engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}:{port}/{db}")
     df.to_sql(con=engine, if_exists='append', name=table_name, index=False)
+    engine.dispose()
 
 # individual functions to isert into all the different tables
 @yaspin(text="Inserting names into DB...")

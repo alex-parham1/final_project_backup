@@ -12,62 +12,6 @@ def _prefix_insert_with_ignore(insert, compiler, **kw):
     return compiler.visit_insert(insert.prefix_with("IGNORE"), **kw)
 
 
-def df_to_sql(df:pd.DataFrame, table_name):
-    user = os.environ.get("mysql_user")
-    password = os.environ.get("mysql_pass")
-    host = os.environ.get("mysql_host")
-    port = os.environ.get("mysql_port")
-    db = os.environ.get("mysql_db")
-    engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}:{port}/{db}")
-    db_engine = engine.execution_options(autocommit=True)
-    df.to_sql(name=table_name, con=db_engine, if_exists='append', index=False, schema='thirstee') 
-
-def df_from_sql_table(table_name):
-    user = os.environ.get("mysql_user")
-    password = os.environ.get("mysql_pass")
-    host = os.environ.get("mysql_host")
-    port = os.environ.get("mysql_port")
-    db = os.environ.get("mysql_db")
-    engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}:{port}/{db}")
-    return pd.read_sql_table(table_name,engine)
-
-def df_from_sql_query(table_name,start_time,end_time):
-    user = os.environ.get("mysql_user")
-    password = os.environ.get("mysql_pass")
-    host = os.environ.get("mysql_host")
-    port = os.environ.get("mysql_port")
-    db = os.environ.get("mysql_db")
-    engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}:{port}/{db}")
-    sql = f"SELECT * from {table_name} WHERE date_time >= {start_time} and date_time =< {end_time}"
-    print('executing')
-    return pd.read_sql_query(sql,engine)
-
-def get_store_id(store,stores:pd.DataFrame):
-    id = stores.query(f"name=='{store}'", inplace=False)
-    return str(id.values.tolist()[0][0])
-
-def get_customer_id(name,customers:pd.DataFrame):
-    #name = df["customer_name"]
-    #print(name)
-    id = customers.query(f"name=='{name}'",inplace=False)
-    return str(id.values.tolist()[0][0])
-
-def get_product_id(df:pd.Series,products:pd.DataFrame):
-    p_id = products.query(f"name == '{df['product_name']}' and size == '{df['size']}' and flavour == '{df['flavour']}' and price == {df['price']} ")
-    return str(p_id.values.tolist()[0][0])
-
-def get_transaction_id(df:pd.Series,transactions:pd.DataFrame):
-    #timestamp, name, customer, total
-    t_id = transactions.query(f"date_time == '{df['date']}' and store_id == {df['location']} and customer_id == {df['customer_id']}")
-    
-    return str(t_id.values.tolist()[0][0])
-
-# def set_foreign_keys(df: pd.DataFrame,cust:pd.DataFrame,stores:pd.DataFrame):
-#     print(df.head(10))
-#     print(df.columns)
-    
-
-
 def df_to_sql(df: pd.DataFrame, table_name):
     user = os.environ.get("mysql_user")
     password = os.environ.get("mysql_pass")
@@ -83,6 +27,8 @@ def df_to_sql(df: pd.DataFrame, table_name):
         index=False,
         schema="thirstee",
     )
+    db_engine.dispose()
+    engine.dispose()
 
 
 def df_from_sql_table(table_name):
@@ -92,7 +38,9 @@ def df_from_sql_table(table_name):
     port = os.environ.get("mysql_port")
     db = os.environ.get("mysql_db")
     engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}:{port}/{db}")
-    return pd.read_sql_table(table_name, engine)
+    ret = pd.read_sql_table(table_name, engine)
+    engine.dispose()
+    return ret
 
 
 def df_from_sql_query(table_name, start_time, end_time):
@@ -104,7 +52,9 @@ def df_from_sql_query(table_name, start_time, end_time):
     engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}:{port}/{db}")
     sql = f"SELECT * from {table_name} WHERE date_time >= {start_time} and date_time =< {end_time}"
     print("executing")
-    return pd.read_sql_query(sql, engine)
+    ret = pd.read_sql_query(sql, engine)
+    engine.dispose()
+    return ret
 
 
 def get_store_id(store, stores: pd.DataFrame):
