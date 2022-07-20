@@ -90,8 +90,6 @@ def get_transaction_id(df: pd.Series, transactions: pd.DataFrame):
 #     print(df.columns)
 
 
-@yaspin(text="Inserting order to DB...")
-
 def insert_transactions(trans_df):
     # store tables in memory for comparison
     users = df_from_sql_table("customers")
@@ -133,10 +131,14 @@ def insert_transactions(trans_df):
     # baskets starts here
     start_time = trans_df["date"].head(1).values.tolist()[0]
     end_time = trans_df["date"].tail(1).values.tolist()[0]
+    print('downloading transactions')
     transactions = df_from_sql_table("transactions")
     transactions = transactions.drop_duplicates()
+    print('transactions downloaded')
+    print('downloading products')
     products = df_from_sql_table("products")
     products = products.drop_duplicates()
+    print('products downloaded')
     baskets = pd.DataFrame()
     
     print("creating baskets")
