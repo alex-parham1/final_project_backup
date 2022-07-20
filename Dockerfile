@@ -7,7 +7,7 @@ COPY requirements.txt ./
 RUN pip3 install -r requirements.txt
 
 # Copy function code to container
-COPY ./src
+COPY ./src/scripts .
 
 # setting the CMD to your handler file_name.function_name
 CMD [ "app.handler" ]

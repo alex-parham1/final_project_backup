@@ -15,9 +15,19 @@
    
 #     steps:
 
+
+
 #     - name: Check out code
 #       uses: actions/checkout@v2
     
+    # - name: install pytest
+    #   run: | 
+    #     pip3 install pytest
+    # - name: run testing
+    #   run: | 
+    #     pytest
+
+
 #     - name: Configure AWS credentials
 #       uses: aws-actions/configure-aws-credentials@v1
 #       with:
