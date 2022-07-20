@@ -332,7 +332,7 @@ def etl(
     insert_cards(connection, cards_df)
     insert_store(connection, location_df)
     insert_products(connection, products_df)
-    commit_and_close(connection)
+    # commit_and_close(connection)
 
 
 # ---------------------------------------------------

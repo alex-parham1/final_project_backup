@@ -95,7 +95,7 @@ def insert_transactions():
             else:
                 pass
         cursor.close()
-        con.commit()
+        # con.commit()
 
     print("Transactions and Baskets inserted OK")
 
