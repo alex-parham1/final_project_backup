@@ -5,7 +5,6 @@ import boto3
 import pandas as pd
 import os
 import sys
-import scripts.database as db
 import urllib.parse
 from io import StringIO
 

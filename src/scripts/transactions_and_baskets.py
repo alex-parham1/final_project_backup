@@ -17,13 +17,6 @@ def _prefix_insert_with_ignore(insert, compiler, **kw):
     return compiler.visit_insert(insert.prefix_with("IGNORE"), **kw)
 
 
-main_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
-sys.path.append(f"{main_dir}")
-
-from scripts.database import get_connection, close_connection, commit_connection
-
-con = get_connection()
-
 def df_to_sql(df:pd.DataFrame, table_name):
     user = os.environ.get("mysql_user")
     password = os.environ.get("mysql_pass")

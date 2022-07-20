@@ -7,7 +7,6 @@ import pymysql
 import os
 import sys
 import logging
-import scripts.database as db
 import cleaning
 
 s3 = boto3.client("s3")
