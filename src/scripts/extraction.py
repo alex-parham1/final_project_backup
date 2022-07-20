@@ -20,27 +20,6 @@ from src.database import get_connection, commit_and_close, execute_cursor, get_c
 
 # This function forms the **E** from ETL - it extracts the data and puts it into a dataframe.
 # lets the user know what is happening when the code is just 'doing stuff'
-@yaspin(text="Cleaning data...")
-def get_data_frame():
-    target = os.path.dirname(
-        os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-    )
-    df = pd.DataFrame()
-    for filename in os.listdir(f"{target}/data"):
-        # for each file, put all the data into a dataframe and concat it into our main dataframe
-        temp_df = pd.read_csv(f"{target}/data/{filename}")
-        df = pd.concat([df, temp_df], axis=0)
-    # df = pd.read_csv(f"{target}/data/*.csv")
-    df.columns = [
-        "date",
-        "location",
-        "customer_name",
-        "products",
-        "total",
-        "payment_type",
-        "card_number",
-    ]
-    return df
 
 
 def separate_products(prod):
@@ -88,8 +67,7 @@ def clean_cards(cards):
 
 
 
-def clean_the_data():
-    df = get_data_frame()
+def clean_the_data(df):
     df["separate_products"] = df["products"].apply(separate_products)
     df_exploded = df.explode("separate_products")
     df_exploded["size"] = df_exploded["separate_products"].apply(extract_size)
@@ -162,30 +140,21 @@ def get_df_products(df):
     return products_df
 
 
-def get_df_transaction(df):
-    transaction_df = df[["date", "payment_type", "total"]]
-    print("Transaction DF OK")
-    return transaction_df
-
-
 # -------------------------------------------------------------------------
 # function that creates all of the individual dataframes (calls the above functions)
 @yaspin(text="Creating dataframes...")
 def get_table_df(
     df,
-    df_exploded,
     get_df_customers=get_df_customers,
     get_df_location=get_df_location,
     get_df_cards=get_df_cards,
     get_df_products=get_df_products,
-    get_df_transaction=get_df_transaction,
 ):
     customer_df = get_df_customers(df)
     location_df = get_df_location(df)
     cards_df = get_df_cards(df)
-    products_df = get_df_products(df_exploded)
-    transaction_df = get_df_transaction(df)
-    return customer_df, location_df, cards_df, products_df, transaction_df
+    products_df = get_df_products(df)
+    return customer_df, location_df, cards_df, products_df
 
 def df_to_sql(df, table_name):
     user = os.environ.get("mysql_user")
@@ -237,7 +206,6 @@ def insert_products(
 
 def etl(
     df_exploded,
-    get_data_frame=get_data_frame,
     get_table_df=get_table_df,
     # clean_products=clean_products,
     get_connection=get_connection,
@@ -248,10 +216,7 @@ def etl(
     commit_and_close=commit_and_close,
 ):
     # generate our dataframes
-    df = get_data_frame()
-    customer_df, location_df, cards_df, products_df, transaction_df = get_table_df(
-        df, df_exploded
-    )
+    customer_df, location_df, cards_df, products_df = get_table_df(df_exploded)
 
     # clean our product data
     # each of these executes a series of sql commands to insert the data into our database

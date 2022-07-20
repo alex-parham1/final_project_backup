@@ -9,7 +9,9 @@ warehouse_db_name = os.environ.get("mysql_db")
 
 
 def get_connection():
-    connection = pymysql.connect(host=host, user=user, password=password, database=warehouse_db_name, port=port)
+    connection = pymysql.connect(
+        host=host, user=user, password=password, database=warehouse_db_name, port=port
+    )
     return connection
 
 
@@ -37,6 +39,3 @@ def execute_cursor(cursor, sql: str):
 def commit_and_close(connection, cursor=None):
     commit_connection(connection)
     close_connection(connection, cursor=cursor)
-
-
-
