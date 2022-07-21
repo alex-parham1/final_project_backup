@@ -1,6 +1,7 @@
 import pandas as pd
 from yaspin import yaspin
 import os
+from database import get_sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy.ext.compiler import compiles
 from sqlalchemy.sql.expression import Insert
@@ -32,12 +33,8 @@ def df_to_sql(df: pd.DataFrame, table_name):
 
 
 def df_from_sql_table(table_name):
-    user = os.environ.get("mysql_user")
-    password = os.environ.get("mysql_pass")
-    host = os.environ.get("mysql_host")
-    port = os.environ.get("mysql_port")
-    db = os.environ.get("mysql_db")
-    engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}:{port}/{db}")
+    address = get_sqlalchemy()
+    engine = create_engine(address)
     ret = pd.read_sql_table(table_name, engine)
     engine.dispose()
     return ret
