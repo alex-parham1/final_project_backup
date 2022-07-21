@@ -155,9 +155,13 @@ def get_df_products(df):
     products_df = products_df.drop_duplicates(ignore_index=True)
     products_df = products_df.apply(drop_dupe_prods,args=(prods_table,),axis=1)
     products_df = products_df.dropna()
-    products_df = products_df.sort_values("name")
-    print("Products DF OK")
-    return products_df
+    if products_df.empty:
+        print("Products DF OK")
+        return products_df        
+    else:
+        products_df = products_df.sort_values("name")
+        print("Products DF OK")
+        return products_df
 
 
 # -------------------------------------------------------------------------
