@@ -143,9 +143,9 @@ def drop_dupe_prods(df:pd.Series,prods:pd.DataFrame):
     prod = prods.query(f"name=='{name}' and size == '{size}' and flavour == '{flavour}' and price == {price}")
 
     if not prod.empty:
-        return None
+        return True
     else:
-        return df
+        return False
     
 
 def get_df_products(df):
@@ -153,8 +153,9 @@ def get_df_products(df):
     products_df = df[["product_name", "flavour", "size", "price"]]
     products_df.columns = ["name", "flavour", "size", "price"]
     products_df = products_df.drop_duplicates(ignore_index=True)
-    products_df = products_df.apply(drop_dupe_prods,args=(prods_table,),axis=1)
-    products_df = products_df.dropna()
+    products_df['duplicate'] = products_df.apply(drop_dupe_prods,args=(prods_table,),axis=1)
+    products_df = products_df[products_df["duplicate"] == False]
+    products_df = products_df.drop('duplicate',axis=1)
     print("Products DF OK")
     return products_df        
     
@@ -246,6 +247,7 @@ def etl(
     insert_cards(cards_df)
     insert_store(location_df)
     if not products_df.empty:
+        print('tried to insert :)')
         insert_products(products_df)
     else:
         print('no new products')
