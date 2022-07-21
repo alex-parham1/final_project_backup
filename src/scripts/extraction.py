@@ -15,6 +15,17 @@ def _prefix_insert_with_ignore(insert, compiler, **kw):
 # This function forms the **E** from ETL - it extracts the data and puts it into a dataframe.
 # lets the user know what is happening when the code is just 'doing stuff'
 
+def df_from_sql_table(table_name):
+    user = os.environ.get("mysql_user")
+    password = os.environ.get("mysql_pass")
+    host = os.environ.get("mysql_host")
+    port = os.environ.get("mysql_port")
+    db = os.environ.get("mysql_db")
+    engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}:{port}/{db}")
+    ret = pd.read_sql_table(table_name, engine)
+    engine.dispose()
+    return ret
+
 
 def separate_products(prod):
     prod = prod.strip()
@@ -124,11 +135,29 @@ def get_df_cards(df):
     print("Cards DF OK")
     return cards_df
 
+def drop_dupe_prods(df:pd.Series,prods:pd.DataFrame):
+    print(prods.head(10))
+    print(df)
+    name = df['name']
+    flavour = df['flavour']
+    size = df['size']
+    price = df['price']    
+    prod = prods.query(f"name=='{name}' and size == '{size}' and flavour == '{flavour}' and price == {price}")
+
+    if not prod.empty:
+        print(prod)
+        return None
+    else:
+        return df
+    
 
 def get_df_products(df):
+    prods_table = df_from_sql_table('products')
     products_df = df[["product_name", "flavour", "size", "price"]]
     products_df.columns = ["name", "flavour", "size", "price"]
     products_df = products_df.drop_duplicates(ignore_index=True)
+    products_df = products_df.apply(drop_dupe_prods,args=(prods_table,),axis=1)
+    products_df = products_df.dropna()
     products_df = products_df.sort_values("name")
     print("Products DF OK")
     return products_df
