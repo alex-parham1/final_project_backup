@@ -67,3 +67,15 @@
     #             pass
     #     cursor.close()
     #     con.commit()
+
+    # def extract_name(prod):
+    # prod_list = prod.split(" - ")
+    
+    # # if len(prod_list) == 3 or len(prod_list) == 4:
+    # #     prod_list.pop(-1)
+    # # print(prod_list)
+    # # prod_list.pop(-1)
+    # # prod_list = prod_list[0].split(" ")
+    # # prod_list.pop(0)
+    # # name = " ".join(prod_list)
+    # return prod_list[1]
