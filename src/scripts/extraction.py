@@ -21,8 +21,7 @@ def df_from_sql_table(table_name):
     host = os.environ.get("mysql_host")
     port = os.environ.get("mysql_port")
     db = os.environ.get("mysql_db")
-    temp = f"mysql+pymysql://{user}:{password}@{host}:{port}/{db}"
-    engine = create_engine(f"mysql+pymysql://alex:%^MuvtL9pg6&G7-%@localhost:3307/thirstee")
+    engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}:{port}/{db}")
     ret = pd.read_sql_table(table_name, engine)
     engine.dispose()
     return ret
@@ -183,7 +182,7 @@ def df_to_sql(df, table_name):
     host = os.environ.get("mysql_host")
     port = os.environ.get("mysql_port")
     db = os.environ.get("mysql_db")
-    engine = create_engine(f"mysql+pymysql://alex:%^MuvtL9pg6&G7-%@localhost:3307/thirstee")
+    engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}:{port}/{db}")
     df.to_sql(con=engine, if_exists='append', name=table_name, index=False)
     engine.dispose()
 
