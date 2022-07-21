@@ -245,7 +245,10 @@ def etl(
     insert_names(customer_df)
     insert_cards(cards_df)
     insert_store(location_df)
-    insert_products(products_df)
+    if not products_df.empty:
+        insert_products(products_df)
+    else:
+        print('no new products')
 
 
 # ---------------------------------------------------

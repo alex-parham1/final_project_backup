@@ -44,9 +44,9 @@ jobs:
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
       run: |
-        docker build -t 156058766667.dkr.ecr.eu-west-1.amazonaws.com/team_yogurt:latest -t 156058766667.dkr.ecr.eu-west-1.amazonaws.com/team_yogurt:20July2022 .
+        docker build -t 156058766667.dkr.ecr.eu-west-1.amazonaws.com/team_yogurt:latest -t 156058766667.dkr.ecr.eu-west-1.amazonaws.com/team_yogurt:21July2022 .
         docker push 156058766667.dkr.ecr.eu-west-1.amazonaws.com/team_yogurt:latest
-        docker push 156058766667.dkr.ecr.eu-west-1.amazonaws.com/team_yogurt:20July2022
+        docker push 156058766667.dkr.ecr.eu-west-1.amazonaws.com/team_yogurt:21July2022
         
     - name: Update Lambda
       run: |
