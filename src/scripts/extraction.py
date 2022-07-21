@@ -136,8 +136,6 @@ def get_df_cards(df):
     return cards_df
 
 def drop_dupe_prods(df:pd.Series,prods:pd.DataFrame):
-    print(prods.head(10))
-    print(df)
     name = df['name']
     flavour = df['flavour']
     size = df['size']
@@ -145,7 +143,6 @@ def drop_dupe_prods(df:pd.Series,prods:pd.DataFrame):
     prod = prods.query(f"name=='{name}' and size == '{size}' and flavour == '{flavour}' and price == {price}")
 
     if not prod.empty:
-        print(prod)
         return None
     else:
         return df
@@ -165,7 +162,7 @@ def get_df_products(df):
 
 # -------------------------------------------------------------------------
 # function that creates all of the individual dataframes (calls the above functions)
-@yaspin(text="Creating dataframes...")
+#@yaspin(text="Creating dataframes...")
 def get_table_df(
     df,
     get_df_customers=get_df_customers,
@@ -190,7 +187,7 @@ def df_to_sql(df, table_name):
     engine.dispose()
 
 # individual functions to isert into all the different tables
-@yaspin(text="Inserting names into DB...")
+#@yaspin(text="Inserting names into DB...")
 def insert_names(
     customer_df: pd.DataFrame,
     df_to_sql=df_to_sql
@@ -199,7 +196,7 @@ def insert_names(
     print("Names inserted OK")
 
 
-@yaspin(text="Inserting cards into DB...")
+#@yaspin(text="Inserting cards into DB...")
 def insert_cards(
     cards_df: pd.DataFrame,
     df_to_sql=df_to_sql,
@@ -210,7 +207,7 @@ def insert_cards(
     print("Cards inserted OK")
 
 
-@yaspin(text="Inserting stores into DB...")
+#@yaspin(text="Inserting stores into DB...")
 def insert_store(
     location_df: pd.DataFrame,
     df_to_sql=df_to_sql,
@@ -219,7 +216,7 @@ def insert_store(
     print("Stores inserted OK")
 
 
-@yaspin(text="Inserting products into DB...")
+#@yaspin(text="Inserting products into DB...")
 def insert_products(
     products_df: pd.DataFrame,
     df_to_sql=df_to_sql
