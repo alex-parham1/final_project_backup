@@ -17,7 +17,7 @@ run:
 
 testing:
 	source .venv/bin/activate; \
-	python3 -m pytest --cov=. --cov-report xml:coverage.xml
+	python3 -m pytest --cov=. --cov-report xml:coverage.xml --cov-report html:coverage.html
 
 format:
 	python3 -m black $$(git ls-files '*.py')

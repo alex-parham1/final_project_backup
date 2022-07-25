@@ -15,7 +15,7 @@ def _prefix_insert_with_ignore(insert, compiler, **kw):
 # This function forms the **E** from ETL - it extracts the data and puts it into a dataframe.
 # lets the user know what is happening when the code is just 'doing stuff'
 
-def df_from_sql_table(table_name):
+def df_from_sql_table(table_name, create_engine=create_engine):
     user = os.environ.get("mysql_user")
     password = os.environ.get("mysql_pass")
     host = os.environ.get("mysql_host")
