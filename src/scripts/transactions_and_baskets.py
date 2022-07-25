@@ -71,8 +71,6 @@ def get_store_id(store, stores: pd.DataFrame):
 
 
 def get_customer_id(name, customers: pd.DataFrame):
-    # name = df["customer_name"]
-    # print(name)
     id = customers.query(f"name=='{name}'", inplace=False)
     return str(id.values.tolist()[0][0])
 
