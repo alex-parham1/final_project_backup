@@ -3,7 +3,8 @@ name: Deploy to ECR
 on:
  
   push:
-    branches: [ main ]
+    tags:
+      - lambda_2
 
 jobs:
   
@@ -51,8 +52,4 @@ jobs:
     - name: Update Lambda
       run: |
         aws lambda update-function-code --function-name team_yogurt_db_lambda --image-uri 156058766667.dkr.ecr.eu-west-1.amazonaws.com/team_yogurt:latest
-
-
-
-        
 
