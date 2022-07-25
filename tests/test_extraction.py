@@ -446,6 +446,7 @@ def test_clean_the_data():
 
     assert expected_df.equals(actual_df)
 
+
 # Unhappy 1 - Missing Data
 def test_clean_the_data_unhappy_1():
     data = {
@@ -463,12 +464,13 @@ def test_clean_the_data_unhappy_1():
     with pytest.raises(KeyError):
         ex.clean_the_data(df)
 
+
 # Unhappy 2 - Invalid Products
 def test_clean_the_data_unhappy_1():
     data = {
         "date": ["01/01/1970 09:00", "01/01/1970 09:01"],
         "customer_name": ["Simon Roberts", "Phil Jordan"],
-        "location": ['London Holborn', 'Milton Keynes'],
+        "location": ["London Holborn", "Milton Keynes"],
         "products": [
             "Regular, Test, Vanilla, 1.50, Large, Testing, Chocolate, 2.00",
             "Regular, Test, Vanilla, 1.50, Large, Testing, Chocolate, 2.00",
@@ -480,6 +482,7 @@ def test_clean_the_data_unhappy_1():
     df = pd.DataFrame(data)
     with pytest.raises(UnboundLocalError):
         ex.clean_the_data(df)
+
 
 # -------get_df_products--------
 # Happy Path 1 - Not a Duplicate
@@ -517,6 +520,7 @@ def test_get_df_products():
 
     assert actual.equals(expected)
 
+
 # Happy Path 2 - Duplicated
 def test_get_df_products_dupe():
     mock_get_prods_table = Mock()
@@ -543,6 +547,7 @@ def test_get_df_products_dupe():
 
     assert actual.empty
 
+
 # Unhappy 1 - Missing Data from Products DF
 def test_get_df_products_unhappy_1():
     mock_get_prods_table = Mock()
@@ -559,11 +564,30 @@ def test_get_df_products_unhappy_1():
     products_df_data = {
         "product_name": ["Tea"],
         "flavour": ["None"],
-        "size": ["Regular"]
+        "size": ["Regular"],
     }
     df = pd.DataFrame(products_df_data)
 
     with pytest.raises(KeyError):
+        ex.get_df_products(df, df_from_sql_table=mock_get_prods_table)
+
+
+# Unhappy 2 - Missing Table of Products from DB
+def test_get_df_products_unhappy_2():
+    mock_get_prods_table = Mock()
+
+    prods_table_data = ()
+    prods_table = pd.DataFrame(prods_table_data)
+    mock_get_prods_table.return_value = prods_table
+    products_df_data = {
+        "product_name": ["Tea"],
+        "flavour": ["None"],
+        "price": [1.20],
+        "size": ["Regular"],
+    }
+    df = pd.DataFrame(products_df_data)
+
+    with pytest.raises(ValueError):
         ex.get_df_products(df, df_from_sql_table=mock_get_prods_table)
 
 
@@ -592,7 +616,8 @@ def test_df_to_sql(mock_table: Mock, mock_get: Mock):
     mock_get.assert_has_calls(calls)
     mock_table.assert_called_once()
 
-#----test inserts----------
+
+# ----test inserts----------
 @patch("builtins.print")
 def test_insert_names(mock_print: Mock):
     mock_df_to_sql = Mock()
@@ -630,3 +655,104 @@ def test_insert_products(mock_print: Mock):
     ex.insert_products(df, df_to_sql=mock_df_to_sql)
     mock_print.assert_called_once()
     mock_df_to_sql.assert_called_once()
+
+
+# --------etl--------
+
+# Happy 1 - has new products
+@patch("builtins.print")
+def test_etl(mock_print: Mock):
+    # Assemble
+
+    mock_get_table_df = Mock()
+    mock_insert_names = Mock()
+    mock_insert_cards = Mock()
+    mock_insert_store = Mock()
+    mock_insert_products = Mock()
+
+    customer_data = {"name": ["John J Sainsbury"]}
+
+    location_data = {"name": ["Holborn"]}
+
+    cards_data = {"card_number": [5678]}
+
+    products_data = {
+        "name": ["Test"],
+        "flavour": ["None"],
+        "size": ["Regular"],
+        "price": 1.50,
+    }
+
+    customer_df = pd.DataFrame(customer_data)
+    location_df = pd.DataFrame(location_data)
+    cards_df = pd.DataFrame(cards_data)
+    products_df = pd.DataFrame(products_data)
+    df_exploded = pd.DataFrame()
+
+    mock_get_table_df.return_value = customer_df, location_df, cards_df, products_df
+
+    # Act
+
+    ex.etl(
+        df_exploded=df_exploded,
+        get_table_df=mock_get_table_df,
+        insert_names=mock_insert_names,
+        insert_cards=mock_insert_cards,
+        insert_store=mock_insert_store,
+        insert_products=mock_insert_products,
+    )
+
+    # Assert
+    mock_print.assert_called_once()
+    mock_get_table_df.assert_called_once()
+    mock_insert_names.assert_called_once()
+    mock_insert_cards.assert_called_once()
+    mock_insert_store.assert_called_once()
+    mock_insert_products.assert_called_once()
+
+
+# Happy 2 - no new products
+@patch("builtins.print")
+def test_etl_happy_1(mock_print: Mock):
+    # Assemble
+
+    mock_get_table_df = Mock()
+    mock_insert_names = Mock()
+    mock_insert_cards = Mock()
+    mock_insert_store = Mock()
+    mock_insert_products = Mock()
+
+    customer_data = {"name": ["John J Sainsbury"]}
+
+    location_data = {"name": ["Holborn"]}
+
+    cards_data = {"card_number": [5678]}
+
+    products_data = {}
+
+    customer_df = pd.DataFrame(customer_data)
+    location_df = pd.DataFrame(location_data)
+    cards_df = pd.DataFrame(cards_data)
+    products_df = pd.DataFrame(products_data)
+    df_exploded = pd.DataFrame()
+
+    mock_get_table_df.return_value = customer_df, location_df, cards_df, products_df
+
+    # Act
+
+    ex.etl(
+        df_exploded=df_exploded,
+        get_table_df=mock_get_table_df,
+        insert_names=mock_insert_names,
+        insert_cards=mock_insert_cards,
+        insert_store=mock_insert_store,
+        insert_products=mock_insert_products,
+    )
+
+    # Assert
+    mock_print.assert_called_once()
+    mock_get_table_df.assert_called_once()
+    mock_insert_names.assert_called_once()
+    mock_insert_cards.assert_called_once()
+    mock_insert_store.assert_called_once()
+    mock_insert_products.assert_not_called()

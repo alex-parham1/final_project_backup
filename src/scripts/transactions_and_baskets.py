@@ -12,7 +12,7 @@ def _prefix_insert_with_ignore(insert, compiler, **kw):
     return compiler.visit_insert(insert.prefix_with("IGNORE"), **kw)
 
 
-def df_to_sql(df: pd.DataFrame, table_name):
+def df_to_sql(df: pd.DataFrame, table_name, create_engine=create_engine):
     user = os.environ.get("mysql_user")
     password = os.environ.get("mysql_pass")
     host = os.environ.get("mysql_host")
@@ -31,19 +31,27 @@ def df_to_sql(df: pd.DataFrame, table_name):
     engine.dispose()
 
 
-def df_from_sql_table(table_name):
+def df_from_sql_table(
+    table_name, create_engine=create_engine, read_sql_table=pd.read_sql_table
+):
     user = os.environ.get("mysql_user")
     password = os.environ.get("mysql_pass")
     host = os.environ.get("mysql_host")
     port = os.environ.get("mysql_port")
     db = os.environ.get("mysql_db")
     engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}:{port}/{db}")
-    ret = pd.read_sql_table(table_name, engine)
+    ret = read_sql_table(table_name, engine)
     engine.dispose()
     return ret
 
 
-def df_from_sql_query(table_name, start_time, end_time):
+def df_from_sql_query(
+    table_name,
+    start_time,
+    end_time,
+    create_engine=create_engine,
+    read_sql_query=pd.read_sql_query,
+):
     user = os.environ.get("mysql_user")
     password = os.environ.get("mysql_pass")
     host = os.environ.get("mysql_host")
@@ -52,7 +60,7 @@ def df_from_sql_query(table_name, start_time, end_time):
     engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}:{port}/{db}")
     sql = f"SELECT * from {table_name} WHERE date_time >= {start_time} and date_time =< {end_time}"
     print("executing")
-    ret = pd.read_sql_query(sql, engine)
+    ret = read_sql_query(sql, engine)
     engine.dispose()
     return ret
 
