@@ -446,7 +446,43 @@ def test_clean_the_data():
 
     assert expected_df.equals(actual_df)
 
+# Unhappy 1 - Missing Data
+def test_clean_the_data_unhappy_1():
+    data = {
+        "date": ["01/01/1970 09:00", "01/01/1970 09:01"],
+        "customer_name": ["Simon Roberts", "Phil Jordan"],
+        "products": [
+            "Regular - Test - Vanilla - 1.50, Large - Testing - Chocolate - 2.00",
+            "Regular - Test - Vanilla - 1.50, Large - Testing - Chocolate - 2.00",
+        ],
+        "total": [3.50, 3.50],
+        "payment_type": ["CARD", "CARD"],
+        "card_number": [3456, 1234],
+    }
+    df = pd.DataFrame(data)
+    with pytest.raises(KeyError):
+        ex.clean_the_data(df)
+
+# Unhappy 2 - Invalid Products
+def test_clean_the_data_unhappy_1():
+    data = {
+        "date": ["01/01/1970 09:00", "01/01/1970 09:01"],
+        "customer_name": ["Simon Roberts", "Phil Jordan"],
+        "location": ['London Holborn', 'Milton Keynes'],
+        "products": [
+            "Regular, Test, Vanilla, 1.50, Large, Testing, Chocolate, 2.00",
+            "Regular, Test, Vanilla, 1.50, Large, Testing, Chocolate, 2.00",
+        ],
+        "total": [3.50, 3.50],
+        "payment_type": ["CARD", "CARD"],
+        "card_number": [3456, 1234],
+    }
+    df = pd.DataFrame(data)
+    with pytest.raises(UnboundLocalError):
+        ex.clean_the_data(df)
+
 # -------get_df_products--------
+# Happy Path 1 - Not a Duplicate
 def test_get_df_products():
     mock_get_prods_table = Mock()
 
@@ -481,6 +517,55 @@ def test_get_df_products():
 
     assert actual.equals(expected)
 
+# Happy Path 2 - Duplicated
+def test_get_df_products_dupe():
+    mock_get_prods_table = Mock()
+
+    prods_table_data = {
+        "product_id": [12345, 12346, 12347],
+        "name": ["Test prod", "Tea", "Testing Water"],
+        "flavour": ["None", "None", "Chocolate"],
+        "size": ["Large", "Regular", "Large"],
+        "price": [1.20, 1, 1.40],
+    }
+    prods_table = pd.DataFrame(prods_table_data)
+    mock_get_prods_table.return_value = prods_table
+    products_df_data = {
+        "product_name": ["Tea"],
+        "flavour": ["None"],
+        "size": ["Regular"],
+        "price": [1],
+    }
+    df = pd.DataFrame(products_df_data)
+
+    actual = ex.get_df_products(df, df_from_sql_table=mock_get_prods_table)
+    actual = actual.reset_index(drop=True)
+
+    assert actual.empty
+
+# Unhappy 1 - Missing Data from Products DF
+def test_get_df_products_unhappy_1():
+    mock_get_prods_table = Mock()
+
+    prods_table_data = {
+        "product_id": [12345, 12346, 12347],
+        "name": ["Test prod", "Tea", "Testing Water"],
+        "flavour": ["None", "None", "Chocolate"],
+        "size": ["Large", "Regular", "Large"],
+        "price": [1.20, 1, 1.40],
+    }
+    prods_table = pd.DataFrame(prods_table_data)
+    mock_get_prods_table.return_value = prods_table
+    products_df_data = {
+        "product_name": ["Tea"],
+        "flavour": ["None"],
+        "size": ["Regular"]
+    }
+    df = pd.DataFrame(products_df_data)
+
+    with pytest.raises(KeyError):
+        ex.get_df_products(df, df_from_sql_table=mock_get_prods_table)
+
 
 # -------df_to_sql--------------
 @patch("os.environ.get", side_effect=["test", "pass", "localhost", "3307", "test"])
@@ -495,7 +580,6 @@ def test_df_to_sql(mock_table: Mock, mock_get: Mock):
 
     ex.df_to_sql(df, name, create_engine=engine_caller)
 
-    address = "mysql+pymysql://test:pass@localhost:3307/test"
     calls = [
         call("mysql_user"),
         call("mysql_pass"),
