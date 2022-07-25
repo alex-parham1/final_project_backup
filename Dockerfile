@@ -11,4 +11,4 @@ COPY ./src/scripts .
 
 # setting the CMD to your handler file_name.function_name
 CMD [ "app.lambda_handler" ]
-
+ 
