@@ -10,10 +10,12 @@ from sqlalchemy.sql.expression import Insert
 # adds the word IGNORE after INSERT in sqlalchemy
 @compiles(Insert)
 def _prefix_insert_with_ignore(insert, compiler, **kw):
-    return compiler.visit_insert(insert.prefix_with('IGNORE'), **kw)
+    return compiler.visit_insert(insert.prefix_with("IGNORE"), **kw)
+
 
 # This function forms the **E** from ETL - it extracts the data and puts it into a dataframe.
 # lets the user know what is happening when the code is just 'doing stuff'
+
 
 def df_from_sql_table(table_name, create_engine=create_engine):
     user = os.environ.get("mysql_user")
@@ -54,14 +56,15 @@ def extract_flavour(prod):
         add = prod_list[1]
     return add
 
+
 def extract_name(prod):
     prod_list = prod.split(" - ")
     return prod_list[1]
 
-def clean_cards(cards):
-    cards=str(cards).rstrip('.0')
-    return cards
 
+def clean_cards(cards):
+    cards = str(cards).rstrip(".0")
+    return cards
 
 
 def clean_the_data(df):
@@ -127,34 +130,39 @@ def get_df_cards(df):
     print("Cards DF OK")
     return cards_df
 
-def drop_dupe_prods(df:pd.Series,prods:pd.DataFrame):
-    name = df['name']
-    flavour = df['flavour']
-    size = df['size']
-    price = df['price']    
-    prod = prods.query(f"name=='{name}' and size == '{size}' and flavour == '{flavour}' and price == {price}")
+
+def drop_dupe_prods(df: pd.Series, prods: pd.DataFrame):
+    name = df["name"]
+    flavour = df["flavour"]
+    size = df["size"]
+    price = df["price"]
+    prod = prods.query(
+        f"name=='{name}' and size == '{size}' and flavour == '{flavour}' and price == {price}"
+    )
 
     if not prod.empty:
         return True
     else:
         return False
-    
+
 
 def get_df_products(df):
-    prods_table = df_from_sql_table('products')
+    prods_table = df_from_sql_table("products")
     products_df = df[["product_name", "flavour", "size", "price"]]
     products_df.columns = ["name", "flavour", "size", "price"]
     products_df = products_df.drop_duplicates(ignore_index=True)
-    products_df['duplicate'] = products_df.apply(drop_dupe_prods,args=(prods_table,),axis=1)
+    products_df["duplicate"] = products_df.apply(
+        drop_dupe_prods, args=(prods_table,), axis=1
+    )
     products_df = products_df[products_df["duplicate"] == False]
-    products_df = products_df.drop('duplicate',axis=1)
+    products_df = products_df.drop("duplicate", axis=1)
     print("Products DF OK")
-    return products_df        
-    
+    return products_df
+
 
 # -------------------------------------------------------------------------
 # function that creates all of the individual dataframes (calls the above functions)
-#@yaspin(text="Creating dataframes...")
+# @yaspin(text="Creating dataframes...")
 def get_table_df(
     df,
     get_df_customers=get_df_customers,
@@ -168,6 +176,7 @@ def get_table_df(
     products_df = get_df_products(df)
     return customer_df, location_df, cards_df, products_df
 
+
 def df_to_sql(df, table_name):
     user = os.environ.get("mysql_user")
     password = os.environ.get("mysql_pass")
@@ -175,31 +184,25 @@ def df_to_sql(df, table_name):
     port = os.environ.get("mysql_port")
     db = os.environ.get("mysql_db")
     engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}:{port}/{db}")
-    df.to_sql(con=engine, if_exists='append', name=table_name, index=False)
+    df.to_sql(con=engine, if_exists="append", name=table_name, index=False)
     engine.dispose()
 
+
 # individual functions to isert into all the different tables
-#@yaspin(text="Inserting names into DB...")
-def insert_names(
-    customer_df: pd.DataFrame,
-    df_to_sql=df_to_sql
-):
+# @yaspin(text="Inserting names into DB...")
+def insert_names(customer_df: pd.DataFrame, df_to_sql=df_to_sql):
     df_to_sql(customer_df, "customers")
     print("Names inserted OK")
 
 
-#@yaspin(text="Inserting cards into DB...")
-def insert_cards(
-    cards_df: pd.DataFrame,
-    df_to_sql=df_to_sql,
-    clean_cards=clean_cards
-):
-    cards_df["card_number"] =cards_df["card_number"].apply(clean_cards)
+# @yaspin(text="Inserting cards into DB...")
+def insert_cards(cards_df: pd.DataFrame, df_to_sql=df_to_sql, clean_cards=clean_cards):
+    cards_df["card_number"] = cards_df["card_number"].apply(clean_cards)
     df_to_sql(cards_df, "cards")
     print("Cards inserted OK")
 
 
-#@yaspin(text="Inserting stores into DB...")
+# @yaspin(text="Inserting stores into DB...")
 def insert_store(
     location_df: pd.DataFrame,
     df_to_sql=df_to_sql,
@@ -208,11 +211,8 @@ def insert_store(
     print("Stores inserted OK")
 
 
-#@yaspin(text="Inserting products into DB...")
-def insert_products(
-    products_df: pd.DataFrame,
-    df_to_sql=df_to_sql
-):
+# @yaspin(text="Inserting products into DB...")
+def insert_products(products_df: pd.DataFrame, df_to_sql=df_to_sql):
     df_to_sql(products_df, "products")
     print("Products inserted OK")
 
@@ -239,10 +239,12 @@ def etl(
     insert_cards(cards_df)
     insert_store(location_df)
     if not products_df.empty:
-        print('tried to insert :)')
+        print("tried to insert :)")
         insert_products(products_df)
     else:
-        print('no new products')
+        print("no new products")
+
+    print("etl completed, starting transactions")
 
 
 # ---------------------------------------------------
