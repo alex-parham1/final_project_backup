@@ -54,7 +54,7 @@ jobs:
       if: contains(github.event.head_commit.message, 'lambda_2')
       run: |
         aws lambda update-function-code --function-name team_yogurt_db_lambda --image-uri 156058766667.dkr.ecr.eu-west-1.amazonaws.com/team_yogurt:latest
-- name: Update Lambda
+    - name: Update Lambda
       if: contains(github.event.head_commit.message, 'lambda_1')
       run: |
         aws lambda update-function-code --function-name yogurt-retrival-lambda --image-uri 156058766667.dkr.ecr.eu-west-1.amazonaws.com/team_yogurt:latest
