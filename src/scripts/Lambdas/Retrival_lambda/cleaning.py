@@ -24,3 +24,13 @@ def clean_card_numbers(value):
     new_number = "*" * (len(new_value) - 4) + new_value[-4:]
 
     return new_number
+
+def clean_date_time(value):
+    value = str(value)
+
+    value = value.split(' ')
+    value[0] = value[0].split('/')
+    date = value[0]
+    time = value[1]
+    date_time = str(f"{date[2]}/{date[1]}/{date[0]} {time}")
+    return date_time
