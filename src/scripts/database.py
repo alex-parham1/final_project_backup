@@ -10,7 +10,7 @@ host = os.environ.get("mysql_host")
 user = os.environ.get("mysql_user")
 password = os.environ.get("mysql_pass")
 port = 3307
-db = os.environ.get('mysql_db')
+db = os.environ.get("mysql_db")
 warehouse_db_name = os.environ.get("mysql_db")
 
 
@@ -41,8 +41,10 @@ def execute_cursor(cursor, sql: str):
     else:
         cursor.execute(sql)
 
+
 def get_sqlalchemy():
     return f"mysql+pymysql://{user}:{password}@{host}:{port}/{db}"
+
 
 def commit_and_close(connection, cursor=None):
     commit_connection(connection)

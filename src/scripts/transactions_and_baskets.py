@@ -131,16 +131,16 @@ def insert_transactions(trans_df):
     # baskets starts here
     start_time = trans_df["date"].head(1).values.tolist()[0]
     end_time = trans_df["date"].tail(1).values.tolist()[0]
-    print('downloading transactions')
+    print("downloading transactions")
     transactions = df_from_sql_table("transactions")
     transactions = transactions.drop_duplicates()
-    print('transactions downloaded')
-    print('downloading products')
+    print("transactions downloaded")
+    print("downloading products")
     products = df_from_sql_table("products")
     products = products.drop_duplicates()
-    print('products downloaded')
+    print("products downloaded")
     baskets = pd.DataFrame()
-    
+
     print("creating baskets")
     baskets["transaction_id"] = trans_df.apply(
         get_transaction_id, args=(transactions,), axis=1
@@ -150,7 +150,6 @@ def insert_transactions(trans_df):
     print("uploading baskets")
     df_to_sql(baskets, "basket")
     print("baskets uploaded")
-
 
     print("Transactions and Baskets inserted OK")
 
