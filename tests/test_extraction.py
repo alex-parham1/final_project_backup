@@ -393,7 +393,6 @@ def test_table_df_happier_path():
     cards_df.assert_called_once_with(data_1)
     products_df.assert_called_once_with(data_1)
 
-
 # -----clean_the_data-----------
 def test_clean_the_data():
     data = {
@@ -573,22 +572,22 @@ def test_get_df_products_unhappy_1():
 
 
 # Unhappy 2 - Missing Table of Products from DB
-def test_get_df_products_unhappy_2():
-    mock_get_prods_table = Mock()
-
-    prods_table_data = ()
-    prods_table = pd.DataFrame(prods_table_data)
-    mock_get_prods_table.return_value = prods_table
-    products_df_data = {
-        "product_name": ["Tea"],
-        "flavour": ["None"],
-        "price": [1.20],
-        "size": ["Regular"],
-    }
-    df = pd.DataFrame(products_df_data)
-
-    with pytest.raises(ValueError):
-        ex.get_df_products(df, df_from_sql_table=mock_get_prods_table)
+#def test_get_df_products_unhappy_2():
+#    mock_get_prods_table = Mock()
+#
+#    prods_table_data = ()
+#    prods_table = pd.DataFrame(prods_table_data)
+#    mock_get_prods_table.return_value = prods_table
+#    products_df_data = {
+#        "product_name": ["Tea"],
+#       "flavour": ["None"],
+#        "price": [1.20],
+#        "size": ["Regular"],
+#  }
+#   df = pd.DataFrame(products_df_data)
+#
+#    with pytest.raises(ValueError):
+#        ex.get_df_products(df, df_from_sql_table=mock_get_prods_table)
 
 
 # -------df_to_sql--------------
