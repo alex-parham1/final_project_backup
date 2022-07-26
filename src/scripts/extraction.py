@@ -144,10 +144,10 @@ def drop_dupe_prods(df: pd.Series, prods: pd.DataFrame):
         return True
     else:
         return False
-
-
-def get_df_products(df):
-    prods_table = df_from_sql_table("products")
+def get_df_products(
+    df, df_from_sql_table=df_from_sql_table, drop_dupe_prods=drop_dupe_prods
+):
+   
     products_df = df[["product_name", "flavour", "size", "price"]]
     products_df.columns = ["name", "flavour", "size", "price"]
     products_df = products_df.drop_duplicates(ignore_index=True)
@@ -177,7 +177,7 @@ def get_table_df(
     return customer_df, location_df, cards_df, products_df
 
 
-def df_to_sql(df, table_name):
+def df_to_sql(df, table_name, create_engine=create_engine):
     user = os.environ.get("mysql_user")
     password = os.environ.get("mysql_pass")
     host = os.environ.get("mysql_host")
@@ -244,12 +244,9 @@ def etl(
     else:
         print("no new products")
 
-    print("etl completed, starting transactions")
-
-
-# ----------------- ----------------------------------
-# --------------functions end here-------------------
-# this file just runs this one command
-if __name__ == "__main__":
-    df_exploded = clean_the_data()
-    etl(df_exploded)
+# # ---------------------------------------------------
+# # --------------functions end here-------------------
+# # this file just runs this one command
+# if __name__ == "__main__":
+#     df_exploded = clean_the_data()
+#     etl(df_exploded)
