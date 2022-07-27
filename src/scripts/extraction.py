@@ -144,10 +144,12 @@ def drop_dupe_prods(df: pd.Series, prods: pd.DataFrame):
         return True
     else:
         return False
+
+
 def get_df_products(
     df, df_from_sql_table=df_from_sql_table, drop_dupe_prods=drop_dupe_prods
 ):
-   
+    prods_table = df_from_sql_table("products")
     products_df = df[["product_name", "flavour", "size", "price"]]
     products_df.columns = ["name", "flavour", "size", "price"]
     products_df = products_df.drop_duplicates(ignore_index=True)
@@ -243,6 +245,7 @@ def etl(
         insert_products(products_df)
     else:
         print("no new products")
+
 
 # # ---------------------------------------------------
 # # --------------functions end here-------------------
