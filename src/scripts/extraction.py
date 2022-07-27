@@ -7,6 +7,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.compiler import compiles
 from sqlalchemy.sql.expression import Insert
 
+#yml lambda test
+
 # adds the word IGNORE after INSERT in sqlalchemy
 @compiles(Insert)
 def _prefix_insert_with_ignore(insert, compiler, **kw):
