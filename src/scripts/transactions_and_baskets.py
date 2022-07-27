@@ -209,6 +209,7 @@ def insert_baskets(
     get_transaction_id=get_transaction_id,
     get_product_id=get_product_id,
     df_to_sql=df_to_sql,
+    df_from_sql_table=df_from_sql_table
 ):
 
     print("updating transactions")
@@ -216,7 +217,7 @@ def insert_baskets(
     transactions = transactions.drop_duplicates()
     print("transactions updated")
     print("downloading products")
-    products = get_table_drop_dupes("products")
+    products = df_from_sql_table("products")
     print("products downloaded")
     baskets = pd.DataFrame()
 
