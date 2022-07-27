@@ -191,7 +191,7 @@ def insert_transactions(
         "customer_id",
     ]
 
-    trans_table = remove_duplicate_transactions(trans_table, transactions)
+    trans_table = remove_duplicate_transactions(transactions, trans_table)
     print("uploading transactions")
     df_to_sql(trans_table, "transactions")
     print("uploaded transactions")
