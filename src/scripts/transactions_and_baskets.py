@@ -233,7 +233,7 @@ def insert_baskets(
     print("baskets uploaded")
 
     print("Transactions and Baskets inserted OK")
-
+ 
 
 if __name__ == "__main__":
     insert_transactions()
