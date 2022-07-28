@@ -150,7 +150,7 @@ def test_get_product_id():
     expected = "2"
 
     actual = tb.get_product_id(test_prod, products)
-    print(actual)
+
     assert expected == actual
 
 
@@ -220,6 +220,40 @@ def test_get_table_drop_dupes():
 
     assert expected.equals(actual)
 
+@patch("builtins.print")
+def test_get_table_drop_dupes_happy2(mock_print: Mock):
+    mock_df_from_sql_table = Mock()
+
+    mock_df = {
+        "column_1": ["value1", "value1", "value2"],
+        "column_2": ["c2_value1", "c2_value1", "value2"],
+    }
+
+    df = pd.DataFrame(mock_df)
+    mock_df_from_sql_table.return_value = df
+    expected_df = {
+        "column_1": ["value1", "value1", "value2"],
+        "column_2": ["c2_value1", "c2_value1", "value2"],
+    }
+
+    expected = pd.DataFrame(expected_df)
+    expected = expected.reset_index(drop=True)
+
+    actual = tb.get_table_drop_dupes("test", df_from_sql_table=mock_df_from_sql_table)
+    actual = actual.reset_index(drop=True)
+
+    mock_print.assert_called_with("Table test has no column named 'name'")
+    assert expected.equals(actual)
+
+    expected = pd.DataFrame(expected_df)
+    expected = expected.reset_index(drop=True)
+
+    actual = tb.get_table_drop_dupes("test", df_from_sql_table=mock_df_from_sql_table)
+    actual = actual.reset_index(drop=True)
+
+    mock_print.assert_called_with("Table test has no column named 'name'")
+    assert expected.equals(actual)
+
 
 # ----get_timeframe_transactions-----
 def test_get_timeframe_transactions():
@@ -243,3 +277,184 @@ def test_get_timeframe_transactions():
     actual = actual.reset_index(drop=True)
 
     assert expected.equals(actual)
+
+# ----remove_duplicate_transactions----
+def test_remove_duplicate_transactions():
+    mock_transaction_duplicate_protection = Mock(side_effect=[False, True])
+
+    transactions = pd.DataFrame()
+
+    trans_data = {"name": ["Test", "Test2"]}
+
+    trans_table = pd.DataFrame(trans_data)
+
+    expected_data = {"name": ["Test"]}
+
+    expected = pd.DataFrame(expected_data)
+    expected = expected.reset_index(drop=True)
+
+    actual = tb.remove_duplicate_transactions(
+        transactions,
+        trans_table,
+        transaction_duplicate_protection=mock_transaction_duplicate_protection,
+    )
+    actual = expected.reset_index(drop=True)
+
+    assert expected.equals(actual)
+
+
+# -----test_transaction_duplicate_protection-----
+def test_transaction_duplicate_protection():
+    data = {
+        "date_time": ["2022/07/28 09:00", "2022/07/28 09:01", "2022/07/28 09:02"],
+        "customer_id": [1, 2, 3],
+        "store_id": [1, 1, 1],
+        "total": [7.50, 12.30, 5],
+        "payment_method": ["CARD", "CASH", "CASH"],
+    }
+
+    transactions = pd.DataFrame(data)
+
+    test_data = {
+        "date_time": ["2022/07/28 09:00", "2022/07/28 09:03", "2022/07/28 09:02"],
+        "customer_id": [1, 4, 3],
+        "store_id": [1, 1, 1],
+        "total": [7.50, 10, 5],
+        "payment_method": ["CARD", "CARD", "CASH"],
+    }
+
+    trans_table = pd.DataFrame(test_data)
+
+    expected_data = {
+        "date_time": ["2022/07/28 09:00", "2022/07/28 09:03", "2022/07/28 09:02"],
+        "customer_id": [1, 4, 3],
+        "store_id": [1, 1, 1],
+        "total": [7.50, 10, 5],
+        "payment_method": ["CARD", "CARD", "CASH"],
+        "duplicate": [True, False, True],
+    }
+
+    expected = pd.DataFrame(expected_data)
+
+    trans_table["duplicate"] = trans_table.apply(
+        tb.transaction_duplicate_protection, args=(transactions,), axis=1
+    )
+
+    actual = trans_table
+
+    assert expected.equals(actual)
+
+
+# ----insert_transactions----
+
+def test_insert_transactions():
+    users_data = {"name": ["Test Name"]}
+    stores_data = {"name": ["Test Store"]}
+    trans_data = {
+        "date": ["2022/07/28 09:00"],
+        "customer_name": ["Sian Moore"],
+        "product_name": ["Cortado"],
+        "flavour": ["None"],
+        "size": ["Large"],
+        "location" : ['Folkestone'],
+        "price": [1.50],
+        "card_number": [1234],
+        "customer_id" : [5],
+        "store_id" : [1],
+        "total" : [1.50]
+    }
+    users = pd.DataFrame(users_data)
+    stores = pd.DataFrame(stores_data)
+    trans_df = pd.DataFrame(trans_data)
+
+    mock_get_table_drop_dupes = Mock(side_effect=[users, stores])
+
+    transactions_table_data = {
+        "transaction_id": [1, 2],
+        "date_time": ["2022/07/27 09:00", "2022/07/27 09:01"],
+        "customer_id": [1, 2],
+        "store_id": [1, 1],
+        "total": [4.75, 5],
+        "payment_method": ["CASH", "CARD"],
+    }
+
+    transactions = pd.DataFrame(transactions_table_data)
+
+    mock_get_timeframe_transactions = Mock(side_effect=[transactions])
+
+    mock_get_customer_id = Mock(side_effect=[5])
+
+    mock_get_store_id = Mock(side_effect=[1])
+
+    mock_remove_duplicate_transactions = Mock()
+    mock_df_to_sql = Mock()
+    mock_insert_baskets=Mock()
+
+    tb.insert_transactions(
+        trans_df,
+        get_customer_id=mock_get_customer_id,
+        get_store_id=mock_get_store_id,
+        get_table_drop_dupes=mock_get_table_drop_dupes,
+        remove_duplicate_transactions=mock_remove_duplicate_transactions,
+        df_to_sql=mock_df_to_sql,
+        get_timeframe_transactions=mock_get_timeframe_transactions,
+        insert_baskets=mock_insert_baskets
+    )
+    
+    mock_get_customer_id.assert_called_once()
+    mock_get_store_id.assert_called_once()
+    mock_get_table_drop_dupes.assert_called()
+    mock_remove_duplicate_transactions.assert_called_once()
+    mock_df_to_sql.assert_called_once()
+    mock_get_timeframe_transactions.assert_called_once()
+    mock_insert_baskets.assert_called_once()
+
+@patch("builtins.print")
+def test_insert_baskets(mock_print):
+    trans_data = {
+        "transaction_id" : 1,
+        "date_time" : "1993/06/29 12:10",
+        "customer_id" : 2,
+        "store_id" : 3,
+        "total" : 7.50,
+        "payment_method" : "CARD"
+    }
+    transactions = pd.DataFrame(trans_data, index=[0])
+    
+    prod_data = {
+        "product_id" : 123,
+        "name" : "Coffee",
+        "flavour" : "None",
+        "size" : "Large",
+        "price" : 1.50
+    }
+    products = pd.DataFrame(prod_data,index=[0])
+
+    mock_df_from_sql_query = Mock(side_effect=[transactions])
+    mock_df_from_sql_table = Mock(side_effect=[products])
+    
+    mock_get_transaction_id = Mock()
+    mock_get_transaction_id.return_value = 1
+
+    mock_get_product_id = Mock()
+    mock_get_product_id.return_value = 11
+
+    mock_df_to_sql = Mock()
+        
+    tb.insert_baskets(
+        trans_df=transactions, 
+        start_time="2022/07/28 11:52", 
+        end_time="2022/07/28 12:52",
+        df_from_sql_query=mock_df_from_sql_query,
+        get_transaction_id=mock_get_transaction_id,
+        get_product_id=mock_get_product_id,
+        df_to_sql=mock_df_to_sql,
+        df_from_sql_table=mock_df_from_sql_table)
+
+    mock_df_from_sql_query.assert_called()
+    mock_df_from_sql_table.assert_called()
+    mock_get_transaction_id.assert_called()
+    mock_get_product_id.assert_called()
+    mock_df_to_sql.assert_called()
+    mock_print.assert_called()
+
