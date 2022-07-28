@@ -1,10 +1,10 @@
-import os
-from dotenv import load_dotenv
-import sys
-sys.path.append("../")
-sys.path.append("../src/scripts")
-from src.scripts import extraction_lambda
-import json
+# import os
+# from dotenv import load_dotenv
+# import sys
+# sys.path.append("../")
+# sys.path.append("../src/scripts")
+# from src.scripts import extraction_lambda
+# import json
 
 
 # with open ("test_lambda_event.json") as f:
