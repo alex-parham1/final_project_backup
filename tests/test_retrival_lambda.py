@@ -1,16 +1,19 @@
-# import unittest
-# from unittest import mock
+import os
+from dotenv import load_dotenv
+import sys
+sys.path.append("../")
+sys.path.append("../src/scripts")
+from src.scripts import extraction_lambda
+import json
 
-# # setting the default AWS region enviroment required by the Python SDK boto3
-# with mock.patch.dict('os.environ', {'AWS_REGION': 'eu-west-1'}):
-#     from extraction_lambda import lambda_handler
+with open ("test_lambda_event.json") as f:
+    event = f.read()
+    event = json.loads(event) 
 
-# # mock call to S3 to read csv
-# def mocked_read_s3_bucket_file(bucket_name, key_name)
-#     return "something"
+print(event)
+print(type(event))
 
-
-
-# class ExtractFilesTest(unittest.TestCase)
-
-
+def test_extraction_lambda():
+    result = extraction_lambda.lambda_handler(event, None)
+    assert result == True
+    
