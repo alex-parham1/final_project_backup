@@ -23,7 +23,7 @@ jobs:
     
     - name: install dependancies
       run: | 
-        pip3 install requirements.txt
+        pip3 install -r requirements.txt
     - name: run testing
       run: | 
         pytest
