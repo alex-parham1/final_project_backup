@@ -142,7 +142,6 @@ def remove_duplicate_transactions(
     return trans_table
 
 def insert_baskets(
-    def insert_baskets(
     trans_df: pd.DataFrame,
     start_time,
     end_time,
@@ -231,7 +230,3 @@ def insert_transactions(
     print("uploaded transactions")
     insert_baskets(trans_df, start_time, end_time)
 
-    # baskets starts here
-
-if __name__ == "__main__":
-    insert_transactions()
