@@ -56,10 +56,8 @@ def transaction_duplicate_protection(transaction, table: pd.DataFrame):
         inplace=False,
     )
     if not trans.empty:
-        print("duplicate found")
         return True
     else:
-        print("new entry")
         return False
 
 
@@ -80,7 +78,7 @@ def df_from_sql_query(
     engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}:{port}/{db}")
     sql = f"SELECT * from {table_name} WHERE date_time between '{start_time}' and '{end_time}'"
     print("executing query")
-    ret = pd.read_sql_query(sql, engine)
+    ret = read_sql_query(sql, engine)
     return ret
 
 
@@ -143,14 +141,49 @@ def remove_duplicate_transactions(
     print(trans_table.shape)
     return trans_table
 
+def insert_baskets(
+    def insert_baskets(
+    trans_df: pd.DataFrame,
+    start_time,
+    end_time,
+    df_from_sql_query=df_from_sql_query,
+    get_transaction_id=get_transaction_id,
+    get_product_id=get_product_id,
+    df_to_sql=df_to_sql,
+    df_from_sql_table=df_from_sql_table
+):
+
+    print("updating transactions")
+    transactions = df_from_sql_query("transactions", start_time, end_time)
+    transactions = transactions.drop_duplicates()
+    print("transactions updated")
+    print("downloading products")
+    products = df_from_sql_table("products")
+    print("products downloaded")
+    baskets = pd.DataFrame()
+
+    print("creating baskets")
+    baskets["transaction_id"] = trans_df.apply(
+        get_transaction_id, args=(transactions,), axis=1
+    )
+    baskets["product_id"] = trans_df.apply(get_product_id, args=(products,), axis=1)
+    print("baskets created")
+
+    print("uploading baskets")
+    df_to_sql(baskets, "basket")
+    print("baskets uploaded")
+
+    print("Transactions and Baskets inserted OK")
 
 def insert_transactions(
     trans_df: pd.DataFrame,
     get_customer_id=get_customer_id,
     get_store_id=get_store_id,
     get_table_drop_dupes=get_table_drop_dupes,
+    get_timeframe_transactions=get_timeframe_transactions,
     remove_duplicate_transactions=remove_duplicate_transactions,
     df_to_sql=df_to_sql,
+    insert_baskets=insert_baskets
 ):
     # store tables in memory for comparison
     users = get_table_drop_dupes("customers")
@@ -183,6 +216,7 @@ def insert_transactions(
             "card_number",
         ]
     )
+    print(trans_table)
     trans_table.columns = [
         "date_time",
         "store_id",
@@ -198,41 +232,6 @@ def insert_transactions(
     insert_baskets(trans_df, start_time, end_time)
 
     # baskets starts here
-
-
-def insert_baskets(
-    trans_df: pd.DataFrame,
-    start_time,
-    end_time,
-    df_from_sql_query=df_from_sql_query,
-    get_transaction_id=get_transaction_id,
-    get_product_id=get_product_id,
-    df_to_sql=df_to_sql,
-    df_from_sql_table=df_from_sql_table
-):
-
-    print("updating transactions")
-    transactions = df_from_sql_query("transactions", start_time, end_time)
-    transactions = transactions.drop_duplicates()
-    print("transactions updated")
-    print("downloading products")
-    products = df_from_sql_table("products")
-    print("products downloaded")
-    baskets = pd.DataFrame()
-
-    print("creating baskets")
-    baskets["transaction_id"] = trans_df.apply(
-        get_transaction_id, args=(transactions,), axis=1
-    )
-    baskets["product_id"] = trans_df.apply(get_product_id, args=(products,), axis=1)
-    print("baskets created")
-
-    print("uploading baskets")
-    df_to_sql(baskets, "basket")
-    print("baskets uploaded")
-
-    print("Transactions and Baskets inserted OK")
- 
 
 if __name__ == "__main__":
     insert_transactions()
