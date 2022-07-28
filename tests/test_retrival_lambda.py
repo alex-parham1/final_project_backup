@@ -14,7 +14,7 @@
 # print(event)
 # print(type(event))
 
-
+# need to fix file paths
 # def test_extraction_lambda():
 
 #     result = extraction_lambda.lambda_handler(event, None)
