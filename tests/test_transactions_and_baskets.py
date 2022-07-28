@@ -1,7 +1,8 @@
 import pytest
 from unittest.mock import Mock, patch, call
 import sys
-sys.path.append('../')
+
+sys.path.append("../")
 from src.scripts import transactions_and_baskets as tb
 import pandas as pd
 
@@ -197,21 +198,19 @@ def test_get_transaction_id():
     print(actual)
     assert expected == actual
 
-#----get_table_drop_dupes----
+
+# ----get_table_drop_dupes----
 def test_get_table_drop_dupes():
     mock_df_from_sql_table = Mock()
 
     mock_df = {
-        "name" : ['value1', 'value1', 'value2'],
-        "column_2" : ["c2_value1", "c2_value1", "value2"]
+        "name": ["value1", "value1", "value2"],
+        "column_2": ["c2_value1", "c2_value1", "value2"],
     }
 
     df = pd.DataFrame(mock_df)
     mock_df_from_sql_table.return_value = df
-    expected_df = {
-        "name" : ['value1', 'value2'],
-        "column_2" : ["c2_value1", "value2"]
-    }
+    expected_df = {"name": ["value1", "value2"], "column_2": ["c2_value1", "value2"]}
 
     expected = pd.DataFrame(expected_df)
     expected = expected.reset_index(drop=True)
@@ -221,26 +220,26 @@ def test_get_table_drop_dupes():
 
     assert expected.equals(actual)
 
-#----get_timeframe_transactions-----
+
+# ----get_timeframe_transactions-----
 def test_get_timeframe_transactions():
     mock_df_from_sql_query = Mock()
 
     mock_df = {
-        "name" : ['value1', 'value1', 'value2'],
-        "column_2" : ["c2_value1", "c2_value1", "value2"]
+        "name": ["value1", "value1", "value2"],
+        "column_2": ["c2_value1", "c2_value1", "value2"],
     }
 
     df = pd.DataFrame(mock_df)
     mock_df_from_sql_query.return_value = df
-    expected_df = {
-        "name" : ['value1', 'value2'],
-        "column_2" : ["c2_value1", "value2"]
-    }
+    expected_df = {"name": ["value1", "value2"], "column_2": ["c2_value1", "value2"]}
 
     expected = pd.DataFrame(expected_df)
     expected = expected.reset_index(drop=True)
 
-    actual = tb.get_timeframe_transactions("00:00", "00:00", df_from_sql_query=mock_df_from_sql_query)
+    actual = tb.get_timeframe_transactions(
+        "00:00", "00:00", df_from_sql_query=mock_df_from_sql_query
+    )
     actual = actual.reset_index(drop=True)
 
     assert expected.equals(actual)
