@@ -3,7 +3,8 @@ from unittest.mock import Mock, patch, call
 from src.scripts import extraction as ex
 import pandas as pd
 
-# --------df_from_sql_table-----------------
+# df_from_sql_table
+# ------------------------------------------------
 @patch("os.environ.get", side_effect=["test", "pass", "localhost", "3307", "test"])
 @patch("pandas.read_sql_table", side_effect=["table"])
 def test_df_from_sql_table(mock_table: Mock, mock_get: Mock):
@@ -16,17 +17,14 @@ def test_df_from_sql_table(mock_table: Mock, mock_get: Mock):
     result = ex.df_from_sql_table(name, create_engine=engine_caller)
     assert result == expected
 
-
 @patch("os.environ.get", side_effect=["test", "pass", "localhost", "3307", "test"])
 @patch("pandas.read_sql_table", side_effect=["table"])
 def test_df_from_sql_table_calls(mock_table: Mock, mock_get: Mock):
     name = "test_table"
-    # mocks
     dispose = Mock(side_effect="engine_closed")
     mock_engine = Mock()
     mock_engine.attach_mock(dispose, "dispose")
     engine_caller = Mock(side_effect=mock_engine)
-    # calls
     address = "mysql+pymysql://test:pass@localhost:3307/test"
     calls = [
         call("mysql_user"),
@@ -37,19 +35,17 @@ def test_df_from_sql_table_calls(mock_table: Mock, mock_get: Mock):
     ]
     table_calls = call(name, mock_engine)
     result = ex.df_from_sql_table(name, create_engine=engine_caller)
-    # asserts
     mock_engine.assert_called_once()
     mock_get.assert_has_calls(calls)
     mock_table.assert_called_once()
 
-
-# -----------separate_products--------------
+# separate_products
+# ------------------------------------------------
 def test_separate_products_happy_path():
     test = " test,test"
     expected = ["test,test"]
     result = ex.separate_products(test)
     assert expected == result
-
 
 def test_separate_products_unhappy_path():
     test = "test test test"
@@ -57,14 +53,13 @@ def test_separate_products_unhappy_path():
     result = ex.separate_products(test)
     assert expected == result
 
-
-# -----------extract_size--------------
+# extract_size
+# ------------------------------------------------
 def test_extract_size_happy_path():
     test = "test, test1, "
     expected = "test,"
     result = ex.extract_size(test)
     assert expected == result
-
 
 def test_extract_size_unhappy_path():
     test = "test, test"
@@ -72,8 +67,8 @@ def test_extract_size_unhappy_path():
     result = ex.extract_size(test)
     assert expected == result
 
-
-# ---------extract_price-----------------
+# extract_price
+# ------------------------------------------------
 def test_extract_price_happy_path():
     list = "test - test,test"
     expected = "test,test"
@@ -87,14 +82,13 @@ def test_extract_price_unhappy_path():
     result = ex.extract_price(list)
     assert expected == result
 
-
-# --------extract_flavour---------------------
+# extract_flavour
+# --------------------------------------------
 def test_extract_flavour_happy_path_4_long():
     list = "test1 - test2 - test3 - test4"
     expected = "test3"
     result = ex.extract_flavour(list)
     assert result == expected
-
 
 def test_extract_flavour_happy_path_3_long():
     list = "test1 - test2 - test3"
@@ -102,25 +96,21 @@ def test_extract_flavour_happy_path_3_long():
     result = ex.extract_flavour(list)
     assert result == expected
 
-
 def test_extract_flavour_happy_path_2_long():
     list = "test1 - test2"
     expected = "None"
     result = ex.extract_flavour(list)
     assert result == expected
 
-
 def test_extract_flavour_unhappy_path_more_than_4():
     with pytest.raises(Exception):
         list = "test1 - test2 - test3 - test4 - test5"
         result = ex.extract_flavour(list)
 
-
 def test_extract_flavour_unhappy_path_only_one():
     with pytest.raises(Exception):
         list = "test1"
         result = ex.extract_flavour(list)
-
 
 def test_extract_flavour_unhappy_path_4_long():
     list = "test1 - test2 - test3 - test4"
@@ -128,13 +118,11 @@ def test_extract_flavour_unhappy_path_4_long():
     result = ex.extract_flavour(list)
     assert result == expected
 
-
 def test_extract_flavour_unnhappy_path_3_long():
     list = "test1 - test2 - test3"
     expected = "test2"
     result = ex.extract_flavour(list)
     assert result == expected
-
 
 def test_extract_flavour_unhappy_path_2_long():
     list = "test1 - test2"
@@ -142,14 +130,13 @@ def test_extract_flavour_unhappy_path_2_long():
     result = ex.extract_flavour(list)
     assert result == expected
 
-
-# --------extract_name--------------
+# extract_name
+# ------------------------------------------------
 def test_extract_name_happy_path():
     list = "test - test,test"
     expected = "test,test"
     result = ex.extract_name(list)
     assert expected == result
-
 
 def test_extract_name_unhappy_path():
     list = "test - test,test"
@@ -157,14 +144,13 @@ def test_extract_name_unhappy_path():
     result = ex.extract_name(list)
     assert expected == result
 
-
-# --------cards------------------
+# clean_cards
+# ------------------------------------------------
 def test_cards_happy_path():
     card = 12345678.0
     expected = "12345678"
     result = ex.clean_cards(card)
     assert expected == result
-
 
 def test_cards_unhappy_path():
     card = "12345678.0"
@@ -172,47 +158,73 @@ def test_cards_unhappy_path():
     result = ex.clean_cards(card)
     assert expected == result
 
-
 def test_cards_unhappier_path():
     card = "12345678"
     expected = "12345678"
     result = ex.clean_cards(card)
     assert expected == result
 
-
-# --------get_df_customers---------------------------------
+# get_df_customers
+# ------------------------------------------------
 def test_get_df_customers_happy_path_drops_duplicates():
-    list = [1, 1, 4, 5]
-    data = pd.DataFrame(list, columns=["customer_name"])
-    expected_list = [1, 4, 5]
-    expected_data = pd.DataFrame(expected_list, columns=["name"])
-    result_dataframe = ex.get_df_customers(data)
-    assert result_dataframe.reset_index(drop=True).equals(
-        expected_data.reset_index(drop=True)
-    )
+    customer_table = pd.DataFrame()
+    mock_get_customer_table = Mock(side_effect=[customer_table])
+    mock_drop_dupe_customers = Mock(side_effect=[False])
+    customer_data = {
+        'customer_name' : ["test name"]
+    }
+    df = pd.DataFrame(customer_data)
+    expected_data = {
+        'name' : ["test name"]
+    }
+    expected = pd.DataFrame(expected_data)
+    actual = ex.get_df_customers(df, df_from_sql_table=mock_get_customer_table, drop_dupe_customers=mock_drop_dupe_customers)
+    assert expected.equals(actual)
+   
+def test_get_df_customers_happier_path():
+    customer_table = pd.DataFrame()
+    mock_get_customer_table = Mock(side_effect=[customer_table])
+    mock_drop_dupe_customers = Mock(side_effect=[False, True])
+    customer_data = {
+        'customer_name' : ["test name", "test name"]
+    }
+    df = pd.DataFrame(customer_data)
+    expected_data = {
+        'name' : ["test name"]
+    }
+    expected = pd.DataFrame(expected_data)
+    actual = ex.get_df_customers(df, df_from_sql_table=mock_get_customer_table, drop_dupe_customers=mock_drop_dupe_customers)
+    assert expected.equals(actual)
+   
+def test_get_df_customers_unhappy_path():
+    customer_table = pd.DataFrame()
+    mock_get_customer_table = Mock(side_effect=[customer_table])
+    mock_drop_dupe_customers = Mock(side_effect=[False, True])
+    customer_data = {
+        'customer_name' : ["test name", "1234"]
+    }
+    df = pd.DataFrame(customer_data)
+    expected_data = {
+        'name' : ["test name"]
+    }
+    expected = pd.DataFrame(expected_data)
+    actual = ex.get_df_customers(df, df_from_sql_table=mock_get_customer_table, drop_dupe_customers=mock_drop_dupe_customers)
+    assert expected.equals(actual)
 
-
-def test_get_df_customers_happy_path():
-    list = [1, 4, 5]
-    data = pd.DataFrame(list, columns=["customer_name"])
-    expected_list = [1, 4, 5]
-    expected_data = pd.DataFrame(expected_list, columns=["name"])
-    result_dataframe = ex.get_df_customers(data)
-    assert result_dataframe.reset_index(drop=True).equals(
-        expected_data.reset_index(drop=True)
-    )
-
-
-def test_get_df_customers_empty():
-    list = []
-    data = pd.DataFrame(list, columns=["customer_name"])
-    expected_list = []
-    expected_data = pd.DataFrame(expected_list, columns=["name"])
-    result_dataframe = ex.get_df_customers(data)
-    assert result_dataframe.reset_index(drop=True).equals(
-        expected_data.reset_index(drop=True)
-    )
-
+def test_get_df_unhappier_path():
+    customer_table = pd.DataFrame()
+    mock_get_customer_table = Mock(side_effect=[customer_table])
+    mock_drop_dupe_customers = Mock()
+    customer_data = {
+        'customer_name' : []
+    }
+    df = pd.DataFrame(customer_data)
+    expected_data = {
+        'name' : []
+    }
+    expected = pd.DataFrame(expected_data)
+    actual = ex.get_df_customers(df, df_from_sql_table=mock_get_customer_table, drop_dupe_customers=mock_drop_dupe_customers)
+    assert expected.equals(actual)
 
 def test_get_df_customers_unhappy_path():
     with pytest.raises(Exception):
@@ -220,40 +232,68 @@ def test_get_df_customers_unhappy_path():
         data = pd.DataFrame(list, columns=["CUSTOMER_NAME"])
         result_dataframe = ex.get_df_customers(data)
 
+# get_df_location
+# ------------------------------------------------
 
-# --------get_df_location---------------------
+def test_get_df_location_happy_path_drop_duplicates():
+    location_table = pd.DataFrame()
+    mock_get_location_table = Mock(side_effect=[location_table])
+    mock_drop_dupe_location = Mock(side_effect=[False])
+    location_data = {
+        'location' : ["test"]
+    }
+    df = pd.DataFrame(location_data)
+    expected_data = {
+        'name' : ["test"]
+    }
+    expected = pd.DataFrame(expected_data)
+    actual = ex.get_df_location(df, df_from_sql_table=mock_get_location_table, drop_dupe_location=mock_drop_dupe_location)
+    assert expected.equals(actual)
+
 def test_get_df_location_happy_path():
-    list = ["London", "Folkestone", "Bournemouth", "Hardwicke"]
-    data = pd.DataFrame(list, columns=["location"])
-    expected_list = ["London", "Folkestone", "Bournemouth", "Hardwicke"]
-    expected_data = pd.DataFrame(expected_list, columns=["name"])
-    result_dataframe = ex.get_df_location(data)
-    assert result_dataframe.reset_index(drop=True).equals(
-        expected_data.reset_index(drop=True)
-    )
+    location_table = pd.DataFrame()
+    mock_get_location_table = Mock(side_effect=[location_table])
+    mock_drop_dupe_location = Mock(side_effect=[False, True])
+    location_data = {
+        'location' : ["test", "test"]
+    }
+    df = pd.DataFrame(location_data)
+    expected_data = {
+        'name' : ["test"]
+    }
+    expected = pd.DataFrame(expected_data)
+    actual = ex.get_df_location(df, df_from_sql_table=mock_get_location_table, drop_dupe_location=mock_drop_dupe_location)
+    assert expected.equals(actual)
 
+def test_get_df_location_unhappy_path():
+    location_table = pd.DataFrame()
+    mock_get_location_table = Mock(side_effect=[location_table])
+    mock_drop_dupe_location = Mock(side_effect=[False, True])
+    location_data = {
+        'location' : ["test", "1234"]
+    }
+    df = pd.DataFrame(location_data)
+    expected_data = {
+        'name' : ["test"]
+    }
+    expected = pd.DataFrame(expected_data)
+    actual = ex.get_df_location(df, df_from_sql_table=mock_get_location_table, drop_dupe_location=mock_drop_dupe_location)
+    assert expected.equals(actual)
 
-def test_get_df_location_happy_path_drops_duplicate():
-    list = ["London", "London", "Folkestone", "Folkestone", "Bournemouth", "Hardwicke"]
-    data = pd.DataFrame(list, columns=["location"])
-    expected_list = ["London", "Folkestone", "Bournemouth", "Hardwicke"]
-    expected_data = pd.DataFrame(expected_list, columns=["name"])
-    result_dataframe = ex.get_df_location(data)
-    assert result_dataframe.reset_index(drop=True).equals(
-        expected_data.reset_index(drop=True)
-    )
-
-
-def test_get_df_location_empty():
-    list = []
-    data = pd.DataFrame(list, columns=["location"])
-    expected_list = []
-    expected_data = pd.DataFrame(expected_list, columns=["name"])
-    result_dataframe = ex.get_df_location(data)
-    assert result_dataframe.reset_index(drop=True).equals(
-        expected_data.reset_index(drop=True)
-    )
-
+def test_get_df_location_unhappier_path():
+    location_table = pd.DataFrame()
+    mock_get_location_table = Mock(side_effect=[location_table])
+    mock_drop_dupe_location = Mock(side_effect=[])
+    location_data = {
+        'location' : []
+    }
+    df = pd.DataFrame(location_data)
+    expected_data = {
+        'name' : []
+    }
+    expected = pd.DataFrame(expected_data)
+    actual = ex.get_df_location(df, df_from_sql_table=mock_get_location_table, drop_dupe_location=mock_drop_dupe_location)
+    assert expected.equals(actual)
 
 def test_get_df_location_unhappy_path():
     with pytest.raises(Exception):
@@ -262,28 +302,67 @@ def test_get_df_location_unhappy_path():
         result_dataframe = ex.get_df_location(data)
 
 
-# --------get_df_cards-------------
-def test_get_df_cards():
-    list = ["1212", "12333", "123432"]
-    data = pd.DataFrame(list, columns=["card_number"])
-    expected_list = ["1212", "12333", "123432"]
-    expected_data = pd.DataFrame(expected_list, columns=["card_number"])
-    result_dataframe = ex.get_df_cards(data)
-    assert result_dataframe.reset_index(drop=True).equals(
-        expected_data.reset_index(drop=True)
-    )
+# get_cards_df
+# ------------------------------------------------
+def test_get_df_cards_happy_path_drops_duplicates():
+    cards_table = pd.DataFrame()
+    mock_get_cards_table = Mock(side_effect=[cards_table])
+    mock_drop_dupe_cards = Mock(side_effect=[False])
+    cards_data = {
+        'card_number' : ['1234']
+    }
+    df = pd.DataFrame(cards_data)
+    expected_data = {
+        'card_number' : ['1234']
+    }
+    expected = pd.DataFrame(expected_data)
+    actual = ex.get_df_cards(df, df_from_sql_table=mock_get_cards_table, drop_dupe_cards=mock_drop_dupe_cards)
+    assert expected.equals(actual)
 
+def test_get_df_cards_happy_path():
+    cards_table = pd.DataFrame()
+    mock_get_cards_table = Mock(side_effect=[cards_table])
+    mock_drop_dupe_cards = Mock(side_effect=[False, True])
+    cards_data = {
+        'card_number' : ['1234', '1234']
+    }
+    df = pd.DataFrame(cards_data)
+    expected_data = {
+        'card_number' : ['1234']
+    }
+    expected = pd.DataFrame(expected_data)
+    actual = ex.get_df_cards(df, df_from_sql_table=mock_get_cards_table, drop_dupe_cards=mock_drop_dupe_cards)
+    assert expected.equals(actual)
 
-def test_get_df_cards_empty():
-    list = []
-    data = pd.DataFrame(list, columns=["card_number"])
-    expected_list = []
-    expected_data = pd.DataFrame(expected_list, columns=["card_number"])
-    result_dataframe = ex.get_df_cards(data)
-    assert result_dataframe.reset_index(drop=True).equals(
-        expected_data.reset_index(drop=True)
-    )
+def test_get_df_cards_unhappy_path():
+    cards_table = pd.DataFrame()
+    mock_get_cards_table = Mock(side_effect=[cards_table])
+    mock_drop_dupe_cards = Mock(side_effect=[False, True])
+    cards_data = {
+        'card_number' : ['1234', 'test']
+    }
+    df = pd.DataFrame(cards_data)
+    expected_data = {
+        'card_number' : ['1234']
+    }
+    expected = pd.DataFrame(expected_data)
+    actual = ex.get_df_cards(df, df_from_sql_table=mock_get_cards_table, drop_dupe_cards=mock_drop_dupe_cards)
+    assert expected.equals(actual)
 
+def test_get_df_cards_unhappier_path():
+    cards_table = pd.DataFrame()
+    mock_get_cards_table = Mock(side_effect=[cards_table])
+    mock_drop_dupe_cards = Mock(side_effect=[])
+    cards_data = {
+        'card_number' : []
+    }
+    df = pd.DataFrame(cards_data)
+    expected_data = {
+        'card_number' : []
+    }
+    expected = pd.DataFrame(expected_data)
+    actual = ex.get_df_cards(df, df_from_sql_table=mock_get_cards_table, drop_dupe_cards=mock_drop_dupe_cards)
+    assert expected.equals(actual)
 
 def test_get_df_cards_unhappy_path():
     with pytest.raises(Exception):
@@ -291,7 +370,122 @@ def test_get_df_cards_unhappy_path():
         data = pd.DataFrame(list, columns=["CARD NUMBER"])
         result_dataframe = ex.get_df_cards(data)
 
+# drop_dupe_cards
+# ------------------------------------------------
+def test_drop_duplicate_cards_happy_path():
+    data = {
+        'card_number' : ['1234']
+        }
+    data_1 = pd.DataFrame(data)
+    data_2 = pd.DataFrame(data)
+    data_1['duplicate'] = data_1.apply(ex.drop_dupe_cards,args=(data_2,),axis=1)
+    expected = {
+        'card_number' : ['1234'],
+        'duplicate' : [True]
+        }
+    data_expected = pd.DataFrame(expected)
+    assert data_1.equals(data_expected)
 
+def test_drop_duplicate_cards_happier_path():
+    data = {
+        'card_number' :['1234']
+        }
+    data_2 = {
+        'card_number' :['1235']
+        }   
+    data_1 = pd.DataFrame(data)
+    wrong_data = pd.DataFrame(data_2)
+    data_1['duplicate'] = data_1.apply(ex.drop_dupe_cards,args=(wrong_data,),axis=1)
+    expected = {
+        'card_number' :['1234'], 
+        'duplicate' : [False]
+        }
+    data_expected = pd.DataFrame(expected)
+    assert data_1.equals(data_expected)
+
+
+# drop_dupe_location
+# ------------------------------------------------
+def test_drop_duplicate_location_happy_path():
+    data = {
+        'name' : ['London']
+        }
+    data_1 = pd.DataFrame(data)
+    data_2 = pd.DataFrame(data)
+    data_1['duplicate'] = data_1.apply(ex.drop_dupe_location,args=(data_2,),axis=1)
+    expected = {
+        'name' : ['London'],
+        'duplicate' : [True]
+        }
+    data_expected = pd.DataFrame(expected)
+    assert data_1.equals(data_expected)
+
+def test_drop_duplicate_location_happier_path():
+    data = {
+        'name' :['London']
+        }
+    data_2 = {
+        'name' :['Bristol']
+        }   
+    data_1 = pd.DataFrame(data)
+    wrong_data = pd.DataFrame(data_2)
+    data_1['duplicate'] = data_1.apply(ex.drop_dupe_location,args=(wrong_data,),axis=1)
+    expected = {
+        'name' :['London'], 
+        'duplicate' : [False]
+        }
+    data_expected = pd.DataFrame(expected)
+    assert data_1.equals(data_expected)
+
+def test_drop_duplicate_location_unhappy_path():
+    data = {
+        'name' :[4]
+        }
+    data_1 = pd.DataFrame(data)
+    data_2 = pd.DataFrame(data)
+    data_1['duplicate'] = data_1.apply(ex.drop_dupe_location,args=(data_2,),axis=1)
+    expected = {
+        'name' : [4],
+        'duplicate' : [True]
+    }
+    
+    assert data_1.equals(pd.DataFrame(expected))
+
+# drop_dupe_customers
+# ------------------------------------------------
+def test_drop_duplicate_customers_happy_path():
+    data = {
+        'name' : ["test name"]
+        }
+    data_1 = pd.DataFrame(data)
+    data_2 = pd.DataFrame(data)
+    data_1['duplicate'] = data_1.apply(ex.drop_dupe_customers,args=(data_2,),axis=1)
+    expected = {
+        'name' : ['test name'],
+        'duplicate' : [True]
+        }
+    data_expected = pd.DataFrame(expected)
+    assert data_1.equals(data_expected)
+
+def test_drop_duplicate_customers_happier_path():
+    data = {
+        'name' :['test name']
+        }
+    data_2 = {
+        'name' :['test surname']
+        }   
+    data_1 = pd.DataFrame(data)
+    wrong_data = pd.DataFrame(data_2)
+    data_1['duplicate'] = data_1.apply(ex.drop_dupe_customers,args=(wrong_data,),axis=1)
+    expected = {
+        'name' :['test name'], 
+        'duplicate' : [False]
+        }
+    data_expected = pd.DataFrame(expected)
+    assert data_1.equals(data_expected)
+
+# drop_dupe_products
+# ------------------------------------------------
 def test_drop_duplicate_prods_happy_path():
     data = {"name": ["name1"], "flavour": ["fla1"], "size": ["size1"], "price": [1]}
 
@@ -307,7 +501,6 @@ def test_drop_duplicate_prods_happy_path():
     }
     data_expected = pd.DataFrame(expected)
     assert data_1.equals(data_expected)
-
 
 def test_drop_duplicate_prods_happier_path():
     data = {"name": ["name1"], "flavour": ["fla1"], "size": ["size1"], "price": [4]}
@@ -325,7 +518,6 @@ def test_drop_duplicate_prods_happier_path():
     data_expected = pd.DataFrame(expected)
     assert data_1.equals(data_expected)
 
-
 def test_drop_duplicate_prods_unhappy_path():
     data = {
         "name": ["name1"],
@@ -338,13 +530,13 @@ def test_drop_duplicate_prods_unhappy_path():
     with pytest.raises(Exception):
         data_1["duplicate"] = data_1.apply(ex.drop_dupe_prods, args=(data_2,), axis=1)
 
-
+# test_get_df
+# ------------------------------------------------
 def test_get_table_df_happy_path():
     customer_df = Mock(side_effect=["customer"])
     location_df = Mock(side_effect=["location"])
     cards_df = Mock(side_effect=["cards"])
     products_df = Mock(side_effect=["products"])
-
     data = {
         "name": ["name1"],
         "flavour": ["fla1"],
@@ -352,9 +544,7 @@ def test_get_table_df_happy_path():
         "price": ["string"],
     }
     data_1 = pd.DataFrame(data)
-
     expected = ("customer", "location", "cards", "products")
-
     result = ex.get_table_df(
         data_1,
         get_df_customers=customer_df,
@@ -362,16 +552,13 @@ def test_get_table_df_happy_path():
         get_df_cards=cards_df,
         get_df_products=products_df,
     )
-
     assert result == expected
-
 
 def test_table_df_happier_path():
     customer_df = Mock(side_effect=["customer"])
     location_df = Mock(side_effect=["location"])
     cards_df = Mock(side_effect=["cards"])
     products_df = Mock(side_effect=["products"])
-
     data = {
         "name": ["name1"],
         "flavour": ["fla1"],
@@ -379,7 +566,6 @@ def test_table_df_happier_path():
         "price": ["string"],
     }
     data_1 = pd.DataFrame(data)
-
     ex.get_table_df(
         data_1,
         get_df_customers=customer_df,
@@ -387,14 +573,13 @@ def test_table_df_happier_path():
         get_df_cards=cards_df,
         get_df_products=products_df,
     )
-
     customer_df.assert_called_once_with(data_1)
     location_df.assert_called_once_with(data_1)
     cards_df.assert_called_once_with(data_1)
     products_df.assert_called_once_with(data_1)
 
-
-# -----clean_the_data-----------
+# clean_the_data
+# ------------------------------------------------
 def test_clean_the_data():
     data = {
         "date": ["01/01/1970 09:00", "01/01/1970 09:01"],
@@ -409,7 +594,6 @@ def test_clean_the_data():
         "card_number": [3456, 1234],
     }
     df = pd.DataFrame(data)
-
     expected = {
         "date": [
             "01/01/1970 09:00",
@@ -439,15 +623,11 @@ def test_clean_the_data():
     }
 
     expected_df = pd.DataFrame(expected)
-
     actual = ex.clean_the_data(df)
     expected_df = expected_df.reset_index(drop=True)
     actual_df = actual.reset_index(drop=True)
-
     assert expected_df.equals(actual_df)
 
-
-# Unhappy 1 - Missing Data
 def test_clean_the_data_unhappy_1():
     data = {
         "date": ["01/01/1970 09:00", "01/01/1970 09:01"],
@@ -464,8 +644,6 @@ def test_clean_the_data_unhappy_1():
     with pytest.raises(KeyError):
         ex.clean_the_data(df)
 
-
-# Unhappy 2 - Invalid Products
 def test_clean_the_data_unhappy_1():
     data = {
         "date": ["01/01/1970 09:00", "01/01/1970 09:01"],
@@ -483,12 +661,10 @@ def test_clean_the_data_unhappy_1():
     with pytest.raises(UnboundLocalError):
         ex.clean_the_data(df)
 
-
-# -------get_df_products--------
-# Happy Path 1 - Not a Duplicate
+# get_df_products
+# ------------------------------------------------
 def test_get_df_products():
     mock_get_prods_table = Mock()
-
     prods_table_data = {
         "product_id": [12345, 12346, 12347],
         "name": ["Test prod", "Tea", "Testing Water"],
@@ -505,7 +681,6 @@ def test_get_df_products():
         "price": [1.2],
     }
     df = pd.DataFrame(products_df_data)
-
     expected_data = {
         "name": ["Test"],
         "flavour": ["Test"],
@@ -513,18 +688,14 @@ def test_get_df_products():
         "price": [1.2],
     }
     expected_df = pd.DataFrame(expected_data)
-
     actual = ex.get_df_products(df, df_from_sql_table=mock_get_prods_table)
     actual = actual.reset_index(drop=True)
     expected = expected_df.reset_index(drop=True)
 
     assert actual.equals(expected)
 
-
-# Happy Path 2 - Duplicated
 def test_get_df_products_dupe():
     mock_get_prods_table = Mock()
-
     prods_table_data = {
         "product_id": [12345, 12346, 12347],
         "name": ["Test prod", "Tea", "Testing Water"],
@@ -541,17 +712,13 @@ def test_get_df_products_dupe():
         "price": [1],
     }
     df = pd.DataFrame(products_df_data)
-
     actual = ex.get_df_products(df, df_from_sql_table=mock_get_prods_table)
     actual = actual.reset_index(drop=True)
 
     assert actual.empty
 
-
-# Unhappy 1 - Missing Data from Products DF
 def test_get_df_products_unhappy_1():
     mock_get_prods_table = Mock()
-
     prods_table_data = {
         "product_id": [12345, 12346, 12347],
         "name": ["Test prod", "Tea", "Testing Water"],
@@ -567,7 +734,6 @@ def test_get_df_products_unhappy_1():
         "size": ["Regular"],
     }
     df = pd.DataFrame(products_df_data)
-
     with pytest.raises(KeyError):
         ex.get_df_products(df, df_from_sql_table=mock_get_prods_table)
 
@@ -591,7 +757,8 @@ def test_get_df_products_unhappy_1():
 #        ex.get_df_products(df, df_from_sql_table=mock_get_prods_table)
 
 
-# -------df_to_sql--------------
+# df_to_sql
+# ------------------------------------------------
 @patch("os.environ.get", side_effect=["test", "pass", "localhost", "3307", "test"])
 @patch("pandas.DataFrame.to_sql")
 def test_df_to_sql(mock_table: Mock, mock_get: Mock):
@@ -601,9 +768,7 @@ def test_df_to_sql(mock_table: Mock, mock_get: Mock):
     mock_engine = Mock()
     mock_engine.attach_mock(dispose, "dispose")
     engine_caller = Mock(side_effect=mock_engine)
-
     ex.df_to_sql(df, name, create_engine=engine_caller)
-
     calls = [
         call("mysql_user"),
         call("mysql_pass"),
@@ -611,13 +776,12 @@ def test_df_to_sql(mock_table: Mock, mock_get: Mock):
         call("mysql_port"),
         call("mysql_db"),
     ]
-    # asserts
     mock_engine.assert_called_once()
     mock_get.assert_has_calls(calls)
     mock_table.assert_called_once()
 
-
-# ----test inserts----------
+#test inserts
+# ------------------------------------------------
 @patch("builtins.print")
 def test_insert_names(mock_print: Mock):
     mock_df_to_sql = Mock()
@@ -625,7 +789,6 @@ def test_insert_names(mock_print: Mock):
     ex.insert_names(df, df_to_sql=mock_df_to_sql)
     mock_print.assert_called_once()
     mock_df_to_sql.assert_called_once()
-
 
 @patch("builtins.print")
 def test_insert_cards(mock_print: Mock):
@@ -638,7 +801,6 @@ def test_insert_cards(mock_print: Mock):
     mock_clean_cards.assert_called_once()
     mock_df_to_sql.assert_called_once()
 
-
 @patch("builtins.print")
 def test_insert_store(mock_print: Mock):
     mock_df_to_sql = Mock()
@@ -646,7 +808,6 @@ def test_insert_store(mock_print: Mock):
     ex.insert_store(df, df_to_sql=mock_df_to_sql)
     mock_print.assert_called_once()
     mock_df_to_sql.assert_called_once()
-
 
 @patch("builtins.print")
 def test_insert_products(mock_print: Mock):
@@ -656,43 +817,30 @@ def test_insert_products(mock_print: Mock):
     mock_print.assert_called_once()
     mock_df_to_sql.assert_called_once()
 
-
-# --------etl--------
-
-# Happy 1 - has new products
+# etl
+# ------------------------------------------------
 @patch("builtins.print")
 def test_etl(mock_print: Mock):
-    # Assemble
-
     mock_get_table_df = Mock()
     mock_insert_names = Mock()
     mock_insert_cards = Mock()
     mock_insert_store = Mock()
     mock_insert_products = Mock()
-
     customer_data = {"name": ["John J Sainsbury"]}
-
     location_data = {"name": ["Holborn"]}
-
     cards_data = {"card_number": [5678]}
-
     products_data = {
         "name": ["Test"],
         "flavour": ["None"],
         "size": ["Regular"],
         "price": 1.50,
     }
-
     customer_df = pd.DataFrame(customer_data)
     location_df = pd.DataFrame(location_data)
     cards_df = pd.DataFrame(cards_data)
     products_df = pd.DataFrame(products_data)
     df_exploded = pd.DataFrame()
-
     mock_get_table_df.return_value = customer_df, location_df, cards_df, products_df
-
-    # Act
-
     ex.etl(
         df_exploded=df_exploded,
         get_table_df=mock_get_table_df,
@@ -701,8 +849,6 @@ def test_etl(mock_print: Mock):
         insert_store=mock_insert_store,
         insert_products=mock_insert_products,
     )
-
-    # Assert
     mock_print.assert_called_once()
     mock_get_table_df.assert_called_once()
     mock_insert_names.assert_called_once()
@@ -711,35 +857,23 @@ def test_etl(mock_print: Mock):
     mock_insert_products.assert_called_once()
 
 
-# Happy 2 - no new products
 @patch("builtins.print")
 def test_etl_happy_1(mock_print: Mock):
-    # Assemble
-
     mock_get_table_df = Mock()
     mock_insert_names = Mock()
     mock_insert_cards = Mock()
     mock_insert_store = Mock()
     mock_insert_products = Mock()
-
     customer_data = {"name": ["John J Sainsbury"]}
-
     location_data = {"name": ["Holborn"]}
-
     cards_data = {"card_number": [5678]}
-
     products_data = {}
-
     customer_df = pd.DataFrame(customer_data)
     location_df = pd.DataFrame(location_data)
     cards_df = pd.DataFrame(cards_data)
     products_df = pd.DataFrame(products_data)
     df_exploded = pd.DataFrame()
-
     mock_get_table_df.return_value = customer_df, location_df, cards_df, products_df
-
-    # Act
-
     ex.etl(
         df_exploded=df_exploded,
         get_table_df=mock_get_table_df,
@@ -748,8 +882,6 @@ def test_etl_happy_1(mock_print: Mock):
         insert_store=mock_insert_store,
         insert_products=mock_insert_products,
     )
-
-    # Assert
     mock_print.assert_called_once()
     mock_get_table_df.assert_called_once()
     mock_insert_names.assert_called_once()
