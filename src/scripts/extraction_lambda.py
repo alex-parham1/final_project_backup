@@ -18,8 +18,9 @@ s3 = session.client("s3")
 
 def lambda_handler(event, context):
 
+    #  Gets the file from the bucket
+
     bucket = event["Records"][0]["s3"]["bucket"]["name"]
-    print(event)
 
     key = urllib.parse.unquote_plus(
         event["Records"][0]["s3"]["object"]["key"], encoding="utf-8"
@@ -56,14 +57,14 @@ def lambda_handler(event, context):
 
         # saves new clean csv to clean bucket
 
-        df.to_csv("/tmp/cleaned_data.csv", index=False)
-        
+        df.to_csv("/tmp/cleaned_data.csv", index=False)  
         if os.environ.get("debug") == "False":
             response = s3.upload_file(
                 Filename="/tmp/cleaned_data.csv", Bucket="team-yogurt-cleaned-data", Key=key
             )
         else: 
             return True
+
 
     except Exception as e:
         print(e)

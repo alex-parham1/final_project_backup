@@ -1,8 +1,5 @@
-# import unittest
-# from unittest import mock
-# import os
-# from dotenv import load_dotenv
-# create sample event to pass through
+import os
+from dotenv import load_dotenv
 import sys
 sys.path.append("../")
 sys.path.append("../src/scripts")
