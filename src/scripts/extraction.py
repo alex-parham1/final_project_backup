@@ -1,5 +1,5 @@
 import pandas as pd
-from yaspin import yaspin
+# from yaspin import yaspin
 import os
 from sqlalchemy import create_engine
 from sqlalchemy.ext.compiler import compiles

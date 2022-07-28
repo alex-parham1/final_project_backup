@@ -21,9 +21,9 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v2
     
-    - name: install pytest
+    - name: install dependancies
       run: | 
-        pip3 install pytest
+        pip3 install requirements.txt
     - name: run testing
       run: | 
         pytest
