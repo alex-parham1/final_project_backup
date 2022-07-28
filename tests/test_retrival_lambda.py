@@ -10,18 +10,18 @@ from src.scripts import extraction_lambda
 import json
 
 
-with open ("test_lambda_event.json") as f:
-    event = f.read()
-    event = json.loads(event) 
+# with open ("test_lambda_event.json") as f:
+#     event = f.read()
+#     event = json.loads(event) 
 
-print(event)
-print(type(event))
+# print(event)
+# print(type(event))
 
 
-def test_extraction_lambda():
+# def test_extraction_lambda():
 
-    result = extraction_lambda.lambda_handler(event, None)
-    print("************************")
-    print(result)
-    assert result == True
+#     result = extraction_lambda.lambda_handler(event, None)
+#     print("************************")
+#     print(result)
+#     assert result == True
     
