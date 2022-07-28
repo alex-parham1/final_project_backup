@@ -1,5 +1,7 @@
 import pytest
 from unittest.mock import Mock, patch, call
+import sys
+sys.path.append('../')
 from src.scripts import transactions_and_baskets as tb
 import pandas as pd
 
