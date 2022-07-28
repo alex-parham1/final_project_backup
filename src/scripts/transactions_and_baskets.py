@@ -1,4 +1,5 @@
 import pandas as pd
+
 # from yaspin import yaspin
 import os
 from sqlalchemy import create_engine
@@ -56,10 +57,8 @@ def transaction_duplicate_protection(transaction, table: pd.DataFrame):
         inplace=False,
     )
     if not trans.empty:
-        print("duplicate found")
         return True
     else:
-        print("new entry")
         return False
 
 
@@ -140,7 +139,6 @@ def remove_duplicate_transactions(
     )
     trans_table = trans_table[trans_table["duplicate"] == False]
     trans_table = trans_table.drop("duplicate", axis=1)
-    print(trans_table.shape)
     return trans_table
 
 
@@ -209,7 +207,7 @@ def insert_baskets(
     get_transaction_id=get_transaction_id,
     get_product_id=get_product_id,
     df_to_sql=df_to_sql,
-    df_from_sql_table=df_from_sql_table
+    df_from_sql_table=df_from_sql_table,
 ):
 
     print("updating transactions")
