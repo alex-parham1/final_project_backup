@@ -4,6 +4,7 @@ import os
 
 target = os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 
+# last test for today
 
 load_dotenv(f"{target}/.env")
 host = os.environ.get("mysql_host")

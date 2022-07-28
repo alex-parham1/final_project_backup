@@ -1,5 +1,6 @@
 import pandas as pd
-from yaspin import yaspin
+
+# from yaspin import yaspin
 import os
 from sqlalchemy import create_engine
 from sqlalchemy.ext.compiler import compiles
@@ -138,7 +139,6 @@ def remove_duplicate_transactions(
     )
     trans_table = trans_table[trans_table["duplicate"] == False]
     trans_table = trans_table.drop("duplicate", axis=1)
-    print(trans_table.shape)
     return trans_table
 
 def insert_baskets(
@@ -229,4 +229,5 @@ def insert_transactions(
     df_to_sql(trans_table, "transactions")
     print("uploaded transactions")
     insert_baskets(trans_df, start_time, end_time)
+
 

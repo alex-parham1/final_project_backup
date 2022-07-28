@@ -1,5 +1,8 @@
 import pytest
 from unittest.mock import Mock, patch, call
+import sys
+
+sys.path.append("../")
 from src.scripts import transactions_and_baskets as tb
 import pandas as pd
 
@@ -217,7 +220,6 @@ def test_get_table_drop_dupes():
 
     assert expected.equals(actual)
 
-
 @patch("builtins.print")
 def test_get_table_drop_dupes_happy2(mock_print: Mock):
     mock_df_from_sql_table = Mock()
@@ -233,6 +235,15 @@ def test_get_table_drop_dupes_happy2(mock_print: Mock):
         "column_1": ["value1", "value1", "value2"],
         "column_2": ["c2_value1", "c2_value1", "value2"],
     }
+
+    expected = pd.DataFrame(expected_df)
+    expected = expected.reset_index(drop=True)
+
+    actual = tb.get_table_drop_dupes("test", df_from_sql_table=mock_df_from_sql_table)
+    actual = actual.reset_index(drop=True)
+
+    mock_print.assert_called_with("Table test has no column named 'name'")
+    assert expected.equals(actual)
 
     expected = pd.DataFrame(expected_df)
     expected = expected.reset_index(drop=True)
