@@ -1,5 +1,7 @@
 import pytest
 from unittest.mock import Mock, patch, call
+import sys
+sys.path.append('../')
 from src.scripts import extraction as ex
 import pandas as pd
 
