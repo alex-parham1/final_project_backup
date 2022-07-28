@@ -142,15 +142,15 @@ def remove_duplicate_transactions(
     return trans_table
 
 def insert_baskets(
+    def insert_baskets(
     trans_df: pd.DataFrame,
     start_time,
     end_time,
     df_from_sql_query=df_from_sql_query,
-    get_table_drop_dupes=get_table_drop_dupes,
     get_transaction_id=get_transaction_id,
     get_product_id=get_product_id,
     df_to_sql=df_to_sql,
-    df_from_sql_table=df_from_sql_table,
+    df_from_sql_table=df_from_sql_table
 ):
 
     print("updating transactions")
@@ -232,10 +232,6 @@ def insert_transactions(
     insert_baskets(trans_df, start_time, end_time)
 
     # baskets starts here
-
-
-
-
 
 if __name__ == "__main__":
     insert_transactions()
