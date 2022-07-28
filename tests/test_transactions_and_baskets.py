@@ -242,3 +242,68 @@ def test_get_timeframe_transactions():
     actual = actual.reset_index(drop=True)
 
     assert expected.equals(actual)
+
+
+
+
+    @patch("builtins.print")
+    def mock_insert_baskets(mock_print):
+        trans_data = {
+            "transaction_id" : 1,
+            "date_time" : "1993/06/29 12:10",
+            "customer_id" : 2,
+            "store_id" : 3,
+            "total" : 7.50,
+            "payment_method" : "CARD"
+        }
+        transactions = pd.DataFrame(trans_data)
+       
+        prod_data = {
+            "product_id" : 123,
+            "name" : "Coffee",
+            "flavour" : "None",
+            "size" : "Large",
+            "price" : 1.50
+        }
+        products = pd.DataFrame(prod_data)
+
+        mock_df_from_sql_query = Mock(side_effect=[transactions])
+        mock_df_from_sql_table = Mock(side_effect=[products])
+        
+        mock_get_transaction_id = Mock()
+        mock_get_transaction_id.return_value = 1
+
+        mock_get_product_id = Mock()
+        mock_get_product_id.return_value = 11
+
+        mock_df_to_sql = Mock()
+            
+        mock_print(1)
+        mock_print(2)
+        mock_print(3)
+        mock_print(4)
+        mock_print(5)
+        mock_print(6)
+        mock_print(7)
+        mock_print(8)
+        mock_print(9)
+        calls = [mock_print(1),mock_print(2),mock_print(3), mock_print(4),mock_print(5), mock_print(6), mock_print(7), mock_print(8), mock_print(9)]
+        
+        tb.insert_baskets(
+            trans_df=transactions, 
+            start_time="2022/07/28 11:52", 
+            end_time="2022/07/28 12:52",
+            df_from_sql_query=mock_df_from_sql_query,
+            get_transaction_id=mock_get_transaction_id,
+            get_product_id=mock_get_product_id,
+            df_to_sql=mock_df_to_sql,
+            df_from_sql_table=mock_df_from_sql_table)
+
+        mock_df_from_sql_query.assert_called()
+        mock_df_from_sql_table.assert_called()
+        mock_get_transaction_id.assert_called()
+        mock_get_product_id.assert_called()
+        mock_df_to_sql.asert_called()
+        mock_print.assert_has_calls(calls, any_order=False)
+
+

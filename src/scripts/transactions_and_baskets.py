@@ -205,7 +205,6 @@ def insert_baskets(
     start_time,
     end_time,
     df_from_sql_query=df_from_sql_query,
-    get_table_drop_dupes=get_table_drop_dupes,
     get_transaction_id=get_transaction_id,
     get_product_id=get_product_id,
     df_to_sql=df_to_sql,
