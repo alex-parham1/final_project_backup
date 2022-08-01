@@ -215,7 +215,6 @@ def insert_transactions(
             "card_number",
         ]
     )
-    print(trans_table)
     trans_table.columns = [
         "date_time",
         "store_id",
