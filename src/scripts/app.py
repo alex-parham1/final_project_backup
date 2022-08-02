@@ -11,7 +11,11 @@ s3 = boto3.client("s3")
 region = os.environ.get("eu-west-1")
 
 # yml test
+import botocore.exceptions
+import logging
 
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 def lambda_handler(event, context):
 
@@ -23,7 +27,17 @@ def lambda_handler(event, context):
     print(key)
 
     try:
-        response = s3.get_object(Bucket=bucket, Key=key)
+        try: 
+            response = s3.get_object(Bucket=bucket, Key=key)
+        except Exception as e:
+            print(e)
+            print(
+                "Error getting object {} from bucket {}. Make sure they exist and your bucket is in the same region as this function.".format(
+                    key, bucket
+            )
+        )
+            raise e
+
 
         file_content = response["Body"]
 
@@ -42,12 +56,16 @@ def lambda_handler(event, context):
             "statusCode": 200,
             "body": json.dumps({"message": "successful upload", "event": event}),
         }
+        
+    except botocore.exceptions.ConnectionError as error:
+        raise ValueError(f"A connection was unable to be made: {error}")
 
-    except Exception as e:
-        print(e)
-        print(
-            "Error getting object {} from bucket {}. Make sure they exist and your bucket is in the same region as this function.".format(
-                key, bucket
-            )
-        )
-        raise e
+    except botocore.exceptions.UnknownCredentialError as error:
+        raise ValueError(f"The credentials you provided are incorrect: {error}")
+
+    except s3.exceptions.TimeoutError as error:
+        logger.warn(f"Time out Error. See Cloudwatch for more details: {error}")
+
+    except botocore.exceptions.ClientError as error:
+        logger.exception(f"Error with Lambda function. See Cloudwatch for details : {error}")
+        raise error
