@@ -1,4 +1,3 @@
-from tkinter import E
 import pandas as pd
 
 # from yaspin import yaspin
