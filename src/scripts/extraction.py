@@ -192,6 +192,18 @@ def drop_dupe_prods(df: pd.Series, prods: pd.DataFrame):
 def get_df_products(
     df, df_from_sql_table=df_from_sql_table, drop_dupe_prods=drop_dupe_prods
 ):
+    print("getting products table")
+    prods_table = df_from_sql_table("products")
+    products_df = df[["product_name", "flavour", "size", "price"]]
+    products_df.columns = ["name", "flavour", "size", "price"]
+    products_df = products_df.drop_duplicates(ignore_index=True)
+    products_df["duplicate"] = products_df.apply(
+        drop_dupe_prods, args=(prods_table,), axis=1
+    )
+    products_df = products_df[products_df["duplicate"] == False]
+    products_df = products_df.drop("duplicate", axis=1)
+    print("Products DF OK")
+    return products_df
 
 # gets a series of dataframes, one for each table in our database
 # ----------------------------------------------------------------
