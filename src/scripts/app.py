@@ -10,6 +10,8 @@ from io import StringIO
 s3 = boto3.client("s3")
 region = os.environ.get("eu-west-1")
 
+# yml test
+
 
 def lambda_handler(event, context):
 
@@ -18,6 +20,7 @@ def lambda_handler(event, context):
     key = urllib.parse.unquote_plus(
         event["Records"][0]["s3"]["object"]["key"], encoding="utf-8"
     )
+    print(key)
 
     try:
         response = s3.get_object(Bucket=bucket, Key=key)

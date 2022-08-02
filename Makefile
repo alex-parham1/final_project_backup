@@ -32,4 +32,17 @@ thirstee:
     --region eu-west-1 \
     --document-name AWS-StartPortForwardingSessionToRemoteHost \
     --parameters '{"host":["thirstee.cm76nv1fmnjs.eu-west-1.rds.amazonaws.com"],"portNumber":["3306"], "localPortNumber":["3307"]}'
-	
+
+grafana:
+	aws ssm start-session \
+    --target i-018ff9d84f4924454 \
+    --profile bootcamp-sandbox \
+    --region eu-west-1
+
+graf_thirstee:
+	aws ssm start-session \
+    --target i-018ff9d84f4924454 \
+    --profile bootcamp-sandbox \
+    --region eu-west-1 \
+    --document-name AWS-StartPortForwardingSessionToRemoteHost \
+    --parameters '{"host":["thirstee.cm76nv1fmnjs.eu-west-1.rds.amazonaws.com"],"portNumber":["3306"], "localPortNumber":["3307"]}'

@@ -3,7 +3,9 @@ name: Deploy to ECR
 on:
  
   push:
-    branch: [ main ]
+    branches: 
+     - main
+
 
 jobs:
   
@@ -20,12 +22,12 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v2
     
-    # - name: install pytest
-    #   run: | 
-    #     pip3 install pytest
-    # - name: run testing
-    #   run: | 
-    #     pytest
+    - name: install dependancies
+      run: | 
+        pip3 install -r requirements.txt
+    - name: run testing
+      run: | 
+        python3 -m pytest
 
 
     - name: Configure AWS credentials

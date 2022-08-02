@@ -1,3 +1,6 @@
+import sys
+
+sys.path.append("../")
 from src.scripts import notebook_utils as nu
 
 
