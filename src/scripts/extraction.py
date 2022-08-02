@@ -3,7 +3,7 @@ import os
 from sqlalchemy import create_engine
 from sqlalchemy.ext.compiler import compiles
 from sqlalchemy.sql.expression import Insert
-import snowflake.connector
+from snowflake.connector import connect
 from snowflake.connector.pandas_tools import write_pandas
 
 # adds the word IGNORE after INSERT in sqlalchemy
@@ -32,7 +32,7 @@ def connect_and_push_snowflake(
     warehouse="BOOTCAMP_WH",
     schema="PUBLIC",
 ):
-    ctx = snowflake.connector.connect(
+    ctx = connect(
         user=user,
         password=password,
         account=account,
