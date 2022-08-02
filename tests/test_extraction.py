@@ -591,6 +591,7 @@ def test_get_df_products_unhappy_1():
 
 
 # -------df_to_sql--------------
+# df_to_sql
 @patch("os.environ.get", side_effect=["test", "pass", "localhost", "3307", "test"])
 @patch("pandas.DataFrame.to_sql")
 def test_df_to_sql(mock_table: Mock, mock_get: Mock):
