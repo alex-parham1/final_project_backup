@@ -10,7 +10,7 @@
 ### Welcome to our Repository :)
 This is the repository for Team Yogurt's project - the ETL pipeline for Thirstee! The project has been worked on by the development team, Sian, Liz, Connor and Alex, along with the support of the Product Owner & Technical Lead Ben :)
 
-### Installation
+### Installation 
 Select "code" above and clone the repository on your local machine. Then, run the main file **file name here** to begin!
 
 `git clone git@github.com:sain-data-academy-may-2022/team_repo_3.git`
