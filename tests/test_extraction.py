@@ -863,7 +863,7 @@ def test_etl(mock_print: Mock):
         insert_store=mock_insert_store,
         insert_products=mock_insert_products,
     )
-    mock_print.assert_called_once()
+    mock_print.assert_called()
     mock_get_table_df.assert_called_once()
     mock_insert_names.assert_called_once()
     mock_insert_cards.assert_called_once()
@@ -896,7 +896,7 @@ def test_etl_happy_1(mock_print: Mock):
         insert_store=mock_insert_store,
         insert_products=mock_insert_products,
     )
-    mock_print.assert_called_once()
+    mock_print.assert_called()
     mock_get_table_df.assert_called_once()
     mock_insert_names.assert_called_once()
     mock_insert_cards.assert_called_once()
