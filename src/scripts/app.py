@@ -25,46 +25,46 @@ def lambda_handler(event, context):
         event["Records"][0]["s3"]["object"]["key"], encoding="utf-8"
     )
 
-    try:
-        try: 
-            response = s3.get_object(Bucket=bucket, Key=key)
-        except Exception as e:
-            print(e)
-            print(
-                "Error getting object {} from bucket {}. Make sure they exist and your bucket is in the same region as this function.".format(
-                    key, bucket
-            )
+    
+    try: 
+        response = s3.get_object(Bucket=bucket, Key=key)
+    except Exception as e:
+        print(e)
+        print(
+            "Error getting object {} from bucket {}. Make sure they exist and your bucket is in the same region as this function.".format(
+                key, bucket
         )
-            raise e
+    )
+        raise e
 
 
-        file_content = response["Body"]
+    file_content = response["Body"]
 
-        file_data = file_content.read().decode("utf-8")
+    file_data = file_content.read().decode("utf-8")
 
-        df = pd.read_csv(StringIO(file_data))
+    df = pd.read_csv(StringIO(file_data))
 
-        #  This is where the csv is sat in the file_data and needs reading into the main app
+    #  This is where the csv is sat in the file_data and needs reading into the main app
 
-        df = ex.clean_the_data(df)
-        ex.etl(df)
-        tb.insert_transactions(df)
+    df = ex.clean_the_data(df)
+    ex.etl(df)
+    tb.insert_transactions(df)
 
-        return {
-            "headers": {"Content-Type": "application/json"},
-            "statusCode": 200,
-            "body": json.dumps({"message": "successful upload", "event": event}),
-        }
+    return {
+        "headers": {"Content-Type": "application/json"},
+        "statusCode": 200,
+        "body": json.dumps({"message": "successful upload", "event": event}),
+    }
         
-    except botocore.exceptions.ConnectionError as error:
-        raise ValueError(f"A connection was unable to be made: {error}")
+    # except botocore.exceptions.ConnectionError as error:
+    #     raise ValueError(f"A connection was unable to be made: {error}")
 
-    except botocore.exceptions.UnknownCredentialError as error:
-        raise ValueError(f"The credentials you provided are incorrect: {error}")
+    # except botocore.exceptions.UnknownCredentialError as error:
+    #     raise ValueError(f"The credentials you provided are incorrect: {error}")
 
-    # except s3.exceptions.TimeoutError as error:
-    #     logger.warn(f"Time out Error. See Cloudwatch for more details: {error}")
+    # # except s3.exceptions.RuntimeError as error:
+    # #     logger.warn(f"Time out Error. See Cloudwatch for more details: {error}")
 
-    except botocore.exceptions.ClientError as error:
-        logger.exception(f"Error with Lambda function. See Cloudwatch for details : {error}")
-        raise error
+    # except botocore.exceptions.ClientError as error:
+    #     logger.exception(f"Error with Lambda function. See Cloudwatch for details : {error}")
+    #     raise error
