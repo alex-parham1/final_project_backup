@@ -1,5 +1,4 @@
 import pandas as pd
-from yaspin import yaspin
 import os
 from sqlalchemy import create_engine
 from sqlalchemy.ext.compiler import compiles
@@ -18,9 +17,7 @@ def df_to_sql(df: pd.DataFrame, table_name, create_engine=create_engine):
     host = os.environ.get("mysql_host")
     port = os.environ.get("mysql_port")
     db = os.environ.get("mysql_db")
-    engine = create_engine(
-        f"mysql+pymysql://{user}:{password}@{host}:{port}/{db}"
-    )
+    engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}:{port}/{db}")
     db_engine = engine.execution_options(autocommit=True)
     df.to_sql(
         name=table_name,
@@ -41,12 +38,11 @@ def df_from_sql_table(
     host = os.environ.get("mysql_host")
     port = os.environ.get("mysql_port")
     db = os.environ.get("mysql_db")
-    engine = create_engine(
-        f"mysql+pymysql://{user}:{password}@{host}:{port}/{db}"
-    )
+    engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}:{port}/{db}")
     ret = pd.read_sql_table(table_name, engine)
     engine.dispose()
     return ret
+
 
 def transaction_duplicate_protection(transaction, table: pd.DataFrame):
     date = transaction["date_time"]
@@ -65,6 +61,7 @@ def transaction_duplicate_protection(transaction, table: pd.DataFrame):
         print("new entry")
         return False
 
+
 def df_from_sql_query(
     table_name,
     start_time,
@@ -79,12 +76,11 @@ def df_from_sql_query(
     port = os.environ.get("mysql_port")
     db = os.environ.get("mysql_db")
 
-    engine = create_engine(
-        f"mysql+pymysql://{user}:{password}@{host}:{port}/{db}"
-    )
+    engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}:{port}/{db}")
     sql = f"SELECT * from {table_name} WHERE date_time between '{start_time}' and '{end_time}'"
     print("executing query")
-    ret = pd.read_sql_query(sql, engine)
+    ret = read_sql_query(sql, engine)
+
 
 def get_store_id(store, stores: pd.DataFrame):
     id = stores.query(f"name=='{store}'", inplace=False)

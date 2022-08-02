@@ -1,11 +1,12 @@
 import pandas as pd
 
 # import pandas_profiling
-from yaspin import yaspin
 import os
 from sqlalchemy import create_engine
 from sqlalchemy.ext.compiler import compiles
 from sqlalchemy.sql.expression import Insert
+import snowflake.connector
+from snowflake.connector.pandas_tools import write_pandas
 
 # adds the word IGNORE after INSERT in sqlalchemy
 @compiles(Insert)
@@ -15,6 +16,34 @@ def _prefix_insert_with_ignore(insert, compiler, **kw):
 
 # This function forms the **E** from ETL - it extracts the data and puts it into a dataframe.
 # lets the user know what is happening when the code is just 'doing stuff'
+
+snow_user = os.environ.get("SNOWFLAKE_USER")
+snow_password = os.environ.get("SNOWFLAKE_PASS")
+
+
+def connect_and_push_snowflake(
+    table,
+    database,
+    df,
+    user=snow_user,
+    password=snow_password,
+    account="sainsburys-bootcamp",
+    warehouse="BOOTCAMP_WH",
+    schema="PUBLIC",
+):
+    ctx = snowflake.connector.connect(
+        user=user,
+        password=password,
+        account=account,
+        warehouse=warehouse,
+        database=database,
+        schema=schema,
+    )
+    success, nchunks, nrows, _ = write_pandas(ctx, df, table_name=table)
+    print(
+        f"Successfully uploaded to snowflake: {success}, Number of rows updated (if any): {nrows} using {nchunks} chunks."
+    )
+    ctx.close()
 
 
 def df_from_sql_table(table_name, create_engine=create_engine):
@@ -144,10 +173,12 @@ def drop_dupe_prods(df: pd.Series, prods: pd.DataFrame):
         return True
     else:
         return False
+
+
 def get_df_products(
     df, df_from_sql_table=df_from_sql_table, drop_dupe_prods=drop_dupe_prods
 ):
-   
+
     products_df = df[["product_name", "flavour", "size", "price"]]
     products_df.columns = ["name", "flavour", "size", "price"]
     products_df = products_df.drop_duplicates(ignore_index=True)
@@ -235,14 +266,27 @@ def etl(
     # clean our product data
     # each of these executes a series of sql commands to insert the data into our database
 
+    try:
+        connect_and_push_snowflake("CUSTOMERS", "YOGHURT_DB", customer_df)
+        connect_and_push_snowflake("CARDS", "YOGHURT_DB", cards_df)
+        connect_and_push_snowflake("PRODUCTS", "YOGHURT_DB", location_df)
+        if not products_df.empty:
+            connect_and_push_snowflake("PRODUCTS", "YOGHURT_DB", products_df)
+    except:
+        print("Failed to connect to snowflake. Pushing to RDS.")
+        pass
     insert_names(customer_df)
+
     insert_cards(cards_df)
+
     insert_store(location_df)
     if not products_df.empty:
         print("tried to insert :)")
         insert_products(products_df)
+
     else:
         print("no new products")
+
 
 # # ---------------------------------------------------
 # # --------------functions end here-------------------

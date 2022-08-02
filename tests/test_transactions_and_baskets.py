@@ -85,12 +85,19 @@ def test_get_store_id_unhappy():
 
     with pytest.raises(IndexError):
         tb.get_store_id("London", stores)
-  
-#------get_customer_id--------
+
+
+# ------get_customer_id--------
 def test_get_customer_id():
     data = {
         "customer_id": [1, 2, 3, 4, 5],
-        "name": ["John James Sainsbury", "Mary Ann Sainsbury", "Simon Roberts", "Clodagh Moriarty", "Phil Jordan"]
+        "name": [
+            "John James Sainsbury",
+            "Mary Ann Sainsbury",
+            "Simon Roberts",
+            "Clodagh Moriarty",
+            "Phil Jordan",
+        ],
     }
     customers = pd.DataFrame(data)
 
@@ -99,11 +106,18 @@ def test_get_customer_id():
     actual = tb.get_customer_id("Clodagh Moriarty", customers)
     assert expected == actual
 
+
 # Unhappy Path 1 - Customer ID doesn't exist
 def test_get_customer_id_unhappy():
     data = {
         "customer_id": [1, 2, 3, 4, 5],
-        "name": ["John James Sainsbury", "Mary Ann Sainsbury", "Simon Roberts", "Clodagh Moriarty", "Phil Jordan"]
+        "name": [
+            "John James Sainsbury",
+            "Mary Ann Sainsbury",
+            "Simon Roberts",
+            "Clodagh Moriarty",
+            "Phil Jordan",
+        ],
     }
     customers = pd.DataFrame(data)
 
@@ -111,51 +125,52 @@ def test_get_customer_id_unhappy():
         tb.get_customer_id("Helen Hunter", customers)
 
 
-#-------get_product_id-----------
+# -------get_product_id-----------
 def test_get_product_id():
     data = {
-        "product_id" : [2],
-        "name" : "Test2",
-        "flavour" : 'None',
-        "size" : 'Regular',
-        "price" : 2
+        "product_id": [2],
+        "name": "Test2",
+        "flavour": "None",
+        "size": "Regular",
+        "price": 2,
     }
 
     products = pd.DataFrame(data, index=[0])
 
     test_prod = {
-        "product_name" : "Test2",
-        "flavour" : "None",
-        "size" : "Regular",
-        "price" : 2
+        "product_name": "Test2",
+        "flavour": "None",
+        "size": "Regular",
+        "price": 2,
     }
 
-    expected = '2'
+    expected = "2"
 
     actual = tb.get_product_id(test_prod, products)
     print(actual)
     assert expected == actual
 
+
 # Unhappy 1 - Product ID doesn't exist
 def test_get_product_id():
     data = {
-        "product_id" : [2],
-        "name" : "Test2",
-        "flavour" : 'None',
-        "size" : 'Regular',
-        "price" : 2
+        "product_id": [2],
+        "name": "Test2",
+        "flavour": "None",
+        "size": "Regular",
+        "price": 2,
     }
 
     products = pd.DataFrame(data, index=[0])
 
     test_prod = {
-        "product_name" : "Test2",
-        "flavour" : "None",
-        "size" : "Regular",
-        "price" : 2
+        "product_name": "Test2",
+        "flavour": "None",
+        "size": "Regular",
+        "price": 2,
     }
 
-    expected = '2'
+    expected = "2"
 
     actual = tb.get_product_id(test_prod, products)
     print(actual)
