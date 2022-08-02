@@ -1,10 +1,10 @@
 import pandas as pd
-
-# from yaspin import yaspin
 import os
 from sqlalchemy import create_engine
 from sqlalchemy.ext.compiler import compiles
 from sqlalchemy.sql.expression import Insert
+from snowflake.connector import connect
+from snowflake.connector.pandas_tools import write_pandas
 
 # adds the word IGNORE after INSERT in sqlalchemy
 # ----------------------------------------------------------------
@@ -12,6 +12,39 @@ from sqlalchemy.sql.expression import Insert
 def _prefix_insert_with_ignore(insert, compiler, **kw):
     return compiler.visit_insert(insert.prefix_with("IGNORE"), **kw)
 
+
+# This function forms the **E** from ETL - it extracts the data and puts it into a dataframe.
+# lets the user know what is happening when the code is just 'doing stuff'
+try:
+    snow_user = os.environ.get("SNOWFLAKE_USER")
+    snow_password = os.environ.get("SNOWFLAKE_PASS")
+except:
+    print('Failed to find snowflake credentials. Skipping.')
+
+
+def connect_and_push_snowflake(
+    table,
+    database,
+    df,
+    user=snow_user,
+    password=snow_password,
+    account="sainsburys-bootcamp",
+    warehouse="BOOTCAMP_WH",
+    schema="PUBLIC",
+):
+    ctx = connect(
+        user=user,
+        password=password,
+        account=account,
+        warehouse=warehouse,
+        database=database,
+        schema=schema,
+    )
+    success, nchunks, nrows, _ = write_pandas(ctx, df, table_name=table)
+    print(
+        f"Successfully uploaded to snowflake: {success}, Number of rows updated (if any): {nrows} using {nchunks} chunks."
+    )
+    ctx.close()
 
 # This function connects and returns whichever table you specify from the DB
 # ----------------------------------------------------------------
@@ -156,6 +189,21 @@ def drop_dupe_prods(df: pd.Series, prods: pd.DataFrame):
     else:
         return False
 
+def get_df_products(
+    df, df_from_sql_table=df_from_sql_table, drop_dupe_prods=drop_dupe_prods
+):
+    print("getting products table")
+    prods_table = df_from_sql_table("products")
+    products_df = df[["product_name", "flavour", "size", "price"]]
+    products_df.columns = ["name", "flavour", "size", "price"]
+    products_df = products_df.drop_duplicates(ignore_index=True)
+    products_df["duplicate"] = products_df.apply(
+        drop_dupe_prods, args=(prods_table,), axis=1
+    )
+    products_df = products_df[products_df["duplicate"] == False]
+    products_df = products_df.drop("duplicate", axis=1)
+    print("Products DF OK")
+    return products_df
 
 # gets a series of dataframes, one for each table in our database
 # ----------------------------------------------------------------
@@ -298,11 +346,34 @@ def etl(
     # generate our dataframes
     customer_df, location_df, cards_df, products_df = get_table_df(df_exploded)
     # each of these executes a series of sql commands to insert the data into our database
+
+    try:
+        connect_and_push_snowflake("CUSTOMERS", "YOGHURT_DB", customer_df)
+        connect_and_push_snowflake("CARDS", "YOGHURT_DB", cards_df)
+        connect_and_push_snowflake("PRODUCTS", "YOGHURT_DB", location_df)
+        if not products_df.empty:
+            connect_and_push_snowflake("PRODUCTS", "YOGHURT_DB", products_df)
+    except:
+        print("Failed to connect to snowflake. Pushing to RDS.")
+        pass
+
     insert_names(customer_df)
+
     insert_cards(cards_df)
+
     insert_store(location_df)
     if not products_df.empty:
         print("tried to insert :)")
         insert_products(products_df)
+
     else:
         print("no new products")
+
+
+# # ---------------------------------------------------
+# # --------------functions end here-------------------
+# # this file just runs this one command
+# if __name__ == "__main__":
+#     df_exploded = clean_the_data()
+#     etl(df_exploded)
+

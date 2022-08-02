@@ -1,6 +1,4 @@
 import pandas as pd
-
-# from yaspin import yaspin
 import os
 from sqlalchemy import create_engine
 from sqlalchemy.ext.compiler import compiles
@@ -81,7 +79,6 @@ def df_from_sql_query(
     print("executing query")
     ret = read_sql_query(sql, engine)
     return ret
-
 
 def get_store_id(store, stores: pd.DataFrame):
     id = stores.query(f"name=='{store}'", inplace=False)
