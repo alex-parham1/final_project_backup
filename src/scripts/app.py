@@ -62,8 +62,8 @@ def lambda_handler(event, context):
     except botocore.exceptions.UnknownCredentialError as error:
         raise ValueError(f"The credentials you provided are incorrect: {error}")
 
-    except s3.exceptions.TimeoutError as error:
-        logger.warn(f"Time out Error. See Cloudwatch for more details: {error}")
+    # except s3.exceptions.TimeoutError as error:
+    #     logger.warn(f"Time out Error. See Cloudwatch for more details: {error}")
 
     except botocore.exceptions.ClientError as error:
         logger.exception(f"Error with Lambda function. See Cloudwatch for details : {error}")
