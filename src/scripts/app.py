@@ -1,5 +1,8 @@
-import transactions_and_baskets as tb
-import extraction as ex
+import sys
+sys.path.append("../")
+sys.path.append("../src/scripts")
+from src.scripts import transactions_and_baskets as tb
+from src.scripts import extraction as ex
 import json
 import boto3
 import pandas as pd
@@ -13,7 +16,7 @@ region = os.environ.get("eu-west-1")
 # yml test
 
 
-def lambda_handler(event, context):
+def lambda_handler(event, context,s3=s3,clean_the_data=ex.clean_the_data ,etl=ex.etl, t_and_b=tb.insert_transactions):
 
     bucket = event["Records"][0]["s3"]["bucket"]["name"]
 
@@ -32,9 +35,9 @@ def lambda_handler(event, context):
 
         #  This is where the csv is sat in the file_data and needs reading into the main app
 
-        df = ex.clean_the_data(df)
-        ex.etl(df)
-        tb.insert_transactions(df)
+        df = clean_the_data(df)
+        etl(df)
+        t_and_b(df)
 
         return {
             "headers": {"Content-Type": "application/json"},
