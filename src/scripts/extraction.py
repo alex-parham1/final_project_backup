@@ -1,3 +1,4 @@
+from tkinter import E
 import pandas as pd
 import os
 from sqlalchemy import create_engine
@@ -55,7 +56,11 @@ def df_from_sql_table(table_name, create_engine=create_engine):
     port = os.environ.get("mysql_port")
     db = os.environ.get("mysql_db")
     engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}:{port}/{db}")
-    ret = pd.read_sql_table(table_name, engine)
+    try:
+        ret = pd.read_sql_table(table_name, engine)
+    except Exception as e:
+        print(f"Unable to access table {table_name}")
+        raise e
     engine.dispose()
     return ret
 
