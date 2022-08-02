@@ -16,9 +16,11 @@ def _prefix_insert_with_ignore(insert, compiler, **kw):
 
 # This function forms the **E** from ETL - it extracts the data and puts it into a dataframe.
 # lets the user know what is happening when the code is just 'doing stuff'
-
-snow_user = os.environ.get("SNOWFLAKE_USER")
-snow_password = os.environ.get("SNOWFLAKE_PASS")
+try:
+    snow_user = os.environ.get("SNOWFLAKE_USER")
+    snow_password = os.environ.get("SNOWFLAKE_PASS")
+except:
+    print('Failed to find snowflake credentials. Skipping.')
 
 
 def connect_and_push_snowflake(
