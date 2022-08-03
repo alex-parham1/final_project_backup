@@ -220,6 +220,7 @@ def test_get_table_drop_dupes():
 
     assert expected.equals(actual)
 
+
 @patch("builtins.print")
 def test_get_table_drop_dupes_happy2(mock_print: Mock):
     mock_df_from_sql_table = Mock()
@@ -277,6 +278,7 @@ def test_get_timeframe_transactions():
     actual = actual.reset_index(drop=True)
 
     assert expected.equals(actual)
+
 
 # ----remove_duplicate_transactions----
 def test_remove_duplicate_transactions():
@@ -347,6 +349,7 @@ def test_transaction_duplicate_protection():
 
 # ----insert_transactions----
 
+
 def test_insert_transactions():
     users_data = {"name": ["Test Name"]}
     stores_data = {"name": ["Test Store"]}
@@ -356,12 +359,12 @@ def test_insert_transactions():
         "product_name": ["Cortado"],
         "flavour": ["None"],
         "size": ["Large"],
-        "location" : ['Folkestone'],
+        "location": ["Folkestone"],
         "price": [1.50],
         "card_number": [1234],
-        "customer_id" : [5],
-        "store_id" : [1],
-        "total" : [1.50]
+        "customer_id": [5],
+        "store_id": [1],
+        "total": [1.50],
     }
     users = pd.DataFrame(users_data)
     stores = pd.DataFrame(stores_data)
@@ -388,7 +391,7 @@ def test_insert_transactions():
 
     mock_remove_duplicate_transactions = Mock()
     mock_df_to_sql = Mock()
-    mock_insert_baskets=Mock()
+    mock_insert_baskets = Mock()
 
     tb.insert_transactions(
         trans_df,
@@ -398,9 +401,9 @@ def test_insert_transactions():
         remove_duplicate_transactions=mock_remove_duplicate_transactions,
         df_to_sql=mock_df_to_sql,
         get_timeframe_transactions=mock_get_timeframe_transactions,
-        insert_baskets=mock_insert_baskets
+        insert_baskets=mock_insert_baskets,
     )
-    
+
     mock_get_customer_id.assert_called_once()
     mock_get_store_id.assert_called_once()
     mock_get_table_drop_dupes.assert_called()
@@ -409,30 +412,31 @@ def test_insert_transactions():
     mock_get_timeframe_transactions.assert_called_once()
     mock_insert_baskets.assert_called_once()
 
+
 @patch("builtins.print")
 def test_insert_baskets(mock_print):
     trans_data = {
-        "transaction_id" : 1,
-        "date_time" : "1993/06/29 12:10",
-        "customer_id" : 2,
-        "store_id" : 3,
-        "total" : 7.50,
-        "payment_method" : "CARD"
+        "transaction_id": 1,
+        "date_time": "1993/06/29 12:10",
+        "customer_id": 2,
+        "store_id": 3,
+        "total": 7.50,
+        "payment_method": "CARD",
     }
     transactions = pd.DataFrame(trans_data, index=[0])
-    
+
     prod_data = {
-        "product_id" : 123,
-        "name" : "Coffee",
-        "flavour" : "None",
-        "size" : "Large",
-        "price" : 1.50
+        "product_id": 123,
+        "name": "Coffee",
+        "flavour": "None",
+        "size": "Large",
+        "price": 1.50,
     }
-    products = pd.DataFrame(prod_data,index=[0])
+    products = pd.DataFrame(prod_data, index=[0])
 
     mock_df_from_sql_query = Mock(side_effect=[transactions])
     mock_df_from_sql_table = Mock(side_effect=[products])
-    
+
     mock_get_transaction_id = Mock()
     mock_get_transaction_id.return_value = 1
 
@@ -440,16 +444,17 @@ def test_insert_baskets(mock_print):
     mock_get_product_id.return_value = 11
 
     mock_df_to_sql = Mock()
-        
+
     tb.insert_baskets(
-        trans_df=transactions, 
-        start_time="2022/07/28 11:52", 
+        trans_df=transactions,
+        start_time="2022/07/28 11:52",
         end_time="2022/07/28 12:52",
         df_from_sql_query=mock_df_from_sql_query,
         get_transaction_id=mock_get_transaction_id,
         get_product_id=mock_get_product_id,
         df_to_sql=mock_df_to_sql,
-        df_from_sql_table=mock_df_from_sql_table)
+        df_from_sql_table=mock_df_from_sql_table,
+    )
 
     mock_df_from_sql_query.assert_called()
     mock_df_from_sql_table.assert_called()
@@ -457,4 +462,3 @@ def test_insert_baskets(mock_print):
     mock_get_product_id.assert_called()
     mock_df_to_sql.assert_called()
     mock_print.assert_called()
-

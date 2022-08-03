@@ -19,7 +19,7 @@ try:
     snow_user = os.environ.get("SNOWFLAKE_USER")
     snow_password = os.environ.get("SNOWFLAKE_PASS")
 except:
-    print('Failed to find snowflake credentials. Skipping.')
+    print("Failed to find snowflake credentials. Skipping.")
 
 
 def connect_and_push_snowflake(
@@ -40,11 +40,17 @@ def connect_and_push_snowflake(
         database=database,
         schema=schema,
     )
+    cols = df.columns
+    upper_cols = []
+    for col in cols:
+        upper_cols.append(col.upper())
+    df.columns = upper_cols
     success, nchunks, nrows, _ = write_pandas(ctx, df, table_name=table)
     print(
         f"Successfully uploaded to snowflake: {success}, Number of rows updated (if any): {nrows} using {nchunks} chunks."
     )
     ctx.close()
+
 
 # This function connects and returns whichever table you specify from the DB
 # ----------------------------------------------------------------
@@ -193,6 +199,7 @@ def drop_dupe_prods(df: pd.Series, prods: pd.DataFrame):
     else:
         return False
 
+
 def get_df_products(
     df, df_from_sql_table=df_from_sql_table, drop_dupe_prods=drop_dupe_prods
 ):
@@ -208,6 +215,7 @@ def get_df_products(
     products_df = products_df.drop("duplicate", axis=1)
     print("Products DF OK")
     return products_df
+
 
 # gets a series of dataframes, one for each table in our database
 # ----------------------------------------------------------------
@@ -380,4 +388,3 @@ def etl(
 # if __name__ == "__main__":
 #     df_exploded = clean_the_data()
 #     etl(df_exploded)
-
