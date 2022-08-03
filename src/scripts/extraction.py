@@ -310,7 +310,11 @@ def df_to_sql(df, table_name, create_engine=create_engine):
     port = os.environ.get("mysql_port")
     db = os.environ.get("mysql_db")
     engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}:{port}/{db}")
-    df.to_sql(con=engine, if_exists="append", name=table_name, index=False)
+    try:
+        df.to_sql(con=engine, if_exists="append", name=table_name, index=False)
+    except Exception as error:
+        print(f"Unable to add to table {table_name}")
+        raise error
     engine.dispose()
 
 
