@@ -12,11 +12,13 @@ from snowflake.connector.pandas_tools import write_pandas
 def _prefix_insert_with_ignore(insert, compiler, **kw):
     return compiler.visit_insert(insert.prefix_with("IGNORE"), **kw)
 
+
 try:
     snow_user = os.environ.get("SNOWFLAKE_USER")
     snow_password = os.environ.get("SNOWFLAKE_PASS")
 except:
-    print('Failed to find snowflake credentials. Skipping.')
+    print("Failed to find snowflake credentials. Skipping.")
+
 
 def connect_and_push_snowflake(
     table,
@@ -36,6 +38,11 @@ def connect_and_push_snowflake(
         database=database,
         schema=schema,
     )
+    cols = df.columns
+    upper_cols = []
+    for col in cols:
+        upper_cols.append(col.upper())
+    df.columns = upper_cols
     success, nchunks, nrows, _ = write_pandas(ctx, df, table_name=table)
     print(
         f"Successfully uploaded to snowflake: {success}, Number of rows updated (if any): {nrows} using {nchunks} chunks."
@@ -112,6 +119,7 @@ def df_from_sql_query(
     ret = read_sql_query(sql, engine)
     return ret
 
+
 def get_store_id(store, stores: pd.DataFrame):
     id = stores.query(f"name=='{store}'", inplace=False)
     return str(id.values.tolist()[0][0])
@@ -170,6 +178,7 @@ def remove_duplicate_transactions(
     trans_table = trans_table.drop("duplicate", axis=1)
     return trans_table
 
+
 def insert_baskets(
     trans_df: pd.DataFrame,
     start_time,
@@ -178,7 +187,7 @@ def insert_baskets(
     get_transaction_id=get_transaction_id,
     get_product_id=get_product_id,
     df_to_sql=df_to_sql,
-    df_from_sql_table=df_from_sql_table
+    df_from_sql_table=df_from_sql_table,
 ):
 
     print("updating transactions")
@@ -200,12 +209,13 @@ def insert_baskets(
     print("uploading baskets")
     df_to_sql(baskets, "basket")
     try:
-        connect_and_push_snowflake('BASKET', "YOGHURT_DB", baskets)
+        connect_and_push_snowflake("BASKET", "YOGHURT_DB", baskets)
     except:
-        print('Failed to upload to Snowflake')
+        print("Failed to upload to Snowflake")
     print("baskets uploaded")
 
     print("Transactions and Baskets inserted OK")
+
 
 def insert_transactions(
     trans_df: pd.DataFrame,
@@ -215,7 +225,7 @@ def insert_transactions(
     get_timeframe_transactions=get_timeframe_transactions,
     remove_duplicate_transactions=remove_duplicate_transactions,
     df_to_sql=df_to_sql,
-    insert_baskets=insert_baskets
+    insert_baskets=insert_baskets,
 ):
     # store tables in memory for comparison
     users = get_table_drop_dupes("customers")
@@ -260,10 +270,8 @@ def insert_transactions(
     print("uploading transactions")
     df_to_sql(trans_table, "transactions")
     try:
-        connect_and_push_snowflake('TRANSACTIONS', "YOGHURT_DB", trans_table)
+        connect_and_push_snowflake("TRANSACTIONS", "YOGHURT_DB", trans_table)
     except:
-        print('Failed to upload to Snowflake')
+        print("Failed to upload to Snowflake")
     print("uploaded transactions")
     insert_baskets(trans_df, start_time, end_time)
-
-

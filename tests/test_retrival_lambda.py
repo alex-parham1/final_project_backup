@@ -9,7 +9,7 @@
 
 # with open ("test_lambda_event.json") as f:
 #     event = f.read()
-#     event = json.loads(event) 
+#     event = json.loads(event)
 
 # print(event)
 # print(type(event))
@@ -21,4 +21,3 @@
 #     print("************************")
 #     print(result)
 #     assert result == True
-    
