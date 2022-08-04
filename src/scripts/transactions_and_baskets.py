@@ -16,6 +16,7 @@ def _prefix_insert_with_ignore(insert, compiler, **kw):
 try:
     snow_user = os.environ.get("SNOWFLAKE_USER")
     snow_password = os.environ.get("SNOWFLAKE_PASS")
+    print('sf credentials aquired')
 except:
     print("Failed to find snowflake credentials. Skipping.")
 

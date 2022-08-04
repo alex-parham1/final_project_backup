@@ -50,9 +50,9 @@ def lambda_handler(event, context,s3=s3,clean_the_data=ex.clean_the_data ,etl=ex
 
     #  This is where the csv is sat in the file_data and needs reading into the main app
 
-    df = ex.clean_the_data(df)
-    ex.etl(df)
-    tb.insert_transactions(df)
+    df = clean_the_data(df)
+    etl(df)
+    t_and_b(df)
 
     return {
         "headers": {"Content-Type": "application/json"},
