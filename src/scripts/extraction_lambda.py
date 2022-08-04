@@ -8,7 +8,8 @@ import os
 import sys
 
 sys.path.append("../")
-import cleaning
+print(os.path)
+from src.scripts import cleaning
 from dotenv import load_dotenv
 
 debug = os.environ.get("debug")
@@ -22,7 +23,7 @@ else:
     s3 = boto3.client("s3")
 
 
-def lambda_handler(event, context):
+def lambda_handler(event, context,s3=s3):
 
     #  Gets the file from the bucket
 
@@ -62,6 +63,8 @@ def lambda_handler(event, context):
 
         key = key[0:-23] + "cleaned_" + key[-23:]
 
+        print(key)
+
         # saves new clean csv to clean bucket
 
         df.to_csv("/tmp/cleaned_data.csv", index=False)
@@ -71,7 +74,11 @@ def lambda_handler(event, context):
                 Bucket="team-yogurt-cleaned-data",
                 Key=key,
             )
-        else:
+
+        else: 
+            response = s3.upload_file(
+                Filename="/tmp/cleaned_data.csv", Bucket="team-yogurt-cleaned-data", Key=key
+            )
             return True
 
     except Exception as e:
