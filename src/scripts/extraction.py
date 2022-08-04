@@ -1,5 +1,6 @@
 import pandas as pd
 import os
+import traceback
 from sqlalchemy import create_engine
 from sqlalchemy.ext.compiler import compiles
 from sqlalchemy.sql.expression import Insert
@@ -32,7 +33,6 @@ def connect_and_push_snowflake(
     warehouse="BOOTCAMP_WH",
     schema="PUBLIC",
 ):
-    print('getting connection')
     ctx = connect(
         user=user,
         password=password,
@@ -42,13 +42,11 @@ def connect_and_push_snowflake(
         schema=schema,
     )
 
-    print('capitolizing columns')
     cols = df.columns
     upper_cols = []
     for col in cols:
         upper_cols.append(col.upper())
     df.columns = upper_cols
-    print('writing to pandas')
     success, nchunks, nrows, _ = write_pandas(ctx, df, table_name=table,database=database)
     print(
         f"Successfully uploaded to snowflake: {success}, Number of rows updated (if any): {nrows} using {nchunks} chunks."
@@ -396,6 +394,7 @@ def etl(
     
     except Exception as e:
         print("Failed to connect to snowflake. Pushing to RDS.")
+        print(traceback.format_exc())
         print(e)
         pass
 

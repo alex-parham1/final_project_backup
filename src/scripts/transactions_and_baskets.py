@@ -1,4 +1,5 @@
 import pandas as pd
+import traceback
 import os
 from sqlalchemy import create_engine
 from sqlalchemy.ext.compiler import compiles
@@ -214,8 +215,10 @@ def insert_baskets(
     df_to_sql(baskets, "basket")
     try:
         connect_and_push_snowflake("BASKET", "YOGHURT_DB", baskets)
-    except:
+    except Exception as e:
         print("Failed to upload to Snowflake")
+        print(traceback.format_exc())
+        print(e)
     print("baskets uploaded")
 
     print("Transactions and Baskets inserted OK")
@@ -275,7 +278,9 @@ def insert_transactions(
     df_to_sql(trans_table, "transactions")
     try:
         connect_and_push_snowflake("TRANSACTIONS", "YOGHURT_DB", trans_table)
-    except:
+    except Exception as e:
         print("Failed to upload to Snowflake")
+        print(traceback.format_exc())
+        print(e)
     print("uploaded transactions")
     insert_baskets(trans_df, start_time, end_time)
