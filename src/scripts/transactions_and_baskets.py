@@ -31,6 +31,7 @@ def connect_and_push_snowflake(
     warehouse="BOOTCAMP_WH",
     schema="PUBLIC",
 ):
+    print('getting connection')
     ctx = connect(
         user=user,
         password=password,
@@ -39,11 +40,13 @@ def connect_and_push_snowflake(
         database=database,
         schema=schema,
     )
+    print('capitolizing columns')
     cols = df.columns
     upper_cols = []
     for col in cols:
         upper_cols.append(col.upper())
     df.columns = upper_cols
+    print('writing to pandas')
     success, nchunks, nrows, _ = write_pandas(ctx, df, table_name=table)
     print(
         f"Successfully uploaded to snowflake: {success}, Number of rows updated (if any): {nrows} using {nchunks} chunks."
