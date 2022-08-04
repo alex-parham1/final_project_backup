@@ -47,7 +47,7 @@ def connect_and_push_snowflake(
     for col in cols:
         upper_cols.append(col.upper())
     df.columns = upper_cols
-    success, nchunks, nrows, _ = write_pandas(ctx, df, table_name=table,database=database)
+    success, nchunks, nrows, _ = write_pandas(ctx, df, table_name=table,database=database,schema=schema)
     print(
         f"Successfully uploaded to snowflake: {success}, Number of rows updated (if any): {nrows} using {nchunks} chunks."
     )
