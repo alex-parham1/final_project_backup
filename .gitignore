@@ -133,3 +133,5 @@ dmypy.json
 test_code.py
 .DS_Store
 test.ipynb
+.terraform
+.terraform.lock.hcl
