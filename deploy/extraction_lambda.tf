@@ -2,7 +2,6 @@ data "aws_s3_bucket" "data_bucket" {
   bucket = "team-3-data"
 }
 
-
 resource "aws_lambda_function" "terraform_lambda_func" {
   function_name = "team-yogurt-extraction-tf"
   role          = "arn:aws:iam::156058766667:role/yogurt-role"
@@ -11,7 +10,6 @@ resource "aws_lambda_function" "terraform_lambda_func" {
   timeout = 30
   image_config {command = ["extraction_lambda.lambda_handler"]}
   }
-
 
 resource "aws_s3_bucket_notification" "test_bucket" {
     bucket = data.aws_s3_bucket.data_bucket.bucket
