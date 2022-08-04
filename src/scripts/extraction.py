@@ -357,8 +357,9 @@ def etl(
         connect_and_push_snowflake("PRODUCTS", "YOGHURT_DB", location_df)
         if not products_df.empty:
             connect_and_push_snowflake("PRODUCTS", "YOGHURT_DB", products_df)
-    except:
+    except Exception as e:
         print("Failed to connect to snowflake. Pushing to RDS.")
+        print(e)
         pass
 
     insert_names(customer_df)
