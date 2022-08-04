@@ -379,14 +379,17 @@ def etl(
         print("no new products")
 
     try:
-        print("connecting to snowflake to upload customers")
-        connect_and_push_snowflake("CUSTOMERS", "YOGHURT_DB", customer_df)
+        if not customer_df.empty:
+            print("connecting to snowflake to upload customers")
+            connect_and_push_snowflake("CUSTOMERS", "YOGHURT_DB", customer_df)
 
-        print("connecting to snowflake to upload cards")
-        connect_and_push_snowflake("CARDS", "YOGHURT_DB", cards_df)
+        if not cards_df.empty:
+            print("connecting to snowflake to upload cards")
+            connect_and_push_snowflake("CARDS", "YOGHURT_DB", cards_df)
 
-        print("connecting to snowflake to upload cards")
-        connect_and_push_snowflake("STORE", "YOGHURT_DB", location_df)
+        if not location_df.empty:
+            print("connecting to snowflake to upload cards")
+            connect_and_push_snowflake("STORE", "YOGHURT_DB", location_df)
 
         if not products_df.empty:
             print("connecting to snowflake to upload products")
