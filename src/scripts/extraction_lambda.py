@@ -7,9 +7,10 @@ import pymysql
 import os
 import sys
 
-sys.path.append("../")
-print(os.path)
-from src.scripts import cleaning
+# sys.path.append("../")
+# print(os.path)
+# from src.scripts import cleaning
+import cleaning
 from dotenv import load_dotenv
 
 debug = os.environ.get("debug")

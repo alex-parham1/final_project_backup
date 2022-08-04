@@ -1,8 +1,9 @@
-import sys
-sys.path.append("../")
-sys.path.append("../src/scripts")
-from src.scripts import transactions_and_baskets as tb
-from src.scripts import extraction as ex
+# import sys
+# sys.path.append("../")
+# from src.scripts import transactions_and_baskets as tb
+# from src.scripts import extraction as ex
+import extraction as ex
+import transactions_and_baskets as tb
 import json
 import boto3
 import pandas as pd
