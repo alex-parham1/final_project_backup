@@ -1,5 +1,8 @@
-import transactions_and_baskets as tb
-import extraction as ex
+import sys
+sys.path.append("../")
+sys.path.append("../src/scripts")
+from src.scripts import transactions_and_baskets as tb
+from src.scripts import extraction as ex
 import json
 import boto3
 import pandas as pd
@@ -17,7 +20,8 @@ import logging
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
-def lambda_handler(event, context):
+
+def lambda_handler(event, context,s3=s3,clean_the_data=ex.clean_the_data ,etl=ex.etl, t_and_b=tb.insert_transactions):
 
     bucket = event["Records"][0]["s3"]["bucket"]["name"]
 
@@ -26,18 +30,17 @@ def lambda_handler(event, context):
     )
     print(key)
 
-    
-    try: 
+    try:
         response = s3.get_object(Bucket=bucket, Key=key)
+
     except Exception as e:
         print(e)
         print(
             "Error getting object {} from bucket {}. Make sure they exist and your bucket is in the same region as this function.".format(
                 key, bucket
+            )
         )
-    )
         raise e
-
 
     file_content = response["Body"]
 
@@ -56,7 +59,7 @@ def lambda_handler(event, context):
         "statusCode": 200,
         "body": json.dumps({"message": "successful upload", "event": event}),
     }
-        
+
     # except botocore.exceptions.ConnectionError as error:
     #     raise ValueError(f"A connection was unable to be made: {error}")
 
