@@ -354,20 +354,11 @@ def etl(
     insert_cards=insert_cards,
     insert_store=insert_store,
     insert_products=insert_products,
+    connect_and_push_snowflake=connect_and_push_snowflake
 ):
     # generate our dataframes
     customer_df, location_df, cards_df, products_df = get_table_df(df_exploded)
     # each of these executes a series of sql commands to insert the data into our database
-
-    try:
-        connect_and_push_snowflake("CUSTOMERS", "YOGHURT_DB", customer_df)
-        connect_and_push_snowflake("CARDS", "YOGHURT_DB", cards_df)
-        connect_and_push_snowflake("PRODUCTS", "YOGHURT_DB", location_df)
-        if not products_df.empty:
-            connect_and_push_snowflake("PRODUCTS", "YOGHURT_DB", products_df)
-    except:
-        print("Failed to connect to snowflake. Pushing to RDS.")
-        pass
 
     insert_names(customer_df)
 
@@ -380,6 +371,23 @@ def etl(
 
     else:
         print("no new products")
+
+    try:
+        print("connecting to snowflake to upload customers")
+        connect_and_push_snowflake("CUSTOMERS", "YOGHURT_DB", customer_df)
+
+        print("connecting to snowflake to upload cards")
+        connect_and_push_snowflake("CARDS", "YOGHURT_DB", cards_df)
+
+        print("connecting to snowflake to upload cards")
+        connect_and_push_snowflake("STORE", "YOGHURT_DB", location_df)
+
+        if not products_df.empty:
+            print("connecting to snowflake to upload products")
+            connect_and_push_snowflake("PRODUCTS", "YOGHURT_DB", products_df)
+    except:
+        print("Failed to connect to snowflake. Pushing to RDS.")
+        pass
 
 
 # # ---------------------------------------------------
