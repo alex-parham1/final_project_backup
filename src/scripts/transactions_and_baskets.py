@@ -13,7 +13,7 @@ from snowflake.connector.pandas_tools import write_pandas
 def _prefix_insert_with_ignore(insert, compiler, **kw):
     return compiler.visit_insert(insert.prefix_with("IGNORE"), **kw)
 
-
+# tries to grab snowflake details from aws environment variables
 try:
     snow_user = os.environ.get("SNOWFLAKE_USER")
     snow_password = os.environ.get("SNOWFLAKE_PASS")
@@ -42,16 +42,21 @@ def connect_and_push_snowflake(
         schema=schema,
     )
     print('capitolizing columns')
+
+    #columns need to be in all caps to match our schema
     cols = df.columns
     upper_cols = []
     for col in cols:
         upper_cols.append(col.upper())
     df.columns = upper_cols
+
     print('writing to pandas')
+    # the code that pushes a dataframe to snowflake. we provide connection, data, target table, schema and database
     success, nchunks, nrows, _ = write_pandas(ctx, df, table_name=table,database=database,schema=schema)
     print(
         f"Successfully uploaded to snowflake: {success}, Number of rows updated (if any): {nrows} using {nchunks} chunks."
     )
+    #dont forget to close that connection!
     ctx.close()
 
 

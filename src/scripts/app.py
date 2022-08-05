@@ -24,16 +24,20 @@ logger.setLevel(logging.INFO)
 
 def lambda_handler(event, context,s3=s3,clean_the_data=ex.clean_the_data ,etl=ex.etl, t_and_b=tb.insert_transactions):
 
+    #get bucket name
     bucket = event["Records"][0]["s3"]["bucket"]["name"]
 
+    #decode event data, get file name
     key = urllib.parse.unquote_plus(
         event["Records"][0]["s3"]["object"]["key"], encoding="utf-8"
     )
     print(key)
 
+    #get file just uploaded using the bucket key combo 
     try:
         response = s3.get_object(Bucket=bucket, Key=key)
 
+    #if there is an error, we get a nicely crafted printout of the file/bucket combo so we know where to look
     except Exception as e:
         print(e)
         print(
