@@ -135,3 +135,5 @@ test_code.py
 test.ipynb
 .terraform
 .terraform.lock.hcl
+.auto.tfvars
+terraform.tfvars

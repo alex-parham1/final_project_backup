@@ -12,10 +12,8 @@ terraform {
     encrypt        = true
     dynamodb_table = "data-team-3-terraform-state-lock"
   }
-
   required_version = ">= 1.1.0"
 }
-
 provider "aws" {
   profile = "bootcamp-sandbox"
   region  = "eu-west-1"
