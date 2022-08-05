@@ -59,11 +59,11 @@ def connect_and_push_snowflake(
 def df_from_sql_table(table_name, create_engine=create_engine):
     user = os.environ.get("mysql_user")
     password = os.environ.get("mysql_pass")
-    print(password)
+    #print(password)
     host = os.environ.get("mysql_host")
     port = os.environ.get("mysql_port")
     db = os.environ.get("mysql_db")
-    engine = create_engine(f"mysql+pymysql://{user}:'{password}'@{host}:{port}/{db}")
+    engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}:{port}/{db}")
     try:
         ret = pd.read_sql_table(table_name, engine)
     except Exception as e:
