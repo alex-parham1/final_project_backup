@@ -14,6 +14,11 @@ run:
 	source .venv/bin/activate; \
 	python3 ./src/scripts/main.py
 
+secrets:
+	gh secret set AWS_ACCESS_KEY_ID --body "$$(aws configure get aws_access_key_id --profile bootcamp-sandbox)";
+	gh secret set AWS_SECRET_ACCESS_KEY --body "$$(aws configure get aws_secret_access_key --profile bootcamp-sandbox)";
+	gh secret set AWS_SESSION_TOKEN --body "$$(aws configure get aws_session_token --profile bootcamp-sandbox)"
+
 
 testing:
 	source .venv/bin/activate; \
