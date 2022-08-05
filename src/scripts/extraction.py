@@ -63,7 +63,7 @@ def df_from_sql_table(table_name, create_engine=create_engine):
     host = os.environ.get("mysql_host")
     port = os.environ.get("mysql_port")
     db = os.environ.get("mysql_db")
-    engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}:{port}/{db}")
+    engine = create_engine(f"mysql+pymysql://{user}:'{password}'@{host}:{port}/{db}")
     try:
         ret = pd.read_sql_table(table_name, engine)
     except Exception as e:
