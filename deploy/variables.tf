@@ -40,7 +40,7 @@ variable "instance_class" {
 }
 
 variable "engine" {
-  default = "MySql Community"
+  default = "mysql"
 }
 
 variable "subnets" {
@@ -57,5 +57,5 @@ variable "public_subnet" {
 
 variable "debug" {
   default = "False"
-  }
+}
 
