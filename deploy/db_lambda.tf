@@ -32,6 +32,7 @@ resource "aws_lambda_function" "db_terraform_lambda_func" {
       mysql_pass     = var.mysql_pass
       mysql_port     = var.mysql_port
       mysql_user     = var.mysql_user
+      debug = var.debug
     }
   }
   vpc_config {
