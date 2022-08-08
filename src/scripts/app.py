@@ -1,9 +1,5 @@
-# import sys
-# sys.path.append("../")
-# from src.scripts import transactions_and_baskets as tb
-# from src.scripts import extraction as ex
-import extraction as ex
-import transactions_and_baskets as tb
+
+
 import json
 import boto3
 import pandas as pd
@@ -11,8 +7,20 @@ import os
 import urllib.parse
 from io import StringIO
 
-s3 = boto3.client("s3")
-region = os.environ.get("eu-west-1")
+debug = os.environ.get("debug")
+if debug == "False":
+    import extraction as ex
+    import transactions_and_baskets as tb
+    s3 = boto3.client("s3")
+    region = os.environ.get("eu-west-1")
+
+else:
+    import sys
+    sys.path.append("../")
+    from src.scripts import transactions_and_baskets as tb
+    from src.scripts import extraction as ex
+    s3 = boto3.client("s3")
+    region = os.environ.get("eu-west-1")
 
 # yml test
 import botocore.exceptions
