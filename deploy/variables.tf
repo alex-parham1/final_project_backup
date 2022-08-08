@@ -27,4 +27,22 @@ variable "mysql_user" {
 
 }
 
+variable "db_password"{
+    description = "password for the tf db"
+}
 
+variable "db_username" {
+    description = "user name for the tf db"
+}
+
+variable "instance_class" {
+    default = "db.t3.micro"
+}
+
+variable "engine" {
+    default = "MySql Community"
+}
+
+variable "subnets" {
+    description = "subnets to use"  
+}

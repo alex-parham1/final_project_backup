@@ -28,10 +28,10 @@ resource "aws_lambda_function" "db_terraform_lambda_func" {
       SNOWFLAKE_PASS = var.SNOWFLAKE_PASS
       SNOWFLAKE_USER = var.SNOWFLAKE_USER
       mysql_db       = var.mysql_db
-      mysql_host = var.mysql_host
-      mysql_pass = var.mysql_pass
-      mysql_port = var.mysql_port
-      mysql_user = var.mysql_user
+      mysql_host     = var.mysql_host
+      mysql_pass     = var.mysql_pass
+      mysql_port     = var.mysql_port
+      mysql_user     = var.mysql_user
     }
   }
   vpc_config {
