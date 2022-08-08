@@ -11,12 +11,14 @@ from dotenv import load_dotenv
 debug = os.environ.get("debug")
 if debug == "False":
     import cleaning
+
     s3 = boto3.client("s3")
-    
+
 else:
     sys.path.append("../")
     print(os.path)
     from src.scripts import cleaning
+
     region = os.environ.get("region_name")
     session = boto3.Session(
         profile_name=os.environ.get("profile_name"), region_name=region
@@ -24,7 +26,7 @@ else:
     s3 = session.client("s3")
 
 
-def lambda_handler(event, context,s3=s3):
+def lambda_handler(event, context, s3=s3):
 
     #  Gets the file from the bucket
 
@@ -76,9 +78,11 @@ def lambda_handler(event, context,s3=s3):
                 Key=key,
             )
 
-        else: 
+        else:
             response = s3.upload_file(
-                Filename="/tmp/cleaned_data.csv", Bucket="team-yogurt-cleaned-data", Key=key
+                Filename="/tmp/cleaned_data.csv",
+                Bucket="team-yogurt-cleaned-data",
+                Key=key,
             )
             return True
 
