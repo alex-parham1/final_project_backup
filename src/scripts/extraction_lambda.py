@@ -23,8 +23,6 @@ else:
     )
     s3 = session.client("s3")
 
-    
-
 
 def lambda_handler(event, context,s3=s3):
 
