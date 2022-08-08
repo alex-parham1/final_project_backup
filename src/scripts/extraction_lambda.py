@@ -6,22 +6,24 @@ from io import StringIO
 import pymysql
 import os
 import sys
-
-# sys.path.append("../")
-# print(os.path)
-# from src.scripts import cleaning
-import cleaning
 from dotenv import load_dotenv
 
 debug = os.environ.get("debug")
-if debug == "True":
+if debug == "False":
+    import cleaning
+    s3 = boto3.client("s3")
+    
+else:
+    sys.path.append("../")
+    print(os.path)
+    from src.scripts import cleaning
     region = os.environ.get("region_name")
     session = boto3.Session(
         profile_name=os.environ.get("profile_name"), region_name=region
     )
     s3 = session.client("s3")
-else:
-    s3 = boto3.client("s3")
+
+    
 
 
 def lambda_handler(event, context,s3=s3):

@@ -347,17 +347,24 @@ def get_table_df(
 
 
 def df_to_sql(df, table_name, create_engine=create_engine):
+    #get envritonment variables from lambda
     user = os.environ.get("mysql_user")
     password = os.environ.get("mysql_pass")
     host = os.environ.get("mysql_host")
     port = os.environ.get("mysql_port")
     db = os.environ.get("mysql_db")
+
+    #create sqlalchdemy engine/connection
     engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}:{port}/{db}")
+
+    #use pandas to_sql, append mode, to add dataframe onto the end of the table in rds
     try:
         df.to_sql(con=engine, if_exists="append", name=table_name, index=False)
     except Exception as error:
         print(f"Unable to add to table {table_name}")
         raise error
+    
+    # dont forget to close those connections!
     engine.dispose()
 
 
