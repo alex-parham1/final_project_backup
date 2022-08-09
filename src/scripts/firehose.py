@@ -10,10 +10,7 @@ def clean_date_time(value):
     date_time = str(f"{date[2]}-{date[1]}-{date[0]} {time}")
     return date_time
 
-
-
-
-payload =  {'date': '07/08/2022 09:00', 'store': 'Uppingham', 'customer_name': 'John Shuler', 'order': '[{"name": "Flavoured latte - Caramel", "size": "Large", "price": 2.85}, {"name": "Mocha", "size": "Large", "price": 2.7}]', 'payment_amount': 5.55, 'payment_type': 'CARD', 'card_number': 3399226887056164}
+payload =  {'date': '07/08/2022 09:00', 'store': 'Uppingham', 'customer_name': 'John Shuler', 'order': '\[{"name": "Flavoured latte - Caramel", "size": "Large", "price": 2.85}, {"name": "Mocha", "size": "Large", "price": 2.7}]', 'payment_amount': 5.55, 'payment_type': 'CARD', 'card_number': 3399226887056164}
 
 # -- expected results -- 
 
