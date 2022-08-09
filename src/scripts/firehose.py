@@ -51,6 +51,7 @@ def clean_transactions(date,name,store,total,method,clean_date_time=clean_date_t
 
 #--- main ---
 def main_clean(payload):
+    print(type(payload))
     products = clean_prods(payload['order'])
     card,customer,store = quick_cards_cust_store(payload['card_number'],payload['customer_name'],payload['store'])
     transactions = clean_transactions(payload['date'],payload['customer_name'],payload['store'],payload['payment_amount'],payload['payment_type'])
