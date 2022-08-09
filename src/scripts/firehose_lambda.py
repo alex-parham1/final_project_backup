@@ -20,6 +20,7 @@ def lambda_handler(event, context):
         print("hello_1")
         print(record['recordId'])
         payload = base64.b64decode(record['data']).decode('utf-8')
+        payload = json.loads(payload)
         print("hello_2")
         print(payload)
         print("hello_3")
