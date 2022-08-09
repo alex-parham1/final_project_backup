@@ -27,22 +27,35 @@ variable "mysql_user" {
 
 }
 
-variable "db_password"{
-    description = "password for the tf db"
+variable "db_password" {
+  description = "password for the tf db"
 }
 
 variable "db_username" {
-    description = "user name for the tf db"
+  description = "user name for the tf db"
 }
 
 variable "instance_class" {
-    default = "db.t3.micro"
+  default = "db.t3.micro"
 }
 
 variable "engine" {
-    default = "MySql Community"
+  default = "mysql"
 }
 
 variable "subnets" {
-    description = "subnets to use"  
+  description = "subnets to use"
 }
+
+variable "instance_type" {
+  default = "t2.micro"
+}
+
+variable "public_subnet" {
+  description = "a public subnet to use for grafana ec2"
+}
+
+variable "debug" {
+  default = "False"
+}
+
