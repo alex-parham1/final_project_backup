@@ -20,6 +20,7 @@ def lambda_handler(event, context):
         print(record['recordId'])
         payload = base64.b64decode(record['data']).decode('utf-8')
         print(payload)
+        print(type(payload))
 
         cleaned = fh.main_clean(payload)
 
