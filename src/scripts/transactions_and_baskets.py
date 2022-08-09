@@ -136,6 +136,7 @@ def df_from_sql_query(
     table_name,
     start_time,
     end_time,
+    store,
     create_engine=create_engine,
     read_sql_query=pd.read_sql_query,
 ):
@@ -149,15 +150,16 @@ def df_from_sql_query(
     # create sqlalchemy engine/connection
     engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}:{port}/{db}")
 
-    # creqte sql querey, get any entries from the table between the provided date range
-    sql = f"SELECT * from {table_name} WHERE date_time between '{start_time}' and '{end_time}'"
 
-    # execute sql querey, retur dataframe
+    # creqte sql querey, get any entries from the table between the provided date range 
+    sql = f"SELECT * from {table_name} WHERE store_id = {store} and date_time between '{start_time}' and '{end_time}'"
+    
+    #execute sql querey, retur dataframe
+
     print("executing query")
     ret = read_sql_query(sql, engine)
     return ret
-
-
+    
 # ----------- These functions are used via the .apply method in pandas datafarmes ---------
 # ----------- they get the primary keys of the values already in the database -------------
 # ------ they querey a dataframe that contains all the table data againsts all of the new entries ------
@@ -202,9 +204,9 @@ def get_table_drop_dupes(table_name, df_from_sql_table=df_from_sql_table):
 # calls df_from_sql_query, drops any duplicate entries
 # hardcoded to pull the transactions table
 def get_timeframe_transactions(
-    start_time, end_time, df_from_sql_query=df_from_sql_query
+    start_time, end_time, store_id, df_from_sql_query=df_from_sql_query
 ):
-    transactions = df_from_sql_query("transactions", start_time, end_time)
+    transactions = df_from_sql_query("transactions", start_time, end_time, store_id)
     transactions = transactions.drop_duplicates()
     return transactions
 
@@ -241,9 +243,12 @@ def insert_baskets(
     df_to_sql=df_to_sql,
     df_from_sql_table=df_from_sql_table,
 ):
+
+    store_id = trans_df['location'].head(1).values.tolist()[0]
+
     # grab all of todays transactions by pulling from the database
     print("updating transactions")
-    transactions = df_from_sql_query("transactions", start_time, end_time)
+    transactions = df_from_sql_query("transactions", start_time, end_time,store_id)
     transactions = transactions.drop_duplicates()
     print("transactions updated")
 
@@ -299,11 +304,6 @@ def insert_transactions(
     start_time = trans_df["date"].head(1).values.tolist()[0]
     end_time = trans_df["date"].tail(1).values.tolist()[0]
 
-    # get all transactions from the database with the same date as the file being processed
-    print("downloading transactions")
-    transactions = get_timeframe_transactions(start_time, end_time)
-    print("transactions downloaded")
-
     # get customer ids by looking up a matching customer in the database
     print("getting customer ids")
     trans_df["customer_id"] = trans_df["customer_name"].apply(
@@ -312,6 +312,13 @@ def insert_transactions(
     # get store id by looking up a matching store in the database
     print("getting store id")
     trans_df["location"] = trans_df["location"].apply(get_store_id, args=(stores,))
+
+    store_id = trans_df['location'].head(1).values.tolist()[0]
+
+    # get all transactions from the database with the same date as the file being processed
+    print("downloading transactions")
+    transactions = get_timeframe_transactions(start_time, end_time, store_id)
+    print("transactions downloaded")
 
     # make a new df that matches the layout and format of the table in the database
     trans_table = trans_df.drop(
