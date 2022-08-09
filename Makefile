@@ -46,7 +46,7 @@ grafana:
 
 graf_thirstee:
 	aws ssm start-session \
-    --target i-018ff9d84f4924454 \
+    --target i-03a84a40778d79165 \
     --profile bootcamp-sandbox \
     --region eu-west-1 \
     --document-name AWS-StartPortForwardingSessionToRemoteHost \
