@@ -2,6 +2,7 @@ import base64
 import os
 import json
 
+
 debug = os.environ.get("debug")
 if debug == "False":
     import firehose as fh
