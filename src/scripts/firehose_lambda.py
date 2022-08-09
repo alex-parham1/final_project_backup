@@ -17,14 +17,12 @@ def lambda_handler(event, context):
     print(event)
 
     for record in event['records']:
-        print("hello_1")
+        print("loading record")
         print(record['recordId'])
         payload = base64.b64decode(record['data']).decode('utf-8')
         payload = json.loads(payload)
-        print("hello_2")
         print(payload)
-        print("hello_3")
-        print(type(payload))
+        print("cleaning record")
 
         cleaned = fh.main_clean(payload)
         print("cleaned")
