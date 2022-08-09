@@ -27,6 +27,9 @@ def lambda_handler(event, context):
         print(type(payload))
 
         cleaned = fh.main_clean(payload)
+        print("cleaned")
+
+        cleaned = json.dumps(cleaned)
 
         output_record = {
             'recordId': record['recordId'],
