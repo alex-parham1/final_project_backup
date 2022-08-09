@@ -9,7 +9,7 @@ data "aws_ami" "amazon_linux" {
 
 resource "aws_iam_instance_profile" "grafana_iam" {
   name = "team_yogurt_grafana_tf"
-  role = "ssm-ec2-role"
+  role = "ec2-grafana-role"
 }
 
 resource "aws_instance" "grafana_ec2" {
@@ -22,6 +22,10 @@ resource "aws_instance" "grafana_ec2" {
   tags = merge(
     tomap({ "Name" = "team-yogurt-grafana-instance-tf" })
   )
+  lifecycle {
+    # prevent_destroy = true
+    ignore_changes = [user_data]
+  }
 }
 
 resource "aws_security_group" "grafana" {

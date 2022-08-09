@@ -59,6 +59,11 @@ jobs:
       if: contains(github.event.head_commit.message, 'lambda_1')
       run: |
         aws lambda update-function-code --function-name team-yogurt-extraction-tf --image-uri 156058766667.dkr.ecr.eu-west-1.amazonaws.com/team_yogurt:latest
+    - name: Update Lambda
+      if: contains(github.event.head_commit.message, 'lambda_3')
+      run: |
+        aws lambda update-function-code --function-name team-yogurt-firehose-lambda --image-uri 156058766667.dkr.ecr.eu-west-1.amazonaws.com/team_yogurt:latest
+
 
 
 
