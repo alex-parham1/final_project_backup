@@ -38,12 +38,13 @@ def test_df_to_sql(mock_table: Mock, mock_get: Mock):
 @patch("pandas.read_sql_query")
 def test_df_from_sql_query(mock_query: Mock, mock_table: Mock, mock_get: Mock):
     name = "test_table"
+    store = 1377
     dispose = Mock(side_effect="engine_closed")
     mock_engine = Mock()
     mock_engine.attach_mock(dispose, "dispose")
     engine_caller = Mock(side_effect=mock_engine)
     tb.df_from_sql_query(
-        name, "Test", "Test", create_engine=engine_caller, read_sql_query=mock_query
+        name, "Test", "Test", store, create_engine=engine_caller, read_sql_query=mock_query
     )
     mock_query.assert_called()
 
@@ -259,6 +260,8 @@ def test_get_table_drop_dupes_happy2(mock_print: Mock):
 # ----get_timeframe_transactions-----
 def test_get_timeframe_transactions():
     mock_df_from_sql_query = Mock()
+    
+    store = 1377
 
     mock_df = {
         "name": ["value1", "value1", "value2"],
@@ -273,7 +276,7 @@ def test_get_timeframe_transactions():
     expected = expected.reset_index(drop=True)
 
     actual = tb.get_timeframe_transactions(
-        "00:00", "00:00", df_from_sql_query=mock_df_from_sql_query
+        "00:00", "00:00", store, df_from_sql_query=mock_df_from_sql_query
     )
     actual = actual.reset_index(drop=True)
 
