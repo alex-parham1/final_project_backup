@@ -3,6 +3,7 @@ import os
 import pytest
 from moto import mock_s3
 
+
 @pytest.fixture
 def aws_credentials():
     # Mocked AWS Credentials for moto

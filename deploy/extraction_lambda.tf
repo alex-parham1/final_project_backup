@@ -9,6 +9,11 @@ resource "aws_lambda_function" "terraform_lambda_func" {
   image_uri     = "156058766667.dkr.ecr.eu-west-1.amazonaws.com/team_yogurt:latest"
   timeout       = 60
   image_config { command = ["extraction_lambda.lambda_handler"] }
+  environment {
+    variables = {
+      debug = var.debug
+    }
+  }
 }
 
 resource "aws_s3_bucket_notification" "test_bucket" {
