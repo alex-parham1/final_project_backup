@@ -38,5 +38,5 @@ resource "aws_lambda_function" "lambda_processor" {
   timeout       = 120
   package_type  = "Image"
   image_uri     = "156058766667.dkr.ecr.eu-west-1.amazonaws.com/team_yogurt:latest"
-  image_config { command = ["firehose.lambda_handler"] }
+  image_config { command = ["firehose_lambda.lambda_handler"] }
 }
