@@ -422,7 +422,7 @@ def test_insert_baskets(mock_print):
         "transaction_id": 1,
         "date_time": "1993/06/29 12:10",
         "customer_id": 2,
-        "store_id": 3,
+        "location": 3,
         "total": 7.50,
         "payment_method": "CARD",
     }

@@ -243,8 +243,8 @@ def insert_baskets(
     df_to_sql=df_to_sql,
     df_from_sql_table=df_from_sql_table,
 ):
-
-    store_id = trans_df['store_id'].head(1).values.tolist()[0]
+    print(trans_df.columns)
+    store_id = trans_df['location'].head(1).values.tolist()[0]
 
     # grab all of todays transactions by pulling from the database
     print("updating transactions")
