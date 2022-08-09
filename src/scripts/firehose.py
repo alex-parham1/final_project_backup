@@ -10,70 +10,50 @@ def clean_date_time(value):
     date_time = str(f"{date[2]}-{date[1]}-{date[0]} {time}")
     return date_time
 
-payload =  {'date': '07/08/2022 09:00', 'store': 'Uppingham', 'customer_name': 'John Shuler', 'order': '\[{"name": "Flavoured latte - Caramel", "size": "Large", "price": 2.85}, {"name": "Mocha", "size": "Large", "price": 2.7}]', 'payment_amount': 5.55, 'payment_type': 'CARD', 'card_number': 3399226887056164}
-
-# -- expected results -- 
-
-expected_cards = {'card_number':'6164'} #good to go 
-expected_customers = {'name':'John Shuler'} #good to go
-expected_product = {'name':['Flavoured latte','Mocha'],'flavour':['Caramel','None'],'size':['Large','Large'],'price':['2.85','2.7']}
-expected_store = {'name':'Uppingham'}
-expected_transaction = {'date_time':"2022-08-07 09:00",'customer':'John Shuler','store':'Uppingham','total':5.55, 'payment_method':'CARD'}
-
 # -- cards customers and stores
-
-card_dict = {'card_number':str(payload['card_number'])[-4:]}
-customers_dict = {'name':str(payload['customer_name'])}
-store_dict = {'name':str(payload['store'])}
+def quick_cards_cust_store(card,customer,store):
+    card_dict = {'card_number':str(card)[-4:]}
+    customers_dict = {'name':str(customer)}
+    store_dict = {'name':str(store)}
+    return card_dict,customers_dict,store_dict
 
 # -- products cleaning --
+def clean_prods(p_order):
+    order = p_order.replace('"','')
+    order = order.lstrip("'[{").rstrip("}]'").split('}, {')
 
-products_dict = {'name':[],'flavour':[],'size':[],'price':[]}
-order = payload['order']
-order = order.replace('"','')
-order = order.lstrip("'[{").rstrip("}]'").split('}, {')
+    for o in order:
+        ind = order.index(o)
+        order[ind] = o.split(', ')
+        for r in order[ind]:
+            dex = order[ind].index(r)
+            order[ind][dex] = r.split(': ')
 
-for o in order:
-    ind = order.index(o)
-    order[ind] = o.split(', ')
-    for r in order[ind]:
-        dex = order[ind].index(r)
-        order[ind][dex] = r.split(': ')
+    for a in order:
+        ind = order.index(a)
+        if ' - ' not in a[0][1]:
+            a[0][1] += ' - None'
 
-for a in order:
-    ind = order.index(a)
-    if ' - ' not in a[0][1]:
-        a[0][1] += ' - None'
+        order[ind][0][1] = a[0][1].split(' - ')
 
-    order[ind][0][1] = a[0][1].split(' - ')
-
-names = [order[0][0][1][0],order[1][0][1][0]]
-flavours = [order[0][0][1][1],order[1][0][1][1]]
-size = [order[0][1][1],order[1][1][1]]
-price = [order[0][2][1],order[1][2][1]]
-products = {'name':names,'flavour':flavours,'size':size,'price':price}
+    names = [order[0][0][1][0],order[1][0][1][0]]
+    flavours = [order[0][0][1][1],order[1][0][1][1]]
+    size = [order[0][1][1],order[1][1][1]]
+    price = [order[0][2][1],order[1][2][1]]
+    return {'name':names,'flavour':flavours,'size':size,'price':price}
 
 # -- transactions cleaning --
+def clean_transactions(date,name,store,total,method,clean_date_time=clean_date_time):
+    trans_dict = {'date_time': date,'customer':name,'store':store,'total':total,'payment_method':method}
+    trans_dict['date_time'] = clean_date_time(trans_dict['date_time'])
+    return trans_dict
 
-trans_dict = {'date_time': payload['date'],'customer':payload['customer_name'],'store':payload['store'],'total':payload['payment_amount'],'payment_method':payload['payment_type']}
-trans_dict['date_time'] = clean_date_time(trans_dict['date_time'])
-
-# -- quick tests --
-
-if card_dict == expected_cards:
-    print('cards correct')
-
-if customers_dict == expected_customers:
-    print('customers correct')
-
-if store_dict == expected_store:
-    print('stores correct')
-
-if products == expected_product:
-    print('products correct')
-
-if trans_dict == expected_transaction:
-    print('transactions correct')
+#--- main ---
+def main_clean(payload):
+    products = clean_prods(payload['order'])
+    card,customer,store = quick_cards_cust_store(payload['card_number'],payload['customer_name'],payload['store'])
+    transactions = clean_transactions(payload['date'],payload['customer_name'],payload['store'],payload['payment_amount'],payload['payment_type'])
+    return {'transactions': transactions, 'products':products, 'card':card, 'customer':customer,'store':store }
 
 
 
