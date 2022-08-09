@@ -18,7 +18,7 @@ def _prefix_insert_with_ignore(insert, compiler, **kw):
 # lets the user know what is happening when the code is just 'doing stuff'
 
 
-#get the snowflake credentials form the envrionment vars on aws
+# get the snowflake credentials form the envrionment vars on aws
 try:
     snow_user = os.environ.get("SNOWFLAKE_USER")
     snow_password = os.environ.get("SNOWFLAKE_PASS")
@@ -45,46 +45,48 @@ def connect_and_push_snowflake(
         database=database,
         schema=schema,
     )
-    print('capitolizing columns')
+    print("capitolizing columns")
 
-    #columns need to be in all caps to match our schema
+    # columns need to be in all caps to match our schema
     cols = df.columns
     upper_cols = []
     for col in cols:
         upper_cols.append(col.upper())
     df.columns = upper_cols
 
-    print('writing to pandas')
+    print("writing to pandas")
     # the code that pushes a dataframe to snowflake. we provide connection, data, target table, schema and database
-    success, nchunks, nrows, _ = write_pandas(ctx, df, table_name=table,database=database,schema=schema)
+    success, nchunks, nrows, _ = write_pandas(
+        ctx, df, table_name=table, database=database, schema=schema
+    )
     print(
         f"Successfully uploaded to snowflake: {success}, Number of rows updated (if any): {nrows} using {nchunks} chunks."
     )
-    #dont forget to close that connection!
+    # dont forget to close that connection!
     ctx.close()
 
 
 # This function connects and returns whichever table you specify from the DB
 # ----------------------------------------------------------------
 def df_from_sql_table(table_name, create_engine=create_engine):
-    #get environment variables
+    # get environment variables
     user = os.environ.get("mysql_user")
     password = os.environ.get("mysql_pass")
     host = os.environ.get("mysql_host")
     port = os.environ.get("mysql_port")
     db = os.environ.get("mysql_db")
 
-    #create the sql alchemy engine connection
+    # create the sql alchemy engine connection
     engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}:{port}/{db}")
 
-    #attempt to pull data from db, if it fails, raise an error
+    # attempt to pull data from db, if it fails, raise an error
     try:
         ret = pd.read_sql_table(table_name, engine)
     except Exception as e:
         print(f"Unable to access table {table_name}")
         raise e
 
-    #dont forget to close that connection    
+    # dont forget to close that connection
     engine.dispose()
     return ret
 
@@ -135,15 +137,15 @@ def clean_cards(cards):
 def clean_the_data(df):
     df["separate_products"] = df["products"].apply(separate_products)
     df_exploded = df.explode("separate_products")
-    #using the apply method to create new columns with our product details in
+    # using the apply method to create new columns with our product details in
     df_exploded["size"] = df_exploded["separate_products"].apply(extract_size)
     df_exploded["price"] = df_exploded["separate_products"].apply(extract_price)
     df_exploded["flavour"] = df_exploded["separate_products"].apply(extract_flavour)
     df_exploded["product_name"] = df_exploded["separate_products"].apply(extract_name)
-    
-    #remove unnescessary column
+
+    # remove unnescessary column
     df_exploded.drop("products", axis=1, inplace=True)
-    #re-order columns
+    # re-order columns
     df_exploded = df_exploded[
         [
             "date",
@@ -176,7 +178,7 @@ def clean_the_data(df):
 #  removes any dupes by comparing to the db
 # ----------------------------------------------------------------
 def drop_dupe_cards(df: pd.Series, cards: pd.DataFrame):
-    #queries the passed table for a specific card number
+    # queries the passed table for a specific card number
     card_number = df["card_number"]
     card = cards.query(f"card_number == '{card_number}'")
 
@@ -228,13 +230,13 @@ def get_df_products(
     print("getting products table")
     # gets the table from the database
     prods_table = df_from_sql_table("products")
-    
-    #gets required data from dataframe and renames columns, dropping any duplicates
+
+    # gets required data from dataframe and renames columns, dropping any duplicates
     products_df = df[["product_name", "flavour", "size", "price"]]
     products_df.columns = ["name", "flavour", "size", "price"]
     products_df = products_df.drop_duplicates(ignore_index=True)
 
-    #create the duplicate column and then drop everyting with a true value
+    # create the duplicate column and then drop everyting with a true value
     products_df["duplicate"] = products_df.apply(
         drop_dupe_prods, args=(prods_table,), axis=1
     )
@@ -255,12 +257,12 @@ def get_df_cards(
     print("getting cards table")
     # gets the table from the database
     cards_table = df_from_sql_table("cards")
-   
-    #gets required data from dataframe, dropping any duplicates
+
+    # gets required data from dataframe, dropping any duplicates
     cards_df = df[["card_number"]]
     cards_df = cards_df.drop_duplicates(ignore_index=True)
-    
-    #create the duplicate column and then drop everyting with a true value
+
+    # create the duplicate column and then drop everyting with a true value
     cards_df["duplicate"] = cards_df.apply(drop_dupe_cards, args=(cards_table,), axis=1)
     cards_df = cards_df[cards_df["duplicate"] == False]
     cards_df = cards_df.drop("duplicate", axis=1)
@@ -275,12 +277,12 @@ def get_df_customers(
     # gets the table from the database
     customer_table = df_from_sql_table("customers")
 
-     #gets required data from dataframe, dropping any duplicates
+    # gets required data from dataframe, dropping any duplicates
     customer_df = df[["customer_name"]]
     customer_df.columns = ["name"]
     customer_df = customer_df.drop_duplicates(ignore_index=True)
-    
-    #create the duplicate column and then drop everyting with a true value
+
+    # create the duplicate column and then drop everyting with a true value
     customer_df["duplicate"] = customer_df.apply(
         drop_dupe_customers, args=(customer_table,), axis=1
     )
@@ -296,11 +298,11 @@ def get_df_location(
     print("getting location table")
     # gets the table from the database
     location_table = df_from_sql_table("store")
-    #gets required data from dataframe, dropping any duplicates
+    # gets required data from dataframe, dropping any duplicates
     location_df = df[["location"]]
     location_df.columns = ["name"]
     location_df = location_df.drop_duplicates(ignore_index=True)
-    #create the duplicate column and then drop everyting with a true value
+    # create the duplicate column and then drop everyting with a true value
     location_df["duplicate"] = location_df.apply(
         drop_dupe_location, args=(location_table,), axis=1
     )
@@ -316,11 +318,11 @@ def get_df_products(
     print("getting products table")
     # gets the table from the database
     prods_table = df_from_sql_table("products")
-    #gets required data from dataframe, dropping any duplicates
+    # gets required data from dataframe, dropping any duplicates
     products_df = df[["product_name", "flavour", "size", "price"]]
     products_df.columns = ["name", "flavour", "size", "price"]
     products_df = products_df.drop_duplicates(ignore_index=True)
-    #create the duplicate column and then drop everyting with a true value
+    # create the duplicate column and then drop everyting with a true value
     products_df["duplicate"] = products_df.apply(
         drop_dupe_prods, args=(prods_table,), axis=1
     )
@@ -347,23 +349,23 @@ def get_table_df(
 
 
 def df_to_sql(df, table_name, create_engine=create_engine):
-    #get envritonment variables from lambda
+    # get envritonment variables from lambda
     user = os.environ.get("mysql_user")
     password = os.environ.get("mysql_pass")
     host = os.environ.get("mysql_host")
     port = os.environ.get("mysql_port")
     db = os.environ.get("mysql_db")
 
-    #create sqlalchdemy engine/connection
+    # create sqlalchdemy engine/connection
     engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}:{port}/{db}")
 
-    #use pandas to_sql, append mode, to add dataframe onto the end of the table in rds
+    # use pandas to_sql, append mode, to add dataframe onto the end of the table in rds
     try:
         df.to_sql(con=engine, if_exists="append", name=table_name, index=False)
     except Exception as error:
         print(f"Unable to add to table {table_name}")
         raise error
-    
+
     # dont forget to close those connections!
     engine.dispose()
 
@@ -404,27 +406,27 @@ def etl(
     insert_cards=insert_cards,
     insert_store=insert_store,
     insert_products=insert_products,
-    connect_and_push_snowflake=connect_and_push_snowflake
+    connect_and_push_snowflake=connect_and_push_snowflake,
 ):
     # generate our dataframes
     customer_df, location_df, cards_df, products_df = get_table_df(df_exploded)
     # each of these executes a series of sql commands to insert the data into our database
-    #checks if products is empty, if not, then uploads
+    # checks if products is empty, if not, then uploads
 
     if not customer_df.empty:
         insert_names(customer_df)
     else:
-        print('no new customers')
-    
+        print("no new customers")
+
     if not cards_df.empty:
         insert_cards(cards_df)
     else:
-        print('no new cards')
-    
+        print("no new cards")
+
     if not location_df.empty:
         insert_store(location_df)
     else:
-        print('no new stores')
+        print("no new stores")
 
     if not products_df.empty:
         insert_products(products_df)
@@ -449,7 +451,7 @@ def etl(
         if not products_df.empty:
             print("connecting to snowflake to upload products")
             connect_and_push_snowflake("PRODUCTS", "YOGHURT_DB", products_df)
-    
+
     except Exception as e:
         print("Failed to connect to snowflake. Pushing to RDS.")
         print(traceback.format_exc())
