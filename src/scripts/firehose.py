@@ -12,6 +12,7 @@ def clean_date_time(value):
 
 # -- cards customers and stores
 def quick_cards_cust_store(card,customer,store):
+    print(type(card))
     card_dict = {'card_number':str(card)[-4:]}
     customers_dict = {'name':str(customer)}
     store_dict = {'name':str(store)}
