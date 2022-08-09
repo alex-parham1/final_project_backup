@@ -39,4 +39,9 @@ resource "aws_lambda_function" "lambda_processor" {
   package_type  = "Image"
   image_uri     = "156058766667.dkr.ecr.eu-west-1.amazonaws.com/team_yogurt:latest"
   image_config { command = ["firehose_lambda.lambda_handler"] }
+  environment { 
+    variables = {
+      "debug" = var.debug
+    }
+  }
 }
