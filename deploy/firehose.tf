@@ -32,7 +32,7 @@ resource "aws_kinesis_firehose_delivery_stream" "s3_stream" {
 resource "aws_lambda_function" "lambda_processor" {
   function_name = "team-yogurt-firehose-lambda"
   role          = var.lambda_role
-  timeout       = 120
+  timeout       = 600
   package_type  = "Image"
   image_uri     = var.image_uri_ecr
   image_config { command = ["firehose_lambda.lambda_handler"] }

@@ -69,3 +69,8 @@ tf-apply:
 
 tf-destroy:
 	docker-compose -f deploy/docker_compose.yml run --rm terraform destroy
+
+dotenv:
+	dotenv set AWS_ACCESS_KEY_ID $(aws configure get aws_access_key_id --profile bootcamp-sandbox)
+	dotenv set AWS_SECRET_ACCESS_KEY $(aws configure get aws_secret_access_key --profile bootcamp-sandbox)
+	dotenv set AWS_SESSION_TOKEN $(aws configure get aws_session_token --profile bootcamp-sandbox)

@@ -19,6 +19,7 @@ print("Loading function")
 def lambda_handler(event, context):
     output = []
 
+    print(f'{len(event["records"])} records incoming')
     for record in event["records"]:
         print("loading record")
         payload = base64.b64decode(record["data"]).decode("utf-8")
