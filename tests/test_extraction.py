@@ -43,6 +43,17 @@ def test_df_from_sql_table_calls(mock_table: Mock, mock_get: Mock):
     mock_get.assert_has_calls(calls)
     mock_table.assert_called_once()
 
+@patch("os.environ.get", side_effect=["test", "pass", "localhost", "3307", "test"])
+@patch("pandas.read_sql_table", side_effect=[SyntaxError])
+def test_df_from_sql_table_error_handle(mock_table: Mock, mock_get: Mock):
+    name = "test_table"
+    dispose = Mock(side_effect="engine_closed")
+    mock_engine = Mock()
+    mock_engine.attach_mock(dispose, "dispose")
+    engine_caller = Mock(side_effect=mock_engine)
+    with pytest.raises(SyntaxError):
+        ex.df_from_sql_table(name, create_engine=engine_caller)
+    
 
 # separate_products
 # ------------------------------------------------
@@ -789,6 +800,18 @@ def test_df_to_sql(mock_table: Mock, mock_get: Mock):
     mock_get.assert_has_calls(calls)
     mock_table.assert_called_once()
 
+@patch("os.environ.get", side_effect=["test", "pass", "localhost", "3307", "test"])
+@patch("pandas.DataFrame.to_sql",side_effect=[SyntaxError])
+def test_df_to_sql_handling(mock_table: Mock, mock_get: Mock):
+    df = pd.DataFrame()
+    name = "test_table"
+    dispose = Mock(side_effect="engine_closed")
+    mock_engine = Mock()
+    mock_engine.attach_mock(dispose, "dispose")
+    engine_caller = Mock(side_effect=mock_engine)
+    with pytest.raises(SyntaxError):
+        ex.df_to_sql(df, name, create_engine=engine_caller)
+
 
 # test inserts
 # ------------------------------------------------
@@ -835,11 +858,14 @@ def test_insert_products(mock_print: Mock):
 # ------------------------------------------------
 @patch("builtins.print")
 def test_etl(mock_print: Mock):
+    #mocks
     mock_get_table_df = Mock()
     mock_insert_names = Mock()
     mock_insert_cards = Mock()
     mock_insert_store = Mock()
     mock_insert_products = Mock()
+    m_con_push_snow = Mock()
+
     customer_data = {"name": ["John J Sainsbury"]}
     location_data = {"name": ["Holborn"]}
     cards_data = {"card_number": [5678]}
@@ -862,13 +888,72 @@ def test_etl(mock_print: Mock):
         insert_cards=mock_insert_cards,
         insert_store=mock_insert_store,
         insert_products=mock_insert_products,
+        connect_and_push_snowflake=m_con_push_snow
     )
-    mock_print.assert_called()
+
+    p_calls = (call("connecting to snowflake to upload customers"),
+        call("connecting to snowflake to upload cards"),
+        call("connecting to snowflake to upload stores"),
+        call('connecting to snowflake to upload products'))
+    s_calls = (call("CUSTOMERS", "YOGHURT_DB", customer_df),
+        call("CARDS", "YOGHURT_DB", cards_df),
+        call("STORE", "YOGHURT_DB", location_df),
+        call("PRODUCTS", "YOGHURT_DB", products_df)
+        )
+
+    mock_print.assert_has_calls(p_calls)
+    m_con_push_snow.assert_has_calls(s_calls)
     mock_get_table_df.assert_called_once()
     mock_insert_names.assert_called_once()
     mock_insert_cards.assert_called_once()
     mock_insert_store.assert_called_once()
     mock_insert_products.assert_called_once()
+
+@patch("builtins.print")
+def test_etl_empty(mock_print: Mock):
+    #mocks
+    mock_get_table_df = Mock()
+    mock_insert_names = Mock()
+    mock_insert_cards = Mock()
+    mock_insert_store = Mock()
+    mock_insert_products = Mock()
+    m_con_push_show = Mock()
+
+    customer_data = {"name": []}
+    location_data = {"name": []}
+    cards_data = {"card_number": []}
+    products_data = {
+        "name": [],
+        "flavour": [],
+        "size": [],
+        "price": [],
+    }
+    customer_df = pd.DataFrame(customer_data)
+    location_df = pd.DataFrame(location_data)
+    cards_df = pd.DataFrame(cards_data)
+    products_df = pd.DataFrame(products_data)
+    df_exploded = pd.DataFrame()
+    mock_get_table_df.return_value = customer_df, location_df, cards_df, products_df
+    ex.etl(
+        df_exploded=df_exploded,
+        get_table_df=mock_get_table_df,
+        insert_names=mock_insert_names,
+        insert_cards=mock_insert_cards,
+        insert_store=mock_insert_store,
+        insert_products=mock_insert_products,
+        connect_and_push_snowflake=m_con_push_show
+    )
+
+    calls = (call('no new customers'),call('no new cards'),call('no new stores'),call('no new products'))
+
+    mock_print.assert_has_calls(calls)
+    mock_get_table_df.assert_called_once_with(df_exploded)
+    mock_insert_names.assert_not_called()
+    mock_insert_cards.assert_not_called()
+    mock_insert_store.assert_not_called()
+    mock_insert_products.assert_not_called()
+    m_con_push_show.assert_not_called()
+
 
 
 @patch("builtins.print")
@@ -902,3 +987,60 @@ def test_etl_happy_1(mock_print: Mock):
     mock_insert_cards.assert_called_once()
     mock_insert_store.assert_called_once()
     mock_insert_products.assert_not_called()
+
+# --- connect and push to snowflake --- 
+@patch('os.environ.get',side_effect=['user','pass'])
+@patch('builtins.print')
+def test_con_push_snow(m_print:Mock,m_get:Mock):
+    #test data
+    table = 'test'
+    db = 'test_db'
+    data = {'name':['alex','connor'],'team':['yogurt','yogurt']}
+    df = pd.DataFrame(data)
+
+    #mock overrides
+    m_close = Mock()
+    connection = Mock()
+    connection.attach_mock(m_close, 'close')
+    m_connect = Mock(side_effect=[connection])
+    m_write = Mock(side_effect=[('success','nchuncks','nrows','_')])
+
+    ex.connect_and_push_snowflake(
+        table,
+        db,
+        df,
+        user='user',
+        password='pass',
+        connect=m_connect,
+        write_pandas=m_write
+    )
+
+    p_calls = (call("capitolizing columns"),call('writing to pandas'),
+    call("Successfully uploaded to snowflake: success, Number of rows updated (if any): nrows using nchuncks chunks."))
+    m_print.assert_has_calls(p_calls)
+
+@patch('builtins.print')
+def test_con_push_snow_unhappy(m_print:Mock):
+    #test data
+    table = 'test'
+    db = 'test_db'
+    data = {'name':['alex','connor'],'team':['yogurt','yogurt']}
+    #df = pd.DataFrame(data)
+
+    #mock overrides
+    m_close = Mock()
+    connection = Mock()
+    connection.attach_mock(m_close, 'close')
+    m_connect = Mock(side_effect=[connection])
+    m_write = Mock(side_effect=[('success','nchuncks','nrows','_')])
+
+    with pytest.raises(AttributeError):
+        ex.connect_and_push_snowflake(
+            table,
+            db,
+            data,
+            user='user',
+            password='pass',
+            connect=m_connect,
+            write_pandas=m_write
+        )

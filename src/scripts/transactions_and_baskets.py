@@ -32,6 +32,8 @@ def connect_and_push_snowflake(
     account="sainsburys-bootcamp",
     warehouse="BOOTCAMP_WH",
     schema="PUBLIC",
+    write_pandas=write_pandas,
+    connect=connect
 ):
     # getting connection....
     print("getting connection")

@@ -36,6 +36,8 @@ def connect_and_push_snowflake(
     account="sainsburys-bootcamp",
     warehouse="BOOTCAMP_WH",
     schema="PUBLIC",
+    connect=connect,
+    write_pandas=write_pandas
 ):
     ctx = connect(
         user=user,
@@ -223,34 +225,8 @@ def drop_dupe_prods(df: pd.Series, prods: pd.DataFrame):
     else:
         return False
 
-
-def get_df_products(
-    df, df_from_sql_table=df_from_sql_table, drop_dupe_prods=drop_dupe_prods
-):
-    print("getting products table")
-    # gets the table from the database
-    prods_table = df_from_sql_table("products")
-
-    # gets required data from dataframe and renames columns, dropping any duplicates
-    products_df = df[["product_name", "flavour", "size", "price"]]
-    products_df.columns = ["name", "flavour", "size", "price"]
-    products_df = products_df.drop_duplicates(ignore_index=True)
-
-    # create the duplicate column and then drop everyting with a true value
-    products_df["duplicate"] = products_df.apply(
-        drop_dupe_prods, args=(prods_table,), axis=1
-    )
-    products_df = products_df[products_df["duplicate"] == False]
-    products_df = products_df.drop("duplicate", axis=1)
-
-    print("Products DF OK")
-    return products_df
-
-
 # gets a series of dataframes, one for each table in our database
-# ----------------------------------------------------------------
-
-
+# ---------------------------------------------------------------
 def get_df_cards(
     df, df_from_sql_table=df_from_sql_table, drop_dupe_cards=drop_dupe_cards
 ):
@@ -316,18 +292,23 @@ def get_df_products(
     df, df_from_sql_table=df_from_sql_table, drop_dupe_prods=drop_dupe_prods
 ):
     print("getting products table")
+    
     # gets the table from the database
     prods_table = df_from_sql_table("products")
+    
     # gets required data from dataframe, dropping any duplicates
     products_df = df[["product_name", "flavour", "size", "price"]]
     products_df.columns = ["name", "flavour", "size", "price"]
     products_df = products_df.drop_duplicates(ignore_index=True)
+    
     # create the duplicate column and then drop everyting with a true value
     products_df["duplicate"] = products_df.apply(
         drop_dupe_prods, args=(prods_table,), axis=1
     )
+    
     products_df = products_df[products_df["duplicate"] == False]
     products_df = products_df.drop("duplicate", axis=1)
+    
     print("Products DF OK")
     return products_df
 
@@ -445,7 +426,7 @@ def etl(
             connect_and_push_snowflake("CARDS", "YOGHURT_DB", cards_df)
 
         if not location_df.empty:
-            print("connecting to snowflake to upload cards")
+            print("connecting to snowflake to upload stores")
             connect_and_push_snowflake("STORE", "YOGHURT_DB", location_df)
 
         if not products_df.empty:
