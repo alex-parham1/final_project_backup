@@ -35,7 +35,7 @@ def lambda_handler(event, context, s3=s3):
     key = urllib.parse.unquote_plus(
         event["Records"][0]["s3"]["object"]["key"], encoding="utf-8"
     )
-    print(key) 
+    print(key)
 
     try:
         response = s3.get_object(Bucket=bucket, Key=key)

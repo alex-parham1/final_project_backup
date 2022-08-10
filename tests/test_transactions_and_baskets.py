@@ -44,7 +44,12 @@ def test_df_from_sql_query(mock_query: Mock, mock_table: Mock, mock_get: Mock):
     mock_engine.attach_mock(dispose, "dispose")
     engine_caller = Mock(side_effect=mock_engine)
     tb.df_from_sql_query(
-        name, "Test", "Test", store, create_engine=engine_caller, read_sql_query=mock_query
+        name,
+        "Test",
+        "Test",
+        store,
+        create_engine=engine_caller,
+        read_sql_query=mock_query,
     )
     mock_query.assert_called()
 
@@ -260,7 +265,7 @@ def test_get_table_drop_dupes_happy2(mock_print: Mock):
 # ----get_timeframe_transactions-----
 def test_get_timeframe_transactions():
     mock_df_from_sql_query = Mock()
-    
+
     store = 1377
 
     mock_df = {

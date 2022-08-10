@@ -31,6 +31,9 @@ resource "aws_instance" "grafana_ec2" {
 resource "aws_security_group" "grafana" {
   name   = "yogurt-grafana-tf-db"
   vpc_id = "vpc-0e296a5c8aac14d8c"
+  lifecycle {
+    ignore_changes = [description]
+  }
   ingress {
     protocol    = "tcp"
     from_port   = 443
@@ -69,6 +72,6 @@ resource "aws_security_group" "grafana" {
       # AcademySharedInfraStack/SainsburysSharedVpc/privateSubnet2 CIDR
       "10.0.16.0/22",
     ]
+    security_groups = ["sg-03abcffa9c7e963b4"]
   }
-
 }

@@ -59,3 +59,18 @@ variable "debug" {
   default = "False"
 }
 
+variable "lambda_role" {
+  default = "arn:aws:iam::156058766667:role/yogurt-role"
+}
+
+variable "image_uri_ecr" {
+  default = "156058766667.dkr.ecr.eu-west-1.amazonaws.com/team_yogurt:latest"
+}
+
+variable "role_arn_yogurt" {
+  default = "arn:aws:iam::156058766667:role/team-yogurt-firehose-role"
+}
+
+variable "kinesis_stream_arn_team_3" {
+  default = "arn:aws:kinesis:eu-west-1:156058766667:stream/team-3-data"
+}

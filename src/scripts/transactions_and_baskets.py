@@ -150,16 +150,16 @@ def df_from_sql_query(
     # create sqlalchemy engine/connection
     engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}:{port}/{db}")
 
-
-    # creqte sql querey, get any entries from the table between the provided date range 
+    # creqte sql querey, get any entries from the table between the provided date range
     sql = f"SELECT * from {table_name} WHERE store_id = {store} and date_time between '{start_time}' and '{end_time}'"
-    
-    #execute sql querey, retur dataframe
+
+    # execute sql querey, retur dataframe
 
     print("executing query")
     ret = read_sql_query(sql, engine)
     return ret
-    
+
+
 # ----------- These functions are used via the .apply method in pandas datafarmes ---------
 # ----------- they get the primary keys of the values already in the database -------------
 # ------ they querey a dataframe that contains all the table data againsts all of the new entries ------
@@ -244,11 +244,11 @@ def insert_baskets(
     df_from_sql_table=df_from_sql_table,
 ):
     print(trans_df.columns)
-    store_id = trans_df['location'].head(1).values.tolist()[0]
+    store_id = trans_df["location"].head(1).values.tolist()[0]
 
     # grab all of todays transactions by pulling from the database
     print("updating transactions")
-    transactions = df_from_sql_query("transactions", start_time, end_time,store_id)
+    transactions = df_from_sql_query("transactions", start_time, end_time, store_id)
     transactions = transactions.drop_duplicates()
     print("transactions updated")
 
@@ -313,7 +313,7 @@ def insert_transactions(
     print("getting store id")
     trans_df["location"] = trans_df["location"].apply(get_store_id, args=(stores,))
 
-    store_id = trans_df['location'].head(1).values.tolist()[0]
+    store_id = trans_df["location"].head(1).values.tolist()[0]
 
     # get all transactions from the database with the same date as the file being processed
     print("downloading transactions")
