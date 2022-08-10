@@ -23,3 +23,5 @@ TBC
 
 ### Support 
 If you need any help in using our project then do not hesitate to contact any of us! :)
+
+![sprint6](https://user-images.githubusercontent.com/105639037/183922716-b0a76260-b23a-48b1-a890-59ffc15ac1b9.png)
