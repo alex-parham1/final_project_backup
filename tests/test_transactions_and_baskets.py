@@ -470,3 +470,61 @@ def test_insert_baskets(mock_print):
     mock_get_product_id.assert_called()
     mock_df_to_sql.assert_called()
     mock_print.assert_called()
+
+
+# --- connect and push to snowflake --- 
+@patch('os.environ.get',side_effect=['user','pass'])
+@patch('builtins.print')
+def test_con_push_snow(m_print:Mock,m_get:Mock):
+    #test data
+    table = 'test'
+    db = 'test_db'
+    data = {'name':['alex','connor'],'team':['yogurt','yogurt']}
+    df = pd.DataFrame(data)
+
+    #mock overrides
+    m_close = Mock()
+    connection = Mock()
+    connection.attach_mock(m_close, 'close')
+    m_connect = Mock(side_effect=[connection])
+    m_write = Mock(side_effect=[('success','nchuncks','nrows','_')])
+
+    tb.connect_and_push_snowflake(
+        table,
+        db,
+        df,
+        user='user',
+        password='pass',
+        connect=m_connect,
+        write_pandas=m_write
+    )
+
+    p_calls = (call("capitolizing columns"),call('writing to pandas'),
+    call("Successfully uploaded to snowflake: success, Number of rows updated (if any): nrows using nchuncks chunks."))
+    m_print.assert_has_calls(p_calls)
+
+@patch('builtins.print')
+def test_con_push_snow_unhappy(m_print:Mock):
+    #test data
+    table = 'test'
+    db = 'test_db'
+    data = {'name':['alex','connor'],'team':['yogurt','yogurt']}
+    #df = pd.DataFrame(data)
+
+    #mock overrides
+    m_close = Mock()
+    connection = Mock()
+    connection.attach_mock(m_close, 'close')
+    m_connect = Mock(side_effect=[connection])
+    m_write = Mock(side_effect=[('success','nchuncks','nrows','_')])
+
+    with pytest.raises(AttributeError):
+        tb.connect_and_push_snowflake(
+            table,
+            db,
+            data,
+            user='user',
+            password='pass',
+            connect=m_connect,
+            write_pandas=m_write
+        )
